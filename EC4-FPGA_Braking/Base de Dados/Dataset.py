@@ -49,7 +49,8 @@
 #        |                   |                              | Faltou limiar o sorteio do erro aleatório a até duas vezes o
 #        |                   |                              | desvio padrão.
 #--------|-------------------|------------------------------|--------------------------------------------------------------
-#
+#   06   |    14/06/2022     | Henrique Lefundes da Silva   | Correções dos problemas descritos na revisão 5.
+#--------|-------------------|------------------------------|--------------------------------------------------------------
 ###########################################################################################################################
 
 import pandas as pd
@@ -63,6 +64,7 @@ distance = np.arange(start=0, stop=2010, step=10)   #Cria vetor distancia [m]
 speed = np.arange(start=0, stop=28.5, step=0.5)     #Cria vetor velocidade [m/s]
 brake = [1.395, 1.1625, 0.93, 0.78, 0.65]           #Cria vetor de desaceleracao (baseado nos valores de AEB da tabela) [m/s^2] 
 
+TCY = 0.5
 AH = 1.12       #Aceleracao com 
                 #-- baixa aderencia = 0.84 
                 # -- aderencia normal = 1.12 [m/s^2]               
@@ -114,17 +116,25 @@ def create_Dataset(nome, distancia, velocidade, desaceleracao, massa):
             for k in range(len(desaceleracao)):
                 #Calcula o desvio padrão da distância
                 if(distance[i] <= 30):
-                    devpadDistancia = 0.5
+                    devpadDistancia = 0.05 + 0.87 + 0.05*TCY
                 else: 
-                    devpadDistancia = 5
+                    devpadDistancia = 0.5 + 0.87 + 0.05*TCY
                 distanciaRuido = np.random.normal(distance[i], devpadDistancia) #Gera o ruído
                 if(distanciaRuido < 0):
                     distanciaRuido = 0
+                elif(distance[i] + 2*devpadDistancia < distanciaRuido):
+                    distanciaRuido = distance[i] + 2*devpadDistancia
+                elif(distance[i] - 2*devpadDistancia > distanciaRuido):
+                    distanciaRuido = distance[i] - 2*devpadDistancia
                 
                 devpadVelocidade = 0.03*speed[j] #Calcula o desvio padrão da velocidade
                 velocidadeRuido = np.random.normal(speed[j], devpadVelocidade) #Gera o ruído
                 if(velocidadeRuido < 0):
                     velocidadeRuido = 0
+                elif(speed[j] + 2*devpadVelocidade < velocidadeRuido):
+                    velocidadeRuido = speed[j] + 2*devpadVelocidade
+                elif(speed[j] - 2*devpadVelocidade > velocidadeRuido):
+                    velocidadeRuido = speed[j] - 2*devpadVelocidade
 
                 ruidos = np.array([distanciaRuido, velocidadeRuido, brake[k]]) #Define vetores para facilitar a chamada do concatenate
                 sinais = np.array([distance[i], speed[j], brake[k]])
