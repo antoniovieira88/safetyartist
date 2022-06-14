@@ -36,6 +36,19 @@
 #        |                   |                              | prático) na equação de "DS" e novas melhorias nos mecanismos
 #        |                   |                              | de depuração.
 #--------|-------------------|------------------------------|--------------------------------------------------------------
+#   05   |    13/06/2022     | Antonio Vieira da Silva Neto | Problemas encontrados após verificação exaustiva dos resul-
+#        |                   |                              | tados:
+#        |                   |                              | a) A massa do trem era sempre considerada "zero", independen-
+#        |                   |                              | temente do valor atribuído inicialmente a ela. --> Corrigido
+#        |                   |                              | nesta revisão forçando a atualização da variável global "M".
+#        |                   |                              | b) A fórmula de cálculo do erro de distância está incorreta.
+#        |                   |                              | Faltou incluir um desvio constante de 0,87m em todas as dis-
+#        |                   |                              | tâncias e limitar o sorteio do erro aleatório a até duas 
+#        |                   |                              | vezes o desvio padrão.
+#        |                   |                              | c) A fórmula do cálculo do erro de velocidade está incorreta.
+#        |                   |                              | Faltou limiar o sorteio do erro aleatório a até duas vezes o
+#        |                   |                              | desvio padrão.
+#--------|-------------------|------------------------------|--------------------------------------------------------------
 #
 ###########################################################################################################################
 
@@ -76,7 +89,7 @@ T50 = 0.5       #Tempo de duracao da aplicacao do freio com metade da capacidade
 
 ############# Equacoes utilizadas ##############
 
-# AW = (0.5*RHO*Cd*ATS*(VW-V)**2)/(M+MRI)
+# AW = (0.5*RHO*Cd*ATS*((VW-V)**2))/(M+MRI)
 # AG = (M*np.sin(np.arctan(GR))*g)/(M+MRI)
 # VH = VA + (AH+AW-AG)*TH
 # VC = VH + (AW-AG)*TC
@@ -92,6 +105,7 @@ def create_Dataset(nome, distancia, velocidade, desaceleracao, massa):
 
     data = pd.DataFrame(columns=['Distancia Ruidosa', 'Velocidade Ruidosa', 'Capacidade de Frenagem Ruidosa', 'Distancia', 'Velocidade', 'Capacidade de Frenagem', 'Decisao', 'Aceleracao', 'AW', 'AG', 'VH', 'VC', 'V50', 'DS', 'Decisao Ruidosa', 'Aceleracao Ruidosa', 'AW Ruidosa', 'AG Ruidosa', 'VH Ruidosa', 'VC Ruidosa', 'V50 Ruidosa', 'DS Ruidosa'], index = range(size)) #Cria um Dataframe vazio com as colunas descritas
 
+    global M
     M = massa 
     l = 0 #Contador de linhas
 
@@ -138,7 +152,7 @@ def calcula_distancia(distancia, velocidade, aceleracao):
     else:
         AH = 0.84 #Utilizar baixa aderencia
 
-    AW = (0.5*RHO*Cd*ATS*(VW-VE)**2)/(M+MRI)
+    AW = (0.5*RHO*Cd*ATS*((VW-VE)**2))/(M+MRI)
     AG = (M*np.sin(np.arctan(GR))*g)/(M+MRI)
     VH = VE + (AH+AW-AG)*TH
     VC = VH + (AW-AG)*TC
