@@ -1,4 +1,4 @@
-###########################################################################################################################
+﻿###########################################################################################################################
 #
 # Antonio Vieira da Silva Neto - NUSP  5690149 - Doutorando em Ciências
 # Henrique Lefundes da Silva   - NUSP 11808280 - Pesquisador de Iniciação Científica e Graduando em Engenharia Elétrica
@@ -50,6 +50,10 @@
 #        |                   |                              | desvio padrão.
 #--------|-------------------|------------------------------|--------------------------------------------------------------
 #   06   |    14/06/2022     | Henrique Lefundes da Silva   | Correções dos problemas descritos na revisão 5.
+#--------|-------------------|------------------------------|--------------------------------------------------------------
+#   07   |    21/06/2022     | Antonio Vieira da Silva Neto | Correções na fórmula de cálculo de "devpadDistancia" para
+#        |                   |                              | distâncias maiores do que 30m. A parcela "0,5*TCY" estava
+#        |                   |                              | indevidamente grafada como "0,05*TCY".
 #--------|-------------------|------------------------------|--------------------------------------------------------------
 ###########################################################################################################################
 
@@ -118,7 +122,7 @@ def create_Dataset(nome, distancia, velocidade, desaceleracao, massa):
                 if(distance[i] <= 30):
                     devpadDistancia = 0.05 + 0.87 + 0.05*TCY
                 else: 
-                    devpadDistancia = 0.5 + 0.87 + 0.05*TCY
+                    devpadDistancia = 0.5 + 0.87 + 0.5*TCY
                 distanciaRuido = np.random.normal(distance[i], devpadDistancia) #Gera o ruído
                 if(distanciaRuido < 0):
                     distanciaRuido = 0
