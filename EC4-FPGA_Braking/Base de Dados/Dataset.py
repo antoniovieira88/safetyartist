@@ -57,6 +57,9 @@
 #--------|-------------------|------------------------------|--------------------------------------------------------------
 ###########################################################################################################################
 
+import os
+os.environ['CONDA_DLL_SEARCH_MODIFICATION_ENABLE'] = '1' #Evita problemas de versão do NumPy com Conda
+
 import pandas as pd
 import numpy as np
 np.random.seed(None)
