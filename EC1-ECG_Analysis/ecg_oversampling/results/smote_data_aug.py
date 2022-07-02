@@ -1,4 +1,4 @@
-from utils import *
+from .utils import *
 
 
 fold1 = np.array([

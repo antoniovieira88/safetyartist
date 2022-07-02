@@ -9,16 +9,16 @@ class DataAugumentationGenerator(GeneratorBase):
     def generate(self, dataX, dataY, examples_to_generate):
         while dataX.shape[0] < examples_to_generate:
             additional_samples = np.apply_along_axis(
-                augment, axis=1, arr=dataX).reshape(-1, 187, 1)
+                DataAugumentationGenerator.augment, axis=1, arr=dataX).reshape(-1, 187, 1)
             dataX = np.vstack([dataX, additional_samples])
         return self.choose_n_samples(dataX, examples_to_generate)
 
     @staticmethod
     def augment(self, x):
         result = np.zeros(shape=(3, 187))
-        result[0, :] = stretch(x)
-        result[1, :] = amplify(x)
-        result[2, :] = amplify(stretch(x))
+        result[0, :] = DataAugumentationGenerator.stretch(x)
+        result[1, :] = DataAugumentationGenerator.amplify(x)
+        result[2, :] = DataAugumentationGenerator.amplify(DataAugumentationGenerator.stretch(x))
         return result
 
     @staticmethod

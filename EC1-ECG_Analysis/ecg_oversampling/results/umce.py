@@ -1,5 +1,5 @@
 import numpy as np
-from utils import *
+from .utils import *
 
 """
 learning for umce was stoped, but we can
