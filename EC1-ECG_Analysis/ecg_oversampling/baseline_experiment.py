@@ -1,3 +1,7 @@
+# Safety ArtISt: Workaround to avoid NumPy importing issues when using Keras and TensorFlow together on an Anaconda environment.
+import os
+os.environ['CONDA_DLL_SEARCH_MODIFICATION_ENABLE'] = '1'
+
 from keras.utils.np_utils import to_categorical
 from sklearn.model_selection import StratifiedKFold
 
@@ -29,8 +33,11 @@ if __name__ == '__main__':
             y_train.astype('int16').flatten()))
         x_train, y_train = reduce_imbalance(
             x_train, y_train, None, num_examples=num_undersample)  # No oversampling technique
-        #sets_shapes_report(x_train, y_train)
+        
+        # Safety ArtISt - Line of Code enabled to check for oversampling / undersampling shapes
+        sets_shapes_report(x_train, y_train)
         #sets_shapes_report(x_test, y_test)
+        
         y_train = to_categorical(y_train)
         y_test = to_categorical(y_test)
 
