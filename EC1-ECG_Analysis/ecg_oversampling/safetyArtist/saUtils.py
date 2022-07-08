@@ -3,6 +3,7 @@
 
 from dataset_utils.load_data import *
 
+from keras.utils.np_utils import to_categorical
 
 """ Function load_whole_dataset_safety
 
@@ -181,6 +182,9 @@ def filterCornerCases (x, y):
     # Regular processing
     else:
 
+        # Intially, "y" is locally categorized to standardize it to usage within the ResNets
+        y_categorical = to_categorical(y)
+
         # For each line of "x", checks if the corner case flags from the 190th to the 209th column of x are equal to '1'.
         # When such a condition is satisfied, the corresponding lines of "x" and "y" are added to "x_ccNN_data", "x_ccNN_safety"
         # and "y_ccNN" as follows:
@@ -210,7 +214,7 @@ def filterCornerCases (x, y):
             if (x[i][189] == np.array(1) and y[i] == np.array(0)):
                 x_cc01_data.append(x[i, :-22])
                 x_cc01_safety.append(x[i, -22:])
-                y_cc01.append(y[i])
+                y_cc01.append(y_categorical[i])
 
             # Error on scenario "a)" - invalid output on "y"
             elif (x[i][189] == np.array(1) and y[i] != np.array(0)):
@@ -221,7 +225,7 @@ def filterCornerCases (x, y):
             if (x[i][190] == np.array(1) and y[i] == np.array(1)):
                 x_cc10_data.append(x[i, :-22])
                 x_cc10_safety.append(x[i, -22:])
-                y_cc10.append(y[i])
+                y_cc10.append(y_categorical[i])
 
             # Error on scenario "b)" - invalid output on "y"
             elif (x[i][190] == np.array(1) and y[i] != np.array(1)):
@@ -232,7 +236,7 @@ def filterCornerCases (x, y):
             if (x[i][191] == np.array(1) and y[i] == np.array(0)):
                 x_cc02_data.append(x[i, :-22])
                 x_cc02_safety.append(x[i, -22:])
-                y_cc02.append(y[i])
+                y_cc02.append(y_categorical[i])
 
             # Error on scenario "c)" - invalid output on "y"
             elif (x[i][191] == np.array(1) and y[i] != np.array(0)):
@@ -243,7 +247,7 @@ def filterCornerCases (x, y):
             if (x[i][192] == np.array(1) and y[i] == np.array(2)):
                 x_cc20_data.append(x[i, :-22])
                 x_cc20_safety.append(x[i, -22:])
-                y_cc20.append(y[i])
+                y_cc20.append(y_categorical[i])
 
             # Error on scenario "d)" - invalid output on "y"
             elif (x[i][192] == np.array(1) and y[i] != np.array(2)):
@@ -254,7 +258,7 @@ def filterCornerCases (x, y):
             if (x[i][193] == np.array(1) and y[i] == np.array(0)):
                 x_cc03_data.append(x[i, :-22])
                 x_cc03_safety.append(x[i, -22:])
-                y_cc03.append(y[i])
+                y_cc03.append(y_categorical[i])
 
             # Error on scenario "e)" - invalid output on "y"
             elif (x[i][193] == np.array(1) and y[i] != np.array(0)):
@@ -265,7 +269,7 @@ def filterCornerCases (x, y):
             if (x[i][194] == np.array(1) and y[i] == np.array(3)):
                 x_cc30_data.append(x[i, :-22])
                 x_cc30_safety.append(x[i, -22:])
-                y_cc30.append(y[i])
+                y_cc30.append(y_categorical[i])
 
             # Error on scenario "f)" - invalid output on "y"
             elif (x[i][194] == np.array(1) and y[i] != np.array(3)):
@@ -276,7 +280,7 @@ def filterCornerCases (x, y):
             if (x[i][195] == np.array(1) and y[i] == np.array(0)):
                 x_cc04_data.append(x[i, :-22])
                 x_cc04_safety.append(x[i, -22:])
-                y_cc04.append(y[i])
+                y_cc04.append(y_categorical[i])
 
             # Error on scenario "g)" - invalid output on "y"
             elif (x[i][195] == np.array(1) and y[i] != np.array(0)):
@@ -287,7 +291,7 @@ def filterCornerCases (x, y):
             if (x[i][196] == np.array(1) and y[i] == np.array(4)):
                 x_cc40_data.append(x[i, :-22])
                 x_cc40_safety.append(x[i, -22:])
-                y_cc40.append(y[i])
+                y_cc40.append(y_categorical[i])
 
             # Error on scenario "h)" - invalid output on "y"
             elif (x[i][196] == np.array(1) and y[i] != np.array(4)):
@@ -298,7 +302,7 @@ def filterCornerCases (x, y):
             if (x[i][197] == np.array(1) and y[i] == np.array(1)):
                 x_cc12_data.append(x[i, :-22])
                 x_cc12_safety.append(x[i, -22:])
-                y_cc12.append(y[i])
+                y_cc12.append(y_categorical[i])
 
             # Error on scenario "i)" - invalid output on "y"
             elif (x[i][197] == np.array(1) and y[i] != np.array(1)):
@@ -309,7 +313,7 @@ def filterCornerCases (x, y):
             if (x[i][198] == np.array(1) and y[i] == np.array(2)):
                 x_cc21_data.append(x[i, :-22])
                 x_cc21_safety.append(x[i, -22:])
-                y_cc21.append(y[i])
+                y_cc21.append(y_categorical[i])
 
             # Error on scenario "j)" - invalid output on "y"
             elif (x[i][198] == np.array(1) and y[i] != np.array(2)):
@@ -320,7 +324,7 @@ def filterCornerCases (x, y):
             if (x[i][199] == np.array(1) and y[i] == np.array(1)):
                 x_cc13_data.append(x[i, :-22])
                 x_cc13_safety.append(x[i, -22:])
-                y_cc13.append(y[i])
+                y_cc13.append(y_categorical[i])
 
             # Error on scenario "k)" - invalid output on "y"
             elif (x[i][199] == np.array(1) and y[i] != np.array(1)):
@@ -331,7 +335,7 @@ def filterCornerCases (x, y):
             if (x[i][200] == np.array(1) and y[i] == np.array(3)):
                 x_cc31_data.append(x[i, :-22])
                 x_cc31_safety.append(x[i, -22:])
-                y_cc31.append(y[i])
+                y_cc31.append(y_categorical[i])
 
             # Error on scenario "l)" - invalid output on "y"
             elif (x[i][200] == np.array(1) and y[i] != np.array(3)):
@@ -342,7 +346,7 @@ def filterCornerCases (x, y):
             if (x[i][201] == np.array(1) and y[i] == np.array(1)):
                 x_cc14_data.append(x[i, :-22])
                 x_cc14_safety.append(x[i, -22:])
-                y_cc14.append(y[i])
+                y_cc14.append(y_categorical[i])
 
             # Error on scenario "m)" - invalid output on "y"
             elif (x[i][201] == np.array(1) and y[i] != np.array(1)):
@@ -353,7 +357,7 @@ def filterCornerCases (x, y):
             if (x[i][202] == np.array(1) and y[i] == np.array(4)):
                 x_cc41_data.append(x[i, :-22])
                 x_cc41_safety.append(x[i, -22:])
-                y_cc41.append(y[i])
+                y_cc41.append(y_categorical[i])
 
             # Error on scenario "n)" - invalid output on "y"
             elif (x[i][202] == np.array(1) and y[i] != np.array(4)):
@@ -364,7 +368,7 @@ def filterCornerCases (x, y):
             if (x[i][203] == np.array(1) and y[i] == np.array(2)):
                 x_cc23_data.append(x[i, :-22])
                 x_cc23_safety.append(x[i, -22:])
-                y_cc23.append(y[i])
+                y_cc23.append(y_categorical[i])
 
             # Error on scenario "o)" - invalid output on "y"
             elif (x[i][203] == np.array(2) and y[i] != np.array(2)):
@@ -375,7 +379,7 @@ def filterCornerCases (x, y):
             if (x[i][204] == np.array(1) and y[i] == np.array(3)):
                 x_cc32_data.append(x[i, :-22])
                 x_cc32_safety.append(x[i, -22:])
-                y_cc32.append(y[i])
+                y_cc32.append(y_categorical[i])
 
             # Error on scenario "p)" - invalid output on "y"
             elif (x[i][204] == np.array(1) and y[i] != np.array(3)):
@@ -386,7 +390,7 @@ def filterCornerCases (x, y):
             if (x[i][205] == np.array(1) and y[i] == np.array(2)):
                 x_cc24_data.append(x[i, :-22])
                 x_cc24_safety.append(x[i, -22:])
-                y_cc24.append(y[i])
+                y_cc24.append(y_categorical[i])
 
             # Error on scenario "q)" - invalid output on "y"
             elif (x[i][205] == np.array(1) and y[i] != np.array(2)):
@@ -397,7 +401,7 @@ def filterCornerCases (x, y):
             if (x[i][206] == np.array(1) and y[i] == np.array(4)):
                 x_cc42_data.append(x[i, :-22])
                 x_cc42_safety.append(x[i, -22:])
-                y_cc42.append(y[i])
+                y_cc42.append(y_categorical[i])
 
             # Error on scenario "r)" - invalid output on "y"
             elif (x[i][206] == np.array(1) and y[i] != np.array(4)):
@@ -408,7 +412,7 @@ def filterCornerCases (x, y):
             if (x[i][207] == np.array(1) and y[i] == np.array(3)):
                 x_cc34_data.append(x[i, :-22])
                 x_cc34_safety.append(x[i, -22:])
-                y_cc34.append(y[i])
+                y_cc34.append(y_categorical[i])
 
             # Error on scenario "s)" - invalid output on "y"
             elif (x[i][207] == np.array(1) and y[i] != np.array(3)):
@@ -419,7 +423,7 @@ def filterCornerCases (x, y):
             if (x[i][208] == np.array(1) and y[i] == np.array(4)):
                 x_cc43_data.append(x[i, :-22])
                 x_cc43_safety.append(x[i, -22:])
-                y_cc43.append(y[i])
+                y_cc43.append(y_categorical[i])
 
             # Error on scenario "t)" - invalid output on "y"
             elif (x[i][208] == np.array(1) and y[i] != np.array(4)):
@@ -448,3 +452,119 @@ def filterCornerCases (x, y):
             np.array(x_cc42_data), np.array(x_cc42_safety), np.array(y_cc42),
             np.array(x_cc34_data), np.array(x_cc34_safety), np.array(y_cc34),
             np.array(x_cc43_data), np.array(x_cc43_safety), np.array(y_cc43))
+
+""" Function decode_one_hot_5_cats
+
+- Inputs: a) "input": Array with one-hot-encoded elements including five different categories.
+
+- Outputs: a) "output": Array with numeric categories for the one-hot-encoded "input" elements.
+
+- Summary: Decodes each position of "input" as per the following logic:
+           [1, 0, 0, 0, 0] --> [0]
+           [0, 1, 0, 0, 0] --> [1]
+           [0, 0, 1, 0, 0] --> [2]
+           [0, 0, 0, 1, 0] --> [3]
+           [0, 0, 0, 0, 1] --> [4]
+""" 
+def decode_one_hot_5_cats(one_hot_input):
+
+    # Creates the output of the function an empty array
+    output = []
+
+    # Gets the length (number of lines) of "one_hot_input". "columns_input" is declared just to
+    # allow reading "lines_input" through "shape" and are unused at the rest of the function.
+    lines_input, columns_input = one_hot_input.shape
+
+
+    for i in range (0, lines_input):
+
+        if (one_hot_input[i][0] == 1):
+            output.append(0)
+        
+        elif (one_hot_input[i][1] == 1):
+            output.append(1)
+        
+        elif (one_hot_input[i][2] == 1):
+            output.append(2)
+        
+        elif (one_hot_input[i][3] == 1):
+            output.append(3)
+        
+        elif (one_hot_input[i][4] == 1):
+            output.append(4)
+        
+        else:
+            print("Error on decode_one_hot_5_cats: invalid category!")
+
+    # Returns the processed output
+    return np.array(output)
+
+""" Function array_of_arrays_to_array_of_ints
+
+- Inputs: a) "input": Array whose elements are singleton arrays.
+
+- Outputs: a) "output": Array whose elements are the integers of the singleton arrays.
+
+- Summary: Transforms and array whose elements are singleton arrays into an array whose elements are the integers of the singleton arrays.
+""" 
+def array_of_arrays_to_array_of_ints(input):
+
+    # Creates the output of the function an empty array
+    output = []
+
+    # Gets the length (number of lines) of "input". "columns_input" is declared just to
+    # allow reading "lines_input" through "shape" and are unused at the rest of the function.
+    lines_input, columns_input = input.shape
+
+    for i in range (0, lines_input):
+
+        output.append(int(input[i][0]))
+
+    # Returns the processed output
+    return np.array(output)
+
+""" Function write_corner_case_csv
+
+- Inputs: a) "id": Array with the list of corner case heartbeat IDs defined in the "mitbih_train_sa.csv" and "mitbih_test_sa.csv" files.
+          b) "y_truth": Array with the heartbeats' ground truth category, as per the "mitbih_train_sa.csv" and "mitbih_test_sa.csv" files,
+              but with one-hot encoding.
+          c) "y_pred": Array with the category predicted by the classifier for the corner case, but with one-hot encoding.
+          d) "corner_case": String with the identification of the set of corner cases dealt with.
+          e) "classifier": String with the identification of the classifier that lead to the results. It includes the classifier name
+             and the cross-validation fold ID, as per the original design of Kozal and Ksieniewicz. 
+
+- Outputs: A .csv file named as per the inputs "corner_case" and "classifier" string with four columns:
+           "id", "y_truth", "y_pred", and the boolean result of the comparison between "y_truth" and "y_pred" for each "id".
+           "y_truth" and "y_pred" are one-hot-decoded prior to being used within this function as per the 'decode_one_hot_5_cats' function
+
+- Summary: Writes a .csv file named as per the inputs "corner_case" and "classifier" reporting the full results of a corner case group.
+""" 
+def write_corner_case_csv(id, y_truth, y_pred, corner_case, classifier):
+    
+    # Decodes the one-hot encoding of y_truth and y_pred
+    decoded_y_truth = decode_one_hot_5_cats(y_truth)
+    decoded_y_pred = decode_one_hot_5_cats(y_pred)
+    
+    # Compares "decoded_y_truth" to "decoded_y_pred" and saves the result on "y_comparison"
+    y_comparison = decoded_y_truth == decoded_y_pred
+
+    # Transforms the array of single arrays "id" into an array of integers
+    id_array = array_of_arrays_to_array_of_ints(id)
+    
+    # Creates pandas dataframe with "id", "y_truth" and "y_pred".
+    # Since each of them is a line, the dataframe shall be transposed so that its columns are "id", "y_truth" and "y_pred"
+
+    # a) Creates the names of each field
+    index_names = ['Hearbeat ID', 'Ground Truth', 'Predicted Category', 'Comparison Result'] 
+
+    # b) Creates the dataframe with each line comprising one of the variables    
+    dataframe = pd.DataFrame(data = np.vstack((id_array, decoded_y_truth, decoded_y_pred, y_comparison)), index = index_names)
+
+    # c) Transposes the dataframe so that each of the variables corresponds to a dataframe column
+    dataframe = dataframe.transpose()
+
+    # Defines the CSV filename with the name given by combining the strings "classifier" and "corner_case" with "_"
+    fileName = classifier + '_' + corner_case + '.csv'
+
+    # Writes the 'fileName' CSV file
+    dataframe.to_csv(fileName)
