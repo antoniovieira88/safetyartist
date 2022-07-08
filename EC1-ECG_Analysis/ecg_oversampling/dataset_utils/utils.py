@@ -39,3 +39,13 @@ def sets_shapes_report(x_train, y_train):
 
     print("train classes sample count:")
     print(np.bincount(y_train.astype('int32').flatten()))
+
+# Safety ArtISt - Replica of 'sets_shapes_report' with new messages for data with purposes other than training 
+# and with optional outputs set
+def sets_shapes_report_sa(input, output):
+    print("input set shape: ", input.shape)
+
+    if (output != None):
+        print("output set shape: ", output.shape)
+        print("train classes sample count:")
+        print(np.bincount(output.astype('int32').flatten()))

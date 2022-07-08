@@ -1,3 +1,7 @@
+# Safety ArtISt: Workaround to avoid NumPy importing issues when using Keras and TensorFlow together on an Anaconda environment.
+import os
+os.environ['CONDA_DLL_SEARCH_MODIFICATION_ENABLE'] = '1'
+
 from keras.utils.np_utils import to_categorical
 from sklearn.model_selection import StratifiedKFold
 

@@ -4,7 +4,9 @@ from dataset_utils.utils import *
 
 
 def load_data(filename):
-    dataframe = pd.read_csv(filename, engine='python')
+    # Safety ArtISt correction: Reading CSV files originally omitted the first line, which was considered a header.
+    # This has been corrected by adding 'header=None' to the call of 'read_csv'.
+    dataframe = pd.read_csv(filename, engine='python', header=None)
     dataset = dataframe.values
     return dataset.astype('float32')
 
