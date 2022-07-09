@@ -3,14 +3,21 @@ from sklearn.metrics import precision_score, recall_score, f1_score, accuracy_sc
 from sklearn.metrics import precision_recall_fscore_support
 from sklearn.utils.multiclass import unique_labels
 import numpy as np
+import pandas as pd
 
-
-def metrics_values(y_pred, y_true):
+# Safety ArtISt: Added filename parameters to print metrics report on CSV file
+def metrics_values(y_pred, y_true, scenario_name, classifier):
     y_pred_labels = y_pred.argmax(axis=1)
     y_true_labels = y_true.argmax(axis=1)
 
-    classif_report = classification_report(y_true_labels, y_pred_labels)
-    print(classif_report)
+    # Safety ArtISt - Classification report printing replaced from on-screen to CSV
+    # Modification 1: Made "output_dict = True" 
+    classif_report = classification_report(y_true_labels, y_pred_labels, output_dict = True)
+
+    # Modification 2: Erased line "print(classif_report)" and added the following lines
+    dataframe = pd.DataFrame(classif_report).transpose()
+    fileName = scenario_name + '_metrics_' + classifier + '.csv'
+    dataframe.to_csv(fileName)
 
     acc = accuracy_score(y_true_labels, y_pred_labels)
 

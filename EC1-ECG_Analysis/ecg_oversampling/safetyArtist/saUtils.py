@@ -453,52 +453,6 @@ def filterCornerCases (x, y):
             np.array(x_cc34_data), np.array(x_cc34_safety), np.array(y_cc34),
             np.array(x_cc43_data), np.array(x_cc43_safety), np.array(y_cc43))
 
-""" Function decode_one_hot_5_cats
-
-- Inputs: a) "input": Array with one-hot-encoded elements including five different categories.
-
-- Outputs: a) "output": Array with numeric categories for the one-hot-encoded "input" elements.
-
-- Summary: Decodes each position of "input" as per the following logic:
-           [1, 0, 0, 0, 0] --> [0]
-           [0, 1, 0, 0, 0] --> [1]
-           [0, 0, 1, 0, 0] --> [2]
-           [0, 0, 0, 1, 0] --> [3]
-           [0, 0, 0, 0, 1] --> [4]
-""" 
-def decode_one_hot_5_cats(one_hot_input):
-
-    # Creates the output of the function an empty array
-    output = []
-
-    # Gets the length (number of lines) of "one_hot_input". "columns_input" is declared just to
-    # allow reading "lines_input" through "shape" and are unused at the rest of the function.
-    lines_input, columns_input = one_hot_input.shape
-
-
-    for i in range (0, lines_input):
-
-        if (one_hot_input[i][0] == 1):
-            output.append(0)
-        
-        elif (one_hot_input[i][1] == 1):
-            output.append(1)
-        
-        elif (one_hot_input[i][2] == 1):
-            output.append(2)
-        
-        elif (one_hot_input[i][3] == 1):
-            output.append(3)
-        
-        elif (one_hot_input[i][4] == 1):
-            output.append(4)
-        
-        else:
-            print("Error on decode_one_hot_5_cats: invalid category!")
-
-    # Returns the processed output
-    return np.array(output)
-
 """ Function array_of_arrays_to_array_of_ints
 
 - Inputs: a) "input": Array whose elements are singleton arrays.
@@ -541,9 +495,11 @@ def array_of_arrays_to_array_of_ints(input):
 """ 
 def write_corner_case_csv(id, y_truth, y_pred, corner_case, classifier):
     
-    # Decodes the one-hot encoding of y_truth and y_pred
-    decoded_y_truth = decode_one_hot_5_cats(y_truth)
-    decoded_y_pred = decode_one_hot_5_cats(y_pred)
+    # Categorizes 'y_pred' in case it has discrete values by making its highest category equal to '1' and the rest equal to '0'
+    decoded_y_pred = y_pred.argmax(axis=1)
+
+    # Decodes the one-hot encoding of y_truth
+    decoded_y_truth = y_truth.argmax(axis=1)
     
     # Compares "decoded_y_truth" to "decoded_y_pred" and saves the result on "y_comparison"
     y_comparison = decoded_y_truth == decoded_y_pred
