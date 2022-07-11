@@ -14,7 +14,7 @@ def metrics_values(y_pred, y_true, scenario_name, classifier):
     # Modification 1: Made "output_dict = True" 
     classif_report = classification_report(y_true_labels, y_pred_labels, output_dict = True)
 
-    # Modification 2: Erased line "print(classif_report)" and added the following lines
+    # Modification 2: Erased line "print(classif_report)" and added the three following lines for CSV printing
     dataframe = pd.DataFrame(classif_report).transpose()
     fileName = scenario_name + '_metrics_' + classifier + '.csv'
     dataframe.to_csv(fileName)

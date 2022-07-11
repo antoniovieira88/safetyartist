@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     kf = StratifiedKFold(n_splits=10, shuffle=True, random_state=None)
 
-    # Safety ArtISt: Replaced "x" with "x[:, :-22] to filter out the safety-related columns" from the input_shape
+    # Safety ArtISt: Replaced "x" with "x[:, :-22]" to filter out the safety-related columns from the input_shape
     # variable, which is used for defining the ResNet actual input shape. It shall be equal to (187, 1).
     input_shape = x[:, :-22].shape[1:]
 
@@ -61,14 +61,15 @@ if __name__ == '__main__':
         x_train, x_test = x[train_index], x[test_index]
         y_train, y_test = y[train_index], y[test_index]
 
-        # prepare data for traning
+        # prepare data for training
         num_undersample = np.min(np.bincount(
             y_train.astype('int16').flatten()))
         x_train, y_train = reduce_imbalance(
             x_train, y_train, None, num_examples=num_undersample)  # No oversampling technique
 
         # Safety ArtISt - Filter data added for safety assurance purposes (heartbeat ID, hearbeat size and corner case flags)
-        # from "x_train" and "x_test"
+        # from "x_train" and "x_test". It is OK to perform this here because, since there is no oversampling when calling
+        # reduce_imbalance, safety-critical data on "x_train" will not affect the undersampling process.
         x_train, x_test, x_safety_train, x_safety_test = filterSafetyData(x_train, x_test)
         
         # Safety ArtISt - Lines of Code enabled to check for oversampling / undersampling shapes
@@ -89,115 +90,116 @@ if __name__ == '__main__':
         base_model = BaseModel(input_shape, batch_size=32)
         base_model.fit(x_train, y_train, x_test, y_test)
 
-        # evaluate metrics - Holdout Test per Fold
+        # evaluate metrics - [Safety ArtISt Comment] Holdout Test per Fold
         y_pred = base_model.predict(x_test)
-        a, p, r, f = metrics_values(y_pred, y_test, 'holdout_test', 'ResNet_Fold' + str(fold_number + 1))
+        # Safety ArtISt - Updated the call of "metrics_values" to include the generation of a CSV report with the results
+        a, p, r, f = metrics_values(y_pred, y_test, 'holdout_test', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
         acc.append(a)
         precision.append(p)
         recall.append(r)
         f1.append(f)
 
-        # Safety ArtISt - Evaluate metrics of corner cases tests, compile them on the arrays for all folds and print the results on CSV files
+        # Safety ArtISt - Evaluate corner cases tests, compile their results on the arrays for all folds and print the results on CSV files
         # Calculations are performed only to the non-null sets of corner cases
         # a) 0 similar to 1
-        if np.size(x_cc01_data > 0):
+        if np.size(x_cc01_data.size > 0):
             y_cc01_pred = base_model.predict(x_cc01_data)
-            write_corner_case_csv(x_cc01_safety[:, 0], y_cc01, y_cc01_pred, 'cc01', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc01_safety[:, 0], y_cc01, y_cc01_pred, 'cc01', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
         
         # b) 1 similar to 0
-        if np.size(x_cc10_data > 0):
+        if np.size(x_cc10_data.size > 0):
             y_cc10_pred = base_model.predict(x_cc10_data)
-            write_corner_case_csv(x_cc10_safety[:, 0], y_cc10, y_cc10_pred, 'cc10', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc10_safety[:, 0], y_cc10, y_cc10_pred, 'cc10', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # c) 0 similar to 2
-        if np.size(x_cc02_data > 0):
+        if np.size(x_cc02_data.size > 0):
             y_cc02_pred = base_model.predict(x_cc02_data)
-            write_corner_case_csv(x_cc02_safety[:, 0], y_cc02, y_cc02_pred, 'cc02', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc02_safety[:, 0], y_cc02, y_cc02_pred, 'cc02', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # d) 2 similar to 0
-        if np.size(x_cc20_data > 0):
+        if np.size(x_cc20_data.size > 0):
             y_cc20_pred = base_model.predict(x_cc20_data)
-            write_corner_case_csv(x_cc20_safety[:, 0], y_cc20, y_cc20_pred, 'cc20', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc20_safety[:, 0], y_cc20, y_cc20_pred, 'cc20', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # e) 0 similar to 3
-        if np.size(x_cc03_data > 0):
+        if np.size(x_cc03_data.size > 0):
             y_cc03_pred = base_model.predict(x_cc03_data)
-            write_corner_case_csv(x_cc03_safety[:, 0], y_cc03, y_cc03_pred, 'cc03', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc03_safety[:, 0], y_cc03, y_cc03_pred, 'cc03', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # f) 3 similar to 0
-        if np.size(x_cc30_data > 0):
+        if np.size(x_cc30_data.size > 0):
             y_cc30_pred = base_model.predict(x_cc30_data)
-            write_corner_case_csv(x_cc30_safety[:, 0], y_cc30, y_cc30_pred, 'cc30', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc30_safety[:, 0], y_cc30, y_cc30_pred, 'cc30', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # g) 0 similar to 4
-        if np.size(x_cc04_data > 0):
+        if np.size(x_cc04_data.size > 0):
             y_cc04_pred = base_model.predict(x_cc04_data)
-            write_corner_case_csv(x_cc04_safety[:, 0], y_cc04, y_cc04_pred, 'cc04', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc04_safety[:, 0], y_cc04, y_cc04_pred, 'cc04', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # h) 4 similar to 0
-        if np.size(x_cc40_data > 0):
+        if np.size(x_cc40_data.size > 0):
             y_cc40_pred = base_model.predict(x_cc40_data)
-            write_corner_case_csv(x_cc40_safety[:, 0], y_cc40, y_cc40_pred, 'cc40', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc40_safety[:, 0], y_cc40, y_cc40_pred, 'cc40', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # i) 1 similar to 2
-        if np.size(x_cc12_data > 0):
+        if np.size(x_cc12_data.size > 0):
             y_cc12_pred = base_model.predict(x_cc12_data)
-            write_corner_case_csv(x_cc12_safety[:, 0], y_cc12, y_cc12_pred, 'cc12', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc12_safety[:, 0], y_cc12, y_cc12_pred, 'cc12', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # j) 2 similar to 1
-        if np.size(x_cc21_data > 0):
+        if np.size(x_cc21_data.size > 0):
             y_cc21_pred = base_model.predict(x_cc21_data)
-            write_corner_case_csv(x_cc21_safety[:, 0], y_cc21, y_cc21_pred, 'cc21', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc21_safety[:, 0], y_cc21, y_cc21_pred, 'cc21', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # k) 1 similar to 3
-        if np.size(x_cc13_data > 0):
+        if np.size(x_cc13_data.size > 0):
             y_cc13_pred = base_model.predict(x_cc13_data)
-            write_corner_case_csv(x_cc13_safety[:, 0], y_cc13, y_cc13_pred, 'cc13', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc13_safety[:, 0], y_cc13, y_cc13_pred, 'cc13', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # l) 3 similar to 1
-        if np.size(x_cc31_data > 0):
+        if np.size(x_cc31_data.size > 0):
             y_cc31_pred = base_model.predict(x_cc31_data)
-            write_corner_case_csv(x_cc31_safety[:, 0], y_cc31, y_cc31_pred, 'cc31', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc31_safety[:, 0], y_cc31, y_cc31_pred, 'cc31', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # m) 1 similar to 4 - empty
-        if np.size(x_cc14_data > 0):
+        if np.size(x_cc14_data.size > 0):
             y_cc14_pred = base_model.predict(x_cc14_data)
-            write_corner_case_csv(x_cc14_safety[:, 0], y_cc14, y_cc14_pred, 'cc14', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc14_safety[:, 0], y_cc14, y_cc14_pred, 'cc14', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # n) 4 similar to 1
-        if np.size(x_cc41_data > 0):
+        if np.size(x_cc41_data.size > 0):
             y_cc41_pred = base_model.predict(x_cc41_data)
-            write_corner_case_csv(x_cc41_safety[:, 0], y_cc41, y_cc41_pred, 'cc41', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc41_safety[:, 0], y_cc41, y_cc41_pred, 'cc41', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # o) 2 similar to 3
-        if np.size(x_cc23_data > 0):
+        if np.size(x_cc23_data.size > 0):
             y_cc23_pred = base_model.predict(x_cc23_data)
-            write_corner_case_csv(x_cc23_safety[:, 0], y_cc23, y_cc23_pred, 'cc23', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc23_safety[:, 0], y_cc23, y_cc23_pred, 'cc23', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # p) 3 similar to 2
-        if np.size(x_cc32_data > 0):
+        if np.size(x_cc32_data.size > 0):
             y_cc32_pred = base_model.predict(x_cc32_data)
-            write_corner_case_csv(x_cc32_safety[:, 0], y_cc32, y_cc32_pred, 'cc32', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc32_safety[:, 0], y_cc32, y_cc32_pred, 'cc32', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # q) 2 similar to 4
-        if np.size(x_cc24_data > 0):
+        if np.size(x_cc24_data.size > 0):
             y_cc24_pred = base_model.predict(x_cc24_data)
-            write_corner_case_csv(x_cc24_safety[:, 0], y_cc24, y_cc24_pred, 'cc24', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc24_safety[:, 0], y_cc24, y_cc24_pred, 'cc24', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # r) 4 similar to 2
-        if np.size(x_cc42_data > 0):
+        if np.size(x_cc42_data.size > 0):
             y_cc42_pred = base_model.predict(x_cc42_data)
-            write_corner_case_csv(x_cc42_safety[:, 0], y_cc42, y_cc42_pred, 'cc42', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc42_safety[:, 0], y_cc42, y_cc42_pred, 'cc42', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # s) 3 similar to 4
-        if np.size(x_cc34_data > 0):
+        if np.size(x_cc34_data.size > 0):
             y_cc34_pred = base_model.predict(x_cc34_data)
-            write_corner_case_csv(x_cc34_safety[:, 0], y_cc34, y_cc34_pred, 'cc34', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc34_safety[:, 0], y_cc34, y_cc34_pred, 'cc34', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         # t) 4 similar to 3
-        if np.size(x_cc43_data > 0):
+        if np.size(x_cc43_data.size > 0):
             y_cc43_pred = base_model.predict(x_cc43_data)
-            write_corner_case_csv(x_cc43_safety[:, 0], y_cc43, y_cc43_pred, 'cc43', 'ResNet_Fold' + str(fold_number + 1))
+            write_corner_case_csv(x_cc43_safety[:, 0], y_cc43, y_cc43_pred, 'cc43', 'ResNet_Fold' + str(fold_number + 1).zfill(2))
 
         print("\n\n")
 
