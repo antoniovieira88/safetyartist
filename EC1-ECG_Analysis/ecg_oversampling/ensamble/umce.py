@@ -107,3 +107,7 @@ class MuticlassUMCE(object):
 
     def __get_decisions(self, x_test: np.ndarray) -> List[np.ndarray]:
         return [base_model.predict(x_test) for base_model in self.models]
+
+    # Safety ArtISt - Method included to aid the generation of corner case reports per UMCE element
+    def get_num_classifiers(self) -> int:
+        return self.num_classifiers

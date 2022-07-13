@@ -477,50 +477,400 @@ def array_of_arrays_to_array_of_ints(input):
     # Returns the processed output
     return np.array(output)
 
-""" Function write_corner_case_csv
+""" Function comparison_result
 
+- Inputs: a) "decoded_y_pred": Array with the categories predicted by the classifier for a specific fold / emsemble member.
+              Each category is an integer within [0; 4].
+          b) "corner_case": String with the identification of the set of corner cases dealt with.
+
+- Outputs: An array with the result of the comparison between "y_pred" and the ground truth according to the corner case.
+
+- Summary: Decodes y_pred, compares it to decoded_y_truth and produces an array reporting the comparison between them both.
+""" 
+def comparison_result(decoded_y_pred, corner_case):
+
+    # Gets the length (number of lines) of "decoded_y_truth".
+    lines_decoded_y_pred = decoded_y_pred.size
+
+    # Makes y_comparison equal to an empty list
+    y_comparison = []
+
+    # Diagnoses the comparison between decoded_y_pred and decoded_y_truth according to the corner case under study
+    # Please refer to the following dictionary for the analysis:
+    # 0 --> Truly positive lack of arrithmia
+    # 1 --> Truly positive presence of expected arrithmia
+    # 2 --> Falsely positive lack of arrithmia expected for the corner case
+    # 3 --> Falsely positive lack of arrithmia not expected for the corner case
+    # 4 --> Falsely positive arrithmia of the expected type for the corner case
+    # 5 --> Falsely positive arrithmia of an unexpected type for the corner case
+    # 6 --> Truly positive presence of arrithmia of the expected type for the corner case
+    # 7 --> Truly positive presence of arrithmia of an unexpected type for the corner case
+    for i in range (0, lines_decoded_y_pred):
+
+        # a) Corner Case 0 --> 1: decoded_y_truth equals to '0' (lack of arrithmias)
+        if corner_case == 'cc01':
+
+            if (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(0))
+            elif (decoded_y_pred[i] == 1):
+                y_comparison.append(np.array(4))
+            elif (decoded_y_pred[i] == 2 or decoded_y_pred[i] == 3 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(5))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # b) Corner Case 0 --> 2: decoded_y_truth equals to '0' (lack of arrithmias)
+        elif corner_case == 'cc02':
+
+            if (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(0))
+            elif (decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(4))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 3 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(5))            
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # c) Corner Case 0 --> 3: decoded_y_truth equals to '0' (lack of arrithmias)
+        elif corner_case == 'cc03':
+
+            if (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(0))
+            elif (decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(4))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 2 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(5))            
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # d) Corner Case 0 --> 4: decoded_y_truth equals to '0' (lack of arrithmias)
+        elif corner_case == 'cc04':
+
+            if (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(0))
+            elif (decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(4))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 2 or decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(5))            
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # e) Corner Case 1 --> 0: decoded_y_truth equals to '1' (arrithmia type 1)
+        elif corner_case == 'cc10':
+
+            if (decoded_y_pred[i] == 1):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(2))
+            elif (decoded_y_pred[i] == 2 or decoded_y_pred[i] == 3 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # f) Corner Case 1 --> 2: decoded_y_truth equals to '1' (arrithmia type 1)
+        elif corner_case == 'cc12':
+
+            if (decoded_y_pred[i] == 1):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 3 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # g) Corner Case 1 --> 3: decoded_y_truth equals to '1' (arrithmia type 1)
+        elif corner_case == 'cc13':
+
+            if (decoded_y_pred[i] == 1):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 2 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # h) Corner Case 1 --> 4: decoded_y_truth equals to '1' (arrithmia type 1)
+        elif corner_case == 'cc14':
+
+            if (decoded_y_pred[i] == 1):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 2 or decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # i) Corner Case 2 --> 0: decoded_y_truth equals to '2' (arrithmia type 2)
+        elif corner_case == 'cc20':
+
+            if (decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(2))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 3 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # j) Corner Case 2 --> 1: decoded_y_truth equals to '2' (arrithmia type 2)
+        elif corner_case == 'cc21':
+
+            if (decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 1):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 3 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # k) Corner Case 2 --> 3: decoded_y_truth equals to '2' (arrithmia type 2)
+        elif corner_case == 'cc23':
+
+            if (decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # l) Corner Case 2 --> 4: decoded_y_truth equals to '2' (arrithmia type 2)
+        elif corner_case == 'cc24':
+
+            if (decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # m) Corner Case 3 --> 0: decoded_y_truth equals to '3' (arrithmia type 3)
+        elif corner_case == 'cc30':
+
+            if (decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(2))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 2 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # n) Corner Case 3 --> 1: decoded_y_truth equals to '3' (arrithmia type 3)
+        elif corner_case == 'cc31':
+
+            if (decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 1):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 2 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # o) Corner Case 3 --> 2: decoded_y_truth equals to '3' (arrithmia type 3)
+        elif corner_case == 'cc32':
+
+            if (decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # p) Corner Case 3 --> 4: decoded_y_truth equals to '3' (arrithmia type 3)
+        elif corner_case == 'cc34':
+
+            if (decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # q) Corner Case 4 --> 0: decoded_y_truth equals to '4' (arrithmia type 4)
+        elif corner_case == 'cc40':
+
+            if (decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(2))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 2 or decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(7))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # r) Corner Case 4 --> 1: decoded_y_truth equals to '4' (arrithmia type 4)
+        elif corner_case == 'cc41':
+
+            if (decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 1):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 2 or decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+        
+        # s) Corner Case 4 --> 2: decoded_y_truth equals to '4' (arrithmia type 4)
+        elif corner_case == 'cc42':
+
+            if (decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # t) Corner Case 4 --> 3: decoded_y_truth equals to '4' (arrithmia type 4)
+        elif corner_case == 'cc43':
+
+            if (decoded_y_pred[i] == 4):
+                y_comparison.append(np.array(1))
+            elif (decoded_y_pred[i] == 3):
+                y_comparison.append(np.array(6))
+            elif (decoded_y_pred[i] == 1 or decoded_y_pred[i] == 2):
+                y_comparison.append(np.array(7))
+            elif (decoded_y_pred[i] == 0):
+                y_comparison.append(np.array(3))
+            else:
+                print("Error on comparison_result: unexpected classification on " + corner_case)
+
+        # Error
+        else:
+            print("Error on comparison_result: unexpected corner case. Received " + corner_case)
+    
+
+    # Writes the 'fileName' CSV file
+    return np.array(y_comparison)
+
+""" Function write_corner_case_results_xlsx
 - Inputs: a) "id": Array with the list of corner case heartbeat IDs defined in the "mitbih_train_sa.csv" and "mitbih_test_sa.csv" files.
           b) "y_truth": Array with the heartbeats' ground truth category, as per the "mitbih_train_sa.csv" and "mitbih_test_sa.csv" files,
               but with one-hot encoding.
-          c) "y_pred": Array with the category predicted by the classifier for the corner case, but with one-hot encoding.
+          c) "y_pred": List of arrays with the category predicted by the classifier for the corner case for each fold.
+              All categories have a discrete probability of occurrence in an one-hot encoding fashion.
           d) "corner_case": String with the identification of the set of corner cases dealt with.
-          e) "classifier": String with the identification of the classifier that lead to the results. It includes the classifier name
-             and the cross-validation fold ID, as per the original design of Kozal and Ksieniewicz. 
+          e) "classifier": String with the identification of the classifier that lead to the results, as per the original
+             design of Kozal and Ksieniewicz.
+          f) "numElementsUMCE": List of integer numbers indicating how many elements each UMCE fold has.
 
-- Outputs: A .csv file named as per the inputs "corner_case" and "classifier" string with four columns:
-           "id", "y_truth", "y_pred", and the boolean result of the comparison between "y_truth" and "y_pred" for each "id".
-           "y_truth" and "y_pred" are one-hot-decoded prior to being used within this function as per the 'decode_one_hot_5_cats' function
+- Outputs: A .xlsx file named as per the inputs "corner_case" and "classifier" string with several columns:
+           "id", "y_truth", "y_pred" for each fold / UMCE element, and the result of the comparison between "y_truth" and "y_pred"
+            for each "id" and fold / UMCE element, as per the function "comparison_result".
 
-- Summary: Writes a .csv file named as per the inputs "corner_case" and "classifier" reporting the full results of a corner case group.
+- Summary: Writes a .xlsx file named as per the inputs "corner_case" and "classifier" reporting the full results of a corner case group.
 """ 
-def write_corner_case_csv(id, y_truth, y_pred, corner_case, classifier):
+def write_corner_case_results_xlsx(id, y_truth, y_pred, corner_case, classifier, numElementsUMCE):
     
-    # Categorizes 'y_pred' in case it has discrete values by making its highest category equal to '1' and the rest equal to '0'
-    decoded_y_pred = y_pred.argmax(axis=1)
+    # Transforms the array of single arrays "id" into an array of integers
+    id_array = array_of_arrays_to_array_of_ints(id)
 
     # Decodes the one-hot encoding of y_truth
     decoded_y_truth = y_truth.argmax(axis=1)
     
-    # Compares "decoded_y_truth" to "decoded_y_pred" and saves the result on "y_comparison"
-    y_comparison = decoded_y_truth == decoded_y_pred
+    # Categorizes 'y_pred' in case it has discrete values by making its highest category equal to '1' and the rest equal to '0'
+    # and, afterwards, decodes the one-hot encoding.
 
-    # Transforms the array of single arrays "id" into an array of integers
-    id_array = array_of_arrays_to_array_of_ints(id)
+    # a) Initializes decoded_y_pred as an empty list
+    decoded_y_pred = []
+
+    for i in range (0, len(y_pred)):
+        decoded_y_pred.append(y_pred[i].argmax(axis=1))
     
-    # Creates pandas dataframe with "id", "y_truth" and "y_pred".
-    # Since each of them is a line, the dataframe shall be transposed so that its columns are "id", "y_truth" and "y_pred"
+    # c) Transforms decoded_y_pred into an array
+    decoded_y_pred = np.array(decoded_y_pred)    
 
-    # a) Creates the names of each field
-    index_names = ['Hearbeat ID', 'Ground Truth', 'Predicted Category', 'Comparison Result'] 
+    # Variable to store the results of the comparison between decoded_y_truth and decoded_y_pred
+    y_comparison = []
 
-    # b) Creates the dataframe with each line comprising one of the variables    
-    dataframe = pd.DataFrame(data = np.vstack((id_array, decoded_y_truth, decoded_y_pred, y_comparison)), index = index_names)
+    # Compares "decoded_y_truth" to "decoded_y_pred" and saves the result on "y_comparison" for each fold of 'decoded_y_truth'
+    # Gets the length (number of lines) of "decoded_y_pred". "columns_decoded_y_pred" is declared just to 
+    # allow reading "lines_y_truth" through "shape" and are unused at the rest of the function.
+    lines_y_truth, columns_y_truth = decoded_y_pred.shape
+
+    for i in range (0, lines_y_truth):
+        y_comparison.append(comparison_result(decoded_y_pred[i], corner_case))    
+
+    # Creates pandas dataframe with "id", "decoded_y_truth", "decoded_y_pred" and "y_comparison".
+    # Since each of them is a line, the dataframe shall be transposed so that its columns are
+    # "id", "decoded_y_truth", "decoded_y_pred" and "y_comparison".
+
+    # a) Creates the names of each field. 'Heartbeat ID' and 'Ground Truth' are valid for every case. Moreover,
+    # 'Predicted Category Fold X' and 'Comparison Result Fold X' are created for each of the folds / ensemble elements
+    # within the scope of the experiment.
+    index_names = ['Hearbeat ID', 'Ground Truth']
+
+    # For ResNets and both SMOTE variants, the columns only have fields 'Predicted Category Fold X' and 'Comparison Result Fold X'
+    if (classifier == 'ResNet' or classifier == 'SMOTE' or classifier == 'SMOTE_Aug'):
+        for i in range (0, lines_y_truth):
+            index_names.append('Predicted Category Fold ' + str(i + 1).zfill(2))
+            index_names.append('Comparison Result Fold ' + str(i + 1).zfill(2))
+    
+    # For UMCE, there is one pair of fields 'Predicted Category Fold X' and 'Comparison Result Fold X' per UMCE element
+    elif (classifier == 'UMCE'):
+        for i in range (0, len(numElementsUMCE)):
+            for j in range (0, numElementsUMCE[i]):
+                index_names.append('Predicted Category Fold ' + str(i + 1).zfill(2) + ' - Element ' + str(j + 1).zfill(2))
+                index_names.append('Comparison Result Fold ' + str(i + 1).zfill(2) + ' - Element ' + str(j + 1).zfill(2))
+    
+    # Error if other classifier is used:
+    else:
+        print("Error on write_corner_case_results_xlsx: Invalid classifier named " + classifier)
+
+    # b) Creates the vertical array with each line comprising one of the variables.
+    # id_array and decoded_y_truth are the two first elements and they are always present.
+    # Moreover, adds each element of decoded_y_pred and y_comparison according to the number of folds / UMCE elements
+    # within the scope of the experiment
+
+    data_for_dataframe = np.vstack((id_array, decoded_y_truth))
+    for i in range (0, lines_y_truth):
+        data_for_dataframe = np.vstack((data_for_dataframe, decoded_y_pred[i], y_comparison[i]))
+
+    # c) Creates the dataframe with each line comprising one of the variables
+    dataframe = pd.DataFrame(data = data_for_dataframe, index = index_names)
 
     # c) Transposes the dataframe so that each of the variables corresponds to a dataframe column
     dataframe = dataframe.transpose()
 
-    # Defines the CSV filename with the name given by combining the strings "classifier" and "corner_case" with "_"
-    fileName = classifier + '_' + corner_case + '.csv'
+    # Defines the XLSX filename with the name given by combining the strings "classifier" and "corner_case" with "_"
+    fileName = classifier + '_' + corner_case + '.xlsx'
 
-    # Writes the 'fileName' CSV file
-    dataframe.to_csv(fileName)
+    # Writes the 'fileName' XLSX file
+    with pd.ExcelWriter(fileName) as writer:
+        dataframe.to_excel(writer, sheet_name = fileName, index = False)
