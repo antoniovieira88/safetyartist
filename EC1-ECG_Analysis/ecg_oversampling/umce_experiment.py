@@ -187,70 +187,90 @@ if __name__ == '__main__':
 
         # t) 4 similar to 3
         if x_cc43_data.size > 0:
-            y_cc43_pred.append(umce.predict(x_cc43_data))
+            y_cc43_pred.append(umce.predict(x_cc43_data))    
 
-        print("\n\n")
+        # Safety ArtISt - Prints reports for all 20 possible types of corner cases every 5 folds and resets the corresponding
+        # 'y_ccXX_pred' and 'num_classifiers_folds' after each report is printed.
+        # Splitting the report printing was necessary to avoid RAM overflow on the Dell Inspiron N4010 notebook
+        # As per testes carried out in August 2nd and 3rd, 2022, the running of this experiment crashes the machine
+        # due to RAM overflow after accumulating the results of 8 folds.
+        if fold_number == 4 or fold_number == 9:
 
-    # Safety ArtISt - Write reports for all 20 possible types of corner cases
-    if x_cc01_data.size > 0:
-        write_corner_case_results_xlsx(x_cc01_safety[:, 0], y_cc01, y_cc01_pred, 'cc01', 'UMCE', num_classifiers_folds)
+            # Write reports for all 20 possible types of corner cases
+            if x_cc01_data.size > 0:
+                write_corner_case_results_xlsx(x_cc01_safety[:, 0], y_cc01, y_cc01_pred, 'cc01', 'UMCE', num_classifiers_folds, fold_number)
     
-    if x_cc02_data.size > 0:
-        write_corner_case_results_xlsx(x_cc02_safety[:, 0], y_cc02, y_cc02_pred, 'cc02', 'UMCE', num_classifiers_folds)
+            if x_cc02_data.size > 0:
+                write_corner_case_results_xlsx(x_cc02_safety[:, 0], y_cc02, y_cc02_pred, 'cc02', 'UMCE', num_classifiers_folds, fold_number)
     
-    if x_cc03_data.size > 0:
-        write_corner_case_results_xlsx(x_cc03_safety[:, 0], y_cc03, y_cc03_pred, 'cc03', 'UMCE', num_classifiers_folds)
+            if x_cc03_data.size > 0:
+                write_corner_case_results_xlsx(x_cc03_safety[:, 0], y_cc03, y_cc03_pred, 'cc03', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc04_data.size > 0:
-        write_corner_case_results_xlsx(x_cc04_safety[:, 0], y_cc04, y_cc04_pred, 'cc04', 'UMCE', num_classifiers_folds)
+            if x_cc04_data.size > 0:
+                write_corner_case_results_xlsx(x_cc04_safety[:, 0], y_cc04, y_cc04_pred, 'cc04', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc10_data.size > 0:
-        write_corner_case_results_xlsx(x_cc10_safety[:, 0], y_cc10, y_cc10_pred, 'cc10', 'UMCE', num_classifiers_folds)
+            if x_cc10_data.size > 0:
+                write_corner_case_results_xlsx(x_cc10_safety[:, 0], y_cc10, y_cc10_pred, 'cc10', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc12_data.size > 0:
-        write_corner_case_results_xlsx(x_cc12_safety[:, 0], y_cc12, y_cc12_pred, 'cc12', 'UMCE', num_classifiers_folds)
+            if x_cc12_data.size > 0:
+                write_corner_case_results_xlsx(x_cc12_safety[:, 0], y_cc12, y_cc12_pred, 'cc12', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc13_data.size > 0:
-        write_corner_case_results_xlsx(x_cc13_safety[:, 0], y_cc13, y_cc13_pred, 'cc13', 'UMCE', num_classifiers_folds)
+            if x_cc13_data.size > 0:
+                write_corner_case_results_xlsx(x_cc13_safety[:, 0], y_cc13, y_cc13_pred, 'cc13', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc14_data.size > 0:
-        write_corner_case_results_xlsx(x_cc14_safety[:, 0], y_cc14, y_cc14_pred, 'cc14', 'UMCE', num_classifiers_folds)
+            if x_cc14_data.size > 0:
+                write_corner_case_results_xlsx(x_cc14_safety[:, 0], y_cc14, y_cc14_pred, 'cc14', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc20_data.size > 0:
-        write_corner_case_results_xlsx(x_cc20_safety[:, 0], y_cc20, y_cc20_pred, 'cc20', 'UMCE', num_classifiers_folds)
+            if x_cc20_data.size > 0:
+                write_corner_case_results_xlsx(x_cc20_safety[:, 0], y_cc20, y_cc20_pred, 'cc20', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc21_data.size > 0:
-        write_corner_case_results_xlsx(x_cc21_safety[:, 0], y_cc21, y_cc21_pred, 'cc21', 'UMCE', num_classifiers_folds)
+            if x_cc21_data.size > 0:
+                write_corner_case_results_xlsx(x_cc21_safety[:, 0], y_cc21, y_cc21_pred, 'cc21', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc23_data.size > 0:
-        write_corner_case_results_xlsx(x_cc23_safety[:, 0], y_cc23, y_cc23_pred, 'cc23', 'UMCE', num_classifiers_folds)
+            if x_cc23_data.size > 0:
+                write_corner_case_results_xlsx(x_cc23_safety[:, 0], y_cc23, y_cc23_pred, 'cc23', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc24_data.size > 0:
-        write_corner_case_results_xlsx(x_cc24_safety[:, 0], y_cc24, y_cc24_pred, 'cc24', 'UMCE', num_classifiers_folds)
+            if x_cc24_data.size > 0:
+                write_corner_case_results_xlsx(x_cc24_safety[:, 0], y_cc24, y_cc24_pred, 'cc24', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc30_data.size > 0:
-        write_corner_case_results_xlsx(x_cc30_safety[:, 0], y_cc30, y_cc30_pred, 'cc30', 'UMCE', num_classifiers_folds)
+            if x_cc30_data.size > 0:
+                write_corner_case_results_xlsx(x_cc30_safety[:, 0], y_cc30, y_cc30_pred, 'cc30', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc31_data.size > 0:
-        write_corner_case_results_xlsx(x_cc31_safety[:, 0], y_cc31, y_cc31_pred, 'cc31', 'UMCE', num_classifiers_folds)
+            if x_cc31_data.size > 0:
+                write_corner_case_results_xlsx(x_cc31_safety[:, 0], y_cc31, y_cc31_pred, 'cc31', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc32_data.size > 0:
-        write_corner_case_results_xlsx(x_cc32_safety[:, 0], y_cc32, y_cc32_pred, 'cc32', 'UMCE', num_classifiers_folds)
+            if x_cc32_data.size > 0:
+                write_corner_case_results_xlsx(x_cc32_safety[:, 0], y_cc32, y_cc32_pred, 'cc32', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc34_data.size > 0:
-        write_corner_case_results_xlsx(x_cc34_safety[:, 0], y_cc34, y_cc34_pred, 'cc34', 'UMCE', num_classifiers_folds)
+            if x_cc34_data.size > 0:
+                write_corner_case_results_xlsx(x_cc34_safety[:, 0], y_cc34, y_cc34_pred, 'cc34', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc40_data.size > 0:
-        write_corner_case_results_xlsx(x_cc40_safety[:, 0], y_cc40, y_cc40_pred, 'cc40', 'UMCE', num_classifiers_folds)
+            if x_cc40_data.size > 0:
+                write_corner_case_results_xlsx(x_cc40_safety[:, 0], y_cc40, y_cc40_pred, 'cc40', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc41_data.size > 0:
-        write_corner_case_results_xlsx(x_cc41_safety[:, 0], y_cc41, y_cc41_pred, 'cc41', 'UMCE', num_classifiers_folds)
+            if x_cc41_data.size > 0:
+                write_corner_case_results_xlsx(x_cc41_safety[:, 0], y_cc41, y_cc41_pred, 'cc41', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc42_data.size > 0:
-        write_corner_case_results_xlsx(x_cc42_safety[:, 0], y_cc42, y_cc42_pred, 'cc42', 'UMCE', num_classifiers_folds)
+            if x_cc42_data.size > 0:
+                write_corner_case_results_xlsx(x_cc42_safety[:, 0], y_cc42, y_cc42_pred, 'cc42', 'UMCE', num_classifiers_folds, fold_number)
 
-    if x_cc43_data.size > 0:
-        write_corner_case_results_xlsx(x_cc43_safety[:, 0], y_cc43, y_cc43_pred, 'cc43', 'UMCE', num_classifiers_folds)
+            if x_cc43_data.size > 0:
+                write_corner_case_results_xlsx(x_cc43_safety[:, 0], y_cc43, y_cc43_pred, 'cc43', 'UMCE', num_classifiers_folds, fold_number)
+
+            # Reset all 'y_ccXX_pred' and 'num_classifiers_folds'
+            # List of arrays to store the results of the corner cases analyses for each cross-validation fold
+            (y_cc01_pred, y_cc10_pred, y_cc02_pred,
+            y_cc20_pred, y_cc03_pred, y_cc30_pred,
+            y_cc04_pred, y_cc40_pred, y_cc12_pred,
+            y_cc21_pred, y_cc13_pred, y_cc31_pred,
+            y_cc14_pred, y_cc41_pred, y_cc23_pred,
+            y_cc32_pred, y_cc24_pred, y_cc42_pred,
+            y_cc34_pred, y_cc43_pred)               = [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []
+
+            # List of the number of UMCE elements per fold
+            num_classifiers_folds = []
+
+        print("\n\n")    
 
     precision = np.vstack(precision)
     recall = np.vstack(recall)

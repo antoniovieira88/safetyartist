@@ -195,64 +195,64 @@ if __name__ == '__main__':
 
     # Safety ARtISt - Write reports for all 20 possible types of corner cases
     if x_cc01_data.size > 0:
-        write_corner_case_results_xlsx(x_cc01_safety[:, 0], y_cc01, y_cc01_pred, 'cc01', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc01_safety[:, 0], y_cc01, y_cc01_pred, 'cc01', 'ResNet', None, None)
     
     if x_cc02_data.size > 0:
-        write_corner_case_results_xlsx(x_cc02_safety[:, 0], y_cc02, y_cc02_pred, 'cc02', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc02_safety[:, 0], y_cc02, y_cc02_pred, 'cc02', 'ResNet', None, None)
     
     if x_cc03_data.size > 0:
-        write_corner_case_results_xlsx(x_cc03_safety[:, 0], y_cc03, y_cc03_pred, 'cc03', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc03_safety[:, 0], y_cc03, y_cc03_pred, 'cc03', 'ResNet', None, None)
 
     if x_cc04_data.size > 0:
-        write_corner_case_results_xlsx(x_cc04_safety[:, 0], y_cc04, y_cc04_pred, 'cc04', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc04_safety[:, 0], y_cc04, y_cc04_pred, 'cc04', 'ResNet', None, None)
 
     if x_cc10_data.size > 0:
-        write_corner_case_results_xlsx(x_cc10_safety[:, 0], y_cc10, y_cc10_pred, 'cc10', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc10_safety[:, 0], y_cc10, y_cc10_pred, 'cc10', 'ResNet', None, None)
 
     if x_cc12_data.size > 0:
-        write_corner_case_results_xlsx(x_cc12_safety[:, 0], y_cc12, y_cc12_pred, 'cc12', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc12_safety[:, 0], y_cc12, y_cc12_pred, 'cc12', 'ResNet', None, None)
 
     if x_cc13_data.size > 0:
-        write_corner_case_results_xlsx(x_cc13_safety[:, 0], y_cc13, y_cc13_pred, 'cc13', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc13_safety[:, 0], y_cc13, y_cc13_pred, 'cc13', 'ResNet', None, None)
 
     if x_cc14_data.size > 0:
-        write_corner_case_results_xlsx(x_cc14_safety[:, 0], y_cc14, y_cc14_pred, 'cc14', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc14_safety[:, 0], y_cc14, y_cc14_pred, 'cc14', 'ResNet', None, None)
 
     if x_cc20_data.size > 0:
-        write_corner_case_results_xlsx(x_cc20_safety[:, 0], y_cc20, y_cc20_pred, 'cc20', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc20_safety[:, 0], y_cc20, y_cc20_pred, 'cc20', 'ResNet', None, None)
 
     if x_cc21_data.size > 0:
-        write_corner_case_results_xlsx(x_cc21_safety[:, 0], y_cc21, y_cc21_pred, 'cc21', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc21_safety[:, 0], y_cc21, y_cc21_pred, 'cc21', 'ResNet', None, None)
 
     if x_cc23_data.size > 0:
-        write_corner_case_results_xlsx(x_cc23_safety[:, 0], y_cc23, y_cc23_pred, 'cc23', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc23_safety[:, 0], y_cc23, y_cc23_pred, 'cc23', 'ResNet', None, None)
 
     if x_cc24_data.size > 0:
-        write_corner_case_results_xlsx(x_cc24_safety[:, 0], y_cc24, y_cc24_pred, 'cc24', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc24_safety[:, 0], y_cc24, y_cc24_pred, 'cc24', 'ResNet', None, None)
 
     if x_cc30_data.size > 0:
-        write_corner_case_results_xlsx(x_cc30_safety[:, 0], y_cc30, y_cc30_pred, 'cc30', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc30_safety[:, 0], y_cc30, y_cc30_pred, 'cc30', 'ResNet', None, None)
 
     if x_cc31_data.size > 0:
-        write_corner_case_results_xlsx(x_cc31_safety[:, 0], y_cc31, y_cc31_pred, 'cc31', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc31_safety[:, 0], y_cc31, y_cc31_pred, 'cc31', 'ResNet', None, None)
 
     if x_cc32_data.size > 0:
-        write_corner_case_results_xlsx(x_cc32_safety[:, 0], y_cc32, y_cc32_pred, 'cc32', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc32_safety[:, 0], y_cc32, y_cc32_pred, 'cc32', 'ResNet', None, None)
 
     if x_cc34_data.size > 0:
-        write_corner_case_results_xlsx(x_cc34_safety[:, 0], y_cc34, y_cc34_pred, 'cc34', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc34_safety[:, 0], y_cc34, y_cc34_pred, 'cc34', 'ResNet', None, None)
 
     if x_cc40_data.size > 0:
-        write_corner_case_results_xlsx(x_cc40_safety[:, 0], y_cc40, y_cc40_pred, 'cc40', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc40_safety[:, 0], y_cc40, y_cc40_pred, 'cc40', 'ResNet', None, None)
 
     if x_cc41_data.size > 0:
-        write_corner_case_results_xlsx(x_cc41_safety[:, 0], y_cc41, y_cc41_pred, 'cc41', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc41_safety[:, 0], y_cc41, y_cc41_pred, 'cc41', 'ResNet', None, None)
 
     if x_cc42_data.size > 0:
-        write_corner_case_results_xlsx(x_cc42_safety[:, 0], y_cc42, y_cc42_pred, 'cc42', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc42_safety[:, 0], y_cc42, y_cc42_pred, 'cc42', 'ResNet', None, None)
 
     if x_cc43_data.size > 0:
-        write_corner_case_results_xlsx(x_cc43_safety[:, 0], y_cc43, y_cc43_pred, 'cc43', 'ResNet', None)
+        write_corner_case_results_xlsx(x_cc43_safety[:, 0], y_cc43, y_cc43_pred, 'cc43', 'ResNet', None, None)
 
     precision = np.vstack(precision)
     recall = np.vstack(recall)
