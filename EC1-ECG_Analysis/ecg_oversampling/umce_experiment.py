@@ -96,7 +96,7 @@ if __name__ == '__main__':
         umce.fit(x_train, y_train)
 
         # Safety ArtISt - Save the number of classifiers per fold for printing the corner case reports
-        num_classifiers_folds.append(umce.get_num_classifiers)
+        num_classifiers_folds.append(umce.get_num_classifiers())
 
         # evaluate metrics
         y_pred = umce.predict(x_test)

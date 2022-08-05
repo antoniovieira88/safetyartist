@@ -1,4 +1,4 @@
-# Safety ArtISt (Artificial Intelligent Structure)
+# Safety ArtISt (Artificial Intelligence Structure)
 
 Repository for databases and code for the Safety ArtISt PhD thesis case studies.
 PhD thesis authored by Antonio Vieira da Silva Neto.
