@@ -788,16 +788,15 @@ def comparison_result(decoded_y_pred, corner_case):
           d) "corner_case": String with the identification of the set of corner cases dealt with.
           e) "classifier": String with the identification of the classifier that lead to the results, as per the original
              design of Kozal and Ksieniewicz.
-          f) "numElementsUMCE": List of integer numbers indicating how many elements each UMCE fold has.
           g) "fold_number": Indication of the latest analyzed folder (for UMCE batch printing only).
 
 - Outputs: A .xlsx file named as per the inputs "corner_case" and "classifier" string with several columns:
-           "id", "y_truth", "y_pred" for each fold / UMCE element, and the result of the comparison between "y_truth" and "y_pred"
-            for each "id" and fold / UMCE element, as per the function "comparison_result".
+           "id", "y_truth", "y_pred" for each fold, and the result of the comparison between "y_truth" and "y_pred"
+            for each "id" and fold, as per the function "comparison_result".
 
 - Summary: Writes a .xlsx file named as per the inputs "corner_case" and "classifier" reporting the full results of a corner case group.
 """ 
-def write_corner_case_results_xlsx(id, y_truth, y_pred, corner_case, classifier, numElementsUMCE, fold_number):
+def write_corner_case_results_xlsx(id, y_truth, y_pred, corner_case, classifier, fold_number):
     
     # Transforms the array of single arrays "id" into an array of integers
     id_array = array_of_arrays_to_array_of_ints(id)
@@ -838,17 +837,10 @@ def write_corner_case_results_xlsx(id, y_truth, y_pred, corner_case, classifier,
     index_names = ['Hearbeat ID', 'Ground Truth']
 
     # For ResNets and both SMOTE variants, the columns only have fields 'Predicted Category Fold X' and 'Comparison Result Fold X'
-    if (classifier == 'ResNet' or classifier == 'SMOTE' or classifier == 'SMOTE_Aug'):
+    if (classifier == 'ResNet' or classifier == 'SMOTE' or classifier == 'SMOTE_Aug' or classifier == 'UMCE'):
         for i in range (0, lines_y_truth):
             index_names.append('Predicted Category Fold ' + str(i + 1).zfill(2))
             index_names.append('Comparison Result Fold ' + str(i + 1).zfill(2))
-    
-    # For UMCE, there is one pair of fields 'Predicted Category Fold X' and 'Comparison Result Fold X' per UMCE element
-    elif (classifier == 'UMCE'):
-        for i in range (0, len(numElementsUMCE)):
-            for j in range (0, numElementsUMCE[i]):
-                index_names.append('Predicted Category Fold ' + str(fold_number + i + 1).zfill(2) + ' - Element ' + str(j + 1).zfill(2))
-                index_names.append('Comparison Result Fold ' + str(fold_number + i + 1).zfill(2) + ' - Element ' + str(j + 1).zfill(2))
     
     # Error if other classifier is used:
     else:
@@ -874,7 +866,12 @@ def write_corner_case_results_xlsx(id, y_truth, y_pred, corner_case, classifier,
     if (classifier == 'ResNet' or classifier == 'SMOTE' or classifier == 'SMOTE_Aug'):
         fileName = classifier + '_' + corner_case + '.xlsx'
     elif (classifier == 'UMCE'):
-        fileName = classifier + '_' + corner_case + '_batch' + str(fold_number / 5) + '.xlsx'
+        if (fold_number == 4):
+            fileName = classifier + '_' + corner_case + '_folds1-5.xlsx'
+        elif (fold_number == 9):
+            fileName = classifier + '_' + corner_case + '_folds6-10.xlsx'
+        else:
+            print("Error on write_corner_case_results_xlsx file creation: Invalid fold_number for batch report:" + str(fold_number))
     else:
         print("Error on write_corner_case_results_xlsx file creation: Invalid classifier named " + classifier)
 
