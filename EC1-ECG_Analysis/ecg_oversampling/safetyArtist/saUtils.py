@@ -836,11 +836,29 @@ def write_corner_case_results_xlsx(id, y_truth, y_pred, corner_case, classifier,
     # within the scope of the experiment.
     index_names = ['Hearbeat ID', 'Ground Truth']
 
-    # For ResNets and both SMOTE variants, the columns only have fields 'Predicted Category Fold X' and 'Comparison Result Fold X'
-    if (classifier == 'ResNet' or classifier == 'SMOTE' or classifier == 'SMOTE_Aug' or classifier == 'UMCE'):
+    # For ResNets, both SMOTE variants, and UMCE, the columns only have fields 'Predicted Category Fold X' and 'Comparison Result Fold X'
+    # Specifically for UMCE, however, the ID of each fold depends not only on lines_y_truth, but also on 'fold_number'. 
+    if (classifier == 'ResNet' or classifier == 'SMOTE' or classifier == 'SMOTE_Aug'):
         for i in range (0, lines_y_truth):
             index_names.append('Predicted Category Fold ' + str(i + 1).zfill(2))
             index_names.append('Comparison Result Fold ' + str(i + 1).zfill(2))
+
+    # Specific labeling for UMCE due to fold ID differences
+    elif (classifier == 'UMCE'):
+        for i in range (0, lines_y_truth):
+            # Case 1: fold_number == 4 --> Folds shall be numbered from 1 to 5
+            if (fold_number == 4):
+                index_names.append('Predicted Category Fold ' + str(i + 1).zfill(2))
+                index_names.append('Comparison Result Fold ' + str(i + 1).zfill(2))
+            
+            # Case 2: fold_number == 9 --> Folds shall be numbered from 6 to 10
+            elif (fold_number == 9):
+                index_names.append('Predicted Category Fold ' + str(i + 6).zfill(2))
+                index_names.append('Comparison Result Fold ' + str(i + 6).zfill(2))
+
+            # Case 3: Other fold_number values --> Invalid scenario to call 'write_corner_case_results_xlsx'
+            else:
+                print("Error on write_corner_case_results_xlsx table creation for UMCE: Function called with fold_number = " + fold_number + " instead of 4 or 9")
     
     # Error if other classifier is used:
     else:
