@@ -18,6 +18,9 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="tests\main.cpp" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{B2AC7F7E-3335-429E-8ACE-1CD40B34BB84}</ProjectGuid>
@@ -97,12 +100,6 @@
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="src\app\main.cpp" />
-    <ClCompile Include="src\components\simulation_controller\simulation_controller.cpp" />
-    <ClCompile Include="src\components\supervised.cpp" />
-    <ClCompile Include="src\components\supervisor.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
