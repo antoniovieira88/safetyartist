@@ -1,6 +1,6 @@
 // Includes all relevant components of mlpack.
 #include <mlpack/core.hpp>
-#include <mlpack/methods/kmeans/kmeans.hpp>
+#include "./include/KMeans.h"
 
 // Convenience.
 using namespace mlpack;
@@ -10,22 +10,22 @@ int main()
 	// centroids is the matrix that represents the position of each cluster's centroid.
 	arma::mat data, centroids;
 	data::Load("data/data.csv", data, true);
-	data::Load("data/centroids.csv", centroids, true);
+	//data::Load("data/centroids.csv", centroids, true);
 
-	std::cout << "KMeans started!";
+	std::cout << "KMeans started!" << endl;
 
-	using namespace mlpack::kmeans;
+	KMeans KClusters(data, 3);
 
-	size_t clusters;
-	KMeans<> k;
-	arma::Row<size_t> assignments;
+	std::cout << "Number of clusters: " << KClusters.getNumberOfClusters() << endl;
 
-	clusters = 3;
+	std::cout << "Overall Silhouette Score - Euclidian Distance: " << KClusters.getOverallSilhouette() << endl;
+	std::cout << "Overall Silhouette Score - Manhattan Distance: " << KClusters.getOverallSilhouette("manhattan") << endl;
+	std::cout << "Overall Silhouette Score - Squared Euclidian Distance: " << KClusters.getOverallSilhouette("squared") << endl;
 
-	k.Cluster(data, clusters, assignments, centroids);
 
-	data::Save("data/assignments.csv", assignments, true);
-	data::Save("data/centroids.csv", centroids, true);
+	data::Save("data/assignments.csv", KClusters.getAssigments(), true);
+	data::Save("data/centroids.csv", KClusters.getCentroids(), true);
+	data::Save("data/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
 
 	std::cout << "KMeans finished!";
 
