@@ -81,8 +81,8 @@ def test_after_smote_with_augmentation_ndim(imbalanced_iris):
     assert x.ndim == 3
     assert y.ndim == 1
 
-
-@pytest.fixture
+# Safety ArtISt - Deactivated 'pytext fixture' for the imbalanced_iris function to run the code on VS Code without needing pytest.
+# @pytest.fixture
 def imbalanced_iris():
     x, y = load_iris(return_X_y=True)
     x = np.vstack([x[:30], x[50:70], x[100:110]])
