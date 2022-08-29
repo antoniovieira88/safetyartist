@@ -17,5 +17,7 @@ public:
 
 	static double Overall(mat data, u64_rowvec assignments, std::string distanceMetric);
 
+	static void ClustersSilhouette(Row<size_t> assigments, rowvec individualSilhouette, rowvec& clustersSilhouette);
+	static void ClustersSilhouette(Row<size_t> assigments, rowvec individualSilhouette, rowvec& clustersSilhouette, rowvec& numberOfPointsPerCluster);
 };
 

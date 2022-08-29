@@ -1,3 +1,7 @@
-﻿  main.cpp
+﻿  DataHandler.cpp
+  KMeans.cpp
+  main.cpp
+  SilhouetteScore.cpp
+  Gerando Código...
      Criando biblioteca C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.lib e objeto C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.exp
   EC3_Fault_Detection.vcxproj -> C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.exe

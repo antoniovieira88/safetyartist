@@ -24,12 +24,18 @@
     <ClCompile Include="tests\SilhouetteScore.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="tests\DataHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="tests\include\KMeans.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tests\include\SilhouetteScore.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\include\DataHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

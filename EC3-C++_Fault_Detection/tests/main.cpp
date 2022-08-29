@@ -1,33 +1,52 @@
 // Includes all relevant components of mlpack.
 #include <mlpack/core.hpp>
 #include "./include/KMeans.h"
+#include "./include/DataHandler.h"
 
 // Convenience.
 using namespace mlpack;
 int main()
 {
-	// data is the matrix that represents the dataset on which we are clustering on.
-	// centroids is the matrix that represents the position of each cluster's centroid.
-	arma::mat data, centroids;
+	arma::mat data;
 	data::Load("data/data.csv", data, true);
-	//data::Load("data/centroids.csv", centroids, true);
 
-	std::cout << "KMeans started!" << endl;
+	std::cout << "Test started" << endl;
 
-	KMeans KClusters(data, 3);
+	KMeans KClusters(data, 2);
 
-	std::cout << "Number of clusters: " << KClusters.getNumberOfClusters() << endl;
+	int totalNumberOfPoints = KClusters.getData().n_cols;
+	int numberOfClusters = KClusters.getNumberOfClusters();
+	double overallSilhouette = KClusters.getOverallSilhouette();
+	rowvec clusterSilhouettes = KClusters.getClustersSilhouettes();
+	rowvec numberOfPointsPerCluster = KClusters.getNumberOfPointsPerCluster();
 
-	std::cout << "Overall Silhouette Score - Euclidian Distance: " << KClusters.getOverallSilhouette() << endl;
-	std::cout << "Overall Silhouette Score - Manhattan Distance: " << KClusters.getOverallSilhouette("manhattan") << endl;
-	std::cout << "Overall Silhouette Score - Squared Euclidian Distance: " << KClusters.getOverallSilhouette("squared") << endl;
+	DataHandler dataHandler;
+
+	std::cout << "Number of clusters: " << numberOfClusters << endl;
+
+	std::cout << "OverallSilhouette: " << overallSilhouette << endl;
+
+	int i;
+
+	for (i = 0; i < numberOfPointsPerCluster.n_cols; i++) {
+		std::cout << "Number of points in cluster" << i << ": " << numberOfPointsPerCluster(i) << endl;
+	}
+
+	for (i = 0; i < clusterSilhouettes.n_cols; i++) {
+		std::cout << "Silhouette of cluster" << i << ": " << clusterSilhouettes(i) << endl;
+	}
+
+	dataHandler.loadOldMetrics();
+	dataHandler.setNewMetrics(clusterSilhouettes, numberOfPointsPerCluster, overallSilhouette);
+	dataHandler.saveNewMetrics();
 
 
 	data::Save("data/assignments.csv", KClusters.getAssigments(), true);
-	data::Save("data/centroids.csv", KClusters.getCentroids(), true);
+	data::Save("data/newCentroids.csv", KClusters.getCentroids(), true);
 	data::Save("data/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
+	data::Save("data/SilhouetteClusters.csv", clusterSilhouettes, true);
 
-	std::cout << "KMeans finished!";
+	std::cout << "Test completed";
 
 	return 0;
 }

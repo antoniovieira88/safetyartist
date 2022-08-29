@@ -19,11 +19,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="tests\DataHandler.cpp" />
     <ClCompile Include="tests\KMeans.cpp" />
     <ClCompile Include="tests\main.cpp" />
     <ClCompile Include="tests\SilhouetteScore.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="tests\include\DataHandler.h" />
     <ClInclude Include="tests\include\KMeans.h" />
     <ClInclude Include="tests\include\SilhouetteScore.h" />
   </ItemGroup>
