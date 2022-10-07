@@ -19,12 +19,14 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp" />
     <ClCompile Include="tests\DataHandler.cpp" />
     <ClCompile Include="tests\KMeans.cpp" />
     <ClCompile Include="tests\main.cpp" />
     <ClCompile Include="tests\SilhouetteScore.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\utils\exceptions\include\IncompatibleIterationExcep.h" />
     <ClInclude Include="tests\include\DataHandler.h" />
     <ClInclude Include="tests\include\KMeans.h" />
     <ClInclude Include="tests\include\SilhouetteScore.h" />
@@ -107,6 +109,12 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <ControlFlowGuard>false</ControlFlowGuard>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

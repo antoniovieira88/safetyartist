@@ -1,17 +1,19 @@
-#pragma once
 #include <mlpack/core.hpp>
+#include <mlpack/methods/kmeans/allow_empty_clusters.hpp>
 #include <mlpack/methods/kmeans/kmeans.hpp>
 #include "SilhouetteScore.h"
 
 using namespace mlpack;
+
 class KMeans
 {
 public:
 
-	KMeans(mat data, int numberOfClusters);
-	KMeans(arma::mat data, int numberOfClusters, arma::mat initialCentroids);
+	KMeans(mat data, int numberOfClusters, bool allowEmptyClusters);
 
-	KMeans(mat data, int numberOfClusters, mat initialCentroids, Row<size_t> initialAssignments);
+	KMeans(mat data, int numberOfClusters, mat initialCentroids, bool allowEmptyClusters);
+
+	KMeans(mat data, int numberOfClusters, mat initialCentroids, Row<size_t> initialAssignments, bool allowEmptyClusters);
 
 	size_t getNumberOfClusters();
 	mat getData();
@@ -38,10 +40,12 @@ private:
 	rowvec clustersSilhouettes;
 	rowvec numberOfPointsPerCluster;
 	rowvec individualSilhouette;
+	bool allowEmptyClusters;
 
 	// ! It is possible to change the distance metric used for the algorithm here settng a param in KMeans<>
 	// For example, to use Manhattan Distance, use KMeans<metric::ManhattanDistance>
 	kmeans::KMeans<> mlpackKMeans;
+	kmeans::KMeans<metric::EuclideanDistance, kmeans::SampleInitialization, mlpack::kmeans::AllowEmptyClusters> mlpackKMeansAllowEmptyClusters;
 	
 	void calculateClustersMetrics();
 	void calculateIndividualSilhouette();

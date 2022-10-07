@@ -1,4 +1,5 @@
-﻿  DataHandler.cpp
+﻿  IncompatibleIterationExcep.cpp
+  DataHandler.cpp
   KMeans.cpp
   main.cpp
   SilhouetteScore.cpp

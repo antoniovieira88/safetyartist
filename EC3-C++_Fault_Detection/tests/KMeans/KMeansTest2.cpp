@@ -13,7 +13,7 @@ int KMeansTest2()
 
 	std::cout << "Test started" << endl;
 
-	KMeans KClusters(data, 3, centroids);
+	KMeans KClusters(data, 3, centroids, true);
 
 	int totalNumberOfPoints = KClusters.getData().n_cols;
 	int numberOfClusters = KClusters.getNumberOfClusters();

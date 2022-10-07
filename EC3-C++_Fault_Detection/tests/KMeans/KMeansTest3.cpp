@@ -5,15 +5,15 @@
 
 // Convenience.
 using namespace mlpack;
-int KMeansTest1()
+int KMeansTest3()
 {
 	arma::mat data, centroids;
-	data::Load("tests/data/TestsKMeansSilhouette/Example1/data.csv", data, true);
-	data::Load("tests/data/TestsKMeansSilhouette/Example1/centroids.csv", centroids, true);
+	data::Load("tests/data/TestsKMeansSilhouette/Example3/data.csv", data, true);
+	data::Load("tests/data/TestsKMeansSilhouette/Example3/centroids.csv", centroids, true);
 
 	std::cout << "Test started" << endl;
 
-	KMeans KClusters(data, 3, centroids);
+	KMeans KClusters(data, 3, centroids, false);
 
 	int totalNumberOfPoints = KClusters.getData().n_cols;
 	int numberOfClusters = KClusters.getNumberOfClusters();
@@ -35,10 +35,10 @@ int KMeansTest1()
 		std::cout << "Silhouette of cluster" << i << ": " << clusterSilhouettes(i) << endl;
 	}
 
-	data::Save("tests/data/TestsKMeansSilhouette/Example1/assignments.csv", KClusters.getAssigments(), true);
-	data::Save("tests/data/TestsKMeansSilhouette/Example1/newCentroids.csv", KClusters.getCentroids(), true);
-	data::Save("tests/data/TestsKMeansSilhouette/Example1/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
-	data::Save("tests/data/TestsKMeansSilhouette/Example1/SilhouetteClusters.csv", clusterSilhouettes, true);
+	data::Save("tests/data/TestsKMeansSilhouette/Example3/assignments.csv", KClusters.getAssigments(), true);
+	data::Save("tests/data/TestsKMeansSilhouette/Example3/newCentroids.csv", KClusters.getCentroids(), true);
+	data::Save("tests/data/TestsKMeansSilhouette/Example3/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
+	data::Save("tests/data/TestsKMeansSilhouette/Example3/SilhouetteClusters.csv", clusterSilhouettes, true);
 
 	std::cout << "Test completed";
 

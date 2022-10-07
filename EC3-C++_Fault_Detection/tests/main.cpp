@@ -2,51 +2,63 @@
 #include <mlpack/core.hpp>
 #include "./include/KMeans.h"
 #include "./include/DataHandler.h"
+#include <string>
 
 // Convenience.
 using namespace mlpack;
 int main()
 {
-	arma::mat data;
-	data::Load("data/data.csv", data, true);
+	arma::mat data, centroids, assignments;
 
-	std::cout << "Test started" << endl;
+	std::cout << "Data Memory test started" << endl;
 
-	KMeans KClusters(data, 2);
-
-	int totalNumberOfPoints = KClusters.getData().n_cols;
-	int numberOfClusters = KClusters.getNumberOfClusters();
-	double overallSilhouette = KClusters.getOverallSilhouette();
-	rowvec clusterSilhouettes = KClusters.getClustersSilhouettes();
-	rowvec numberOfPointsPerCluster = KClusters.getNumberOfPointsPerCluster();
+	int iteration;
 
 	DataHandler dataHandler;
 
-	std::cout << "Number of clusters: " << numberOfClusters << endl;
+	for (iteration = 1; iteration < 6; iteration++) {
 
-	std::cout << "OverallSilhouette: " << overallSilhouette << endl;
+		std::cout << "Begin of Iteration " << iteration << endl;
 
-	int i;
+		dataHandler.loadHistoricalData();
+		dataHandler.loadOldMetrics();
 
-	for (i = 0; i < numberOfPointsPerCluster.n_cols; i++) {
-		std::cout << "Number of points in cluster" << i << ": " << numberOfPointsPerCluster(i) << endl;
+		double fuse_result_burn_test = 0.05 * (iteration - 3) + 0.25;
+		double fuse_result_not_burn_test = fuse_result_burn_test + 0.5;
+		std::cout << "fuse_result_burn_test = " << fuse_result_burn_test << endl;
+		std::cout << "fuse_result_not_burn_test = " << fuse_result_not_burn_test << endl;
+
+		dataHandler.insertNewHistoricalData(fuse_result_burn_test, fuse_result_not_burn_test);
+
+		data = dataHandler.getHistoricalDataToCluster();
+
+		KMeans KClusters(data, 2, true);
+
+		int totalNumberOfPoints = KClusters.getData().n_cols;
+		int numberOfClusters = KClusters.getNumberOfClusters();
+		double overallSilhouette = KClusters.getOverallSilhouette();
+		rowvec clusterSilhouettes = KClusters.getClustersSilhouettes();
+		rowvec numberOfPointsPerCluster = KClusters.getNumberOfPointsPerCluster();
+
+		std::cout << "Number of clusters: " << numberOfClusters << endl;
+		std::cout << "OverallSilhouette: " << overallSilhouette << endl;
+
+		std::string path = "tests/data/TestsDataMemory/Iteration" + std::to_string(iteration);
+
+		data::Save(path + "/assignments.csv", KClusters.getAssigments(), true);
+		data::Save(path + "/centroids.csv", KClusters.getCentroids(), true);
+
+		dataHandler.insertNewMetrics(clusterSilhouettes, numberOfPointsPerCluster, overallSilhouette);
+
+		dataHandler.saveNewMetrics();
+		dataHandler.updateHistoricalData();
+
+		std::cout << "End of Iteration " << iteration << endl;
+		std::cout << " " << endl;
+
 	}
 
-	for (i = 0; i < clusterSilhouettes.n_cols; i++) {
-		std::cout << "Silhouette of cluster" << i << ": " << clusterSilhouettes(i) << endl;
-	}
-
-	dataHandler.loadOldMetrics();
-	dataHandler.setNewMetrics(clusterSilhouettes, numberOfPointsPerCluster, overallSilhouette);
-	dataHandler.saveNewMetrics();
-
-
-	data::Save("data/assignments.csv", KClusters.getAssigments(), true);
-	data::Save("data/newCentroids.csv", KClusters.getCentroids(), true);
-	data::Save("data/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
-	data::Save("data/SilhouetteClusters.csv", clusterSilhouettes, true);
-
-	std::cout << "Test completed";
+	std::cout << "Data Memory Test completed";
 
 	return 0;
 }

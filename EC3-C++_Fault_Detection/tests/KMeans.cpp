@@ -2,40 +2,61 @@
 #include "include/KMeans.h"
 #include "include/SilhouetteScore.h"
 
+
 using namespace mlpack;
 
-KMeans::KMeans(arma::mat data, int numberOfClusters) {
+KMeans::KMeans(mat data, int numberOfClusters, bool allowEmptyClusters = false) {
 	KMeans::data = data;
 	KMeans::numberOfclusters = numberOfClusters;
+	KMeans::allowEmptyClusters = allowEmptyClusters;
 
-	mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids);
-
+	if (allowEmptyClusters) {
+		mlpackKMeansAllowEmptyClusters.Cluster(data, numberOfclusters, assignments, centroids);
+	}
+	else {
+		mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids);
+	}
 	clustersSilhouettes = rowvec(numberOfClusters);
 	numberOfPointsPerCluster = rowvec(numberOfClusters);
 
 	calculateClustersMetrics();
 
 }
-KMeans::KMeans(arma::mat data, int numberOfClusters, arma::mat initialCentroids) {
+KMeans::KMeans(mat data, int numberOfClusters, mat initialCentroids, bool allowEmptyClusters = false) {
 	KMeans::data = data;
 	KMeans::numberOfclusters = numberOfClusters;
+	KMeans::allowEmptyClusters = allowEmptyClusters;
+
 	centroids = initialCentroids;
 
-	mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids, false, true);
+	
+	if (allowEmptyClusters) {
+		mlpackKMeansAllowEmptyClusters.Cluster(data, numberOfclusters, assignments, centroids, false, true);
+	}
+	else {
+		mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids, false, true);
+	}
 
 	clustersSilhouettes = rowvec(numberOfClusters);
 	numberOfPointsPerCluster = rowvec(numberOfClusters);
 
 	calculateClustersMetrics();
 }
-KMeans::KMeans(mat data, int numberOfClusters, mat initialCentroids, Row<size_t> initialAssignments)
+KMeans::KMeans(mat data, int numberOfClusters, mat initialCentroids, Row<size_t> initialAssignments, bool allowEmptyClusters = false)
 {
 	KMeans::data = data;
 	KMeans::numberOfclusters = numberOfClusters;
+	KMeans::allowEmptyClusters = allowEmptyClusters;
+
 	centroids = initialCentroids;
 	assignments = initialAssignments;
-
-	mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids, true, true);
+	
+	if (allowEmptyClusters) {
+		mlpackKMeansAllowEmptyClusters.Cluster(data, numberOfclusters, assignments, centroids, true, true);
+	}
+	else {
+		mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids, true, true);
+	}
 
 	clustersSilhouettes = rowvec(numberOfClusters);
 	numberOfPointsPerCluster = rowvec(numberOfClusters);
@@ -61,13 +82,28 @@ Row<size_t> KMeans::getAssigments() {
 
 void KMeans::setNumberOfClusters(int newNumberOfClusters) {
 	numberOfclusters = newNumberOfClusters;
+	
+	if (allowEmptyClusters) {
+		mlpackKMeansAllowEmptyClusters.Cluster(data, numberOfclusters, assignments, centroids);
+	}
+	else {
+		mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids);
+	}
+
 	mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids);
 	calculateClustersMetrics();
 };
 
 void KMeans::setData(mat newData) {
 	data = newData;
-	mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids);
+	
+	if (allowEmptyClusters) {
+		mlpackKMeansAllowEmptyClusters.Cluster(data, numberOfclusters, assignments, centroids);
+	}
+	else {
+		mlpackKMeans.Cluster(data, numberOfclusters, assignments, centroids);
+	}
+
 	calculateClustersMetrics();
 }
 
