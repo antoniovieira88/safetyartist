@@ -55,6 +55,12 @@
 #        |                   |                              | distâncias maiores do que 30m. A parcela "0,5*TCY" estava
 #        |                   |                              | indevidamente grafada como "0,05*TCY".
 #--------|-------------------|------------------------------|--------------------------------------------------------------
+#   08   |    12/10/2022     | Henrique Lefundes da Silva   | Adição de novas funções; Possibilidade de gerar bases de
+#        |                   |                              | dados estratificadas, com a proporção de zeros desejada.
+#        |                   |                              | Alterações nas funções existentes; Documentação das fun-
+#        |                   |                              | ções presentes no programa.
+#--------|-------------------|------------------------------|--------------------------------------------------------------
+
 ###########################################################################################################################
 
 import os
@@ -62,6 +68,7 @@ os.environ['CONDA_DLL_SEARCH_MODIFICATION_ENABLE'] = '1' #Evita problemas de ver
 
 import pandas as pd
 import numpy as np
+from numpy import ceil, floor
 np.random.seed(None)
 
 import time
@@ -107,12 +114,52 @@ T50 = 0.5       #Tempo de duracao da aplicacao do freio com metade da capacidade
 
 ################################################
 
+def write_dataset(data, name = "Dataset"):
+    """
+    Write the data in a .csv and .xlsx 
+    
+    Parameters
+    ----------
+    data : pandas Dataframe
+        The data that will be written
+    name : string, default="Dataset"
+        File's name, it will also generate a .cvs with the suffix "Debug"
+    """
 
-def create_Dataset(nome, distancia, velocidade, desaceleracao, massa):
+    dataCompressed = data[['Distancia Ruidosa', 'Velocidade Ruidosa', 'Capacidade de Frenagem Ruidosa', 'Decisao']]
+    data.to_csv(name + "Debug.csv", header = False, index = False) #Cria o dataframe completo em csv
+    dataCompressed.to_csv(name + ".csv", header = False, index = False) #Cria o dataframe reduzido em csv
+
+    with pd.ExcelWriter(name + ".xlsx") as writer:  #Cria o dataframe reduzido em Excel (arquivo unico)
+        data.to_excel(writer, sheet_name = name + "Debug", index = False)
+        dataCompressed.to_excel(writer, sheet_name = name, index = False)
+
+def create_dataset(distancia, velocidade, desaceleracao, massa):
+    """
+    Generates one dataset
+
+    Parameters
+    ----------
+    distancia : array
+        The array of distances.
+    velocidade : array
+        The array of speeds.
+    desaceleracao : array
+        The array of deceleration (braking capacity).
+    massa : int or float
+        Vehicle's mass.
+
+    Returns
+    -------
+    Returns a dataframe with noisy and non-noisy inputs/outputs, includes intermediate results.
+    """
 
     size = len(distancia)*len(velocidade)*len(desaceleracao)
 
-    data = pd.DataFrame(columns=['Distancia Ruidosa', 'Velocidade Ruidosa', 'Capacidade de Frenagem Ruidosa', 'Distancia', 'Velocidade', 'Capacidade de Frenagem', 'Decisao', 'Aceleracao', 'AW', 'AG', 'VH', 'VC', 'V50', 'DS', 'Decisao Ruidosa', 'Aceleracao Ruidosa', 'AW Ruidosa', 'AG Ruidosa', 'VH Ruidosa', 'VC Ruidosa', 'V50 Ruidosa', 'DS Ruidosa'], index = range(size)) #Cria um Dataframe vazio com as colunas descritas
+    #Cria um Dataframe vazio com as colunas descritas
+    data = pd.DataFrame(columns=['Distancia Ruidosa', 'Velocidade Ruidosa', 'Capacidade de Frenagem Ruidosa', 'Distancia', 
+    'Velocidade', 'Capacidade de Frenagem', 'Decisao', 'Aceleracao', 'AW', 'AG', 'VH', 'VC', 'V50', 'DS', 'Decisao Ruidosa', 
+    'Aceleracao Ruidosa', 'AW Ruidosa', 'AG Ruidosa', 'VH Ruidosa', 'VC Ruidosa', 'V50 Ruidosa', 'DS Ruidosa'], index = range(size)) 
 
     global M
     M = massa 
@@ -145,20 +192,28 @@ def create_Dataset(nome, distancia, velocidade, desaceleracao, massa):
 
                 ruidos = np.array([distanciaRuido, velocidadeRuido, brake[k]]) #Define vetores para facilitar a chamada do concatenate
                 sinais = np.array([distance[i], speed[j], brake[k]])
-
-                data.loc[l] = np.concatenate((ruidos, sinais, calcula_distancia(distance[i],speed[j],brake[k]), calcula_distancia(distanciaRuido, velocidadeRuido, brake[k])), axis = None) #Escreve o como uma linha no dataframe
+                
+                #Escreve o como uma linha no dataframe
+                data.loc[l] = np.concatenate((ruidos, sinais, calcula_distancia(distance[i],speed[j],brake[k]), 
+                                            calcula_distancia(distanciaRuido, velocidadeRuido, brake[k])), 
+                                            axis = None)
                 l += 1 
 
-    dataCompressed = data[['Distancia Ruidosa', 'Velocidade Ruidosa', 'Capacidade de Frenagem Ruidosa', 'Decisao']] #Cria um segundo dataframe reduzindo o número de colunas
-
-    data.to_csv(nome + "Debug.csv", header = False, index = False) #Cria o dataframe completo em csv
-    dataCompressed.to_csv(nome + ".csv", header = False, index = False) #Cria o dataframe reduzido em csv
-
-    with pd.ExcelWriter(nome + ".xlsx") as writer:  #Cria o dataframe reduzido em Excel (arquivo unico)
-        data.to_excel(writer, sheet_name = nome + "Debug", index = False)
-        dataCompressed.to_excel(writer, sheet_name= nome, index = False)
+    return data
 
 def calcula_distancia(distancia, velocidade, aceleracao):
+    """
+    Compute the secure braking's distance
+
+    Paramenters
+    -----------
+    distancia : int or float
+        Distance between the vehicle and the object.
+    velocidade : int or float
+        Vehicle's speed
+    aceleracao : int or float
+        Vehicle's deceleration (braking capacity).
+    """
 
     D = np.double(distancia)
     VE = np.double(velocidade)
@@ -181,7 +236,115 @@ def calcula_distancia(distancia, velocidade, aceleracao):
     else:   
         return 0, AH, AW, AG, VH, VC, V50, DS #Frenagem desnecessaria
 
-# Programa Principal
-create_Dataset("Dataset", distance, speed, brake, 246898)   ## Cria dataset para trem vazio, para calcular outros basta Copy/Paste e trocar o nome e valor da massa
+def create_stratifiedDataset(distancia, velocidade, desaceleracao, massa, prop_zeros=0.8):
+    """
+    Generates dataset with the desired proportion of zeros
+
+    Parameters
+    ----------
+    distancia : array
+        The array of distances.
+    velocidade : array
+        The array of speeds.
+    desaceleracao : array
+        The array of deceleration (braking capacity).
+    massa : int or float
+        Vehicle's mass.
+    prop_zeros : float in [0,1], default=0.8
+        Proportion of zeros in the dataset, if prop_zeros=0.6, the generate dataset will have 60% of its outputs equals to zero
+
+    Returns
+    -------
+    Returns a stratified dataframe with noisy and non-noisy inputs/outputs, includes intermediate results.
+    """
+
+
+    data = create_dataset(distancia, velocidade, desaceleracao, massa)
+    n_data = len(data)
+
+    n_data_ones = len(data[data['Decisao'] == 1])
+    expected_ones = ceil(n_data*(1-prop_zeros)).astype(int)
+
+    minimum_dataset = floor(expected_ones/n_data_ones).astype(int)
+
+    for i in range(minimum_dataset):
+        data_aux = create_dataset(distancia, velocidade, desaceleracao, massa)
+        data = pd.concat([data, data_aux])
+
+    data = stratify_data(data, frac = 1/(minimum_dataset+1), prop_zeros = prop_zeros).reset_index(drop = True)
+
+    return data
+
+def stratify_data(data, frac=0.7, prop_zeros=0.8, random_state=None, shuffle=True):
+    """
+    Creates a new dataset with stratified outputs 
+
+    Parameters
+    ----------
+    data : pandas DataFrame
+        The original dataset that will be stratified.
+
+    frac: float in [0,1], default=0.7
+        The percentage of the original dataset that will be 
+        used to generate the new dataset.
+
+    prop_zeros: float in [0,1], default=0.8
+        The desired proportion of zeros in the output.
+    
+    random_state: int, RandomState instance or None, default=None
+        Controls the randomness of the data selected.
+    
+    shuffle: bool, default=True
+        Decides if the new dataset will be shuffled at the end.
+
+    Returns
+    -------
+        Return a dataframe with a new proportion of zeros
+
+    Examples
+    --------
+    >>> StratifyData(data = dataset, frac=0.7, prop_zeros=0.6)
+
+        That call will return a new dataset with 60% of its outputs equals to zero. The new dataset will have 70% of the original size.
+    """
+
+    # Calcula o número de elementos no dataset de entrada
+    n_data = len(data)
+
+    # Calcula o número de elementos no dataset estratificado
+    n_data_stratified = ceil(frac*n_data)
+
+    # Calcula o número de saídas iguais a 1 no dataset de entrada
+    n_data_ones = len(data[data['Decisao'] == 1])
+    
+    # Calcula proporção mínima de zeros
+    prop_zeros_min = (1-((n_data_ones)/(ceil(frac*n_data)))).round(4)
+
+    # Retorna erro se a proporção mínima não é satisfeita
+    if(prop_zeros < prop_zeros_min):
+        raise ValueError(f"For frac = {frac*100}%, prop_zeros must be {prop_zeros_min*100}% or higher")
+
+    # Calcula número de zeros e uns que devem estar presentes no dataset estratificado
+    n_data_stratified_ones = ceil((1-prop_zeros)*n_data_stratified).astype(int)
+    n_data_stratified_zeros = (n_data_stratified - n_data_stratified_ones).astype(int)
+
+    # Amostra os "n" zeros e uns do dataset de entrada aletoriamente
+    data_one_stratified = data[data['Decisao'] == 1].sample(n = n_data_stratified_ones, random_state = random_state).reset_index(drop=True)
+    data_zero_stratified = data[data['Decisao'] == 0].sample(n = n_data_stratified_zeros, random_state = random_state).reset_index(drop=True)
+
+    # Junta os zeros e uns para formar o dataset estratificado
+    data_stratified = pd.concat([data_one_stratified, data_zero_stratified]).reset_index(drop=True)
+
+    # Mistura os zeros e uns, se assim desejado
+    if(shuffle == True):
+        data_stratified = data_stratified.sample(frac = 1, random_state = random_state)
+
+    # Devolve a base de dados estratificada
+    return data_stratified.reset_index(drop=True)
+
+
+data = create_stratifiedDataset(distance, speed, brake, 382617, prop_zeros = 0.75)
+write_dataset(data, "DatasetTest")
+
 end = time.time()
 print("Tempo de execução: ", end - start)
