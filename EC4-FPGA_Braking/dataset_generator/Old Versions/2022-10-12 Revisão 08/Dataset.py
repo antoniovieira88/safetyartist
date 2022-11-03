@@ -58,7 +58,7 @@
 #   08   |    12/10/2022     | Henrique Lefundes da Silva   | Adição de novas funções; Possibilidade de gerar bases de
 #        |                   |                              | dados estratificadas, com a proporção de zeros desejada.
 #        |                   |                              | Alterações nas funções existentes; Documentação das fun-
-#        |                   |                              | ções presentes no programa; Menu adicionado
+#        |                   |                              | ções presentes no programa.
 #--------|-------------------|------------------------------|--------------------------------------------------------------
 
 ###########################################################################################################################
@@ -66,11 +66,13 @@
 import os
 os.environ['CONDA_DLL_SEARCH_MODIFICATION_ENABLE'] = '1' #Evita problemas de versão do NumPy com Conda
 
-import time
 import pandas as pd
 import numpy as np
 from numpy import ceil, floor
 np.random.seed(None)
+
+import time
+start = time.time()
 
 distance = np.arange(start=0, stop=2010, step=10)   #Cria vetor distancia [m]
 speed = np.arange(start=0, stop=28.5, step=0.5)     #Cria vetor velocidade [m/s]
@@ -112,9 +114,6 @@ T50 = 0.5       #Tempo de duracao da aplicacao do freio com metade da capacidade
 
 ################################################
 
-def cls():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
 def write_dataset(data, name = "Dataset"):
     """
     Write the data in a .csv and .xlsx 
@@ -126,23 +125,14 @@ def write_dataset(data, name = "Dataset"):
     name : string, default="Dataset"
         File's name, it will also generate a .cvs with the suffix "Debug"
     """
-    print("---- Writing Dataset ----")
 
     dataCompressed = data[['Distancia Ruidosa', 'Velocidade Ruidosa', 'Capacidade de Frenagem Ruidosa', 'Decisao']]
-
-    print("Writing .csv file...", end = '', flush=True)
-    if(debug_mode == True):
-        data.to_csv(name + "Debug.csv", header = False, index = False) #Cria o dataframe completo em csv
-    print("OK")
+    data.to_csv(name + "Debug.csv", header = False, index = False) #Cria o dataframe completo em csv
     dataCompressed.to_csv(name + ".csv", header = False, index = False) #Cria o dataframe reduzido em csv
 
-    if(generate_xlsx == True):
-        print("Writing .xlsx file...", end = '', flush=True)
-        with pd.ExcelWriter(name + ".xlsx") as writer:  #Cria o dataframe reduzido em Excel (arquivo unico)
-            if(debug_mode == True):
-                data.to_excel(writer, sheet_name = name + "Debug", index = False)
-            dataCompressed.to_excel(writer, sheet_name = name, index = False)
-        print("OK")
+    with pd.ExcelWriter(name + ".xlsx") as writer:  #Cria o dataframe reduzido em Excel (arquivo unico)
+        data.to_excel(writer, sheet_name = name + "Debug", index = False)
+        dataCompressed.to_excel(writer, sheet_name = name, index = False)
 
 def create_dataset(distancia, velocidade, desaceleracao, massa):
     """
@@ -166,15 +156,14 @@ def create_dataset(distancia, velocidade, desaceleracao, massa):
 
     size = len(distancia)*len(velocidade)*len(desaceleracao)
 
-    data = np.zeros((size, 22))
-
-    #Cria um Dataframe vazio com as colunas descritas 
+    #Cria um Dataframe vazio com as colunas descritas
+    data = pd.DataFrame(columns=['Distancia Ruidosa', 'Velocidade Ruidosa', 'Capacidade de Frenagem Ruidosa', 'Distancia', 
+    'Velocidade', 'Capacidade de Frenagem', 'Decisao', 'Aceleracao', 'AW', 'AG', 'VH', 'VC', 'V50', 'DS', 'Decisao Ruidosa', 
+    'Aceleracao Ruidosa', 'AW Ruidosa', 'AG Ruidosa', 'VH Ruidosa', 'VC Ruidosa', 'V50 Ruidosa', 'DS Ruidosa'], index = range(size)) 
 
     global M
     M = massa 
     l = 0 #Contador de linhas
-
-    print("Generating dataset...", end = '', flush = True)
 
     for i in range(len(distancia)):
         for j in range(len(velocidade)):
@@ -205,16 +194,10 @@ def create_dataset(distancia, velocidade, desaceleracao, massa):
                 sinais = np.array([distance[i], speed[j], brake[k]])
                 
                 #Escreve o como uma linha no dataframe
-                data[l] = np.concatenate((ruidos, sinais, calcula_distancia(distance[i],speed[j],brake[k]), 
+                data.loc[l] = np.concatenate((ruidos, sinais, calcula_distancia(distance[i],speed[j],brake[k]), 
                                             calcula_distancia(distanciaRuido, velocidadeRuido, brake[k])), 
                                             axis = None)
                 l += 1 
-    
-    data = pd.DataFrame(data, columns=['Distancia Ruidosa', 'Velocidade Ruidosa', 'Capacidade de Frenagem Ruidosa', 'Distancia', 
-    'Velocidade', 'Capacidade de Frenagem', 'Decisao', 'Aceleracao', 'AW', 'AG', 'VH', 'VC', 'V50', 'DS', 'Decisao Ruidosa', 
-    'Aceleracao Ruidosa', 'AW Ruidosa', 'AG Ruidosa', 'VH Ruidosa', 'VC Ruidosa', 'V50 Ruidosa', 'DS Ruidosa'])
-
-    print("OK")
 
     return data
 
@@ -274,7 +257,8 @@ def create_stratifiedDataset(distancia, velocidade, desaceleracao, massa, prop_z
     -------
     Returns a stratified dataframe with noisy and non-noisy inputs/outputs, includes intermediate results.
     """
-    print("---- Stratifying Dataset ----")
+
+
     data = create_dataset(distancia, velocidade, desaceleracao, massa)
     n_data = len(data)
 
@@ -284,7 +268,6 @@ def create_stratifiedDataset(distancia, velocidade, desaceleracao, massa, prop_z
     minimum_dataset = floor(expected_ones/n_data_ones).astype(int)
 
     for i in range(minimum_dataset):
-        print(f"Generating {i+1} of {minimum_dataset} dataset needed")
         data_aux = create_dataset(distancia, velocidade, desaceleracao, massa)
         data = pd.concat([data, data_aux])
 
@@ -359,139 +342,9 @@ def stratify_data(data, frac=0.7, prop_zeros=0.8, random_state=None, shuffle=Tru
     # Devolve a base de dados estratificada
     return data_stratified.reset_index(drop=True)
 
-def print_menu():
-    for key in menu_options.keys():
-        print(menu_options[key])
 
-def option1():
-    print("Suggestions: ")
-    print("-- 8 passengers/m^2 = 382617")
-    print("-- 6 passengers/m^2 = 348687.25")
-    print("-- 4 passengers/m^2 = 314757.5")
-    print("-- 0 passengers/m^2 (empty) = 246898")
-    print("All values in [kg]")
-    print("The suggestions are based on the data provided by Metro of São Paulo. Intermediate values were found by linear interpolation.")
-    
-    print("")
-    M = int(input("Insert the mass of the vehicle: "))
-    name = str(input("Insert the name of the file: "))
-    print("")
+data = create_stratifiedDataset(distance, speed, brake, 382617, prop_zeros = 0.75)
+write_dataset(data, "DatasetTest")
 
-    print("---- Generating Dataset ----")
-    startGenData = time.time()
-    data = create_dataset(distance, speed, brake, M)
-    print("")
-
-    write_dataset(data, name)
-    endGenData = time.time()
-    execution_timeGenData = round(endGenData - startGenData, 2)
-    print("")
-    print(f"Execution time (generation + writing): {execution_timeGenData} seconds",)
-
-def option2():
-    print("Suggestions: ")
-    print("-- 8 passengers/m^2 = 382617")
-    print("-- 6 passengers/m^2 = 348687.25")
-    print("-- 4 passengers/m^2 = 314757.5")
-    print("-- no passengers (empty)  = 246898")
-    print("All values in [kg]")
-    print("The suggestions are based on the data provided by Metro of São Paulo. Intermediate values were found by linear interpolation.")
-
-    print("")
-    M = int(input("Insert the mass of the vehicle: "))
-    prop_zeros = float(input("Insert the proportion of zeros in the output: "))
-    name = str(input("Insert the name of the file: "))
-    print("")
-
-    startGenDataStrat = time.time()
-    data = create_stratifiedDataset(distance, speed, brake, M, prop_zeros)
-    print("")
-
-    write_dataset(data, name)
-    endGenDataStrat = time.time()
-    execution_timeGenDataStrat = round(endGenDataStrat - startGenDataStrat, 2)
-    print("")
-    print(f"Execution time (generation + writing): {execution_timeGenDataStrat} seconds",)
-
-def option3(debug_mode):
-    cls()
-    if(debug_mode == 1):
-        print("Debug deactivated - Debug files will NOT be generated.")
-        return False
-    elif(debug_mode == 0):
-        print("Debug activated - Debug files will be generated.")
-        return True
-
-def option4(generate_xlsx):
-    cls()
-    if(generate_xlsx == 1):
-        print(".xlsx files deactivated - .xlsx will NOT be generated.")
-        return False
-    elif(generate_xlsx == 0):
-        print(".xlsx files activated - .xlsx files will be generated.")
-        return True
-
-def option5():
-    cls()
-    print("[1] Generates a dataset using the Emergency Brake Curve.")
-    print("[2] Combines multiple datasets to generate a new dataset with a different proportion of zeros on the output.")
-    print("[3] Selects whether debug files will be generated or not.")
-    print("[4] Selects whether .xlsx files will be generated or not, makes execution faster.")
-    input("Press enter to return ")
-    cls()
-
-debug_mode = True
-generate_xlsx = True
-
-menu_options = {
-    1: '[1] Generate dataset',
-    2: '[2] Generate stratified dataset',
-    3: '[3] Activate/Deactivate debug files (deactivate for faster execution)',
-    4: '[4] Activate/Deactivate .xlsx files, .csv files will always be generated. (deactivate for faster execution)',
-    5: '[5] Help',
-    6: '[0] Exit',
-}
-
-cls()
-
-while (True):
-    print_menu()
-    option = ''
-    try:
-        option = int(input('Select one option: '))
-    except:
-        print('Invalid input, insert a number')
-    if option == 1:
-        cls()
-        start1 = time.time()
-        option1()
-        end1 = time.time()
-        execution_time1 = round(end1 - start1, 2)
-        print(f"Execution time (total): {execution_time1} seconds\n",)
-
-    elif option == 2:
-        cls()
-        start2 = time.time()
-        option2()
-        end2 = time.time()
-        execution_time2 = round(end2 - start2, 2)
-        print(f"Execution time (total): {execution_time2} seconds\n",)
-
-    elif option == 3:
-        cls()
-        debug_mode = option3(debug_mode)
-
-    elif option == 4:
-        cls()
-        generate_xlsx = option4(generate_xlsx)
-
-    elif option == 5:
-        cls()
-        option5()
-        
-    elif option == 0:
-        cls()
-        exit()
-    else:
-        cls()
-        print('Invalid input, please enter a number between 0 and 5')
+end = time.time()
+print("Tempo de execução: ", end - start)
