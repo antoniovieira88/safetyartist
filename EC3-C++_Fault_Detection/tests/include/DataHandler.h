@@ -4,13 +4,13 @@ using namespace arma;
 class DataHandler {
 	public:
 
-		DataHandler();
+		DataHandler(int maxNumberOfRegisters);
 
 		void loadOldMetrics();
 
 		void saveNewMetrics();
 
-		void insertNewMetrics(rowvec clustersSilhouette, rowvec numberOfPointsPerCluster, double OverallSilhouette);
+		void insertNewMetrics(colvec newMetrics);
 
 		void loadHistoricalData();
 
@@ -18,13 +18,20 @@ class DataHandler {
 
 		void updateHistoricalData();
 
+		void updateSimulationHistoricalData(mat newHistoricalData);
+
+		void updateSimulationHistoricalMetrics(colvec newMetrics);
+
 		mat getHistoricalDataToCluster();
 
 		colvec getOldMetrics();
 
+		int getIteration();
+
 	private:
-		int iteration = 0;
-		int number_of_registers = 0;
+		int iteration;
+		int numberOfRegisters;
+		int maxNumberOfRegisters;
 
 		mat historicalMetrics;
 		mat historicalData;

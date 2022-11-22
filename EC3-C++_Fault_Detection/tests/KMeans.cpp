@@ -131,7 +131,6 @@ rowvec KMeans::getNumberOfPointsPerCluster(){
 	return numberOfPointsPerCluster;
 }
 
-
 void KMeans::calculateIndividualSilhouette()
 {
 	individualSilhouette = SilhouetteScore::Individually(data, assignments);

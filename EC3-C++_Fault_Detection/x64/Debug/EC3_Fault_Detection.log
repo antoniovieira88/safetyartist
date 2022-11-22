@@ -1,8 +1,13 @@
 ﻿  IncompatibleIterationExcep.cpp
+  RegistersOverflowExcep.cpp
+  AnalysisUnit.cpp
+  CorrectOutputGenerator.cpp
   DataHandler.cpp
+  Supervised.cpp
+c1xx : fatal  error C1083: Não é possível abrir arquivo fonte: 'tests\include\Supervised.cpp': No such file or directory
   KMeans.cpp
   main.cpp
+  OutputGenerator.cpp
+  ProcessUnit.cpp
   SilhouetteScore.cpp
   Gerando Código...
-     Criando biblioteca C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.lib e objeto C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.exp
-  EC3_Fault_Detection.vcxproj -> C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.exe
