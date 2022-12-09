@@ -1,6 +1,5 @@
 #pragma once
 #include <mlpack/core.hpp>
-
 #include <string>
 
 using namespace arma;

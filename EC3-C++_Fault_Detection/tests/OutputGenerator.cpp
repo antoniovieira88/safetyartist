@@ -1,11 +1,10 @@
 #include <mlpack/core.hpp>
 #include "include/OutputGenerator.h"
-#include <random>
-#include <cmath>
 
 using namespace std;
 
-OutputGenerator::OutputGenerator(double meanValueFuseResultBurn,
+OutputGenerator::OutputGenerator(
+	double meanValueFuseResultBurn,
 	double meanValueFuseResultNotBurn,
 	double minFuseResultBurn,
 	double maxFuseResultBurn,
@@ -28,6 +27,9 @@ OutputGenerator::OutputGenerator(double meanValueFuseResultBurn,
 	stdDeviation = 0.0;
 	generator.seed(seed);
 }
+
+// Implementation of generateOutput method which truncates the value of fuseResult 
+// if it is out of the specifed bounds
 
 double OutputGenerator::generateOutput(double fuseTest)
 {
@@ -82,9 +84,11 @@ double OutputGenerator::truncateFuseResult(double fuseResult, bool burnTest) {
 	else {
 		return fuseResult;
 	}
-	
+
 };
 
+// Implementation of generateOutput method which raffles a value for fuseResult again 
+// if its value is out of the specifed bounds
 
 double OutputGenerator::generateOutput2(double fuseTest)
 {

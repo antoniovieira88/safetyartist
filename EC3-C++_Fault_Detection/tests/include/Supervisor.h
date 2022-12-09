@@ -1,6 +1,4 @@
 #include "ProcessUnit.h"
-#include "AnalysisUnit.h"
-#include "DataHandler.h"
 
 class Supervisor
 {
@@ -10,7 +8,7 @@ public:
 	void newTest();
 
 private:
-	ProcessUnit processUnit;
 	AnalysisUnit analysisUnit;
 	DataHandler dataHandler;
+	ProcessUnit processUnit;
 };

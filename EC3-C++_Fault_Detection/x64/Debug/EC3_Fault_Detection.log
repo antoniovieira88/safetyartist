@@ -1,13 +1,17 @@
-﻿  IncompatibleIterationExcep.cpp
-  RegistersOverflowExcep.cpp
-  AnalysisUnit.cpp
-  CorrectOutputGenerator.cpp
-  DataHandler.cpp
-  Supervised.cpp
-c1xx : fatal  error C1083: Não é possível abrir arquivo fonte: 'tests\include\Supervised.cpp': No such file or directory
-  KMeans.cpp
-  main.cpp
-  OutputGenerator.cpp
+﻿  FailureDetectedExcep.cpp
+  ParamsController.cpp
   ProcessUnit.cpp
-  SilhouetteScore.cpp
+  Supervisor.cpp
+  main.cpp
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\utils\exceptions\include\FailureDetectedExcep.h(7,15): error C2374: 'metricStr': redefinição; várias inicializações
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\utils\exceptions\include\FailureDetectedExcep.h(7): message : consulte a declaração de 'metricStr'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\utils\exceptions\include\FailureDetectedExcep.h(17,27): error C2011: 'faultDiagnosisType': redefinição do tipo 'struct'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\utils\exceptions\include\FailureDetectedExcep.h(17): message : consulte a declaração de 'faultDiagnosisType'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\utils\exceptions\include\FailureDetectedExcep.h(22,28): error C2011: 'FailureDetectedExcep': redefinição do tipo 'class'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\utils\exceptions\include\FailureDetectedExcep.h(22): message : consulte a declaração de 'FailureDetectedExcep'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\tests\main.cpp(41,17): error C2027: uso de tipo indefinido 'FailureDetectedExcep'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\utils\exceptions\include\FailureDetectedExcep.h(22): message : consulte a declaração de 'FailureDetectedExcep'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\tests\main.cpp(43,20): error C2027: uso de tipo indefinido 'FailureDetectedExcep'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\utils\exceptions\include\FailureDetectedExcep.h(22): message : consulte a declaração de 'FailureDetectedExcep'
+C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\tests\main.cpp(40,3): error C2316: 'FailureDetectedExcep &': não pode ser capturado porque o destruidor e/ou construtor de cópia são inacessíveis ou foram excluídos
   Gerando Código...

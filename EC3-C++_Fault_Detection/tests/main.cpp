@@ -1,84 +1,60 @@
 // Includes all relevant components of mlpack.
 #include <mlpack/core.hpp>
-#include "./include/AnalysisUnit.h"
-#include "./include/DataHandler.h"
-#include "./include/CorrectOutputGenerator.h"
+#include "./include/Supervisor.h"
+#include "../src/utils/exceptions/include/FailureDetectedExcep.h"
 #include <string>
+#include <fstream>
 
-using namespace mlpack;
+using namespace std;
+
+static string componentStr[] =
+{
+  "ComponentA",
+  "ComponentB",
+  "ComponentC",
+  "ComponentD",
+  "ComponentE",
+  "ComponentF"
+};
+
 int main()
 {
-	arma::mat data, centroids, assignments;
-	colvec newMetrics;
-
-	std::cout << "CorrectOutputGenerator test started" << endl;
 
 	int iteration;
+	Supervisor supervisor;
+	Supervised supervised;
+	ofstream simulationDataFile;
+	string logError;
 
-	DataHandler dataHandler(1000);
-	AnalysisUnit analysisUnit(2);
-	CorrectOutputGenerator correctOutputGenerator(0.1, 0.9, 0.0, 0.3, 0.7, 1.0, 0.1, 0.01, 1);
-	double correctOutputs[2];
-	double fuseResultBurn, fuseResultNotBurn, fuseTest, stdDeviation;
+	cout << "Simulation started";
 
+	cout << "Supervised attached to supervisor" << endl;
+	supervisor.attach(&supervised);
 
 	for (iteration = 1; iteration < 5; iteration++) {
 
-		std::cout << "Begin of Iteration " << iteration << endl;
+		cout << "Begin of Iteration " << iteration << endl;
+		try {
+			supervisor.newTest();
+		}
+		catch (FailureDetectedExcep& error) {
+			cout << error.what() << endl;
 
-		dataHandler.loadHistoricalData();
-		dataHandler.loadOldMetrics();
-		
-		fuseTest = 0.0;
-		fuseResultBurn = correctOutputGenerator.generateOutput(fuseTest);
-		stdDeviation = correctOutputGenerator.getStdDeviation();
+			logError = error.getLogError();
 
-		std::cout << "test_input = 0.0";
-		std::cout << "standard_deviation_burn_test = " << stdDeviation << endl;
-		std::cout << "fuse_result_burn_test = " << fuseResultBurn << endl;
+			simulationDataFile.open("data/SimulationMemory/HistoricalFailureLog.csv", std::ios_base::app);
 
-		fuseTest = 1.0;
-		fuseResultNotBurn = correctOutputGenerator.generateOutput(fuseTest);
-		stdDeviation = correctOutputGenerator.getStdDeviation();
+			simulationDataFile << logError;
 
-		std::cout << "test_input = 1.0";
-		std::cout << "standard_deviation_not_burn_test = " << stdDeviation << endl;
-		std::cout << "fuse_result_not_burn_test = " << fuseResultNotBurn << endl;
+			simulationDataFile.close();
+		};
 
-		dataHandler.insertNewHistoricalData(fuseResultBurn, fuseResultNotBurn);
-
-		data = dataHandler.getHistoricalDataToCluster();
-
-		analysisUnit.setDataToCluster(data);
-		analysisUnit.cluster();
-		newMetrics = analysisUnit.getNewMetrics();
-
-		int totalNumberOfPoints = analysisUnit.getTotalNumberOfPoints();
-		int numberOfClusters = analysisUnit.getNumberOfClusters();
-
-		newMetrics = analysisUnit.getNewMetrics();
-
-		double overallSilhouette = newMetrics(4);
-
-		std::cout << "Number of clusters: " << numberOfClusters << endl;
-		std::cout << "OverallSilhouette: " << overallSilhouette << endl;
-
-		std::string path = "tests/data/TestsDataMemory/Iteration" + std::to_string(iteration);
-
-		data::Save(path + "/assignments.csv", analysisUnit.getAssignments(), true);
-		data::Save(path + "/centroids.csv", analysisUnit.getCentroids(), true);
-
-		dataHandler.insertNewMetrics(newMetrics);
-
-		dataHandler.saveNewMetrics();
-		dataHandler.updateHistoricalData();
-
-		std::cout << "End of Iteration " << iteration << endl;
-		std::cout << " " << endl;
+		cout << "End of Iteration " << iteration << endl;
+		cout << " " << endl;
 
 	}
 
-	std::cout << "CorrectOutputGenerator Test completed";
+	cout << "Simulation completed";
 
 	return 0;
 }

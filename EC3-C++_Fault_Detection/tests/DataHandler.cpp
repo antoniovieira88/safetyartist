@@ -12,7 +12,7 @@ DataHandler::DataHandler(int maxNumberOfRegisters)
 	DataHandler::numberOfRegisters = 0;
 	DataHandler::maxNumberOfRegisters = maxNumberOfRegisters;
 	previousMetrics = colvec(5, fill::zeros);
-	newMetrics= colvec(5, fill::zeros);
+	newMetrics = colvec(5, fill::zeros);
 }
 
 void DataHandler::loadOldMetrics()
@@ -21,7 +21,7 @@ void DataHandler::loadOldMetrics()
 		mlpack::data::Load("data/DataMemory/HistoricalMetrics.csv", historicalMetrics, true);
 		int size = historicalMetrics.n_cols;
 
-		if (size > maxNumberOfRegisters/2) {
+		if (size > maxNumberOfRegisters / 2) {
 			throw RegistersOverflowExcep(size, maxNumberOfRegisters / 2);
 		}
 
@@ -54,19 +54,20 @@ void DataHandler::loadOldMetrics()
 
 void DataHandler::saveNewMetrics()
 {
-	colvec newHistoricalMetricsCol = {double(iteration)};
-	newHistoricalMetricsCol.insert_rows(1, newMetrics);
-	if (historicalMetrics.n_cols == maxNumberOfRegisters/2) {
-		historicalMetrics.shed_col(0);
-	}
-	historicalMetrics.insert_cols(historicalMetrics.n_cols, newHistoricalMetricsCol);
-
 	mlpack::data::Save("data/DataMemory/HistoricalMetrics.csv", historicalMetrics, true);
 }
 
 void DataHandler::insertNewMetrics(colvec newMetrics) {
 	DataHandler::previousMetrics = colvec(DataHandler::newMetrics);
 	DataHandler::newMetrics = newMetrics;
+
+	colvec newHistoricalMetricsCol = { double(iteration) };
+	newHistoricalMetricsCol.insert_rows(1, newMetrics);
+	if (historicalMetrics.n_cols == maxNumberOfRegisters / 2) {
+		historicalMetrics.shed_col(0);
+	}
+	historicalMetrics.insert_cols(historicalMetrics.n_cols, newHistoricalMetricsCol);
+
 	updateSimulationHistoricalMetrics(newMetrics);
 }
 
@@ -108,9 +109,9 @@ void DataHandler::insertNewHistoricalData(double fuse_result_burn, double fuse_r
 	}
 
 	mat newHistoricalData = { {double(iteration),  double(iteration)},
-								{0.0, 1.0}, 
+								{0.0, 1.0},
 								{fuse_result_burn, fuse_result_not_burn},
-							};
+	};
 
 	historicalData.insert_cols(historicalData.n_cols, newHistoricalData);
 
@@ -163,8 +164,8 @@ void DataHandler::updateSimulationHistoricalMetrics(colvec newMetrics) {
 		element = newMetrics(i);
 		simulationDataFile << element << ',';
 	}
-		element = newMetrics(numberOfRows - 1);
-		simulationDataFile << element << endl;
+	element = newMetrics(numberOfRows - 1);
+	simulationDataFile << element << endl;
 
 	simulationDataFile.close();
 }

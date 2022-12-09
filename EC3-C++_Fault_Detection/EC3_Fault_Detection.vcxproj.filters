@@ -13,72 +13,153 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
     </Filter>
+    <Filter Include="Source Files\Supervisor">
+      <UniqueIdentifier>{fc97ff2b-66ce-4082-9d7a-9fcfce23c8d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Supervised">
+      <UniqueIdentifier>{7e291d44-2b79-4661-87f1-9deff1ed16e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SimulationController">
+      <UniqueIdentifier>{07a2c80a-9210-4dde-94c8-c8b46c28e241}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Supervisor\units">
+      <UniqueIdentifier>{c5f72485-d5fa-4bb4-8504-6a84f8ea5491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Supervised\units">
+      <UniqueIdentifier>{aa0fd4cf-32d4-4385-89ec-6380de7823f9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\kmeans">
+      <UniqueIdentifier>{b1c06231-45c4-4a7c-84e3-694ebb9925df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SimulationController\units">
+      <UniqueIdentifier>{7e50165f-2283-4e51-aac5-d33c38292c53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\exceptions">
+      <UniqueIdentifier>{fd795327-2970-4d8a-98e0-1597e239465b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Supervised">
+      <UniqueIdentifier>{9c6812a8-6893-488d-98a8-e2e16c166b51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Supervisor">
+      <UniqueIdentifier>{eee211e1-df73-41da-9a09-2603ac853153}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SimulationController">
+      <UniqueIdentifier>{74e4c756-c83f-489e-8d3e-7446263627bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\exceptions">
+      <UniqueIdentifier>{13558d05-6458-49e4-bf5b-bfba654d1d7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\kmeans">
+      <UniqueIdentifier>{07ee5a02-3570-4bff-9a59-4abaf8a2519e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\utils">
+      <UniqueIdentifier>{3ac88a46-5ed4-4012-a45e-8398a61cfcdd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SimulationController\units">
+      <UniqueIdentifier>{e2703af6-e66a-459f-b120-846734b1de7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Supervisor\units">
+      <UniqueIdentifier>{c49c234f-f613-4c78-a260-4a6a1654d0ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Supervised\units">
+      <UniqueIdentifier>{d37dbb74-f53a-4558-9805-74aad6bbf6c8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="tests\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tests\KMeans.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tests\SilhouetteScore.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tests\DataHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="tests\Supervisor.cpp">
+      <Filter>Source Files\Supervisor</Filter>
     </ClCompile>
     <ClCompile Include="tests\AnalysisUnit.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Supervisor\units</Filter>
     </ClCompile>
-    <ClCompile Include="src\utils\exceptions\RegistersOverflowExcep.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tests\CorrectOutputGenerator.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tests\OutputGenerator.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="tests\DataHandler.cpp">
+      <Filter>Source Files\Supervisor\units</Filter>
     </ClCompile>
     <ClCompile Include="tests\ProcessUnit.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Supervisor\units</Filter>
     </ClCompile>
-    <ClCompile Include="tests\include\Supervised.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="tests\CorrectOutputGenerator.cpp">
+      <Filter>Source Files\Supervised\units</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\Supervised.cpp">
+      <Filter>Source Files\Supervised</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\OutputGenerator.cpp">
+      <Filter>Source Files\Supervised\units</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\KMeans.cpp">
+      <Filter>Source Files\kmeans</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\SilhouetteScore.cpp">
+      <Filter>Source Files\kmeans</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\ParamsController.cpp">
+      <Filter>Source Files\SimulationController\units</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\SimulationController.cpp">
+      <Filter>Source Files\SimulationController</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\exceptions\FailureDetectedExcep.cpp">
+      <Filter>Source Files\exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp">
+      <Filter>Source Files\exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\utils\exceptions\RegistersOverflowExcep.cpp">
+      <Filter>Source Files\exceptions</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="tests\include\KMeans.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="tests\include\SimulationController.h">
+      <Filter>Header Files\SimulationController</Filter>
     </ClInclude>
     <ClInclude Include="tests\include\SilhouetteScore.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\kmeans</Filter>
     </ClInclude>
-    <ClInclude Include="tests\include\DataHandler.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\utils\structs\structs.h">
+      <Filter>Header Files\utils</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\exceptions\include\IncompatibleIterationExcep.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="tests\include\KMeans.h">
+      <Filter>Header Files\kmeans</Filter>
     </ClInclude>
-    <ClInclude Include="tests\include\AnalysisUnit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\utils\exceptions\include\RegistersOverflowExcep.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="tests\include\CorrectOutputGenerator.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="tests\include\Supervisor.h">
+      <Filter>Header Files\Supervisor</Filter>
     </ClInclude>
     <ClInclude Include="tests\include\OutputGenerator.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Supervised\units</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\include\AnalysisUnit.h">
+      <Filter>Header Files\Supervisor\units</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\include\DataHandler.h">
+      <Filter>Header Files\Supervisor\units</Filter>
     </ClInclude>
     <ClInclude Include="tests\include\ProcessUnit.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Supervisor\units</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\include\CorrectOutputGenerator.h">
+      <Filter>Header Files\Supervised\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\exceptions\include\IncompatibleIterationExcep.h">
+      <Filter>Header Files\exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\exceptions\include\FailureDetectedExcep.h">
+      <Filter>Header Files\exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\include\ParamsController.h">
+      <Filter>Header Files\SimulationController\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\enumerators\enum.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\exceptions\include\RegistersOverflowExcep.h">
+      <Filter>Header Files\exceptions</Filter>
     </ClInclude>
     <ClInclude Include="tests\include\Supervised.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Supervised</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

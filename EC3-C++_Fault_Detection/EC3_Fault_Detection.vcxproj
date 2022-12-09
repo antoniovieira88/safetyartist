@@ -19,29 +19,39 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\utils\exceptions\FailureDetectedExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\RegistersOverflowExcep.cpp" />
     <ClCompile Include="tests\AnalysisUnit.cpp" />
     <ClCompile Include="tests\CorrectOutputGenerator.cpp" />
     <ClCompile Include="tests\DataHandler.cpp" />
-    <ClCompile Include="tests\include\Supervised.cpp" />
     <ClCompile Include="tests\KMeans.cpp" />
     <ClCompile Include="tests\main.cpp" />
     <ClCompile Include="tests\OutputGenerator.cpp" />
+    <ClCompile Include="tests\ParamsController.cpp" />
     <ClCompile Include="tests\ProcessUnit.cpp" />
     <ClCompile Include="tests\SilhouetteScore.cpp" />
+    <ClCompile Include="tests\SimulationController.cpp" />
+    <ClCompile Include="tests\Supervised.cpp" />
+    <ClCompile Include="tests\Supervisor.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\utils\enumerators\enum.h" />
+    <ClInclude Include="src\utils\exceptions\include\FailureDetectedExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\IncompatibleIterationExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\RegistersOverflowExcep.h" />
+    <ClInclude Include="src\utils\structs\structs.h" />
     <ClInclude Include="tests\include\AnalysisUnit.h" />
     <ClInclude Include="tests\include\CorrectOutputGenerator.h" />
     <ClInclude Include="tests\include\DataHandler.h" />
     <ClInclude Include="tests\include\KMeans.h" />
     <ClInclude Include="tests\include\OutputGenerator.h" />
+    <ClInclude Include="tests\include\ParamsController.h" />
     <ClInclude Include="tests\include\ProcessUnit.h" />
     <ClInclude Include="tests\include\SilhouetteScore.h" />
+    <ClInclude Include="tests\include\SimulationController.h" />
     <ClInclude Include="tests\include\Supervised.h" />
+    <ClInclude Include="tests\include\Supervisor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

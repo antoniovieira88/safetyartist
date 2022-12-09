@@ -1,7 +1,5 @@
 #include <mlpack/core.hpp>
 #include "include/KMeans.h"
-#include "include/SilhouetteScore.h"
-
 
 using namespace mlpack;
 

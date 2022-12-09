@@ -4,7 +4,8 @@
 
 using namespace std;
 
-CorrectOutputGenerator::CorrectOutputGenerator(double meanValueFuseResultBurn,
+CorrectOutputGenerator::CorrectOutputGenerator(
+	double meanValueFuseResultBurn,
 	double meanValueFuseResultNotBurn,
 	double minFuseResultBurn,
 	double maxFuseResultBurn,

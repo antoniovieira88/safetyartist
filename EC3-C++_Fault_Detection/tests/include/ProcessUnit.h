@@ -2,22 +2,23 @@
 #include "AnalysisUnit.h"
 #include "DataHandler.h"
 #include "Supervised.h"
-
+#include "../src/utils/structs/structs.h"
+#include "../src/utils/exceptions/include/FailureDetectedExcep.h"
 
 class ProcessUnit {
-	public:
-		ProcessUnit(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
-					double overallSilhouetteTolerance, double silhouetteDiffTolerance,
-					double numberOfPointsPerClusterDiffTolerance);
+public:
+	ProcessUnit(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+		double overallSilhouetteTolerance, double silhouetteDiffTolerance,
+		double numberOfPointsPerClusterDiffTolerance);
 
-		ProcessUnit(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
-			double overallSilhouetteTolerance, double silhouetteDiffTolerance,
-			double numberOfPointsPerClusterDiffTolerance, bool verboseMode);
+	ProcessUnit(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+		double overallSilhouetteTolerance, double silhouetteDiffTolerance,
+		double numberOfPointsPerClusterDiffTolerance, bool verboseMode);
 
-		~ProcessUnit();
+	~ProcessUnit();
 
-		void attach(Supervised* supervised);
-		void newTest();
+	void attach(Supervised* supervised);
+	void newTest();
 
 private:
 	AnalysisUnit& analysisUnit;
@@ -30,7 +31,7 @@ private:
 	double fuseTest, keepPower;
 	double overallSilhouetteDecreaseTolerance, silhouetteClustersDecreaseTolerance, imbalanceClustersIncreaseTolerance;
 	double silhouetteCluster1Increase, silhouetteCluster2Increase, imbalanceClustersIncrease, overallSilhouetteIncrease;
-	bool detectFailure();
+	faultDiagnosisType detectFailure();
 
 	colvec previousMetrics, newMetrics;
 
