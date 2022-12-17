@@ -4,10 +4,5 @@
  ComponentD,0.4,4
  ComponentE,0.5,5
  ComponentF,0.6,6
-
-
- 0,2,0,5 ->0,2;0,3
-
-
- componentA, 0, 0,5
- componentA, 1, 0,2
+ componentA,0,0,5
+ componentA,1,0,2
