@@ -2,25 +2,25 @@
 #include <string>
 #include <fstream>
 #include <sstream>
-#include <map>
 #include <cmath>
-#include "../../../utils/structs/structs.h"
+#include "../../../utils/components/include/Component.h"
 
 using namespace std;
 
 class ParamsController {
 public:
-	ParamsController();
-	vector<double> getFailureRateArray();
-	vector<int>* getCountBetweenFailuresArray();
-	vector<double> getReliabiabilityArray();
+	ParamsController(double simulationStep, mt19937& generator);
+
+	vector<Component>& getComponentsArray();
 
 private:
-	vector<string> componentsArray;
-	vector<double> failureRateArray;
-	vector<int> countBetweenFailuresArray;
-	vector<double> reliabiabilityArray;
+	vector<Component> componentsArray;
 	void loadFailureSpecs();
-	fstream failureRatesFile;
+	fstream faultRatesFile;
 	int numberOfComponents;
+
+	const double simulationStep;
+
+	mt19937& generator;
+
 };

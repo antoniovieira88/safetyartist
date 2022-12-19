@@ -28,6 +28,7 @@
     <ClCompile Include="src\components\Supervisor\units\AnalysisUnit.cpp" />
     <ClCompile Include="src\components\Supervisor\units\DataHandler.cpp" />
     <ClCompile Include="src\components\Supervisor\units\ProcessUnit.cpp" />
+    <ClCompile Include="src\utils\components\Component.cpp" />
     <ClCompile Include="src\utils\exceptions\FailureDetectedExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\RegistersOverflowExcep.cpp" />
@@ -46,6 +47,7 @@
     <ClInclude Include="src\components\Supervisor\include\DataHandler.h" />
     <ClInclude Include="src\components\Supervisor\include\ProcessUnit.h" />
     <ClInclude Include="src\components\Supervisor\include\Supervisor.h" />
+    <ClInclude Include="src\utils\components\include\Component.h" />
     <ClInclude Include="src\utils\enumerators\enum.h" />
     <ClInclude Include="src\utils\exceptions\include\FailureDetectedExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\IncompatibleIterationExcep.h" />

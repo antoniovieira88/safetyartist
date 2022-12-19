@@ -31,7 +31,7 @@ private:
 	double fuseTest, keepPower;
 	double overallSilhouetteDecreaseTolerance, silhouetteClustersDecreaseTolerance, imbalanceClustersIncreaseTolerance;
 	double silhouetteCluster1Increase, silhouetteCluster2Increase, imbalanceClustersIncrease, overallSilhouetteIncrease;
-	faultDiagnosisType detectFailure();
+	faultDiagnosisType& detectFailure();
 
 	colvec previousMetrics, newMetrics;
 

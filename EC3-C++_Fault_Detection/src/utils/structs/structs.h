@@ -9,10 +9,3 @@ struct failureMetricIndicatorType {
 	double tolerance;
 	int iteration;
 };
-
-struct failureModeType {
-	int componentId;
-	double probability;
-	double expectedFuseResultBurn;
-	double expectedFuseResultNotBurn;
-};

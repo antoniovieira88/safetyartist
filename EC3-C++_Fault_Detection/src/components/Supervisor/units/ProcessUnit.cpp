@@ -144,7 +144,7 @@ void ProcessUnit::newTest()
 
 }
 
-faultDiagnosisType ProcessUnit::detectFailure()
+faultDiagnosisType& ProcessUnit::detectFailure()
 {
 	double silhouette1NewMetrics, silhouette2NewMetrics, imbalanceClustersNewMetrics, overallSilhouetteNewMetrics;
 	double silhouette1PreviousMetrics, silhouette2PreviousMetrics, imbalanceClustersPreviousMetrics, overallSilhouettePreviousMetrics;
