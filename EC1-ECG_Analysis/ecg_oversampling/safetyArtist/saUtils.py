@@ -23,6 +23,62 @@ def load_whole_dataset_safety():
     testX, testY = load_file('dataset/mitbih_test_sa.csv')
     return np.vstack([trainX, testX]), np.vstack([trainY, testY])
 
+""" Function adds_ad_noise
+
+- Inputs: x: Vector of ECG samples.
+
+- Outputs: x_noise: Input 'x' including simulated quantization noise from the analog-to-digital converter
+                    used in the digitization of the ECG heartbeats. Given a 11-bit AD converter has been used,
+                    the quantization error is of either -(1/2048) or +(1/2048), hard-limited to 0 and 1. 
+
+- Summary: For each ECG sample of 'x', corresponding to its columns 0 up to 186, adds a random quantization noise
+           of either -(1/2048) or +(1/2048), limiting the sample to 0 or 1 if the quantization noise leads the sample
+           to be outside this range. All other columns, related to the ECG ID, length and corner case flags are left
+           unchanged. The processing result is retrieved on 'x_noise'.  
+""" 
+def adds_ad_noise(x):
+
+    # Copies 'x' on 'x_noise'
+    x_noise = np.copy(x)
+
+    # Randomly initializes random number generator seed
+    np.random.seed(None)
+    
+    # Gets the length (number of lines) of "x". "columns_x" and "arrayList_x" are declared
+    # just to allow reading "lines_x" through "shape" and are unused at the rest of the function.
+    lines_x, columns_x, arrayList_x = x.shape
+
+    # Adds positive or negative quantization noise to each of the valid samples of 'x'
+    for i in range (0, lines_x):
+
+        # For each line, adds quantization noise up to the last valid sample of the heartbeat
+        # Since x[188] has the number of samples per heartbeat, the last valid column is 'x[i][188] - 1'
+        num_samples = int(x[i][188])
+        for j in range (0, num_samples - 1):
+
+            # Generates a random number within [0; 1[. If the number is smaller than 0.5, adds
+            # the quantization error -(1/2048); otherwise, adds the quantization error +(1/2048).
+            random_number = np.random.random()
+
+            if (random_number < 0.5):
+                quantization_error = -(1/2048)
+
+            else:
+                quantization_error = (1/2048)
+
+            # Adds 'random_number' to the current sample of 'x_noise'
+            x_noise[i][j] =  x_noise[i][j] + quantization_error
+
+            # Checks for overflow or underflow of the sample and keeps it within [0; 1]
+            if (x_noise[i][j] < 0):
+                x_noise[i][j] = 0
+            
+            elif (x_noise[i][j] > 1):
+                x_noise[i][j] = 1
+
+    # Returns x_noise
+    return x_noise
+
 """ Function filterSafetyData
 
 - Inputs: Two vectors, named "x_train" and "x_test", which include input data and safety-related data for
