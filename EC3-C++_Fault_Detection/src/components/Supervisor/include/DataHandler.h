@@ -2,41 +2,41 @@
 
 using namespace arma;
 class DataHandler {
-	public:
+public:
 
-		DataHandler(int maxNumberOfRegisters);
+	DataHandler(int maxNumberOfRegisters);
 
-		void loadOldMetrics();
+	void loadOldMetrics();
 
-		void saveNewMetrics();
+	void saveNewMetrics();
 
-		void insertNewMetrics(colvec newMetrics);
+	void insertNewMetrics(colvec newMetrics);
 
-		void loadHistoricalData();
+	void loadHistoricalData();
 
-		void insertNewHistoricalData(double fuse_result_burn, double fuse_result_not_burn);
+	void insertNewHistoricalData(double fuse_result_burn, double fuse_result_not_burn);
 
-		void updateHistoricalData();
+	void updateHistoricalData();
 
-		void updateSimulationHistoricalData(mat newHistoricalData);
+	void updateSimulationHistoricalData(mat newHistoricalData);
 
-		void updateSimulationHistoricalMetrics(colvec newMetrics);
+	void updateSimulationHistoricalMetrics(colvec newMetrics);
 
-		mat getHistoricalDataToCluster();
+	mat getHistoricalDataToCluster();
 
-		colvec getOldMetrics();
+	colvec getOldMetrics();
 
-		int getIteration();
+	int* getIterationPointer();
 
-	private:
-		int iteration;
-		int numberOfRegisters;
-		int maxNumberOfRegisters;
+private:
+	int iteration;
+	int numberOfRegisters;
+	int maxNumberOfRegisters;
 
-		mat historicalMetrics;
-		mat historicalData;
-		mat historicalDataToCluster;
-		colvec previousMetrics;
-		colvec newMetrics;
+	mat historicalMetrics;
+	mat historicalData;
+	mat historicalDataToCluster;
+	colvec previousMetrics;
+	colvec newMetrics;
 
 };

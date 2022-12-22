@@ -2,26 +2,41 @@
 
 using namespace std;
 
-ParamsController::ParamsController(double simulationStep, mt19937& generator) :
-	simulationStep(simulationStep), generator(generator)
+ParamsController::ParamsController(
+	double simulationStep,
+	mt19937& generator,
+	vector<Component>& componentsArray,
+	string dirFailureSpecs,
+	string dirFaultModes) :
+	simulationStep(simulationStep), generator(generator), componentsArray(componentsArray),
+	dirFaultModes(dirFaultModes), dirFailureSpecs(dirFailureSpecs)
 {
-	numberOfComponents = 0;
-	loadFailureSpecs();
+	ParamsController::verboseMode = false;
+	ParamsController::numberOfComponents = 0;
+
 }
 
-vector<Component>& ParamsController::getComponentsArray()
+ParamsController::ParamsController(
+	double simulationStep,
+	mt19937& generator,
+	vector<Component>& componentsArray,
+	string dirFailureSpecs,
+	string dirFaultModes,
+	bool verboseMode) :
+	simulationStep(simulationStep), generator(generator), componentsArray(componentsArray),
+	dirFaultModes(dirFaultModes), dirFailureSpecs(dirFailureSpecs)
 {
-	return componentsArray;
+	ParamsController::verboseMode = verboseMode;
+	ParamsController::numberOfComponents = 0;
 }
-
 
 void ParamsController::loadFailureSpecs()
 {
 	string line, word, componentName;
 	double faultRate = 0.0;
-	int countBetweenFailures = 0;
+	int countBetweenFailures = 0, componentId = 0;
 
-	faultRatesFile.open("data/SimulationMemory/ComponentsFailureSpecs.csv", ios::in);
+	faultRatesFile.open(dirFailureSpecs + "/ComponentsFailureSpecs.csv", ios::in);
 
 	while (getline(faultRatesFile, line)) {
 		stringstream strstream(line);
@@ -37,10 +52,15 @@ void ParamsController::loadFailureSpecs()
 
 		Component newComponent(
 			componentName,
+			componentId,
 			faultRate,
 			simulationStep,
 			countBetweenFailures,
-			generator);
+			generator,
+			dirFaultModes,
+			verboseMode);
+
+		componentId++;
 
 		componentsArray.push_back(newComponent);
 	}

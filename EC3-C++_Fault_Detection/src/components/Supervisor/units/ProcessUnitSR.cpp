@@ -1,4 +1,4 @@
-#include "../include/ProcessUnit.h"
+#include "../include/ProcessUnitSR.h"
 #include <cmath>
 #include <vector>
 
@@ -6,64 +6,56 @@ using namespace std;
 
 /*
 
-In this case, it was used the 'reference' cpp operator ('&') so that "ProcessUnit" class directly receives
+In this case, it was used the 'reference' cpp operator ('&') so that "ProcessUnitSR" class directly receives
 the addresses of "analysisUnit" and "dataHandler" objetcs instantiated in the "Supervisor"
-class - where "Process Unit" is also created. As a result, ProcessUnit stores references to "analysisUnit"
+class - where "Process Unit" is also created. As a result, ProcessUnitSR stores references to "analysisUnit"
 and "dataHandler" objetcs as class members
 
 Obs.: When a variable of the type 'reference' is used, it is not necessary to preappend the pointer operator "*" to access
-the pointed data - it acessed simply by its name. If the operator '&' were not used,
-an undesired copy of "analysisUnit" and "dataHandler" objetcs  would be created every time ProcessUnit constructor is called.
+the pointed data - it is accessed simply by its name. If the operator '&' were not used,
+an undesired copy of "analysisUnit" and "dataHandler" objetcs  would be created every time ProcessUnitSR constructor is called.
 Moreover, reference members must be initialized using Initializer List.
 
 */
 
-ProcessUnit::ProcessUnit(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
 	double overallSilhouetteDecreaseTolerance, double silhouetteClustersDecreaseTolerance,
 	double imbalanceClustersIncreaseTolerance) : analysisUnit(analysisUnit), dataHandler(dataHandler)
 {
-	ProcessUnit::supervised = supervised;
+	ProcessUnitSR::supervised = supervised;
 
-	ProcessUnit::overallSilhouetteDecreaseTolerance = overallSilhouetteDecreaseTolerance;
-	ProcessUnit::silhouetteClustersDecreaseTolerance = silhouetteClustersDecreaseTolerance;
-	ProcessUnit::imbalanceClustersIncreaseTolerance = imbalanceClustersIncreaseTolerance;
+	ProcessUnitSR::overallSilhouetteDecreaseTolerance = overallSilhouetteDecreaseTolerance;
+	ProcessUnitSR::silhouetteClustersDecreaseTolerance = silhouetteClustersDecreaseTolerance;
+	ProcessUnitSR::imbalanceClustersIncreaseTolerance = imbalanceClustersIncreaseTolerance;
 
 	initializeDataHandler();
 
 	newMetrics = colvec(5, fill::zeros);
 	verboseMode = false;
 	keepPower = 0.0;
-	fuseTest = NAN;
-	silhouetteCluster1Increase = NAN;
-	silhouetteCluster2Increase = NAN;
-	imbalanceClustersIncrease = NAN;
-	overallSilhouetteIncrease = NAN;
+	fuseTest = (double NAN);
 }
 
-ProcessUnit::ProcessUnit(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
 	double overallSilhouetteDecreaseTolerance, double silhouetteClustersDecreaseTolerance,
 	double imbalanceClustersIncreaseTolerance, bool verboseMode) : analysisUnit(analysisUnit), dataHandler(dataHandler)
 {
-	ProcessUnit::supervised = supervised;
+	ProcessUnitSR::supervised = supervised;
 
-	ProcessUnit::overallSilhouetteDecreaseTolerance = overallSilhouetteDecreaseTolerance;
-	ProcessUnit::silhouetteClustersDecreaseTolerance = silhouetteClustersDecreaseTolerance;
-	ProcessUnit::imbalanceClustersIncreaseTolerance = imbalanceClustersIncreaseTolerance;
-	ProcessUnit::verboseMode = verboseMode;
+	ProcessUnitSR::overallSilhouetteDecreaseTolerance = overallSilhouetteDecreaseTolerance;
+	ProcessUnitSR::silhouetteClustersDecreaseTolerance = silhouetteClustersDecreaseTolerance;
+	ProcessUnitSR::imbalanceClustersIncreaseTolerance = imbalanceClustersIncreaseTolerance;
+	ProcessUnitSR::verboseMode = verboseMode;
 
 	initializeDataHandler();
 
 	newMetrics = colvec(5, fill::zeros);
 	keepPower = 0.0;
-	fuseTest = NAN;
-	silhouetteCluster1Increase = NAN;
-	silhouetteCluster2Increase = NAN;
-	imbalanceClustersIncrease = NAN;
-	overallSilhouetteIncrease = NAN;
+	fuseTest = (double NAN);
 
 }
 
-ProcessUnit::~ProcessUnit()
+ProcessUnitSR::~ProcessUnitSR()
 {
 	dataHandler.saveNewMetrics();
 	dataHandler.updateHistoricalData();
@@ -74,21 +66,21 @@ ProcessUnit::~ProcessUnit()
 	}
 }
 
-void ProcessUnit::attach(Supervised* supervised)
+void ProcessUnitSR::attach(Supervised* supervised)
 {
-	ProcessUnit::supervised = supervised;
+	ProcessUnitSR::supervised = supervised;
 }
 
-void ProcessUnit::newTest()
+void ProcessUnitSR::newTest()
 {
 	arma::mat data;
-	double fuseResultBurn = NAN;
-	double fuseResultNotBurn = NAN;
+	double fuseResultBurn = (double NAN);
+	double fuseResultNotBurn = (double NAN);
 	bool failure = false;
 
 	if (verboseMode) {
 		cout << "Begin of a new test " << endl;
-		cout << "Iteration of the initiated test: " << iteration + 1 << endl;
+		cout << "Iteration of the initiated test: " << *iterationPointer + 1 << endl;
 	}
 
 	keepPower = 1.0;
@@ -113,7 +105,6 @@ void ProcessUnit::newTest()
 	}
 
 	dataHandler.insertNewHistoricalData(fuseResultBurn, fuseResultNotBurn);
-	iteration = dataHandler.getIteration();
 	data = dataHandler.getHistoricalDataToCluster();
 
 	analysisUnit.setDataToCluster(data);
@@ -139,15 +130,16 @@ void ProcessUnit::newTest()
 
 	else if (verboseMode) {
 		cout << "End of the test. No failure detected. " << endl;
-		cout << "Iteration of the finished test: " << iteration << endl;
+		cout << "Iteration of the finished test: " << *iterationPointer << endl;
 	}
 
 }
 
-faultDiagnosisType& ProcessUnit::detectFailure()
+faultDiagnosisType ProcessUnitSR::detectFailure()
 {
 	double silhouette1NewMetrics, silhouette2NewMetrics, imbalanceClustersNewMetrics, overallSilhouetteNewMetrics;
 	double silhouette1PreviousMetrics, silhouette2PreviousMetrics, imbalanceClustersPreviousMetrics, overallSilhouettePreviousMetrics;
+	double silhouetteCluster1Increase, silhouetteCluster2Increase, imbalanceClustersIncrease, overallSilhouetteIncrease;
 	bool failure = false;
 	vector<failureMetricIndicatorType> failureIndicators;
 
@@ -183,24 +175,24 @@ faultDiagnosisType& ProcessUnit::detectFailure()
 	// ! compare metrics to determine failure
 	if (silhouetteCluster1Increase <= -silhouetteClustersDecreaseTolerance) {
 		failure = true;
-		failureMetricIndicatorType failureIndicator = { silhouetteCluster1, silhouetteCluster1Increase, silhouetteClustersDecreaseTolerance, iteration };
+		failureMetricIndicatorType failureIndicator = { silhouetteCluster1, silhouetteCluster1Increase, silhouetteClustersDecreaseTolerance, *iterationPointer };
 		failureIndicators.push_back(failureIndicator);
 	}
 	if (silhouetteCluster2Increase <= -silhouetteClustersDecreaseTolerance) {
 		failure = true;
-		failureMetricIndicatorType failureIndicator = { silhouetteCluster2, silhouetteCluster2Increase, silhouetteClustersDecreaseTolerance, iteration };
+		failureMetricIndicatorType failureIndicator = { silhouetteCluster2, silhouetteCluster2Increase, silhouetteClustersDecreaseTolerance, *iterationPointer };
 		failureIndicators.push_back(failureIndicator);
 	}
 
 	if (imbalanceClustersIncrease > imbalanceClustersIncreaseTolerance) {
 		failure = true;
-		failureMetricIndicatorType failureIndicator = { imbalanceNumPoints, imbalanceClustersIncrease, imbalanceClustersIncreaseTolerance, iteration };
+		failureMetricIndicatorType failureIndicator = { imbalanceNumPoints, imbalanceClustersIncrease, imbalanceClustersIncreaseTolerance, *iterationPointer };
 		failureIndicators.push_back(failureIndicator);
 	}
 
 	if (overallSilhouetteIncrease <= -overallSilhouetteDecreaseTolerance) {
 		failure = true;
-		failureMetricIndicatorType failureIndicator = { overallSilhouette, overallSilhouetteIncrease, overallSilhouetteDecreaseTolerance, iteration };
+		failureMetricIndicatorType failureIndicator = { overallSilhouette, overallSilhouetteIncrease, overallSilhouetteDecreaseTolerance, *iterationPointer };
 		failureIndicators.push_back(failureIndicator);
 	}
 
@@ -209,26 +201,26 @@ faultDiagnosisType& ProcessUnit::detectFailure()
 	return faultDiagnosis;
 }
 
-void ProcessUnit::initializeDataHandler()
+void ProcessUnitSR::initializeDataHandler()
 {
 	dataHandler.loadHistoricalData();
 	dataHandler.loadOldMetrics();
 
 	previousMetrics = dataHandler.getOldMetrics();
-	iteration = dataHandler.getIteration();
+	iterationPointer = dataHandler.getIterationPointer();
 
 	if (verboseMode) {
 		std::cout << "Data Handler initialized" << endl;
-		std::cout << "Current Iteration: " << iteration << endl;
+		std::cout << "Current Iteration: " << *iterationPointer << endl;
 	}
 }
 
-void ProcessUnit::provideTestInput(double testInput)
+void ProcessUnitSR::provideTestInput(double testInput)
 {
 	(*supervised).setTestInput(testInput);
 }
 
-double ProcessUnit::receiveTestOutput()
+double ProcessUnitSR::receiveTestOutput()
 {
 	return (*supervised).getTestOutput();
 }

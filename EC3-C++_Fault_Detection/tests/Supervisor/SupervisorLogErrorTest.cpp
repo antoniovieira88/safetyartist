@@ -7,17 +7,15 @@ static string componentStr[] =
   "ComponentA",
   "ComponentB",
   "ComponentC",
-  "ComponentD",
-  "ComponentE",
-  "ComponentF"
+  "ComponentD"
 };
 
 int SupervisorLogErrorTest()
 {
 
 	int iteration;
-	Supervisor supervisor;
-	Supervised supervised;
+	Supervisor supervisor(1000, 0.0, 0.0, 0.0, true);
+	Supervised supervised(1);
 	ofstream simulationDataFile;
 	string logError;
 

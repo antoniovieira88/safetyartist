@@ -1,26 +1,38 @@
-#include <vector>
-#include <string>
-#include <fstream>
-#include <sstream>
-#include <cmath>
 #include "../../../utils/components/include/Component.h"
 
 using namespace std;
 
 class ParamsController {
 public:
-	ParamsController(double simulationStep, mt19937& generator);
+	ParamsController(
+		double simulationStep,
+		mt19937& generator,
+		vector<Component>& componentsArray,
+		string dirFailureSpecs,
+		string dirFaultModes);
 
-	vector<Component>& getComponentsArray();
+	ParamsController(
+		double simulationStep,
+		mt19937& generator,
+		vector<Component>& componentsArray,
+		string dirFailureSpecs,
+		string dirFaultModes,
+		bool verboseMode);
+
+	void loadFailureSpecs();
 
 private:
-	vector<Component> componentsArray;
-	void loadFailureSpecs();
 	fstream faultRatesFile;
 	int numberOfComponents;
+
+	const string dirFaultModes;
+	const string dirFailureSpecs;
 
 	const double simulationStep;
 
 	mt19937& generator;
+	vector<Component>& componentsArray;
+
+	bool verboseMode;
 
 };

@@ -1,24 +1,24 @@
 #include "include/Supervised.h"
 
-Supervised::Supervised(): correctOutputGenerator(0.1, 0.9, 0.0, 0.3, 0.7, 1.0, 0.1, 0.01, 1)
+Supervised::Supervised(int seed) :
+	generator(seed),
+	correctOutputGenerator(0.1, 0.9, 0.0, 0.2, 0.8, 1.0, 0.1, 0.001, generator),
+	failedOutputGenerator(0.1, 0.001, generator),
+	processUnit(correctOutputGenerator, failedOutputGenerator)
 {
-	testInput = NAN;
-	testOutput = NAN;
-	stdDeviationTest = NAN;
 }
 
 void Supervised::setTestInput(double input)
 {
-	testInput = input;
-	testOutput = correctOutputGenerator.generateOutput(testInput);
-	stdDeviationTest = correctOutputGenerator.getStdDeviation();
+	processUnit.setTestInput(input);
 }
 
-void Supervised::setTestScenario()
+void Supervised::setTestScenario(bool fail)
 {
+	processUnit.setTestScenario(fail);
 }
 
 double Supervised::getTestOutput()
 {
-	return testOutput;
+	return processUnit.getTestOutput();
 }

@@ -76,6 +76,9 @@
     <Filter Include="Source Files\components">
       <UniqueIdentifier>{b7946dfd-b0bc-4292-9871-f2a99e63a8a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tests\SimulationController">
+      <UniqueIdentifier>{73dbf121-4ad9-4490-8dca-c22484a89c51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app\main.cpp">
@@ -94,9 +97,6 @@
       <Filter>Source Files\Supervisor\units</Filter>
     </ClCompile>
     <ClCompile Include="src\components\Supervisor\units\DataHandler.cpp">
-      <Filter>Source Files\Supervisor\units</Filter>
-    </ClCompile>
-    <ClCompile Include="src\components\Supervisor\units\ProcessUnit.cpp">
       <Filter>Source Files\Supervisor\units</Filter>
     </ClCompile>
     <ClCompile Include="src\components\Supervisor\Supervisor.cpp">
@@ -128,6 +128,27 @@
     </ClCompile>
     <ClCompile Include="src\utils\components\Component.cpp">
       <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\SimulationController\LoadFaultModesTest.cpp">
+      <Filter>Source Files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\SimulationController\units\FailureController.cpp">
+      <Filter>Source Files\SimulationController\units</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnitSC.cpp">
+      <Filter>Source Files\SimulationController\units</Filter>
+    </ClCompile>
+    <ClCompile Include="tests\SimulationController\SimulationControllerTest1.cpp">
+      <Filter>Source Files\tests</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Supervisor\units\ProcessUnitSR.cpp">
+      <Filter>Source Files\Supervisor\units</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Supervised\units\FailedOutputGenerator.cpp">
+      <Filter>Source Files\Supervised\units</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\Supervised\units\ProcessUnitSD.cpp">
+      <Filter>Source Files\Supervised\units</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -167,9 +188,6 @@
     <ClInclude Include="src\components\Supervisor\include\DataHandler.h">
       <Filter>Header Files\Supervisor\units</Filter>
     </ClInclude>
-    <ClInclude Include="src\components\Supervisor\include\ProcessUnit.h">
-      <Filter>Header Files\Supervisor\units</Filter>
-    </ClInclude>
     <ClInclude Include="src\components\Supervised\include\CorrectOutputGenerator.h">
       <Filter>Header Files\Supervised\units</Filter>
     </ClInclude>
@@ -179,11 +197,32 @@
     <ClInclude Include="src\components\Supervised\include\Supervised.h">
       <Filter>Header Files\Supervised</Filter>
     </ClInclude>
-    <ClInclude Include="tests\Supervisor\include\SupervisorLogErrorTest.h">
-      <Filter>Header Files\tests\Supervisor</Filter>
-    </ClInclude>
     <ClInclude Include="src\utils\components\include\Component.h">
       <Filter>Header Files\utils</Filter>
     </ClInclude>
+    <ClInclude Include="tests\SimulationController\include\LoadFaultModesTest.h">
+      <Filter>Header Files\tests\SimulationController</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\Supervisor\include\SupervisorLogErrorTest.h">
+      <Filter>Header Files\tests\Supervisor</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\SimulationController\include\FailureController.h">
+      <Filter>Header Files\SimulationController\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\SimulationController\include\ProcessUnitSC.h">
+      <Filter>Header Files\SimulationController\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Supervisor\include\ProcessUnitSR.h">
+      <Filter>Header Files\Supervisor\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Supervised\include\FailedOutputGenerator.h">
+      <Filter>Header Files\Supervised\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\Supervised\include\ProcessUnitSD.h">
+      <Filter>Header Files\Supervised\units</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
 </Project>

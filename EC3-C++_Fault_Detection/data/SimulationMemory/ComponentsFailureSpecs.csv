@@ -1,8 +1,4 @@
- ComponentA,0.1,1
- ComponentB,0.2,2
- ComponentC,0.3,3
- ComponentD,0.4,4
- ComponentE,0.5,5
- ComponentF,0.6,6
- componentA,0,0,5
- componentA,1,0,2
+ComponentA,0.01,0
+ComponentB,0.02,0
+ComponentC,0.03,0
+ComponentD,0.04,0

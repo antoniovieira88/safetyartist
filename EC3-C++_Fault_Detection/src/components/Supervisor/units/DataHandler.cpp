@@ -8,7 +8,7 @@ using namespace arma;
 
 DataHandler::DataHandler(int maxNumberOfRegisters)
 {
-	iteration = 0;
+	DataHandler::iteration = 0;
 	DataHandler::numberOfRegisters = 0;
 	DataHandler::maxNumberOfRegisters = maxNumberOfRegisters;
 	previousMetrics = colvec(5, fill::zeros);
@@ -87,6 +87,7 @@ void DataHandler::loadHistoricalData() {
 		numberOfRegisters = size;
 
 		if (numberOfRegisters > 0) {
+			// here the iteration is updated for the entire application
 			iteration = historicalData(0, numberOfRegisters - 1);
 			historicalDataToCluster = historicalData.submat(2, 0, 2, numberOfRegisters - 1);
 		}
@@ -102,6 +103,7 @@ void DataHandler::loadHistoricalData() {
 }
 
 void DataHandler::insertNewHistoricalData(double fuse_result_burn, double fuse_result_not_burn) {
+	// here the iteration is updated for the entire application
 	iteration++;
 
 	if (numberOfRegisters == maxNumberOfRegisters) {
@@ -170,6 +172,6 @@ void DataHandler::updateSimulationHistoricalMetrics(colvec newMetrics) {
 	simulationDataFile.close();
 }
 
-int DataHandler::getIteration() {
-	return iteration;
+int* DataHandler::getIterationPointer() {
+	return &iteration;
 }

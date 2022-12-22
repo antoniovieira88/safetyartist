@@ -13,7 +13,8 @@ CorrectOutputGenerator::CorrectOutputGenerator(
 	double maxFuseResultNotBurn,
 	double maxStdDeviation,
 	double uncertaintyRangeInput,
-	unsigned int seed) : OutputGenerator(
+	mt19937& generator)
+	: OutputGenerator(
 		meanValueFuseResultBurn,
 		meanValueFuseResultNotBurn,
 		minFuseResultBurn,
@@ -22,5 +23,5 @@ CorrectOutputGenerator::CorrectOutputGenerator(
 		maxFuseResultNotBurn,
 		maxStdDeviation,
 		uncertaintyRangeInput,
-		seed
+		generator
 	) {};

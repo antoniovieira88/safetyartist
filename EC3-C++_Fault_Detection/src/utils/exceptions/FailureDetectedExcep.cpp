@@ -5,7 +5,6 @@ FailureDetectedExcep::FailureDetectedExcep(faultDiagnosisType faultDiagnosis)
 	failureIndicators = faultDiagnosis.failureIndicators;
 	errorMessage = "Failure detected by supervisor\n";
 	buildLogError();
-
 }
 
 vector<failureMetricIndicatorType> FailureDetectedExcep::getFailureIndicators()

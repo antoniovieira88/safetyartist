@@ -1,7 +1,23 @@
 #include "include/Supervisor.h"
 
 
-Supervisor::Supervisor(): analysisUnit(2), dataHandler(1000), processUnit(analysisUnit, dataHandler, NULL, 0.0, 0.0, 0.0, true)
+Supervisor::Supervisor(
+	int maxNumberOfRegisters,
+	double overallSilhouetteTolerance,
+	double silhouetteDiffTolerance,
+	double numberOfPointsPerClusterDiffTolerance,
+	bool verboseMode)
+	:
+	analysisUnit(2),
+	dataHandler(maxNumberOfRegisters),
+	processUnit(
+		analysisUnit,
+		dataHandler,
+		NULL,
+		overallSilhouetteTolerance,
+		silhouetteDiffTolerance,
+		numberOfPointsPerClusterDiffTolerance,
+		verboseMode)
 {}
 
 void Supervisor::attach(Supervised* supervised) {
@@ -10,4 +26,9 @@ void Supervisor::attach(Supervised* supervised) {
 
 void Supervisor::newTest() {
 	processUnit.newTest();
+}
+
+int* Supervisor::getIterationPointer()
+{
+	return dataHandler.getIterationPointer();
 }

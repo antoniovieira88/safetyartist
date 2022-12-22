@@ -12,7 +12,9 @@ OutputGenerator::OutputGenerator(
 	double maxFuseResultNotBurn,
 	double maxStdDeviation,
 	double uncertaintyRangeInput,
-	unsigned int seed)
+	mt19937& generator)
+	:
+	generator(generator)
 {
 	OutputGenerator::meanValueFuseResultBurn = meanValueFuseResultBurn;
 	OutputGenerator::meanValueFuseResultNotBurn = meanValueFuseResultNotBurn;
@@ -20,23 +22,39 @@ OutputGenerator::OutputGenerator(
 	OutputGenerator::maxFuseResultBurn = maxFuseResultBurn;
 	OutputGenerator::minFuseResultNotBurn = minFuseResultNotBurn;
 	OutputGenerator::maxFuseResultNotBurn = maxFuseResultNotBurn;
-	OutputGenerator::maxStdDeviation = maxStdDeviation;
-	OutputGenerator::seed = seed;
 	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
-	OutputGenerator::generator = mt19937{};
+	uniformDist = uniform_real_distribution<double>{ 0.0, maxStdDeviation };
 	stdDeviation = 0.0;
-	generator.seed(seed);
+}
+
+OutputGenerator::OutputGenerator(
+	double maxStdDeviation,
+	double uncertaintyRangeInput,
+	mt19937& generator)
+	:
+	generator(generator)
+{
+	OutputGenerator::meanValueFuseResultBurn = (double NAN);
+	OutputGenerator::meanValueFuseResultNotBurn = (double NAN);
+	OutputGenerator::minFuseResultBurn = (double NAN);
+	OutputGenerator::maxFuseResultBurn = (double NAN);
+	OutputGenerator::minFuseResultNotBurn = (double NAN);
+	OutputGenerator::maxFuseResultNotBurn = (double NAN);
+	uniformDist = uniform_real_distribution<double>{ 0.0, maxStdDeviation };
+	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
+	stdDeviation = 0.0;
 }
 
 // Implementation of generateOutput method which truncates the value of fuseResult 
 // if it is out of the specifed bounds
 
-double OutputGenerator::generateOutput(double fuseTest)
+double OutputGenerator::generateOutputTruncated(double fuseTest)
 {
 	double fuseResult = 0.0;
 	double meanValueFuseResult = 0.0;
 	bool burnTest = false;
-	uniform_real_distribution<double> uniformDist{ 0.0, maxStdDeviation };
+
+
 	stdDeviation = uniformDist(generator);
 
 	if (abs(fuseTest - 0.0) < uncertaintyRangeInput) {
@@ -90,12 +108,12 @@ double OutputGenerator::truncateFuseResult(double fuseResult, bool burnTest) {
 // Implementation of generateOutput method which raffles a value for fuseResult again 
 // if its value is out of the specifed bounds
 
-double OutputGenerator::generateOutput2(double fuseTest)
+double OutputGenerator::generateOutput(double fuseTest)
 {
 	double fuseResult = -1.0;
 	double meanValueFuseResult = -1.0;
 	bool burnTest = false;
-	uniform_real_distribution<double> uniformDist{ 0.0, maxStdDeviation };
+
 	stdDeviation = uniformDist(generator);
 
 	if (abs(fuseTest - 0.0) < uncertaintyRangeInput) {
@@ -130,3 +148,4 @@ bool OutputGenerator::checkFuseResultOutOfBounds(double fuseResult, bool burnTes
 	}
 	return (fuseResult > max) || (fuseResult < min);
 };
+

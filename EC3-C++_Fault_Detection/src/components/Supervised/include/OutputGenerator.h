@@ -3,9 +3,11 @@
 
 using namespace std;
 
+#pragma once
 class OutputGenerator {
 public:
-	OutputGenerator(double meanValueFuseResultBurn,
+	OutputGenerator(
+		double meanValueFuseResultBurn,
 		double meanValueFuseResultNotBurn,
 		double minFuseResultBurn,
 		double maxFuseResultBurn,
@@ -13,10 +15,15 @@ public:
 		double maxFuseResultNotBurn,
 		double maxStdDeviation,
 		double uncertaintyRangeInput,
-		unsigned int seed);
+		mt19937& generator);
+
+	OutputGenerator(
+		double maxStdDeviation,
+		double uncertaintyRangeInput,
+		mt19937& generator);
 
 	double generateOutput(double fuseTest);
-	double generateOutput2(double fuseTest);
+	double generateOutputTruncated(double fuseTest);
 
 	double getStdDeviation();
 
@@ -28,11 +35,9 @@ protected:
 	double minFuseResultNotBurn, maxFuseResultNotBurn;
 
 	double uncertaintyRangeInput;
-	unsigned int seed;
-	double maxStdDeviation;
 	double stdDeviation;
 
-	default_random_engine generator;
+	mt19937& generator;
 	uniform_real_distribution<double> uniformDist;
 
 	double truncateFuseResult(double fuseResult, bool burnTest);

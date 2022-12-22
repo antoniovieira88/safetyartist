@@ -1,5 +1,4 @@
 #include "../enumerators/enum.h"
-#include <vector>
 
 #pragma once
 
@@ -8,4 +7,18 @@ struct failureMetricIndicatorType {
 	double variation;
 	double tolerance;
 	int iteration;
+};
+
+struct FailureScenarioType {
+	double meanValueFuseResultBurn;
+	double meanValueFuseResultNotBurn;
+	double minFuseResultBurn;
+	double maxFuseResultBurn;
+	double minFuseResultNotBurn;
+	double maxFuseResultNotBurn;
+};
+
+struct TestScenarioType {
+	int numberOfFailedComponents;
+	FailureScenarioType* singleFailureScenario;
 };

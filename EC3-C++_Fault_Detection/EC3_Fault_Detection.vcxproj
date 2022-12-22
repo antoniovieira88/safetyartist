@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,14 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\components\SimulationController\SimulationController.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\FailureController.cpp" />
     <ClCompile Include="src\components\SimulationController\units\ParamsController.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnitSC.cpp" />
     <ClCompile Include="src\components\Supervised\Supervised.cpp" />
     <ClCompile Include="src\components\Supervised\units\CorrectOutputGenerator.cpp" />
+    <ClCompile Include="src\components\Supervised\units\FailedOutputGenerator.cpp" />
     <ClCompile Include="src\components\Supervised\units\OutputGenerator.cpp" />
+    <ClCompile Include="src\components\Supervised\units\ProcessUnitSD.cpp" />
     <ClCompile Include="src\components\Supervisor\Supervisor.cpp" />
     <ClCompile Include="src\components\Supervisor\units\AnalysisUnit.cpp" />
     <ClCompile Include="src\components\Supervisor\units\DataHandler.cpp" />
-    <ClCompile Include="src\components\Supervisor\units\ProcessUnit.cpp" />
+    <ClCompile Include="src\components\Supervisor\units\ProcessUnitSR.cpp" />
     <ClCompile Include="src\utils\components\Component.cpp" />
     <ClCompile Include="src\utils\exceptions\FailureDetectedExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp" />
@@ -35,17 +39,23 @@
     <ClCompile Include="src\app\main.cpp" />
     <ClCompile Include="src\utils\kmeans\KMeans.cpp" />
     <ClCompile Include="src\utils\kmeans\SilhouetteScore.cpp" />
+    <ClCompile Include="tests\SimulationController\LoadFaultModesTest.cpp" />
+    <ClCompile Include="tests\SimulationController\SimulationControllerTest1.cpp" />
     <ClCompile Include="tests\Supervisor\SupervisorLogErrorTest.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\components\SimulationController\include\FailureController.h" />
     <ClInclude Include="src\components\SimulationController\include\ParamsController.h" />
+    <ClInclude Include="src\components\SimulationController\include\ProcessUnitSC.h" />
     <ClInclude Include="src\components\SimulationController\include\SimulationController.h" />
     <ClInclude Include="src\components\Supervised\include\CorrectOutputGenerator.h" />
+    <ClInclude Include="src\components\Supervised\include\FailedOutputGenerator.h" />
     <ClInclude Include="src\components\Supervised\include\OutputGenerator.h" />
+    <ClInclude Include="src\components\Supervised\include\ProcessUnitSD.h" />
     <ClInclude Include="src\components\Supervised\include\Supervised.h" />
     <ClInclude Include="src\components\Supervisor\include\AnalysisUnit.h" />
     <ClInclude Include="src\components\Supervisor\include\DataHandler.h" />
-    <ClInclude Include="src\components\Supervisor\include\ProcessUnit.h" />
+    <ClInclude Include="src\components\Supervisor\include\ProcessUnitSR.h" />
     <ClInclude Include="src\components\Supervisor\include\Supervisor.h" />
     <ClInclude Include="src\utils\components\include\Component.h" />
     <ClInclude Include="src\utils\enumerators\enum.h" />
@@ -55,7 +65,11 @@
     <ClInclude Include="src\utils\kmeans\include\KMeans.h" />
     <ClInclude Include="src\utils\kmeans\include\SilhouetteScore.h" />
     <ClInclude Include="src\utils\structs\structs.h" />
+    <ClInclude Include="tests\SimulationController\include\LoadFaultModesTest.h" />
     <ClInclude Include="tests\Supervisor\include\SupervisorLogErrorTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

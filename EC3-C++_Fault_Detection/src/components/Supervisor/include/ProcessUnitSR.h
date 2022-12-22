@@ -5,17 +5,17 @@
 #include "../../../utils/structs/structs.h"
 #include "../../../utils/exceptions/include/FailureDetectedExcep.h"
 
-class ProcessUnit {
+class ProcessUnitSR {
 public:
-	ProcessUnit(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
 		double overallSilhouetteTolerance, double silhouetteDiffTolerance,
 		double numberOfPointsPerClusterDiffTolerance);
 
-	ProcessUnit(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
 		double overallSilhouetteTolerance, double silhouetteDiffTolerance,
 		double numberOfPointsPerClusterDiffTolerance, bool verboseMode);
 
-	~ProcessUnit();
+	~ProcessUnitSR();
 
 	void attach(Supervised* supervised);
 	void newTest();
@@ -26,12 +26,11 @@ private:
 	Supervised* supervised;
 
 	bool verboseMode;
-	int iteration;
+	int* iterationPointer;
 
 	double fuseTest, keepPower;
 	double overallSilhouetteDecreaseTolerance, silhouetteClustersDecreaseTolerance, imbalanceClustersIncreaseTolerance;
-	double silhouetteCluster1Increase, silhouetteCluster2Increase, imbalanceClustersIncrease, overallSilhouetteIncrease;
-	faultDiagnosisType& detectFailure();
+	faultDiagnosisType detectFailure();
 
 	colvec previousMetrics, newMetrics;
 

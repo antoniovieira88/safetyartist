@@ -1,14 +1,17 @@
-#include "CorrectOutputGenerator.h"
+#include "ProcessUnitSD.h"
 
 class Supervised {
-	public:
-		Supervised();
-		void setTestInput(double input);
-		void setTestScenario();
-		double getTestOutput();
+public:
+	Supervised(int seed);
+	void setTestInput(double input);
+	void setTestScenario(bool fail);
+	double getTestOutput();
 
-	private:
-		double testInput, testOutput, stdDeviationTest;
-		CorrectOutputGenerator correctOutputGenerator;
-		
+private:
+	mt19937 generator;
+
+	CorrectOutputGenerator correctOutputGenerator;
+	FailedOutputGenerator failedOutputGenerator;
+	ProcessUnitSD processUnit;
+
 };

@@ -1,14 +1,20 @@
-#include "ProcessUnit.h"
+#include "ProcessUnitSR.h"
 
 class Supervisor
 {
 public:
-	Supervisor();
-	void attach(Supervised *supervised);
+	Supervisor(
+		int maxNumberOfRegisters,
+		double overallSilhouetteTolerance,
+		double silhouetteDiffTolerance,
+		double numberOfPointsPerClusterDiffTolerance,
+		bool verboseMode);
+	void attach(Supervised* supervised);
 	void newTest();
+	int* getIterationPointer();
 
 private:
 	AnalysisUnit analysisUnit;
 	DataHandler dataHandler;
-	ProcessUnit processUnit;
+	ProcessUnitSR processUnit;
 };
