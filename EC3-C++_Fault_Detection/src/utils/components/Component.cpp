@@ -7,7 +7,6 @@ Component::Component(
 	int componentId,
 	double faultRate,
 	double simulationStep,
-	int initialCountBetweenFailures,
 	mt19937& generator,
 	string dirFaultModes
 ) :
@@ -17,14 +16,14 @@ Component::Component(
 	simulationStep(simulationStep),
 	componentId(componentId)
 {
-	Component::countBetweenFailures = initialCountBetweenFailures;
+	Component::countBetweenFailures = 0;
 
 	Component::isFaulty = false;
 
 	// the -1 value for currentFailureMode means that the component is operating without any fault
 	Component::currentFaultModeId = -1;
 
-	loadFailModes(dirFaultModes);
+	loadFaultModes(dirFaultModes);
 
 	discrete_distribution<> discreteDist(faultModesWeightArray.begin(), faultModesWeightArray.end());
 	Component::discreteDist = discreteDist;
@@ -42,7 +41,6 @@ Component::Component(
 	int componentId,
 	double faultRate,
 	double simulationStep,
-	int initialCountBetweenFailures,
 	mt19937& generator,
 	string dirFaultModes,
 	bool verboseMode
@@ -53,14 +51,14 @@ Component::Component(
 	simulationStep(simulationStep),
 	componentId(componentId)
 {
-	Component::countBetweenFailures = initialCountBetweenFailures;
+	Component::countBetweenFailures = 0;
 
 	Component::isFaulty = false;
 
 	// the -1 value for currentFailureMode means that the component is operating without any fault
 	Component::currentFaultModeId = -1;
 
-	loadFailModes(dirFaultModes);
+	loadFaultModes(dirFaultModes);
 
 	discrete_distribution<> discreteDist(faultModesWeightArray.begin(), faultModesWeightArray.end());
 	Component::discreteDist = discreteDist;
@@ -71,7 +69,7 @@ Component::Component(
 	Component::verboseMode = verboseMode;
 }
 
-void Component::loadFailModes(string dir)
+void Component::loadFaultModes(string dir)
 {
 	fstream faultModesFile;
 	string line, word;
@@ -80,22 +78,87 @@ void Component::loadFailModes(string dir)
 
 	faultModesFile.open(dir + "/" + name + ".csv", ios::in);
 
+	// the first line corresponds to the header, so it is ignored
+	getline(faultModesFile, line);
+
 	while (getline(faultModesFile, line)) {
 		stringstream strstream(line);
-		getline(strstream, word, ','); // the first word of the line is considered to be the failure mode name
+
+		// the first word of the line is considered to be the fault mode id.
+		// in the file, it serves only as an indicator showing the user which id
+		// the system will consider for that fault mode. it has no impact in
+		// program's operation
+		getline(strstream, word, ',');
+
+		// the second word of the line is considered to be the fault mode name
+		getline(strstream, word, ',');
 		faultModesArray.push_back(word);
-		getline(strstream, word, ','); // the second word of the line is considered to be the failure mode weight
+
+		// the third word of the line is considered to be the fault mode weight
+		getline(strstream, word, ',');
 		faultModeWeight = stod(word);
 		faultModesWeightArray.push_back(faultModeWeight);
+
+		loadSingleFailureScenarioFromFile(strstream, word);
 	}
 
 	faultModesFile.close();
+}
+
+void Component::loadSingleFailureScenarioFromFile(
+	stringstream& strstream,
+	string& word)
+{
+	//failure scenario params expected for the ocurrence of a single fault mode
+	FailureScenarioType singleFailureScenario;
+
+	getline(strstream, word, ',');
+	singleFailureScenario.meanValueFuseResultBurn = stod(word);
+
+	getline(strstream, word, ',');
+	singleFailureScenario.meanValueFuseResultNotBurn = stod(word);
+
+	getline(strstream, word, ',');
+	singleFailureScenario.minFuseResultBurn = stod(word);
+
+	getline(strstream, word, ',');
+	singleFailureScenario.maxFuseResultBurn = stod(word);
+
+	getline(strstream, word, ',');
+	singleFailureScenario.minFuseResultNotBurn = stod(word);
+
+	getline(strstream, word, ',');
+	singleFailureScenario.maxFuseResultNotBurn = stod(word);
+
+	singleFailureScenarioArray.push_back(singleFailureScenario);
 }
 
 void Component::repair()
 {
 	isFaulty = false;
 	countBetweenFailures = 0;
+	currentFaultModeId = -1;
+
+}
+
+void Component::setCountBetweenFailures(int countBetweenFailures)
+{
+	Component::countBetweenFailures = countBetweenFailures;
+	calculateReliability();
+}
+
+void Component::setFaultMode(int faultModeId)
+{
+	currentFaultModeId = faultModeId;
+
+	if (faultModeId == -1) {
+		isFaulty = false;
+	}
+	else {
+		isFaulty = true;
+		countBetweenFailures = infinity;
+		reliability = 0.0;
+	}
 }
 
 void Component::calculateReliability()
@@ -136,6 +199,11 @@ int Component::getCurrentFaultModeId()
 	return currentFaultModeId;
 }
 
+int Component::getCountBetweenFailures()
+{
+	return countBetweenFailures;
+}
+
 double Component::getReliability()
 {
 	return reliability;
@@ -152,5 +220,12 @@ string Component::getCurrentFaultModeName()
 
 	return faultModesArray[currentFaultModeId];
 
+}
+
+FailureScenarioType* Component::getSingleFailureScenarioPointer()
+{
+	if (currentFaultModeId == -1) return nullptr;
+
+	return &singleFailureScenarioArray[currentFaultModeId];
 }
 

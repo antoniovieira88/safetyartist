@@ -1,0 +1,5 @@
+name,faultModeId,countBetweenFailures
+ComponentA,-1,13
+ComponentB,1,inf
+ComponentC,3,inf
+ComponentD,0,inf

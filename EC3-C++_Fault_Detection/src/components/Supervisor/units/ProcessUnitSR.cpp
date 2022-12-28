@@ -22,7 +22,7 @@ ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandle
 	double overallSilhouetteDecreaseTolerance, double silhouetteClustersDecreaseTolerance,
 	double imbalanceClustersIncreaseTolerance) : analysisUnit(analysisUnit), dataHandler(dataHandler)
 {
-	ProcessUnitSR::supervised = supervised;
+	ProcessUnitSR::supervisedPointer = supervised;
 
 	ProcessUnitSR::overallSilhouetteDecreaseTolerance = overallSilhouetteDecreaseTolerance;
 	ProcessUnitSR::silhouetteClustersDecreaseTolerance = silhouetteClustersDecreaseTolerance;
@@ -40,7 +40,7 @@ ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandle
 	double overallSilhouetteDecreaseTolerance, double silhouetteClustersDecreaseTolerance,
 	double imbalanceClustersIncreaseTolerance, bool verboseMode) : analysisUnit(analysisUnit), dataHandler(dataHandler)
 {
-	ProcessUnitSR::supervised = supervised;
+	ProcessUnitSR::supervisedPointer = supervised;
 
 	ProcessUnitSR::overallSilhouetteDecreaseTolerance = overallSilhouetteDecreaseTolerance;
 	ProcessUnitSR::silhouetteClustersDecreaseTolerance = silhouetteClustersDecreaseTolerance;
@@ -66,21 +66,25 @@ ProcessUnitSR::~ProcessUnitSR()
 	}
 }
 
-void ProcessUnitSR::attach(Supervised* supervised)
+void ProcessUnitSR::attach(Supervised* supervisedPointer)
 {
-	ProcessUnitSR::supervised = supervised;
+	ProcessUnitSR::supervisedPointer = supervisedPointer;
+
+	if (verboseMode) {
+		cout << endl << "Supervised attached to supervisor" << endl;
+	}
 }
 
-void ProcessUnitSR::newTest()
+void ProcessUnitSR::runTest()
 {
-	arma::mat data;
+	arma::mat dataToCluster;
 	double fuseResultBurn = (double NAN);
 	double fuseResultNotBurn = (double NAN);
 	bool failure = false;
 
 	if (verboseMode) {
-		cout << "Begin of a new test " << endl;
-		cout << "Iteration of the initiated test: " << *iterationPointer + 1 << endl;
+		cout << "Begin of a new diagnostic test " << endl;
+		cout << "Iteration of the initiated diagnostic test: " << *iterationPointer + 1 << endl;
 	}
 
 	keepPower = 1.0;
@@ -105,15 +109,16 @@ void ProcessUnitSR::newTest()
 	}
 
 	dataHandler.insertNewHistoricalData(fuseResultBurn, fuseResultNotBurn);
-	data = dataHandler.getHistoricalDataToCluster();
+	dataToCluster = dataHandler.getHistoricalDataToCluster();
 
-	analysisUnit.setDataToCluster(data);
+	analysisUnit.setDataToCluster(dataToCluster);
 	analysisUnit.cluster();
 
-	previousMetrics = dataHandler.getOldMetrics();
-	newMetrics = analysisUnit.getNewMetrics();
 
+	newMetrics = analysisUnit.getNewMetrics();
 	dataHandler.insertNewMetrics(newMetrics);
+
+	previousMetrics = dataHandler.getOldMetrics();
 
 	if (verboseMode) {
 		cout << "Number of points: " << analysisUnit.getTotalNumberOfPoints() << endl;
@@ -129,10 +134,15 @@ void ProcessUnitSR::newTest()
 	}
 
 	else if (verboseMode) {
-		cout << "End of the test. No failure detected. " << endl;
-		cout << "Iteration of the finished test: " << *iterationPointer << endl;
+		cout << "-> End of the diagnostic test. No failure detected. " << endl;
+		cout << "Iteration of the finished diagnostic test: " << *iterationPointer << endl;
 	}
 
+}
+
+void ProcessUnitSR::reset()
+{
+	dataHandler.reset();
 }
 
 faultDiagnosisType ProcessUnitSR::detectFailure()
@@ -144,7 +154,7 @@ faultDiagnosisType ProcessUnitSR::detectFailure()
 	vector<failureMetricIndicatorType> failureIndicators;
 
 	if (verboseMode) {
-		std::cout << "Failure Detection process initiated" << endl;
+		cout << "Failure detection process initiated" << endl;
 	}
 
 	silhouette1NewMetrics = newMetrics[silhouetteCluster1]; // silhouette of cluster 1
@@ -166,10 +176,10 @@ faultDiagnosisType ProcessUnitSR::detectFailure()
 	overallSilhouetteIncrease = overallSilhouetteNewMetrics - overallSilhouettePreviousMetrics;
 
 	if (verboseMode) {
-		std::cout << "Increase in silhouette of cluster 1: " << silhouetteCluster1Increase << endl;
-		std::cout << "Increase in silhouette of cluster 2: " << silhouetteCluster2Increase << endl;
-		std::cout << "Increase in cluster imbalance: " << imbalanceClustersIncrease << endl;
-		std::cout << "Increase in overall silhouette: " << overallSilhouetteIncrease << endl;
+		cout << "Increase in silhouette of cluster 1: " << silhouetteCluster1Increase << endl;
+		cout << "Increase in silhouette of cluster 2: " << silhouetteCluster2Increase << endl;
+		cout << "Increase in cluster imbalance: " << imbalanceClustersIncrease << endl;
+		cout << "Increase in overall silhouette: " << overallSilhouetteIncrease << endl;
 	}
 
 	// ! compare metrics to determine failure
@@ -198,30 +208,35 @@ faultDiagnosisType ProcessUnitSR::detectFailure()
 
 	faultDiagnosisType faultDiagnosis{ failure, failureIndicators };
 
+	if (verboseMode) {
+		cout << "Failure detection process finished" << endl;
+	}
+
 	return faultDiagnosis;
 }
 
 void ProcessUnitSR::initializeDataHandler()
 {
-	dataHandler.loadHistoricalData();
-	dataHandler.loadOldMetrics();
+	int numRowsHistoricalData = dataHandler.loadHistoricalData();
+	int numRowsHistoricalMetrics = dataHandler.loadOldMetrics();
 
 	previousMetrics = dataHandler.getOldMetrics();
 	iterationPointer = dataHandler.getIterationPointer();
 
 	if (verboseMode) {
-		std::cout << "Data Handler initialized" << endl;
-		std::cout << "Current Iteration: " << *iterationPointer << endl;
+		cout << "Data Handler initialized" << endl;
+		cout << "Number of rows in HistoricalData.csv: " << numRowsHistoricalData << endl;
+		cout << "Number of rows in HistoricalMetrics.csv: " << numRowsHistoricalMetrics << endl;
 	}
 }
 
 void ProcessUnitSR::provideTestInput(double testInput)
 {
-	(*supervised).setTestInput(testInput);
+	supervisedPointer->setTestInput(testInput);
 }
 
 double ProcessUnitSR::receiveTestOutput()
 {
-	return (*supervised).getTestOutput();
+	return supervisedPointer->getTestOutput();
 }
 

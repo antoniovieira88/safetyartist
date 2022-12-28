@@ -1,0 +1,5 @@
+name,faultRate
+ComponentA,0.005
+ComponentB,0.010
+ComponentC,0.015
+ComponentD,0.020

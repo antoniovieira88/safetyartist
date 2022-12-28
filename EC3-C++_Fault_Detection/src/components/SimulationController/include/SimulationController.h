@@ -1,5 +1,6 @@
 #include "ProcessUnitSC.h"
 
+using namespace std;
 class SimulationController {
 public:
 	SimulationController(int seed, double simulationStep, string dirFailureSpecs, string dirFaultModes, bool verboseMode);
@@ -7,10 +8,12 @@ public:
 	void runSimulation(int duration);
 private:
 	vector<Component> componentsArray;
-	vector<int> testScenario;
+	TestScenarioType testScenario;
 	mt19937 generator;
 
 	ParamsController paramsController;
 	FailureController failureController;
 	ProcessUnitSC processUnit;
+
+	bool verboseMode;
 };

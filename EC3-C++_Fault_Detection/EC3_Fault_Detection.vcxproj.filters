@@ -79,6 +79,9 @@
     <Filter Include="Header Files\tests\SimulationController">
       <UniqueIdentifier>{73dbf121-4ad9-4490-8dca-c22484a89c51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\components">
+      <UniqueIdentifier>{734db3b8-619e-4509-81c6-8f6754afac5f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app\main.cpp">
@@ -197,9 +200,6 @@
     <ClInclude Include="src\components\Supervised\include\Supervised.h">
       <Filter>Header Files\Supervised</Filter>
     </ClInclude>
-    <ClInclude Include="src\utils\components\include\Component.h">
-      <Filter>Header Files\utils</Filter>
-    </ClInclude>
     <ClInclude Include="tests\SimulationController\include\LoadFaultModesTest.h">
       <Filter>Header Files\tests\SimulationController</Filter>
     </ClInclude>
@@ -220,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="src\components\Supervised\include\ProcessUnitSD.h">
       <Filter>Header Files\Supervised\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\components\include\Component.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

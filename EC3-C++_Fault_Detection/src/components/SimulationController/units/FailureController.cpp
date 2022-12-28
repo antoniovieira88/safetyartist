@@ -1,32 +1,29 @@
 #include "../include/FailureController.h"
 
-FailureController::FailureController(vector<Component>& componentsArray, vector<int>& testScenario) :
+FailureController::FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario) :
 	componentsArray(componentsArray),
 	testScenario(testScenario)
 {
 	FailureController::numberOfFailedComponents = 0;
 	FailureController::singleFailedComponentId = -1;
 	FailureController::verboseMode = false;
-
 }
 
-FailureController::FailureController(vector<Component>& componentsArray, vector<int>& testScenario, bool verboseMode) :
+FailureController::FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario, bool verboseMode) :
 	componentsArray(componentsArray),
 	testScenario(testScenario)
 {
 	FailureController::numberOfFailedComponents = 0;
 	FailureController::singleFailedComponentId = -1;
 	FailureController::verboseMode = verboseMode;
-
 }
 
 void FailureController::defineNewTestScenario()
 {
-	testScenario.clear();
+	testScenario.faultModesArray.clear();
 	numberOfFailedComponents = 0;
-	singleFailedComponentId = -1;
 
-	int failureModeId;
+	int failureModeId, singleFailedComponentId;
 
 	if (verboseMode) {
 		cout << endl << "------------------" << endl;
@@ -48,10 +45,12 @@ void FailureController::defineNewTestScenario()
 		component.generateNewOperationalState();
 
 		failureModeId = component.getCurrentFaultModeId();
-		testScenario.push_back(failureModeId);
+		testScenario.faultModesArray.push_back(failureModeId);
 
 		if (failureModeId != -1) {
 			numberOfFailedComponents++;
+			// here, the componentId of the single failed component is captured.
+			// If there are multiple fails, this information will be later ignored
 			singleFailedComponentId = component.getComponentId();
 		};
 
@@ -60,6 +59,20 @@ void FailureController::defineNewTestScenario()
 			cout << "Component fault mode: " << component.getCurrentFaultModeName() << endl;
 			cout << endl;
 		}
+	}
+
+	testScenario.numberOfFailedComponents = numberOfFailedComponents;
+
+	if (numberOfFailedComponents == 1) {
+		testScenario.failureScenarioPointer = componentsArray[singleFailedComponentId].getSingleFailureScenarioPointer();
+	}
+	else if (numberOfFailedComponents == 0) {
+		testScenario.failureScenarioPointer = nullptr;
+	}
+	else {
+		// later, there will be an if for multiple failure scenario. 
+		// At the moment, failureScenarioPointer is set to nullptr in this condition
+		testScenario.failureScenarioPointer = nullptr;
 	}
 
 	if (verboseMode) {

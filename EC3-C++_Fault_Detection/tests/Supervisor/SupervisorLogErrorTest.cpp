@@ -14,8 +14,12 @@ int SupervisorLogErrorTest()
 {
 
 	int iteration;
-	Supervisor supervisor(1000, 0.0, 0.0, 0.0, true);
-	Supervised supervised(1);
+	Supervisor supervisor(
+		1000,
+		0.1, 0.9,
+		0.01, 0.01, 0.01, true);
+
+	Supervised supervised(0.1, 0.9, 1);
 	ofstream simulationDataFile;
 	string logError;
 
@@ -28,7 +32,7 @@ int SupervisorLogErrorTest()
 
 		cout << endl << "Begin of Iteration " << iteration << endl;
 		try {
-			supervisor.newTest();
+			supervisor.runTest();
 		}
 		catch (FailureDetectedExcep& error) {
 			cout << error.what() << endl;

@@ -20,9 +20,12 @@ public:
 		bool verboseMode);
 
 	void loadFailureSpecs();
+	void setComponentsInitialOperationalState();
+	void updateComponentsOperationalStateFile();
+
+	bool isSurpervisedStartingWithFailure();
 
 private:
-	fstream faultRatesFile;
 	int numberOfComponents;
 
 	const string dirFaultModes;
@@ -33,6 +36,6 @@ private:
 	mt19937& generator;
 	vector<Component>& componentsArray;
 
-	bool verboseMode;
+	bool verboseMode, initialFaults;
 
 };

@@ -5,20 +5,22 @@ ProcessUnitSD::ProcessUnitSD(
 	FailedOutputGenerator& failedOutputGenerator)
 	:
 	correctOutputGenerator(correctOutputGenerator),
-	failedOutputGenerator(failedOutputGenerator)
+	failedOutputGenerator(failedOutputGenerator),
+	multipleFailureScenario({ 2.0, 3.0, 1.9, 2.1, 2.9, 3.1 }) // member added only for test purpose
 {
 	ProcessUnitSD::testInput = (double NAN);
 	ProcessUnitSD::testOutput = (double NAN);
 	ProcessUnitSD::stdDeviationTest = (double NAN);
 	ProcessUnitSD::fail = false;
-	ProcessUnitSD::failureScenario = {};
+	ProcessUnitSD::failureScenario = nullptr;
 }
 
 void ProcessUnitSD::setTestInput(double testInput)
 {
 	if (fail) {
 		failedOutputGenerator.setFailureScenario(failureScenario);
-		failedOutputGenerator.generateOutput(testInput);
+		testOutput = failedOutputGenerator.generateOutput(testInput);
+		stdDeviationTest = failedOutputGenerator.getStdDeviation();
 	}
 	else {
 		testOutput = correctOutputGenerator.generateOutput(testInput);
@@ -26,10 +28,19 @@ void ProcessUnitSD::setTestInput(double testInput)
 	}
 }
 
-void ProcessUnitSD::setTestScenario(bool fail)
+void ProcessUnitSD::setTestScenario(TestScenarioType& testScenario)
 {
-	ProcessUnitSD::fail = fail;
-	failureScenario = { 1.0, 2.0, 0.9, 1.1, 1.9, 2.1 };
+	int numberOfFailedComponents = testScenario.numberOfFailedComponents;
+
+	ProcessUnitSD::fail = (numberOfFailedComponents > 0);
+
+	if (fail) {
+		if (numberOfFailedComponents == 1) failureScenario = testScenario.failureScenarioPointer;
+		else failureScenario = &multipleFailureScenario; // this solution is only temporary
+	}
+	else {
+		failureScenario = nullptr;
+	}
 }
 
 double ProcessUnitSD::getTestOutput()

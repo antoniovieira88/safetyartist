@@ -7,7 +7,7 @@
 
 class ProcessUnitSR {
 public:
-	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervisedPointer,
 		double overallSilhouetteTolerance, double silhouetteDiffTolerance,
 		double numberOfPointsPerClusterDiffTolerance);
 
@@ -17,13 +17,15 @@ public:
 
 	~ProcessUnitSR();
 
-	void attach(Supervised* supervised);
-	void newTest();
+	void attach(Supervised* supervisedPointer);
+	void runTest();
+	void reset();
+	void initializeDataHandler();
 
 private:
 	AnalysisUnit& analysisUnit;
 	DataHandler& dataHandler;
-	Supervised* supervised;
+	Supervised* supervisedPointer;
 
 	bool verboseMode;
 	int* iterationPointer;
@@ -33,8 +35,6 @@ private:
 	faultDiagnosisType detectFailure();
 
 	colvec previousMetrics, newMetrics;
-
-	void initializeDataHandler();
 
 	void provideTestInput(double testInput);
 	double receiveTestOutput();

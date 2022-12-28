@@ -3,12 +3,14 @@
 
 Supervisor::Supervisor(
 	int maxNumberOfRegisters,
+	double nominalFuseResultBurn, double nominalFuseResultNotBurn,
 	double overallSilhouetteTolerance,
 	double silhouetteDiffTolerance,
 	double numberOfPointsPerClusterDiffTolerance,
 	bool verboseMode)
 	:
-	analysisUnit(2),
+	nominalFuseResults(1, 2),
+	analysisUnit(2, nominalFuseResults),
 	dataHandler(maxNumberOfRegisters),
 	processUnit(
 		analysisUnit,
@@ -18,17 +20,32 @@ Supervisor::Supervisor(
 		silhouetteDiffTolerance,
 		numberOfPointsPerClusterDiffTolerance,
 		verboseMode)
-{}
-
-void Supervisor::attach(Supervised* supervised) {
-	processUnit.attach(supervised);
+{
+	Supervisor::nominalFuseResults(0, 0) = nominalFuseResultBurn;
+	Supervisor::nominalFuseResults(0, 1) = nominalFuseResultNotBurn;
 }
 
-void Supervisor::newTest() {
-	processUnit.newTest();
+void Supervisor::attach(Supervised* supervisedPointer) {
+	processUnit.attach(supervisedPointer);
+}
+
+void Supervisor::runTest() {
+	processUnit.runTest();
+}
+
+void Supervisor::reset()
+{
+	processUnit.reset();
 }
 
 int* Supervisor::getIterationPointer()
 {
 	return dataHandler.getIterationPointer();
+}
+
+void Supervisor::reinitializeForNewSimulation()
+{
+	dataHandler.saveNewMetrics();
+	dataHandler.updateHistoricalData();
+	processUnit.initializeDataHandler();
 }

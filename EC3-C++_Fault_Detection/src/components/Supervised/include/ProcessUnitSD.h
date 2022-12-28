@@ -8,14 +8,17 @@ public:
 		FailedOutputGenerator& failedOutputGenerator
 	);
 	void setTestInput(double input);
-	void setTestScenario(bool fail);
+	void setTestScenario(TestScenarioType& testScenario);
 	double getTestOutput();
 
 private:
 	double testInput, testOutput, stdDeviationTest;
 	bool fail;
 
-	FailureScenarioType failureScenario;
+	FailureScenarioType* failureScenario;
+
+	// member added only for test purpose
+	FailureScenarioType multipleFailureScenario;
 
 	CorrectOutputGenerator& correctOutputGenerator;
 	FailedOutputGenerator& failedOutputGenerator;

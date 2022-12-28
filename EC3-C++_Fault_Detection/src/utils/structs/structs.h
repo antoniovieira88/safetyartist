@@ -1,6 +1,8 @@
 #include "../enumerators/enum.h"
+#include <vector>
 
 #pragma once
+using namespace std;
 
 struct failureMetricIndicatorType {
 	metrics metric;
@@ -20,5 +22,6 @@ struct FailureScenarioType {
 
 struct TestScenarioType {
 	int numberOfFailedComponents;
-	FailureScenarioType* singleFailureScenario;
+	vector<int> faultModesArray;
+	FailureScenarioType* failureScenarioPointer;
 };

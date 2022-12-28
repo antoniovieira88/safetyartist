@@ -6,13 +6,15 @@ public:
 
 	DataHandler(int maxNumberOfRegisters);
 
-	void loadOldMetrics();
+	int loadOldMetrics();
 
 	void saveNewMetrics();
 
 	void insertNewMetrics(colvec newMetrics);
 
-	void loadHistoricalData();
+	int loadHistoricalData();
+
+	void reset();
 
 	void insertNewHistoricalData(double fuse_result_burn, double fuse_result_not_burn);
 
@@ -27,6 +29,7 @@ public:
 	colvec getOldMetrics();
 
 	int* getIterationPointer();
+
 
 private:
 	int iteration;

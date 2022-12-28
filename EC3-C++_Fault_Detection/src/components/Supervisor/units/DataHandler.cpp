@@ -7,19 +7,26 @@
 using namespace arma;
 
 DataHandler::DataHandler(int maxNumberOfRegisters)
+	:
+	historicalData(), historicalMetrics(), historicalDataToCluster(),
+	previousMetrics(5, fill::zeros), newMetrics(colvec(5, fill::zeros))
 {
 	DataHandler::iteration = 0;
 	DataHandler::numberOfRegisters = 0;
 	DataHandler::maxNumberOfRegisters = maxNumberOfRegisters;
-	previousMetrics = colvec(5, fill::zeros);
-	newMetrics = colvec(5, fill::zeros);
 }
 
-void DataHandler::loadOldMetrics()
+int DataHandler::loadOldMetrics()
 {
+	int size = 0;
 	try {
-		mlpack::data::Load("data/DataMemory/HistoricalMetrics.csv", historicalMetrics, true);
-		int size = historicalMetrics.n_cols;
+		mlpack::data::Load(
+			"data/DataMemory/HistoricalMetrics.csv",
+			historicalMetrics,
+			false,
+			true,
+			file_type::csv_ascii);
+		size = historicalMetrics.n_cols;
 
 		if (size > maxNumberOfRegisters / 2) {
 			throw RegistersOverflowExcep(size, maxNumberOfRegisters / 2);
@@ -47,9 +54,9 @@ void DataHandler::loadOldMetrics()
 	}
 	catch (const std::exception& error) {
 		std::cout << error.what() << endl;
-		historicalMetrics = mat();
 	}
 
+	return size;
 }
 
 void DataHandler::saveNewMetrics()
@@ -75,10 +82,17 @@ colvec DataHandler::getOldMetrics() {
 	return previousMetrics;
 }
 
-void DataHandler::loadHistoricalData() {
+int DataHandler::loadHistoricalData() {
+	int size = 0;
 	try {
-		mlpack::data::Load("data/DataMemory/HistoricalData.csv", historicalData, true);
-		int size = historicalData.n_cols;
+		mlpack::data::Load(
+			"data/DataMemory/HistoricalData.csv",
+			historicalData,
+			false,
+			true,
+			file_type::csv_ascii
+		);
+		size = historicalData.n_cols;
 
 		if (size > maxNumberOfRegisters) {
 			throw RegistersOverflowExcep(size, maxNumberOfRegisters);
@@ -98,8 +112,19 @@ void DataHandler::loadHistoricalData() {
 	}
 	catch (const std::runtime_error& error) {
 		std::cout << error.what() << endl;
-		historicalData = mat();
 	}
+
+	return size;
+}
+
+void DataHandler::reset()
+{
+	iteration = 0;
+	numberOfRegisters = 0;
+	previousMetrics.clean(0.0);
+	newMetrics.clean(0.0);
+	historicalData = mat();
+	historicalMetrics = mat();
 }
 
 void DataHandler::insertNewHistoricalData(double fuse_result_burn, double fuse_result_not_burn) {

@@ -3,7 +3,7 @@
 FailureDetectedExcep::FailureDetectedExcep(faultDiagnosisType faultDiagnosis)
 {
 	failureIndicators = faultDiagnosis.failureIndicators;
-	errorMessage = "Failure detected by supervisor\n";
+	errorMessage = "-> Failure detected by supervisor\n";
 	buildLogError();
 }
 
@@ -23,9 +23,9 @@ void FailureDetectedExcep::buildLogError()
 	for (failureMetricIndicatorType& failureIndicator : failureIndicators) {
 
 		logError = logError +
-			to_string(failureIndicator.iteration) + ";" +
-			metricStr[failureIndicator.metric] + ";" +
-			to_string(failureIndicator.tolerance) + ";" +
+			to_string(failureIndicator.iteration) + "," +
+			metricStr[failureIndicator.metric] + "," +
+			to_string(failureIndicator.tolerance) + "," +
 			to_string(failureIndicator.variation) + "\n";
 	}
 }

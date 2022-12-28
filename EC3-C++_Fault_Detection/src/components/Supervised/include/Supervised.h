@@ -2,9 +2,9 @@
 
 class Supervised {
 public:
-	Supervised(int seed);
+	Supervised(double nominalFuseResultBurn, double nominalFuseResultNotBurn, int seed);
 	void setTestInput(double input);
-	void setTestScenario(bool fail);
+	void setTestScenario(TestScenarioType& testScenario);
 	double getTestOutput();
 
 private:

@@ -8,6 +8,6 @@ public:
 		double uncertaintyRangeInput,
 		mt19937& generator);
 
-	void setFailureScenario(FailureScenarioType& failureScenario);
+	void setFailureScenario(FailureScenarioType* failureScenario);
 
 };

@@ -11,14 +11,14 @@ FailedOutputGenerator::FailedOutputGenerator(
 {
 }
 
-void FailedOutputGenerator::setFailureScenario(FailureScenarioType& failureScenario)
+void FailedOutputGenerator::setFailureScenario(FailureScenarioType* failureScenario)
 {
-	meanValueFuseResultBurn = failureScenario.meanValueFuseResultBurn;
-	meanValueFuseResultNotBurn = failureScenario.meanValueFuseResultNotBurn;
-	minFuseResultBurn = failureScenario.minFuseResultBurn;
-	maxFuseResultBurn = failureScenario.maxFuseResultBurn;
-	minFuseResultNotBurn = failureScenario.minFuseResultNotBurn;
-	maxFuseResultNotBurn = failureScenario.maxFuseResultNotBurn;
+	meanValueFuseResultBurn = failureScenario->meanValueFuseResultBurn;
+	meanValueFuseResultNotBurn = failureScenario->meanValueFuseResultNotBurn;
+	minFuseResultBurn = failureScenario->minFuseResultBurn;
+	maxFuseResultBurn = failureScenario->maxFuseResultBurn;
+	minFuseResultNotBurn = failureScenario->minFuseResultNotBurn;
+	maxFuseResultNotBurn = failureScenario->maxFuseResultNotBurn;
 }
 
 

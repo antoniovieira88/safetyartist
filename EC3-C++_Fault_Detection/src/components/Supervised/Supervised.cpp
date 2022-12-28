@@ -1,8 +1,11 @@
 #include "include/Supervised.h"
 
-Supervised::Supervised(int seed) :
+Supervised::Supervised(double nominalFuseResultBurn, double nominalFuseResultNotBurn, int seed) :
 	generator(seed),
-	correctOutputGenerator(0.1, 0.9, 0.0, 0.2, 0.8, 1.0, 0.1, 0.001, generator),
+	correctOutputGenerator(
+		nominalFuseResultBurn, nominalFuseResultNotBurn,
+		0.0, 0.2, 0.8, 1.0,
+		0.1, 0.001, generator),
 	failedOutputGenerator(0.1, 0.001, generator),
 	processUnit(correctOutputGenerator, failedOutputGenerator)
 {
@@ -13,9 +16,9 @@ void Supervised::setTestInput(double input)
 	processUnit.setTestInput(input);
 }
 
-void Supervised::setTestScenario(bool fail)
+void Supervised::setTestScenario(TestScenarioType& testScenario)
 {
-	processUnit.setTestScenario(fail);
+	processUnit.setTestScenario(testScenario);
 }
 
 double Supervised::getTestOutput()
