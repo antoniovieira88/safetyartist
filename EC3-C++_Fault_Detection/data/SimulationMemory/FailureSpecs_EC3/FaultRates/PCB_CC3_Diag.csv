@@ -1,0 +1,4 @@
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn
+0,Open or Resistance Increase,0.61000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+1,Short-Circuit or Resistance Increase,0.16000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+2,Poor or Intermittent Contact,0.23000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
