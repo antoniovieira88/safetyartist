@@ -4,9 +4,9 @@ using namespace std;
 
 class RegistersOverflowExcep : public exception {
 private:
-    string errorMessage;
+	string errorMsg;
 
 public:
-    RegistersOverflowExcep(int iterationMetrics, int iterationData);
-    const char* what() const throw();
+	RegistersOverflowExcep(int iterationMetrics, int iterationData);
+	const char* what() const throw();
 };

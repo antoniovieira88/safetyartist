@@ -19,14 +19,14 @@ int SupervisorTest1()
 
 		cout << "Begin of Iteration " << iteration << endl;
 		try {
-			supervisor.newTest();
+			supervisor.runTest();
 		}
 		catch (FailureDetectedExcep& error) {
 			cout << error.what() << endl;
 
 			logError = error.getLogError();
 
-			simulationDataFile.open("data/SimulationMemory/HistoricalFailureLog.csv", std::ios_base::app);
+			simulationDataFile.open("data/SimulationMemory/HistoricalCatchedFailureMetricsLog.csv", std::ios_base::app);
 
 			simulationDataFile << logError;
 

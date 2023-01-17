@@ -1,0 +1,20 @@
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn
+0,Interruption of Any Coil,7.85714E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+1,Interruption of Any Contact,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+2,Short-circuit or decrease of insulation resistance across open contact,6.33333E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+3,Short-circuit or decrease of insulation resistance between coil and contact,6.33333E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+4,Short-circuit or decrease of insulation resistance between contact and contact,6.33333E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+5,Welding of contacts,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+6,Increase of contact resistance,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+7,Contact chatter,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+8,Increase of pick-up current,7.85714E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+9,Decrease of pick-up current,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+10,Increase of drop-away current,7.85714E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+11,Decrease of drop-away current,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+12,Change of pick-up to drop-away ratio,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+13,Increase of pick-up time,7.85714E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+14,Decrease of pick-up time,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+15,Increase of drop-away time,7.85714E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+16,Decrease of drop-away time,2.88889E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+17,Relay does not pick up,7.85714E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+18,Relay does not drop away,7.85714E-2,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050

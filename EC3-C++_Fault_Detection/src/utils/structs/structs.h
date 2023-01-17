@@ -4,7 +4,7 @@
 #pragma once
 using namespace std;
 
-struct failureMetricIndicatorType {
+struct FailureMetricIndicatorType {
 	metrics metric;
 	double variation;
 	double tolerance;
@@ -24,4 +24,20 @@ struct TestScenarioType {
 	int numberOfFailedComponents;
 	vector<int> faultModesArray;
 	FailureScenarioType* failureScenarioPointer;
+};
+
+
+struct SimulationSpecificParamsType {
+	// Simulation controller
+	int simulationSeed;
+	double iterationEquivalentTime;
+	// Supervisor
+	double overallSilhouetteTolerance;
+	double numberOfPointsPerClusterDiffTolerance;
+	double silhouetteDiffTolerance;
+	// Supervised
+	double minNominalFuseResultBurn;
+	double maxNominalFuseResultBurn;
+	double minNominalFuseResultNotBurn;
+	double maxNominalFuseResultNotBurn;
 };

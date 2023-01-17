@@ -1,17 +1,25 @@
 #include "include/SimulationController.h"
 
 SimulationController::SimulationController(
-	int seed,
-	double simulationStep,
-	string dirFailureSpecs,
-	string dirFaultModes,
-	bool verboseMode)
-	:
-	generator(seed),
+	string dataMemoryDir,
+	string simulationMemoryDir,
+	bool verboseMode) :
+	generator(), iterationEquivalentTime(1.0), simulationName(""), simulationSpecificParams({}),
 	componentsArray(), testScenario({ 0, vector<int>(), nullptr }),
-	paramsController(simulationStep, generator, componentsArray, dirFailureSpecs, dirFaultModes, verboseMode),
+	paramsController(simulationName, simulationSpecificParams, generator, componentsArray, simulationMemoryDir, verboseMode),
 	failureController(componentsArray, testScenario, verboseMode),
-	processUnit(failureController, paramsController, testScenario, componentsArray, simulationStep, verboseMode)
+	processUnit(
+		failureController,
+		paramsController,
+		testScenario,
+		componentsArray,
+		simulationSpecificParams,
+		generator,
+		simulationName,
+		dataMemoryDir,
+		simulationMemoryDir,
+		verboseMode
+	)
 {
 	SimulationController::verboseMode = verboseMode;
 }
@@ -25,11 +33,7 @@ void SimulationController::attach(Supervisor* supervisorPointer, Supervised* sup
 	}
 }
 
-void SimulationController::runSimulation(int duration)
+void SimulationController::run()
 {
-	processUnit.runSimulation(duration);
-
-	if (verboseMode) {
-		cout << endl << "Simulation finished" << endl;
-	}
+	processUnit.run();
 }

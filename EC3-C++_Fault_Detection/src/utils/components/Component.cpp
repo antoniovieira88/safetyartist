@@ -2,19 +2,21 @@
 
 using namespace std;
 
+
 Component::Component(
 	string name,
 	int componentId,
 	double faultRate,
-	double simulationStep,
+	double& iterationEquivalentTime,
 	mt19937& generator,
-	string dirFaultModes
+	string faultModesDir,
+	bool& verboseMode
 ) :
 	faultRate(faultRate),
 	name(name),
 	generator(generator),
-	simulationStep(simulationStep),
-	componentId(componentId)
+	iterationEquivalentTime(iterationEquivalentTime),
+	componentId(componentId), verboseMode(verboseMode)
 {
 	Component::countBetweenFailures = 0;
 
@@ -23,42 +25,7 @@ Component::Component(
 	// the -1 value for currentFailureMode means that the component is operating without any fault
 	Component::currentFaultModeId = -1;
 
-	loadFaultModes(dirFaultModes);
-
-	discrete_distribution<> discreteDist(faultModesWeightArray.begin(), faultModesWeightArray.end());
-	Component::discreteDist = discreteDist;
-
-	uniform_real_distribution<double> uniformDist{ 0.0, 1.0 };
-	Component::uniformDist = uniformDist;
-
-	Component::verboseMode = false;
-
-
-}
-
-Component::Component(
-	string name,
-	int componentId,
-	double faultRate,
-	double simulationStep,
-	mt19937& generator,
-	string dirFaultModes,
-	bool verboseMode
-) :
-	faultRate(faultRate),
-	name(name),
-	generator(generator),
-	simulationStep(simulationStep),
-	componentId(componentId)
-{
-	Component::countBetweenFailures = 0;
-
-	Component::isFaulty = false;
-
-	// the -1 value for currentFailureMode means that the component is operating without any fault
-	Component::currentFaultModeId = -1;
-
-	loadFaultModes(dirFaultModes);
+	loadFaultModes(faultModesDir);
 
 	discrete_distribution<> discreteDist(faultModesWeightArray.begin(), faultModesWeightArray.end());
 	Component::discreteDist = discreteDist;
@@ -73,43 +40,53 @@ void Component::loadFaultModes(string dir)
 {
 	fstream faultModesFile;
 	string line, word;
+	const string fileDir = dir + "/" + name + ".csv";
 
 	double faultModeWeight;
 
-	faultModesFile.open(dir + "/" + name + ".csv", ios::in);
+	faultModesFile.open(fileDir, ios::in);
+	if (faultModesFile.fail()) {
+		throw SimulatorFailureExcep(name + "'s fault modes file '" + fileDir + "' could not be accessed.",
+			"SimulationController.ComponentInstance<" + name + ">");
+	}
 
 	// the first line corresponds to the header, so it is ignored
 	getline(faultModesFile, line);
+	try {
+		while (getline(faultModesFile, line)) {
+			stringstream strstream(line);
 
-	while (getline(faultModesFile, line)) {
-		stringstream strstream(line);
+			// the first word of the line is considered to be the fault mode id.
+			// in the file, it serves only as an indicator showing the user which id
+			// the system will consider for that fault mode. it has no impact in
+			// program's operation
+			getline(strstream, word, ',');
 
-		// the first word of the line is considered to be the fault mode id.
-		// in the file, it serves only as an indicator showing the user which id
-		// the system will consider for that fault mode. it has no impact in
-		// program's operation
-		getline(strstream, word, ',');
+			// the second word of the line is considered to be the fault mode name
+			getline(strstream, word, ',');
+			faultModesArray.push_back(word);
 
-		// the second word of the line is considered to be the fault mode name
-		getline(strstream, word, ',');
-		faultModesArray.push_back(word);
+			// the third word of the line is considered to be the fault mode weight
+			getline(strstream, word, ',');
+			faultModeWeight = stod(word);
+			faultModesWeightArray.push_back(faultModeWeight);
 
-		// the third word of the line is considered to be the fault mode weight
-		getline(strstream, word, ',');
-		faultModeWeight = stod(word);
-		faultModesWeightArray.push_back(faultModeWeight);
+			loadSingleFailureScenarioFromFile(strstream, word);
+		}
 
-		loadSingleFailureScenarioFromFile(strstream, word);
+		faultModesFile.close();
 	}
-
-	faultModesFile.close();
+	catch (invalid_argument& error) {
+		throw SimulatorFailureExcep("Invalid parameter argument in " + fileDir + ".",
+			"SimulationController.ComponentInstance<" + name + ">");
+	}
 }
 
 void Component::loadSingleFailureScenarioFromFile(
 	stringstream& strstream,
 	string& word)
 {
-	//failure scenario params expected for the ocurrence of a single fault mode
+	//failure scenario params expected for the occurrence of a single fault mode
 	FailureScenarioType singleFailureScenario;
 
 	getline(strstream, word, ',');
@@ -138,13 +115,11 @@ void Component::repair()
 	isFaulty = false;
 	countBetweenFailures = 0;
 	currentFaultModeId = -1;
-
 }
 
 void Component::setCountBetweenFailures(int countBetweenFailures)
 {
 	Component::countBetweenFailures = countBetweenFailures;
-	calculateReliability();
 }
 
 void Component::setFaultMode(int faultModeId)
@@ -163,7 +138,7 @@ void Component::setFaultMode(int faultModeId)
 
 void Component::calculateReliability()
 {
-	if (!isFaulty) reliability = exp(-countBetweenFailures * faultRate * simulationStep);
+	if (!isFaulty) reliability = exp(-countBetweenFailures * faultRate * iterationEquivalentTime);
 	else reliability = 0.0;
 }
 

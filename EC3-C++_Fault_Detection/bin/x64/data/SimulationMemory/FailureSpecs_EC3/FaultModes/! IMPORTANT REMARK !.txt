@@ -1,0 +1,1 @@
+Important Remark: The values of meanValueFuseResultBurn, meanValueFuseResultNotBurn, minFuseResultBurn, maxFuseResultBurn, minFuseResultNotBurn, and maxFuseResultNotBurn will be filled in a future version of the files of this folder. The hardware analyses that generate them are still ongoing.

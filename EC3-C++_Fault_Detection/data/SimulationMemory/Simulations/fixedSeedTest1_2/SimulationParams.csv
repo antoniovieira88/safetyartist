@@ -1,0 +1,9 @@
+overallSilhouetteTolerance:0.04
+silhouetteDiffTolerance:0.08
+numberOfPointsPerClusterDiffTolerance:0
+minNominalFuseResultBurn:0.07
+maxNominalFuseResultBurn:0.17
+minNominalFuseResultNotBurn:0.85
+maxNominalFuseResultNotBurn:0.93
+iterationEquivalentTime:2.5
+simulationSeed:9

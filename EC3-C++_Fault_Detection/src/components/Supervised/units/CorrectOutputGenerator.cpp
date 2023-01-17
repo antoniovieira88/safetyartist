@@ -24,4 +24,16 @@ CorrectOutputGenerator::CorrectOutputGenerator(
 		maxStdDeviation,
 		uncertaintyRangeInput,
 		generator
-	) {};
+	) {}
+
+void CorrectOutputGenerator::setBasicParams(
+	double minNominalFuseResultBurn,
+	double maxNominalFuseResultBurn,
+	double minNominalFuseResultNotBurn,
+	double maxNominalFuseResultNotBurn)
+{
+	minFuseResultBurn = minNominalFuseResultBurn;
+	maxFuseResultBurn = maxNominalFuseResultBurn;
+	minFuseResultNotBurn = minNominalFuseResultNotBurn;
+	maxFuseResultNotBurn = maxNominalFuseResultNotBurn;
+};

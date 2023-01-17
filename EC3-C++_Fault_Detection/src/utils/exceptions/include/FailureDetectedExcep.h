@@ -16,20 +16,20 @@ static string metricStr[] =
 
 struct faultDiagnosisType {
 	bool failure;
-	vector<failureMetricIndicatorType> failureIndicators;
+	vector<FailureMetricIndicatorType> failureIndicators;
 };
 
 class FailureDetectedExcep : public exception {
 private:
-	vector<failureMetricIndicatorType> failureIndicators;
-	string errorMessage;
+	vector<FailureMetricIndicatorType> failureIndicators;
+	string errorMsg;
 	string logError;
 
 	void buildLogError();
 
 public:
 	FailureDetectedExcep(faultDiagnosisType faultDiagnosis);
-	vector<failureMetricIndicatorType> getFailureIndicators();
+	vector<FailureMetricIndicatorType> getFailureIndicators();
 	const char* what() const throw();
 	string getLogError();
 };

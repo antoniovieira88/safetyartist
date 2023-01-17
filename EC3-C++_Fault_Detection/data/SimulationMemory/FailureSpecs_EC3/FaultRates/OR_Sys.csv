@@ -1,8 +1,0 @@
-id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn
-0,Supply Open,0.12000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-1,Output 'Y' Open,0.36000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-2,Output 'Y' Stuck Low,0.09000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-3,Output 'Y' Stuck High,0.08000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-4,Input 'A' Open,0.12000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-5,Input 'B' Open,0.12000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-6,Input 'C' Open,0.12000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050

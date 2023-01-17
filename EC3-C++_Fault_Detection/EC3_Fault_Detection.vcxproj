@@ -33,12 +33,16 @@
     <ClCompile Include="src\components\Supervisor\units\DataHandler.cpp" />
     <ClCompile Include="src\components\Supervisor\units\ProcessUnitSR.cpp" />
     <ClCompile Include="src\utils\components\Component.cpp" />
+    <ClCompile Include="src\utils\exceptions\AbortSimulationOpExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\FailureDetectedExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\RegistersOverflowExcep.cpp" />
     <ClCompile Include="src\app\main.cpp" />
+    <ClCompile Include="src\utils\exceptions\SimulatorFailureExcep.cpp" />
     <ClCompile Include="src\utils\kmeans\KMeans.cpp" />
     <ClCompile Include="src\utils\kmeans\SilhouetteScore.cpp" />
+    <ClCompile Include="src\utils\mt_engine\MtRandEngine.cpp" />
+    <ClCompile Include="tests\RandomGeneratorMt19937\RandomGeneratorTest.cpp" />
     <ClCompile Include="tests\SimulationController\LoadFaultModesTest.cpp" />
     <ClCompile Include="tests\SimulationController\SimulationControllerTest1.cpp" />
     <ClCompile Include="tests\Supervisor\SupervisorLogErrorTest.cpp" />
@@ -59,12 +63,16 @@
     <ClInclude Include="src\components\Supervisor\include\Supervisor.h" />
     <ClInclude Include="src\utils\components\include\Component.h" />
     <ClInclude Include="src\utils\enumerators\enum.h" />
+    <ClInclude Include="src\utils\exceptions\include\AbortSimulationOpExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\FailureDetectedExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\IncompatibleIterationExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\RegistersOverflowExcep.h" />
+    <ClInclude Include="src\utils\exceptions\include\SimulatorFailureExcep.h" />
     <ClInclude Include="src\utils\kmeans\include\KMeans.h" />
     <ClInclude Include="src\utils\kmeans\include\SilhouetteScore.h" />
+    <ClInclude Include="src\utils\mt_engine\include\MtRandEngine.h" />
     <ClInclude Include="src\utils\structs\structs.h" />
+    <ClInclude Include="tests\RandomGeneratorMt19937\include\RandomGeneratorTest.h" />
     <ClInclude Include="tests\SimulationController\include\LoadFaultModesTest.h" />
     <ClInclude Include="tests\Supervisor\include\SupervisorLogErrorTest.h" />
   </ItemGroup>
@@ -75,6 +83,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{B2AC7F7E-3335-429E-8ACE-1CD40B34BB84}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -121,6 +130,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>.\bin\x64</OutDir>
+    <IntDir>.\bin\x64\obj</IntDir>
+    <TargetName>$(ProjectName)_$(Plataform)</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -154,6 +168,12 @@
     <ClCompile>
       <ControlFlowGuard>false</ControlFlowGuard>
       <FloatingPointExceptions>true</FloatingPointExceptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

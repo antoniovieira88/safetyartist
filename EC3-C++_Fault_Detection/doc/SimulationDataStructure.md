@@ -9,7 +9,7 @@ Simulation Memory corresponds to a folder in "\data" directory and it stores:
 
 The data structure adopted in each of the files found in Simulation Memory is described below.
 
-## *HistoricalFailureLog.csv*'s structure
+## *HistoricalCatchedFailureMetricsLog.csv*'s structure
 
 **Separator Character:** "," (comma)
 

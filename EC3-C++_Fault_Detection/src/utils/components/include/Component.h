@@ -7,28 +7,23 @@
 #include <iostream>
 #include <limits>
 #include "../../structs/structs.h"
+#include "../../exceptions/include/AbortSimulationOpExcep.h"
+#include "../../exceptions/include/SimulatorFailureExcep.h"
 
 using namespace std;
 
 #pragma once
 class Component {
 public:
-	Component(
-		string name,
-		int componentId,
-		double failureRate,
-		double simulationStep,
-		mt19937& generator,
-		string dirFaultModes);
 
 	Component(
 		string name,
 		int componentId,
 		double failureRate,
-		double simulationStep,
+		double& iterationEquivalentTime,
 		mt19937& generator,
-		string dirFaultModes,
-		bool verboseMode);
+		string faultModesDir,
+		bool& verboseMode);
 
 	void calculateReliability();
 	void repair();
@@ -48,13 +43,16 @@ public:
 
 private:
 	const string name;
-	const double faultRate, simulationStep;
+	const double faultRate;
 	const int componentId;
 	const int infinity = numeric_limits<int>::max();
 
 	int countBetweenFailures, currentFaultModeId;
 	double reliability;
-	bool isFaulty, verboseMode;
+	bool isFaulty;
+	bool& verboseMode;
+
+	double& iterationEquivalentTime;
 
 	mt19937& generator;
 	discrete_distribution<> discreteDist;

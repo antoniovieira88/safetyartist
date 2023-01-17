@@ -6,10 +6,10 @@ IncompatibleIterationExcep::IncompatibleIterationExcep(int iterationMetrics, int
 {
 	string iterationMetricsStr = to_string(iterationMetrics);
 	string iterationDataStr = to_string(iterationData);
-	errorMessage = "MetricIteration " + iterationMetricsStr + " is incompatible to current interation " + iterationDataStr;
+	errorMsg = "MetricIteration " + iterationMetricsStr + " is incompatible to current iteration " + iterationDataStr;
 }
 
 const char* IncompatibleIterationExcep::what() const throw()
 {
-	return const_cast<char*>(errorMessage.c_str());
+	return const_cast<char*>(errorMsg.c_str());
 }

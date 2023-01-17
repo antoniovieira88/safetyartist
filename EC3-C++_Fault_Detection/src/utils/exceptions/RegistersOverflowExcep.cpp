@@ -6,10 +6,10 @@ RegistersOverflowExcep::RegistersOverflowExcep(int numberOfRegisters, int maxNum
 {
 	string numberOfRegistersStr = to_string(numberOfRegisters);
 	string maxNumberOfRegistersStr = to_string(maxNumberOfRegisters);
-	errorMessage = "Overflow in SupervisorUnit: the number of registers (" + numberOfRegistersStr + ") exceeded the maximum limit (" + maxNumberOfRegistersStr + ")";
+	errorMsg = "Overflow in SupervisorUnit: the number of registers (" + numberOfRegistersStr + ") exceeded the maximum limit (" + maxNumberOfRegistersStr + ")";
 }
 
 const char* RegistersOverflowExcep::what() const throw()
 {
-	return const_cast<char*>(errorMessage.c_str());
+	return const_cast<char*>(errorMsg.c_str());
 }

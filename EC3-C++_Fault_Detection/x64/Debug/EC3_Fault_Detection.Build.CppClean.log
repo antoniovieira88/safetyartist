@@ -23,6 +23,10 @@ c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection
 c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\supervisorlogerrortest.obj
 c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\simulationcontrollertest1.obj
 c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\loadfaultmodestest.obj
+c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\randomgeneratortest.obj
+c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\mtengine.obj
+c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\mtrandengine.obj
+c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\abortsimulationopexcep.obj
 c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\boost_serialization-vc143-mt-gd-x64-1_79.dll
 c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\liblapack.dll
 c:\users\lucas\documents\poliusp\ic\ec3-dev\safetyartist\ec3-c++_fault_detection\x64\debug\libgcc_s_seh-1.dll

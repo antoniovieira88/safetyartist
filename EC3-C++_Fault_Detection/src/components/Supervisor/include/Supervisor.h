@@ -6,16 +6,31 @@ public:
 	Supervisor(
 		int maxNumberOfRegisters,
 		double nominalFuseResultBurn, double nominalFuseResultNotBurn,
+		string dataMemoryDir = "data/DataMemory",
+		string simulationMemoryDir = "data/SimulationMemory",
+		bool verboseMode = true);
+
+	Supervisor(
+		int maxNumberOfRegisters,
+		double nominalFuseResultBurn, double nominalFuseResultNotBurn,
 		double overallSilhouetteTolerance,
 		double silhouetteDiffTolerance,
 		double numberOfPointsPerClusterDiffTolerance,
-		bool verboseMode);
+		string dataMemoryDir = "data/DataMemory",
+		string simulationMemoryDir = "data/SimulationMemory",
+		bool verboseMode = true);
 
 	void attach(Supervised* supervised);
 	void runTest();
 	void reset();
 	int* getIterationPointer();
-	void reinitializeForNewSimulation();
+	void getReadyForNextSimulationCycle();
+	void prepareForSimulation(string simulationName);
+	void setVerboseMode(bool verboseModeValue);
+	void setBasicParams(
+		double overallSilhouetteToleranceValue,
+		double silhouetteDiffToleranceValue,
+		double numberOfPointsPerClusterDiffToleranceValue);
 
 private:
 	mat nominalFuseResults;

@@ -14,4 +14,10 @@ public:
 		double maxStdDeviation,
 		double uncertaintyRangeInput,
 		mt19937& generator);
+
+	void setBasicParams(
+		double minNominalFuseResultBurn,
+		double maxNominalFuseResultBurn,
+		double minNominalFuseResultNotBurn,
+		double maxNominalFuseResultNotBurn);
 };

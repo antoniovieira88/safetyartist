@@ -7,38 +7,37 @@ using namespace std;
 /*
 
 In this case, it was used the 'reference' cpp operator ('&') so that "ProcessUnitSR" class directly receives
-the addresses of "analysisUnit" and "dataHandler" objetcs instantiated in the "Supervisor"
+the addresses of "analysisUnit" and "dataHandler" objects instantiated in the "Supervisor"
 class - where "Process Unit" is also created. As a result, ProcessUnitSR stores references to "analysisUnit"
-and "dataHandler" objetcs as class members
+and "dataHandler" objects as class members
 
-Obs.: When a variable of the type 'reference' is used, it is not necessary to preappend the pointer operator "*" to access
+Obs.: When a variable of the type 'reference' is used, it is not necessary to append the pointer operator "*" to access
 the pointed data - it is accessed simply by its name. If the operator '&' were not used,
-an undesired copy of "analysisUnit" and "dataHandler" objetcs  would be created every time ProcessUnitSR constructor is called.
+an undesired copy of "analysisUnit" and "dataHandler" objects  would be created every time ProcessUnitSR constructor is called.
 Moreover, reference members must be initialized using Initializer List.
 
 */
-
-ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
-	double overallSilhouetteDecreaseTolerance, double silhouetteClustersDecreaseTolerance,
-	double imbalanceClustersIncreaseTolerance) : analysisUnit(analysisUnit), dataHandler(dataHandler)
+ProcessUnitSR::ProcessUnitSR(
+	AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+	bool verboseMode) :
+	analysisUnit(analysisUnit), dataHandler(dataHandler)
 {
 	ProcessUnitSR::supervisedPointer = supervised;
 
-	ProcessUnitSR::overallSilhouetteDecreaseTolerance = overallSilhouetteDecreaseTolerance;
-	ProcessUnitSR::silhouetteClustersDecreaseTolerance = silhouetteClustersDecreaseTolerance;
-	ProcessUnitSR::imbalanceClustersIncreaseTolerance = imbalanceClustersIncreaseTolerance;
-
-	initializeDataHandler();
+	ProcessUnitSR::overallSilhouetteDecreaseTolerance = NAN;
+	ProcessUnitSR::silhouetteClustersDecreaseTolerance = NAN;
+	ProcessUnitSR::imbalanceClustersIncreaseTolerance = NAN;
+	ProcessUnitSR::verboseMode = verboseMode;
 
 	newMetrics = colvec(5, fill::zeros);
-	verboseMode = false;
-	keepPower = 0.0;
-	fuseTest = (double NAN);
+	keepPower = 1.0;
+	fuseTest = 1.0;
 }
 
 ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
 	double overallSilhouetteDecreaseTolerance, double silhouetteClustersDecreaseTolerance,
-	double imbalanceClustersIncreaseTolerance, bool verboseMode) : analysisUnit(analysisUnit), dataHandler(dataHandler)
+	double imbalanceClustersIncreaseTolerance, bool verboseMode = true) :
+	analysisUnit(analysisUnit), dataHandler(dataHandler)
 {
 	ProcessUnitSR::supervisedPointer = supervised;
 
@@ -47,22 +46,16 @@ ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandle
 	ProcessUnitSR::imbalanceClustersIncreaseTolerance = imbalanceClustersIncreaseTolerance;
 	ProcessUnitSR::verboseMode = verboseMode;
 
-	initializeDataHandler();
-
 	newMetrics = colvec(5, fill::zeros);
-	keepPower = 0.0;
-	fuseTest = (double NAN);
+	keepPower = 1.0;
+	fuseTest = 1.0;
 
 }
 
 ProcessUnitSR::~ProcessUnitSR()
 {
-	dataHandler.saveNewMetrics();
-	dataHandler.updateHistoricalData();
-
 	if (verboseMode) {
 		cout << endl << "Supervisor deactivated" << endl;
-		cout << "HistoricalData.csv and HistoricalMetrics.csv updated in data memory" << endl;
 	}
 }
 
@@ -118,7 +111,7 @@ void ProcessUnitSR::runTest()
 	newMetrics = analysisUnit.getNewMetrics();
 	dataHandler.insertNewMetrics(newMetrics);
 
-	previousMetrics = dataHandler.getOldMetrics();
+	previousMetrics = dataHandler.getPreviousMetrics();
 
 	if (verboseMode) {
 		cout << "Number of points: " << analysisUnit.getTotalNumberOfPoints() << endl;
@@ -151,7 +144,7 @@ faultDiagnosisType ProcessUnitSR::detectFailure()
 	double silhouette1PreviousMetrics, silhouette2PreviousMetrics, imbalanceClustersPreviousMetrics, overallSilhouettePreviousMetrics;
 	double silhouetteCluster1Increase, silhouetteCluster2Increase, imbalanceClustersIncrease, overallSilhouetteIncrease;
 	bool failure = false;
-	vector<failureMetricIndicatorType> failureIndicators;
+	vector<FailureMetricIndicatorType> failureIndicators;
 
 	if (verboseMode) {
 		cout << "Failure detection process initiated" << endl;
@@ -185,24 +178,24 @@ faultDiagnosisType ProcessUnitSR::detectFailure()
 	// ! compare metrics to determine failure
 	if (silhouetteCluster1Increase <= -silhouetteClustersDecreaseTolerance) {
 		failure = true;
-		failureMetricIndicatorType failureIndicator = { silhouetteCluster1, silhouetteCluster1Increase, silhouetteClustersDecreaseTolerance, *iterationPointer };
+		FailureMetricIndicatorType failureIndicator = { silhouetteCluster1, silhouetteCluster1Increase, silhouetteClustersDecreaseTolerance, *iterationPointer };
 		failureIndicators.push_back(failureIndicator);
 	}
 	if (silhouetteCluster2Increase <= -silhouetteClustersDecreaseTolerance) {
 		failure = true;
-		failureMetricIndicatorType failureIndicator = { silhouetteCluster2, silhouetteCluster2Increase, silhouetteClustersDecreaseTolerance, *iterationPointer };
+		FailureMetricIndicatorType failureIndicator = { silhouetteCluster2, silhouetteCluster2Increase, silhouetteClustersDecreaseTolerance, *iterationPointer };
 		failureIndicators.push_back(failureIndicator);
 	}
 
 	if (imbalanceClustersIncrease > imbalanceClustersIncreaseTolerance) {
 		failure = true;
-		failureMetricIndicatorType failureIndicator = { imbalanceNumPoints, imbalanceClustersIncrease, imbalanceClustersIncreaseTolerance, *iterationPointer };
+		FailureMetricIndicatorType failureIndicator = { imbalanceNumPoints, imbalanceClustersIncrease, imbalanceClustersIncreaseTolerance, *iterationPointer };
 		failureIndicators.push_back(failureIndicator);
 	}
 
 	if (overallSilhouetteIncrease <= -overallSilhouetteDecreaseTolerance) {
 		failure = true;
-		failureMetricIndicatorType failureIndicator = { overallSilhouette, overallSilhouetteIncrease, overallSilhouetteDecreaseTolerance, *iterationPointer };
+		FailureMetricIndicatorType failureIndicator = { overallSilhouette, overallSilhouetteIncrease, overallSilhouetteDecreaseTolerance, *iterationPointer };
 		failureIndicators.push_back(failureIndicator);
 	}
 
@@ -215,19 +208,47 @@ faultDiagnosisType ProcessUnitSR::detectFailure()
 	return faultDiagnosis;
 }
 
-void ProcessUnitSR::initializeDataHandler()
+void ProcessUnitSR::initializeDataHandler(string simulationName)
 {
-	int numRowsHistoricalData = dataHandler.loadHistoricalData();
-	int numRowsHistoricalMetrics = dataHandler.loadOldMetrics();
+	dataHandler.setSimulationName(simulationName);
 
-	previousMetrics = dataHandler.getOldMetrics();
+	int numRowsHistoricalData = dataHandler.loadHistoricalData();
+	int numRowsHistoricalMetrics = dataHandler.loadHistoricalMetrics();
+
+	previousMetrics = dataHandler.getPreviousMetrics();
 	iterationPointer = dataHandler.getIterationPointer();
 
 	if (verboseMode) {
 		cout << "Data Handler initialized" << endl;
+		cout << "Simulation Name: " << simulationName << endl;
 		cout << "Number of rows in HistoricalData.csv: " << numRowsHistoricalData << endl;
 		cout << "Number of rows in HistoricalMetrics.csv: " << numRowsHistoricalMetrics << endl;
 	}
+}
+
+void ProcessUnitSR::getReadyForNextSimulationCycle()
+{
+	dataHandler.updateHistoricalData();
+	dataHandler.updateHistoricalMetrics();
+
+	if (verboseMode) {
+		cout << "HistoricalData.csv and HistoricalMetrics.csv updated in data memory" << endl;
+	}
+}
+
+void ProcessUnitSR::setVerboseMode(bool verboseModeValue)
+{
+	ProcessUnitSR::verboseMode = verboseModeValue;
+}
+
+void ProcessUnitSR::setBasicParams(
+	double overallSilhouetteToleranceValue,
+	double silhouetteDiffToleranceValue,
+	double numberOfPointsPerClusterDiffToleranceValue)
+{
+	ProcessUnitSR::overallSilhouetteDecreaseTolerance = overallSilhouetteToleranceValue;
+	ProcessUnitSR::silhouetteClustersDecreaseTolerance = silhouetteDiffToleranceValue;
+	ProcessUnitSR::imbalanceClustersIncreaseTolerance = numberOfPointsPerClusterDiffToleranceValue;
 }
 
 void ProcessUnitSR::provideTestInput(double testInput)

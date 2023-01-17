@@ -3,17 +3,24 @@
 using namespace std;
 class SimulationController {
 public:
-	SimulationController(int seed, double simulationStep, string dirFailureSpecs, string dirFaultModes, bool verboseMode);
+	SimulationController(
+		string dataMemoryDir = "data/DataMemory",
+		string simulationMemoryDir = "data/SimulationMemory",
+		bool verboseMode = true);
 	void attach(Supervisor* supervisorPointer, Supervised* supervisedPointer);
-	void runSimulation(int duration);
+	void run();
+
 private:
 	vector<Component> componentsArray;
 	TestScenarioType testScenario;
-	mt19937 generator;
+	MtRandEngine generator;
+	string simulationName;
+	SimulationSpecificParamsType simulationSpecificParams;
 
 	ParamsController paramsController;
 	FailureController failureController;
 	ProcessUnitSC processUnit;
 
 	bool verboseMode;
+	double iterationEquivalentTime;
 };

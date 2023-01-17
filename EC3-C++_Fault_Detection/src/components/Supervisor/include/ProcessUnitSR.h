@@ -7,9 +7,9 @@
 
 class ProcessUnitSR {
 public:
-	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervisedPointer,
-		double overallSilhouetteTolerance, double silhouetteDiffTolerance,
-		double numberOfPointsPerClusterDiffTolerance);
+	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler,
+		Supervised* supervised,
+		bool verboseMode = true);
 
 	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
 		double overallSilhouetteTolerance, double silhouetteDiffTolerance,
@@ -20,7 +20,14 @@ public:
 	void attach(Supervised* supervisedPointer);
 	void runTest();
 	void reset();
-	void initializeDataHandler();
+	void getReadyForNextSimulationCycle();
+	void initializeDataHandler(string simulationName);
+
+	void setVerboseMode(bool verboseModeValue);
+	void setBasicParams(
+		double overallSilhouetteToleranceValue,
+		double silhouetteDiffToleranceValue,
+		double numberOfPointsPerClusterDiffToleranceValue);
 
 private:
 	AnalysisUnit& analysisUnit;

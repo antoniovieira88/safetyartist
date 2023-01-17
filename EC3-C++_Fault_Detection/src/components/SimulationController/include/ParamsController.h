@@ -1,37 +1,40 @@
 #include "../../../utils/components/include/Component.h"
+#include "../../../utils/exceptions/include/AbortSimulationOpExcep.h"
+#include "../../../utils/exceptions/include/SimulatorFailureExcep.h"
 
 using namespace std;
 
 class ParamsController {
 public:
 	ParamsController(
-		double simulationStep,
+		string& simulationName,
+		SimulationSpecificParamsType& simulationSpecificParams,
 		mt19937& generator,
 		vector<Component>& componentsArray,
-		string dirFailureSpecs,
-		string dirFaultModes);
+		string simulationMemoryDir = "data/SimulationMemory",
+		bool verboseMode = true
+	);
 
-	ParamsController(
-		double simulationStep,
-		mt19937& generator,
-		vector<Component>& componentsArray,
-		string dirFailureSpecs,
-		string dirFaultModes,
-		bool verboseMode);
 
 	void loadFailureSpecs();
-	void setComponentsInitialOperationalState();
+	int setComponentsInitialOperationalState();
 	void updateComponentsOperationalStateFile();
 
 	bool isSurpervisedStartingWithFailure();
 
+	void loadSimulationSpecificParams();
+
+	void setVerboseMode(bool verboseModeValue);
+
 private:
 	int numberOfComponents;
 
-	const string dirFaultModes;
-	const string dirFailureSpecs;
+	const string faultModesDir;
+	const string failureSpecsDir;
+	const string simulationsDir;
 
-	const double simulationStep;
+	string& simulationName;
+	SimulationSpecificParamsType& simulationSpecificParams;
 
 	mt19937& generator;
 	vector<Component>& componentsArray;

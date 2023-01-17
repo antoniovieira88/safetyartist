@@ -3,11 +3,11 @@
 FailureDetectedExcep::FailureDetectedExcep(faultDiagnosisType faultDiagnosis)
 {
 	failureIndicators = faultDiagnosis.failureIndicators;
-	errorMessage = "-> Failure detected by supervisor\n";
+	errorMsg = "-> Failure detected by supervisor\n";
 	buildLogError();
 }
 
-vector<failureMetricIndicatorType> FailureDetectedExcep::getFailureIndicators()
+vector<FailureMetricIndicatorType> FailureDetectedExcep::getFailureIndicators()
 {
 	return failureIndicators;
 }
@@ -20,7 +20,7 @@ string FailureDetectedExcep::getLogError()
 void FailureDetectedExcep::buildLogError()
 {
 	logError = "";
-	for (failureMetricIndicatorType& failureIndicator : failureIndicators) {
+	for (FailureMetricIndicatorType& failureIndicator : failureIndicators) {
 
 		logError = logError +
 			to_string(failureIndicator.iteration) + "," +
@@ -33,6 +33,6 @@ void FailureDetectedExcep::buildLogError()
 
 const char* FailureDetectedExcep::what() const throw()
 {
-	return const_cast<char*>(errorMessage.c_str());
+	return const_cast<char*>(errorMsg.c_str());
 }
 

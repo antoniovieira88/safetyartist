@@ -17,7 +17,7 @@ int SupervisorLogErrorTest()
 	Supervisor supervisor(
 		1000,
 		0.1, 0.9,
-		0.01, 0.01, 0.01, true);
+		0.01, 0.01, 0.01);
 
 	Supervised supervised(0.1, 0.9, 1);
 	ofstream simulationDataFile;
@@ -39,7 +39,7 @@ int SupervisorLogErrorTest()
 
 			logError = error.getLogError();
 
-			simulationDataFile.open("data/SimulationMemory/HistoricalFailureLog.csv", std::ios_base::app);
+			simulationDataFile.open("data/SimulationMemory/HistoricalCatchedFailureMetricsLog.csv", std::ios_base::app);
 
 			simulationDataFile << logError;
 

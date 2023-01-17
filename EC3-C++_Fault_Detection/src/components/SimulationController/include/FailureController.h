@@ -9,6 +9,7 @@ public:
 	void defineNewTestScenario();
 
 	int getNumberOfFailedComponents();
+	void setVerboseMode(bool verboseModeValue);
 
 private:
 	vector<Component>& componentsArray;

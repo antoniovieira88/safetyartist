@@ -4,9 +4,9 @@ using namespace std;
 
 class IncompatibleIterationExcep : public exception {
 private:
-    string errorMessage;
+	string errorMsg;
 
 public:
-    IncompatibleIterationExcep(int iterationMetrics, int iterationData);
-    const char* what() const throw();
+	IncompatibleIterationExcep(int iterationMetrics, int iterationData);
+	const char* what() const throw();
 };

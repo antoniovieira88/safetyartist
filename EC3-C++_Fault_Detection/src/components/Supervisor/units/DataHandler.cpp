@@ -1,27 +1,28 @@
 #include "../include/DataHandler.h"
-#include "../../../utils/exceptions/include/IncompatibleIterationExcep.h"
-#include "../../../utils/exceptions/include/RegistersOverflowExcep.h"
-#include <fstream>
-#include <mlpack/core.hpp>
 
 using namespace arma;
 
-DataHandler::DataHandler(int maxNumberOfRegisters)
-	:
-	historicalData(), historicalMetrics(), historicalDataToCluster(),
-	previousMetrics(5, fill::zeros), newMetrics(colvec(5, fill::zeros))
+DataHandler::DataHandler(
+	int maxNumberOfRegisters,
+	std::string dataMemoryDir,
+	std::string simulationMemoryDir) :
+	dataMemoryDir(dataMemoryDir), simulationsDir(simulationMemoryDir + "/Simulations"),
+	historicalData(), historicalMetrics(),
+	historicalDataToCluster(), previousMetrics(5, fill::zeros),
+	newMetrics(colvec(5, fill::zeros))
 {
 	DataHandler::iteration = 0;
 	DataHandler::numberOfRegisters = 0;
 	DataHandler::maxNumberOfRegisters = maxNumberOfRegisters;
+	DataHandler::simulationName = "";
 }
 
-int DataHandler::loadOldMetrics()
+int DataHandler::loadHistoricalMetrics()
 {
 	int size = 0;
 	try {
 		mlpack::data::Load(
-			"data/DataMemory/HistoricalMetrics.csv",
+			dataMemoryDir + "/" + simulationName + "/HistoricalMetrics.csv",
 			historicalMetrics,
 			false,
 			true,
@@ -44,24 +45,19 @@ int DataHandler::loadOldMetrics()
 			newMetrics = previousMetrics;
 		}
 	}
-	catch (RegistersOverflowExcep& error) {
-		std::cout << error.what() << endl;
-		exit(EXIT_FAILURE);
-	}
-	catch (IncompatibleIterationExcep& error) {
-		std::cout << error.what() << endl;
-		exit(EXIT_FAILURE);
-	}
 	catch (const std::exception& error) {
-		std::cout << error.what() << endl;
+		throw SimulatorFailureExcep(error.what(), "Supervisor.DataHandler");
 	}
 
 	return size;
 }
 
-void DataHandler::saveNewMetrics()
+void DataHandler::updateHistoricalMetrics()
 {
-	mlpack::data::Save("data/DataMemory/HistoricalMetrics.csv", historicalMetrics, true);
+	mlpack::data::Save(
+		dataMemoryDir + "/"
+		+ simulationName + "/HistoricalMetrics.csv",
+		historicalMetrics, true);
 }
 
 void DataHandler::insertNewMetrics(colvec newMetrics) {
@@ -78,7 +74,7 @@ void DataHandler::insertNewMetrics(colvec newMetrics) {
 	updateSimulationHistoricalMetrics(newMetrics);
 }
 
-colvec DataHandler::getOldMetrics() {
+colvec DataHandler::getPreviousMetrics() {
 	return previousMetrics;
 }
 
@@ -86,7 +82,7 @@ int DataHandler::loadHistoricalData() {
 	int size = 0;
 	try {
 		mlpack::data::Load(
-			"data/DataMemory/HistoricalData.csv",
+			dataMemoryDir + "/" + simulationName + "/HistoricalData.csv",
 			historicalData,
 			false,
 			true,
@@ -106,12 +102,8 @@ int DataHandler::loadHistoricalData() {
 			historicalDataToCluster = historicalData.submat(2, 0, 2, numberOfRegisters - 1);
 		}
 	}
-	catch (RegistersOverflowExcep& error) {
-		std::cout << error.what() << endl;
-		exit(EXIT_FAILURE);
-	}
-	catch (const std::runtime_error& error) {
-		std::cout << error.what() << endl;
+	catch (const std::exception& error) {
+		throw SimulatorFailureExcep(error.what(), "Supervisor.DataHandler");
 	}
 
 	return size;
@@ -121,8 +113,8 @@ void DataHandler::reset()
 {
 	iteration = 0;
 	numberOfRegisters = 0;
-	previousMetrics.clean(0.0);
-	newMetrics.clean(0.0);
+	previousMetrics = colvec(5, fill::zeros);
+	newMetrics = colvec(5, fill::zeros);
 	historicalData = mat();
 	historicalMetrics = mat();
 }
@@ -151,7 +143,10 @@ void DataHandler::insertNewHistoricalData(double fuse_result_burn, double fuse_r
 }
 
 void DataHandler::updateHistoricalData() {
-	mlpack::data::Save("data/DataMemory/HistoricalData.csv", historicalData, true);
+	mlpack::data::Save(
+		dataMemoryDir + "/"
+		+ simulationName + "/HistoricalData.csv",
+		historicalData, true);
 };
 
 mat DataHandler::getHistoricalDataToCluster() {
@@ -165,7 +160,10 @@ void DataHandler::updateSimulationHistoricalData(mat newHistoricalData) {
 	int numberOfRows = newHistoricalData.n_rows;
 	double element;
 
-	simulationDataFile.open("data/DataMemory/HistoricalDataFull.csv", std::ios_base::app);
+	simulationDataFile.open(
+		simulationsDir + "/" +
+		simulationName + "/HistoricalDataFullLog.csv",
+		std::ios_base::app);
 
 	for (int j = 0; j < numberOfColumns; j++) {
 		for (int i = 0; i < numberOfRows - 1; i++) {
@@ -185,7 +183,10 @@ void DataHandler::updateSimulationHistoricalMetrics(colvec newMetrics) {
 	int numberOfRows = newMetrics.n_rows;
 	double element;
 
-	simulationDataFile.open("data/DataMemory/HistoricalMetricsFull.csv", std::ios_base::app);
+	simulationDataFile.open(
+		simulationsDir + "/"
+		+ simulationName + "/HistoricalMetricsFullLog.csv",
+		std::ios_base::app);
 	simulationDataFile << iteration << ',';
 	for (int i = 0; i < numberOfRows - 1; i++) {
 		element = newMetrics(i);
@@ -199,4 +200,9 @@ void DataHandler::updateSimulationHistoricalMetrics(colvec newMetrics) {
 
 int* DataHandler::getIterationPointer() {
 	return &iteration;
+}
+
+void DataHandler::setSimulationName(std::string simulationName)
+{
+	DataHandler::simulationName = simulationName;
 }

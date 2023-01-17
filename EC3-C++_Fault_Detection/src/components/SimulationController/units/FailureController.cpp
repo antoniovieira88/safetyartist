@@ -37,7 +37,7 @@ void FailureController::defineNewTestScenario()
 			cout << "Component name: " << component.getComponentName() << endl;
 		}
 
-		// recalculate the the components's reliability accordingly to its new "countBetweenFailures"
+		// recalculate the components's reliability accordingly to its new "countBetweenFailures"
 		component.calculateReliability();
 
 		// when the method below is called, the "countBetweenFailures" of the correspondent component
@@ -87,4 +87,9 @@ void FailureController::defineNewTestScenario()
 int FailureController::getNumberOfFailedComponents()
 {
 	return numberOfFailedComponents;
+}
+
+void FailureController::setVerboseMode(bool verboseModeValue)
+{
+	FailureController::verboseMode = verboseModeValue;
 }
