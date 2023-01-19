@@ -18,7 +18,17 @@ public:
 		mt19937& generator);
 
 	OutputGenerator(
+		double meanValueFuseResultBurn,
+		double meanValueFuseResultNotBurn,
+		double uncertaintyRangeInput,
+		mt19937& generator);
+
+	OutputGenerator(
 		double maxStdDeviation,
+		double uncertaintyRangeInput,
+		mt19937& generator);
+
+	OutputGenerator(
 		double uncertaintyRangeInput,
 		mt19937& generator);
 

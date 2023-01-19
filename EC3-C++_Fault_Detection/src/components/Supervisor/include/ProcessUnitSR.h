@@ -1,9 +1,12 @@
 #include <mlpack/core.hpp>
+#include <vector>
 #include "AnalysisUnit.h"
 #include "DataHandler.h"
 #include "../../Supervised/include/Supervised.h"
 #include "../../../utils/structs/structs.h"
 #include "../../../utils/exceptions/include/FailureDetectedExcep.h"
+
+using namespace std;
 
 class ProcessUnitSR {
 public:
@@ -43,6 +46,7 @@ private:
 
 	colvec previousMetrics, newMetrics;
 
-	void provideTestInput(double testInput);
-	double receiveTestOutput();
+	void provideFuseTestInput(double testInput);
+	void setKeepPower(double keepPower);
+	double receiveFuseTestOutput();
 };

@@ -1,18 +1,21 @@
 #include "CorrectOutputGenerator.h"
 #include "FailedOutputGenerator.h"
 
+using namespace std;
+
 class ProcessUnitSD {
 public:
 	ProcessUnitSD(
 		CorrectOutputGenerator& correctOutputGenerator,
 		FailedOutputGenerator& failedOutputGenerator
 	);
-	void setTestInput(double input);
-	void setTestScenario(TestScenarioType& testScenario);
-	double getTestOutput();
+	void setFuseTestInput(double input);
+	void setFuseTestScenario(FuseTestScenarioType& testScenario);
+	void setKeepPower(double keepPower);
+	double getFuseTestOutput();
 
 private:
-	double testInput, testOutput, stdDeviationTest;
+	double testInput, testOutput, stdDeviationTest, keepPower;
 	bool fail;
 
 	FailureScenarioType* failureScenario;

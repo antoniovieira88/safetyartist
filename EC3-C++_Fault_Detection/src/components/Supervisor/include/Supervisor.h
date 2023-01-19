@@ -1,7 +1,8 @@
 #include "ProcessUnitSR.h"
 
-class Supervisor
-{
+using namespace std;
+
+class Supervisor {
 public:
 	Supervisor(
 		int maxNumberOfRegisters,

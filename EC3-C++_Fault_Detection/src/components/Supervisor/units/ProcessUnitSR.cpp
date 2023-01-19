@@ -1,8 +1,5 @@
 #include "../include/ProcessUnitSR.h"
-#include <cmath>
 #include <vector>
-
-using namespace std;
 
 /*
 
@@ -30,8 +27,8 @@ ProcessUnitSR::ProcessUnitSR(
 	ProcessUnitSR::verboseMode = verboseMode;
 
 	newMetrics = colvec(5, fill::zeros);
-	keepPower = 1.0;
 	fuseTest = 1.0;
+	keepPower = 0.0;
 }
 
 ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
@@ -47,9 +44,8 @@ ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandle
 	ProcessUnitSR::verboseMode = verboseMode;
 
 	newMetrics = colvec(5, fill::zeros);
-	keepPower = 1.0;
 	fuseTest = 1.0;
-
+	keepPower = 0.0;
 }
 
 ProcessUnitSR::~ProcessUnitSR()
@@ -73,6 +69,7 @@ void ProcessUnitSR::runTest()
 	arma::mat dataToCluster;
 	double fuseResultBurn = (double NAN);
 	double fuseResultNotBurn = (double NAN);
+	double keepPower(double NAN);
 	bool failure = false;
 
 	if (verboseMode) {
@@ -83,8 +80,9 @@ void ProcessUnitSR::runTest()
 	keepPower = 1.0;
 	fuseTest = 0.0;
 
-	provideTestInput(fuseTest);
-	fuseResultBurn = receiveTestOutput();
+	setKeepPower(keepPower);
+	provideFuseTestInput(fuseTest);
+	fuseResultBurn = receiveFuseTestOutput();
 
 	if (verboseMode) {
 		cout << "fuse_test = " << fuseTest << endl;
@@ -93,8 +91,8 @@ void ProcessUnitSR::runTest()
 
 	fuseTest = 1.0;
 
-	provideTestInput(fuseTest);
-	fuseResultNotBurn = receiveTestOutput();
+	provideFuseTestInput(fuseTest);
+	fuseResultNotBurn = receiveFuseTestOutput();
 
 	if (verboseMode) {
 		cout << "fuse_test = " << fuseTest << endl;
@@ -123,6 +121,7 @@ void ProcessUnitSR::runTest()
 
 	if (faultDiagnosis.failure) {
 		keepPower = 0.0;
+		setKeepPower(keepPower);
 		throw FailureDetectedExcep(faultDiagnosis);
 	}
 
@@ -251,13 +250,18 @@ void ProcessUnitSR::setBasicParams(
 	ProcessUnitSR::imbalanceClustersIncreaseTolerance = numberOfPointsPerClusterDiffToleranceValue;
 }
 
-void ProcessUnitSR::provideTestInput(double testInput)
+void ProcessUnitSR::provideFuseTestInput(double testInput)
 {
-	supervisedPointer->setTestInput(testInput);
+	supervisedPointer->setFuseTestInput(testInput);
 }
 
-double ProcessUnitSR::receiveTestOutput()
+void ProcessUnitSR::setKeepPower(double keepPower)
 {
-	return supervisedPointer->getTestOutput();
+	supervisedPointer->setKeepPower(keepPower);
+}
+
+double ProcessUnitSR::receiveFuseTestOutput()
+{
+	return supervisedPointer->getFuseTestOutput();
 }
 

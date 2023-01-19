@@ -80,48 +80,62 @@ int ParamsController::setComponentsInitialOperationalState()
 		+ "/ComponentsOperationalState.csv",
 		ios::in);
 	if (componentsOperationalStateFile.fail()) {
+		componentsOperationalStateFile.close();
 		throw AbortSimulationOpExcep(
 			"ComponentsOperationalState.csv file for simulation '"
 			+ simulationName + "' could not be accessed");
 	}
 
-	// the first line corresponds is a header, so it is ignored
-	getline(componentsOperationalStateFile, line);
+	try {
+		// the first line corresponds is a header, so it is ignored
+		getline(componentsOperationalStateFile, line);
 
-	// each subsequent line corresponds to a component
-	while (getline(componentsOperationalStateFile, line)) {
-		stringstream strstream(line);
+		// each subsequent line corresponds to a component
+		while (getline(componentsOperationalStateFile, line)) {
+			stringstream strstream(line);
 
-		// the first word is considered to be the component id
-		// in this loop, it is simply ignored, as the components list has already been defined when this function is called
-		getline(strstream, word, ',');
+			// the first word is considered to be the component id
+			// in this loop, it is simply ignored, as the components list has already been defined when this function is called
+			getline(strstream, word, ',');
 
-		// the second word is considered to be the faultModeId from the last iteration
-		getline(strstream, word, ',');
-		faultModeId = stoi(word);
+			try {
+				// the second word is considered to be the faultModeId from the last iteration
+				getline(strstream, word, ',');
+				faultModeId = stoi(word);
+			}
+			catch (invalid_argument& error) {
+				throw AbortSimulationOpExcep("Invalid faultModeId parameter entered: "
+					+ word + ".\n");
+			}
 
-		// if the faultMode is different from "-1", the initialCountBetweenFailures of
-		// the component is automatically updated to zero when "setFaultModeId" is called
-		//  -> obs.: "-1" indicates no fault
-		componentsArray[componentId].setFaultMode(faultModeId);
+			// if the faultMode is different from "-1", the initialCountBetweenFailures of
+			// the component is automatically updated to zero when "setFaultModeId" is called
+			//  -> obs.: "-1" indicates no fault
+			componentsArray[componentId].setFaultMode(faultModeId);
 
-		// only when there is no fault, it is necessary to retrieve the countBetweenFailures from the last iteration
-		//  -> obs.: "-1" indicates no fault
-		if (faultModeId == -1) {
-			getline(strstream, word);
-			initialCountBetweenFailures = stoi(word);
-			componentsArray[componentId].setCountBetweenFailures(initialCountBetweenFailures);
-			componentsArray[componentId].calculateReliability();
+			// only when there is no fault, it is necessary to retrieve the countBetweenFailures from the last iteration
+			//  -> obs.: "-1" indicates no fault
+			if (faultModeId == -1) {
+				getline(strstream, word);
+				initialCountBetweenFailures = stoi(word);
+				componentsArray[componentId].setCountBetweenFailures(initialCountBetweenFailures);
+				componentsArray[componentId].calculateReliability();
+			}
+			else {
+				// this is only a flag variable which helps restore the components states to a default initial condition
+				// obs.: this flag is later used in SimulationController::ProcessUnitSC::userInputOptions as the return of
+				// method ParamsController::isSurpervisedStartingWithFailure()
+				initialFaults = true;
+				numberOfFaultyComponents++;
+			}
+
+			componentId++;
 		}
-		else {
-			// this is only a flag variable which helps restore the components states to a default initial condition
-			// obs.: this flag is later used in SimulationController::ProcessUnitSC::userInputOptions as the return of
-			// method ParamsController::isSurpervisedStartingWithFailure()
-			initialFaults = true;
-			numberOfFaultyComponents++;
-		}
 
-		componentId++;
+	}
+	catch (AbortSimulationOpExcep& error) {
+		componentsOperationalStateFile.close();
+		throw;
 	}
 
 	return numberOfFaultyComponents;
@@ -185,37 +199,47 @@ void ParamsController::loadSimulationSpecificParams()
 {
 	fstream simulationParamsFile;
 	string line, word;
-	double doubleParamsType[8];
+	double doubleParamsType[9];
 
 	simulationParamsFile.open(
 		simulationsDir + "/"
 		+ simulationName + "/SimulationParams.csv",
 		ios::in);
 	if (simulationParamsFile.fail()) {
+		simulationParamsFile.close();
 		throw AbortSimulationOpExcep(
 			"SimulationParams.csv file for simulation '"
 			+ simulationName + "' could not be read");
 	}
 
-	// in this loop, all the 8 first params are collected from the first 8 lines of SimulationParams.csv file.
-	// They are stored in 'double doubleParamsType[8]' (they are all from the same data type: double).
-	for (int i = 0; i < 8; i++) {
+	try {
+
+		// in this loop, all the 9 first params are collected from the first 9 lines of SimulationParams.csv file.
+		// They are stored in 'double doubleParamsType[8]' (they are all from the same data type: double).
+		for (int i = 0; i < 9; i++) {
+			getline(simulationParamsFile, line);
+			stringstream strstream(line);
+			getline(strstream, word, ':');
+			getline(strstream, word);
+			doubleParamsType[i] = stod(word);
+		}
+
+		// load the simulationSeed parameter (integer type), which corresponds to the last line of 
+		// the SimulationParams.csv file
 		getline(simulationParamsFile, line);
 		stringstream strstream(line);
 		getline(strstream, word, ':');
 		getline(strstream, word);
-		doubleParamsType[i] = stod(word);
-	}
+		simulationSpecificParams.simulationSeed = stoul(word);
+		simulationParamsFile.close();
 
-	// load the simulationSeed parameter (integer type), which corresponds to the last line of 
-	// the SimulationParams.csv file
-	getline(simulationParamsFile, line);
-	stringstream strstream(line);
-	getline(strstream, word, ':');
-	getline(strstream, word);
-	if (word == "r") simulationSpecificParams.simulationSeed = -1;
-	else simulationSpecificParams.simulationSeed = stoi(word);
-	simulationParamsFile.close();
+	}
+	catch (invalid_argument& error) {
+		simulationParamsFile.close();
+		throw AbortSimulationOpExcep(
+			"Invalid simulation parameter in SimulationParams.csv file entered: "
+			+ word + ".\n");
+	}
 
 	// the parameters below were read at the following order in SimulationParams.csv
 	simulationSpecificParams.overallSilhouetteTolerance = doubleParamsType[0];
@@ -225,7 +249,8 @@ void ParamsController::loadSimulationSpecificParams()
 	simulationSpecificParams.maxNominalFuseResultBurn = doubleParamsType[4];
 	simulationSpecificParams.minNominalFuseResultNotBurn = doubleParamsType[5];
 	simulationSpecificParams.maxNominalFuseResultNotBurn = doubleParamsType[6];
-	simulationSpecificParams.iterationEquivalentTime = doubleParamsType[7];
+	simulationSpecificParams.maxStdDeviation = doubleParamsType[7];
+	simulationSpecificParams.iterationEquivalentTime = doubleParamsType[8];
 }
 
 void ParamsController::setVerboseMode(bool verboseModeValue)

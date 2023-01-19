@@ -3,7 +3,6 @@
 #include <sstream>
 #include <vector>
 #include <random>
-#include <cmath>
 #include <iostream>
 #include <limits>
 #include "../../structs/structs.h"
@@ -40,6 +39,8 @@ public:
 	string getCurrentFaultModeName();
 
 	FailureScenarioType* getSingleFailureScenarioPointer();
+
+	bool checkFaultModeIdValidity(int id);
 
 private:
 	const string name;

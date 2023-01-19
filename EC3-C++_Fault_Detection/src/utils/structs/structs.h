@@ -20,7 +20,7 @@ struct FailureScenarioType {
 	double maxFuseResultNotBurn;
 };
 
-struct TestScenarioType {
+struct FuseTestScenarioType {
 	int numberOfFailedComponents;
 	vector<int> faultModesArray;
 	FailureScenarioType* failureScenarioPointer;
@@ -29,7 +29,7 @@ struct TestScenarioType {
 
 struct SimulationSpecificParamsType {
 	// Simulation controller
-	int simulationSeed;
+	unsigned int simulationSeed;
 	double iterationEquivalentTime;
 	// Supervisor
 	double overallSilhouetteTolerance;
@@ -40,4 +40,5 @@ struct SimulationSpecificParamsType {
 	double maxNominalFuseResultBurn;
 	double minNominalFuseResultNotBurn;
 	double maxNominalFuseResultNotBurn;
+	double maxStdDeviation;
 };

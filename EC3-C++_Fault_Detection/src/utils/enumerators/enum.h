@@ -1,5 +1,7 @@
 #include <string>
 
+using namespace std;
+
 #pragma once
 enum metrics {
 	silhouetteCluster1 = 0,

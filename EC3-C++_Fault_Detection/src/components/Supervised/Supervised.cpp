@@ -7,26 +7,26 @@ Supervised::Supervised(
 	generator(),
 	correctOutputGenerator(
 		nominalFuseResultBurn, nominalFuseResultNotBurn,
-		0.0, 0.2, 0.8, 1.0,
-		0.1, 0.001, generator),
-	failedOutputGenerator(0.1, 0.001, generator),
+		0.001, generator),
+	failedOutputGenerator(0.001, generator),
 	processUnit(correctOutputGenerator, failedOutputGenerator)
 {
+	Supervised::verboseMode = verboseMode;
 }
 
-void Supervised::setTestInput(double input)
+void Supervised::setFuseTestInput(double input)
 {
-	processUnit.setTestInput(input);
+	processUnit.setFuseTestInput(input);
 }
 
-void Supervised::setTestScenario(TestScenarioType& testScenario)
+void Supervised::setFuseTestScenario(FuseTestScenarioType& testScenario)
 {
-	processUnit.setTestScenario(testScenario);
+	processUnit.setFuseTestScenario(testScenario);
 }
 
-double Supervised::getTestOutput()
+double Supervised::getFuseTestOutput()
 {
-	return processUnit.getTestOutput();
+	return processUnit.getFuseTestOutput();
 }
 
 void Supervised::setBasicParams(
@@ -34,18 +34,19 @@ void Supervised::setBasicParams(
 	double maxNominalFuseResultBurn,
 	double minNominalFuseResultNotBurn,
 	double maxNominalFuseResultNotBurn,
-	int seed)
+	double maxStdDeviation,
+	unsigned int seed)
 {
 	correctOutputGenerator.setBasicParams(
 		minNominalFuseResultBurn,
 		maxNominalFuseResultBurn,
 		minNominalFuseResultNotBurn,
-		maxNominalFuseResultNotBurn);
+		maxNominalFuseResultNotBurn,
+		maxStdDeviation);
+
+	failedOutputGenerator.setMaxStdDeviation(maxStdDeviation);
 
 	generator.seed(seed);
-
-	if (seed >= 0) generator.seed(seed);
-	else generator.setRandSeed();
 }
 
 void Supervised::loadMtEngineState()
@@ -58,12 +59,12 @@ void Supervised::saveMtEngineState()
 	generator.saveState(verboseMode);
 }
 
+void Supervised::setKeepPower(double keepPower)
+{
+	processUnit.setKeepPower(keepPower);
+}
+
 void Supervised::setMtEngineSrcFile(string srcFileDir)
 {
 	generator.setFileDir(srcFileDir);
-}
-
-void Supervised::setMtEngineRandSeed()
-{
-	generator.setRandSeed();
 }

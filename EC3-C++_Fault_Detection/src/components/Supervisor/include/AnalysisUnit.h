@@ -1,6 +1,8 @@
 #include <mlpack/core.hpp>
+#include "../../../utils/kmeans/include/KMeans.h"
 
 using namespace arma;
+
 class AnalysisUnit {
 public:
 	AnalysisUnit(int numberOfClusters, mat& initialCentroids);

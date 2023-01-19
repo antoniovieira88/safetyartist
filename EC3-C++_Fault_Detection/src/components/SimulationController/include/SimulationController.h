@@ -1,6 +1,7 @@
 #include "ProcessUnitSC.h"
 
 using namespace std;
+
 class SimulationController {
 public:
 	SimulationController(
@@ -12,7 +13,7 @@ public:
 
 private:
 	vector<Component> componentsArray;
-	TestScenarioType testScenario;
+	FuseTestScenarioType testScenario;
 	MtRandEngine generator;
 	string simulationName;
 	SimulationSpecificParamsType simulationSpecificParams;

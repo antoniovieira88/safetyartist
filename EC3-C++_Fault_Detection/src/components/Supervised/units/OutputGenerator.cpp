@@ -12,8 +12,7 @@ OutputGenerator::OutputGenerator(
 	double maxFuseResultNotBurn,
 	double maxStdDeviation,
 	double uncertaintyRangeInput,
-	mt19937& generator)
-	:
+	mt19937& generator) :
 	generator(generator)
 {
 	OutputGenerator::meanValueFuseResultBurn = meanValueFuseResultBurn;
@@ -28,10 +27,27 @@ OutputGenerator::OutputGenerator(
 }
 
 OutputGenerator::OutputGenerator(
+	double meanValueFuseResultBurn,
+	double meanValueFuseResultNotBurn,
+	double uncertaintyRangeInput,
+	mt19937& generator) :
+	generator(generator)
+{
+	OutputGenerator::meanValueFuseResultBurn = meanValueFuseResultBurn;
+	OutputGenerator::meanValueFuseResultNotBurn = meanValueFuseResultNotBurn;
+	OutputGenerator::minFuseResultBurn = (double NAN);
+	OutputGenerator::maxFuseResultBurn = (double NAN);
+	OutputGenerator::minFuseResultNotBurn = (double NAN);
+	OutputGenerator::maxFuseResultNotBurn = (double NAN);
+	uniformDist = uniform_real_distribution<double>{ 0.0, 0.1 };
+	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
+	stdDeviation = 0.0;
+}
+
+OutputGenerator::OutputGenerator(
 	double maxStdDeviation,
 	double uncertaintyRangeInput,
-	mt19937& generator)
-	:
+	mt19937& generator) :
 	generator(generator)
 {
 	OutputGenerator::meanValueFuseResultBurn = (double NAN);
@@ -41,6 +57,22 @@ OutputGenerator::OutputGenerator(
 	OutputGenerator::minFuseResultNotBurn = (double NAN);
 	OutputGenerator::maxFuseResultNotBurn = (double NAN);
 	uniformDist = uniform_real_distribution<double>{ 0.0, maxStdDeviation };
+	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
+	stdDeviation = 0.0;
+}
+
+OutputGenerator::OutputGenerator(
+	double uncertaintyRangeInput,
+	mt19937& generator) :
+	generator(generator)
+{
+	OutputGenerator::meanValueFuseResultBurn = (double NAN);
+	OutputGenerator::meanValueFuseResultNotBurn = (double NAN);
+	OutputGenerator::minFuseResultBurn = (double NAN);
+	OutputGenerator::maxFuseResultBurn = (double NAN);
+	OutputGenerator::minFuseResultNotBurn = (double NAN);
+	OutputGenerator::maxFuseResultNotBurn = (double NAN);
+	uniformDist = uniform_real_distribution<double>{ 0.0, 0.1 };
 	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
 	stdDeviation = 0.0;
 }

@@ -10,21 +10,17 @@ int SimulationControllerTest1()
 	bool verboseMode = true;
 
 	// Test Params for Supervisor and Supervised
-	int maxNumberOfRegisters = 1000, supervisedSeed = 1;
-	double nominalFuseResultBurn = 0.1, nominalFuseResultNotBurn = 0.9,
-		overallSilhouetteTolerance = 0.01, silhouetteDiffTolerance = 0.01,
-		numberOfPointsPerClusterDiffTolerance = 1.0;
+	int maxNumberOfRegisters = 1000;
+	double nominalFuseResultBurn = 0.1, nominalFuseResultNotBurn = 0.9;
 
 	cout << "Test started" << endl;
 
 	Supervisor supervisor(
 		maxNumberOfRegisters,
 		nominalFuseResultBurn, nominalFuseResultNotBurn,
-		overallSilhouetteTolerance, silhouetteDiffTolerance,
-		numberOfPointsPerClusterDiffTolerance,
-		dataMemoryDir, simulationMemoryDir, verboseMode);
+		dataMemoryDir, simulationMemoryDir);
 
-	Supervised supervised(nominalFuseResultBurn, nominalFuseResultNotBurn, supervisedSeed);
+	Supervised supervised(nominalFuseResultBurn, nominalFuseResultNotBurn);
 
 	supervisor.attach(&supervised);
 

@@ -25,7 +25,13 @@ void MtRandEngine::setFileDir(string srcFileDir)
 	MtRandEngine::srcFileDir = srcFileDir;
 }
 
-void MtRandEngine::setRandSeed()
+// the first number of the pseudo-random number sequence corresponds
+// to the initial seed
+unsigned int MtRandEngine::setRandSeed()
 {
+	// it is possible to pass 'to the seed' method an seed sequence object
+	// like a 'time' object. Internally, the mt19937 object converts it to an
+	// unsigned integer
 	this->seed(time(nullptr));
+	return (*this)();
 }

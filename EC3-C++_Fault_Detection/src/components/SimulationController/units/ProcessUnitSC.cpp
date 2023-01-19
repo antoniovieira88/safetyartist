@@ -3,7 +3,7 @@
 ProcessUnitSC::ProcessUnitSC(
 	FailureController& failureController,
 	ParamsController& paramsController,
-	TestScenarioType& testScenario,
+	FuseTestScenarioType& testScenario,
 	vector<Component>& componentsArray,
 	SimulationSpecificParamsType& simulationSpecificParams,
 	MtRandEngine& generator,
@@ -60,9 +60,7 @@ void ProcessUnitSC::run()
 		if (simulationName != "") {
 			cout << "Current selected simulation: '" << simulationName << "'" << endl;
 			cout << "Simulation seed: "
-				<< (simulationSpecificParams.simulationSeed <= 0
-					? "random"
-					: to_string(simulationSpecificParams.simulationSeed)) << endl;
+				<< simulationSpecificParams.simulationSeed << endl;
 			cout << "Last iteration performed: " << *iterationPointer << endl;
 			cout << "Iteration equivalent time: " << simulationSpecificParams.iterationEquivalentTime << " hour(s)" << endl;
 			cout << "Current number of faulty components: " << testScenario.numberOfFailedComponents << endl;
@@ -90,7 +88,12 @@ void ProcessUnitSC::run()
 		{
 		case 97:
 			// option a)
-			selectSimulation();
+			try {
+				selectSimulation();
+			}
+			catch (AbortSimulationOpExcep& error) {
+				cout << endl << error.what() << endl;
+			}
 			break;
 		case 98:
 			// option b)
@@ -210,9 +213,10 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 		numberOfPointsPerClusterDiffTolerance;
 	// supervised
 	double minNominalFuseResultBurn, maxNominalFuseResultBurn,
-		minNominalFuseResultNotBurn, maxNominalFuseResultNotBurn;
+		minNominalFuseResultNotBurn, maxNominalFuseResultNotBurn,
+		maxStdDeviation;
 	// simulation controller
-	int simulationSeed;
+	unsigned int simulationSeed;
 	double iterationEquivalentTime;
 	try {
 		cout << endl << "2. Enter the supervisor system parameters" << endl;
@@ -241,6 +245,9 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 		cout << "maxNominalFuseResultNotBurn [double type]: ";
 		cin >> userInput;
 		maxNominalFuseResultNotBurn = stod(userInput);
+		cout << "maxStdDeviation [double type]: ";
+		cin >> userInput;
+		maxStdDeviation = stod(userInput);
 
 		cout << endl << "4. Enter the simulation controller parameters" << endl;
 		cout << "----------------------------------------" << endl;
@@ -252,8 +259,11 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 			<< "a new cycle of iterations starts, enter 'r'" << endl;
 		cout << "Input [positive integer type | 'r']: ";
 		cin >> userInput;
-		if (userInput == "r") simulationSeed = -1;
-		else simulationSeed = stoi(userInput);
+		if (userInput == "r") {
+			simulationSeed = generator.setRandSeed();
+			cout << endl << "Random seed generated: " << simulationSeed << endl;
+		}
+		else simulationSeed = stoul(userInput);
 
 		simulationParamsFile.open(simulationsDir + "/" + simulationName + "/SimulationParams.csv", std::ios::app);
 		simulationParamsFile << "overallSilhouetteTolerance:" << overallSilhouetteTolerance << endl;
@@ -263,8 +273,9 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 		simulationParamsFile << "maxNominalFuseResultBurn:" << maxNominalFuseResultBurn << endl;
 		simulationParamsFile << "minNominalFuseResultNotBurn:" << minNominalFuseResultNotBurn << endl;
 		simulationParamsFile << "maxNominalFuseResultNotBurn:" << maxNominalFuseResultNotBurn << endl;
+		simulationParamsFile << "maxStdDeviation:" << maxStdDeviation << endl;
 		simulationParamsFile << "iterationEquivalentTime:" << iterationEquivalentTime << endl;
-		simulationParamsFile << "simulationSeed:" << (simulationSeed <= 0 ? "r" : to_string(simulationSeed));
+		simulationParamsFile << "simulationSeed:" << simulationSeed;
 		simulationParamsFile.close();
 	}
 	catch (invalid_argument& error) {
@@ -283,8 +294,7 @@ void ProcessUnitSC::setSimulationParams()
 	testScenario.numberOfFailedComponents = paramsController.setComponentsInitialOperationalState();
 	string srcFilesMtEngineStateDir = simulationsDir + "/" + simulationName;
 	generator.setFileDir(srcFilesMtEngineStateDir + "/SimulationControllerMtEngine");
-	if (simulationSpecificParams.simulationSeed >= 0) generator.seed(simulationSpecificParams.simulationSeed);
-	else generator.setRandSeed();
+	generator.seed(simulationSpecificParams.simulationSeed);
 
 	// update the collected parameters in the other units
 	supervisorPointer->setBasicParams(
@@ -299,6 +309,7 @@ void ProcessUnitSC::setSimulationParams()
 		simulationSpecificParams.maxNominalFuseResultBurn,
 		simulationSpecificParams.minNominalFuseResultNotBurn,
 		simulationSpecificParams.maxNominalFuseResultNotBurn,
+		simulationSpecificParams.maxStdDeviation,
 		10 * simulationSpecificParams.simulationSeed
 	);
 }
@@ -439,7 +450,7 @@ int ProcessUnitSC::userSimulationCycleParamsOptions() {
 			cout << endl << endl;
 		}
 		catch (invalid_argument& error) {
-			throw AbortSimulationOpExcep("Invalid number of iterations entered");
+			throw AbortSimulationOpExcep("Invalid number of iterations entered: " + userInput + ".\n");
 		}
 	}
 
@@ -455,14 +466,8 @@ void ProcessUnitSC::getReadyForNextSimulationCycle()
 
 void ProcessUnitSC::loadMtRandEngines()
 {
-	if (simulationSpecificParams.simulationSeed >= 0) {
-		generator.loadState(verboseMode);
-		supervisedPointer->loadMtEngineState();
-	}
-	else {
-		generator.setRandSeed();
-		supervisedPointer->setMtEngineRandSeed();
-	}
+	generator.loadState(verboseMode);
+	supervisedPointer->loadMtEngineState();
 }
 
 void ProcessUnitSC::saveMtRandEngines()
@@ -518,7 +523,13 @@ bool ProcessUnitSC::searchForSimulationDirectories(string simulationName)
 // and iterationEquivalentTime) to the 'simulationSpecificParams' struct
 void ProcessUnitSC::loadSimulation()
 {
-	paramsController.loadSimulationSpecificParams();
+	try {
+		paramsController.loadSimulationSpecificParams();
+	}
+	catch (AbortSimulationOpExcep& error) {
+		simulationName = "";
+		throw;
+	}
 }
 
 void ProcessUnitSC::setVerboseMode(bool verboseModeValue)
@@ -553,7 +564,7 @@ void ProcessUnitSC::runSimulationCycle(int duration)
 
 		noFaults = (testScenario.numberOfFailedComponents == 0);
 
-		supervisedPointer->setTestScenario(testScenario);
+		supervisedPointer->setFuseTestScenario(testScenario);
 
 		try {
 			supervisorPointer->runTest();

@@ -2,6 +2,7 @@
 #include "../../../utils/mt_engine/include/MtRandEngine.h"
 
 using namespace std;
+
 class Supervised {
 public:
 	Supervised(
@@ -9,17 +10,19 @@ public:
 		double nominalFuseResultNotBurn,
 		bool verboseMode = true);
 
-	double getTestOutput();
+	double getFuseTestOutput();
 
-	void setTestInput(double input);
-	void setTestScenario(TestScenarioType& testScenario);
+	void setFuseTestInput(double input);
+	void setKeepPower(double keepPower);
+	void setFuseTestScenario(FuseTestScenarioType& fuseTestScenario);
 	void setBasicParams(
 		double minNominalFuseResultBurn,
 		double maxNominalFuseResultBurn,
 		double minNominalFuseResultNotBurn,
 		double maxNominalFuseResultNotBurn,
-		int seed);
-	void setMtEngineRandSeed();
+		double maxStdDeviation,
+		unsigned int seed);
+
 	void setMtEngineSrcFile(string srcFileDir);
 
 	void loadMtEngineState();
@@ -33,5 +36,4 @@ private:
 	CorrectOutputGenerator correctOutputGenerator;
 	FailedOutputGenerator failedOutputGenerator;
 	ProcessUnitSD processUnit;
-
 };

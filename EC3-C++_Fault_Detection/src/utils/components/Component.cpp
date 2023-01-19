@@ -78,7 +78,7 @@ void Component::loadFaultModes(string dir)
 	}
 	catch (invalid_argument& error) {
 		throw SimulatorFailureExcep("Invalid parameter argument in " + fileDir + ".",
-			"SimulationController.ComponentInstance<" + name + ">");
+			" SimulationController.ComponentInstance<" + name + ">. \n Argument: '" + word + "'.\n");
 	}
 }
 
@@ -124,6 +124,11 @@ void Component::setCountBetweenFailures(int countBetweenFailures)
 
 void Component::setFaultMode(int faultModeId)
 {
+	bool test = checkFaultModeIdValidity(faultModeId);
+	if (!test) {
+		throw AbortSimulationOpExcep("FaultModeId" +
+			to_string(faultModeId) + " is out of bounds\n");;
+	}
 	currentFaultModeId = faultModeId;
 
 	if (faultModeId == -1) {
@@ -202,5 +207,11 @@ FailureScenarioType* Component::getSingleFailureScenarioPointer()
 	if (currentFaultModeId == -1) return nullptr;
 
 	return &singleFailureScenarioArray[currentFaultModeId];
+}
+
+bool Component::checkFaultModeIdValidity(int id)
+{
+	int numberOfFaultModes = faultModesArray.size();
+	return (id >= -1 && id < numberOfFaultModes);
 }
 

@@ -1,6 +1,6 @@
 #include "../include/FailureController.h"
 
-FailureController::FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario) :
+FailureController::FailureController(vector<Component>& componentsArray, FuseTestScenarioType& testScenario) :
 	componentsArray(componentsArray),
 	testScenario(testScenario)
 {
@@ -9,7 +9,7 @@ FailureController::FailureController(vector<Component>& componentsArray, TestSce
 	FailureController::verboseMode = false;
 }
 
-FailureController::FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario, bool verboseMode) :
+FailureController::FailureController(vector<Component>& componentsArray, FuseTestScenarioType& testScenario, bool verboseMode) :
 	componentsArray(componentsArray),
 	testScenario(testScenario)
 {

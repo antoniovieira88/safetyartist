@@ -10,7 +10,7 @@ public:
 	ProcessUnitSC(
 		FailureController& failureController,
 		ParamsController& paramsController,
-		TestScenarioType& testScenario,
+		FuseTestScenarioType& testScenario,
 		vector<Component>& componentsArray,
 		SimulationSpecificParamsType& simulationSpecificParams,
 		MtRandEngine& generator,
@@ -33,7 +33,7 @@ private:
 
 	FailureController& failureController;
 	ParamsController& paramsController;
-	TestScenarioType& testScenario;
+	FuseTestScenarioType& testScenario;
 	MtRandEngine& generator;
 	vector<Component>& componentsArray;
 	string& simulationName;

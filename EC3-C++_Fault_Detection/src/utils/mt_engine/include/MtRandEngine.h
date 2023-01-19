@@ -5,7 +5,10 @@
 #include <ctime>
 #include "../../exceptions/include/AbortSimulationOpExcep.h"
 
+// reference: https://cplusplus.com/reference/random/mt19937/
+
 using namespace std;
+
 class MtRandEngine : public mt19937 {
 public:
 
@@ -14,10 +17,9 @@ public:
 	void loadState(bool verboseMode);
 	void saveState(bool verboseMode);
 	void setFileDir(string srcFileDir);
-	void setRandSeed();
+	unsigned int setRandSeed();
 
 private:
 	bool verboseMode;
 	string srcFileDir;
-
 };
