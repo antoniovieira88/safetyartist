@@ -568,33 +568,33 @@ void ProcessUnitSC::runSimulationCycle(int duration)
 
 		try {
 			supervisorPointer->runTest();
+			failureDetected = false;
+			if (noFaults) cout << endl << "-> No failure in the supervised system. Supervisor didn't detect any fault" << endl;
+			else {
+				cout << endl << "-> There was a fault in the supervised system"
+					<< " but supervisor didn't detect it" << endl;
+				recordHistoricalFailureLog(noFaults, failureDetected);
+			}
+			duration--;
 		}
 		catch (FailureDetectedExcep& error) {
 			failureDetected = true;
 
 			if (verboseMode) cout << error.what() << endl;
-			if (noFaults && verboseMode) cout << "-> Supervisor identified a failure that doesn't exist" << endl;
+			if (noFaults && verboseMode) cout << "-> Supervisor identified a failure that doesn't exist (misdiagnose)" << endl;
 
 			logError = error.getLogError();
+			recordHistoricalFailureLog(noFaults, failureDetected, logError);
+			duration = 0;
+			cout << endl << "Simulation finished: keepPower set off in Fuse Test" << endl;;
 		};
 
-		recordHistoricalFailureLog(noFaults, failureDetected, logError);
-
-		if (verboseMode) {
-			if (noFaults ^ failureDetected) {
-				cout << endl << "-> Supervisor correctly diagnosed the supervised system" << endl;
-			}
-			else {
-				cout << endl << "-> Supervisor misdiagnosed the supervised system" << endl;
-			}
-			cout << "End of iteration " << *iterationPointer << endl;
-			cout << " " << endl;
-		}
-
-		duration--;
 	}
 
-
+	if (verboseMode) {
+		cout << "End of iteration " << *iterationPointer << endl;
+		cout << " " << endl;
+	}
 	cout << endl << "Cycle of iterations completed" << endl;
 }
 

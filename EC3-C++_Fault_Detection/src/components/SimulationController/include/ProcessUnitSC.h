@@ -68,6 +68,6 @@ private:
 	void setSimulationParams();
 	void createLogAndStatusCSVFiles(string simulationName);
 	void printVerboseMode();
-	void recordHistoricalFailureLog(bool noFaults, bool failureDetected, string LogError);
+	void recordHistoricalFailureLog(bool noFaults, bool failureDetected, string LogError = "");
 };
 
