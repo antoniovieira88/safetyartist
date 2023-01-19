@@ -10,7 +10,9 @@ using namespace std;
 
 class ProcessUnitSR {
 public:
-	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler,
+	ProcessUnitSR(
+		AnalysisUnit& analysisUnit,
+		DataHandler& dataHandler,
 		Supervised* supervised,
 		bool verboseMode = true);
 

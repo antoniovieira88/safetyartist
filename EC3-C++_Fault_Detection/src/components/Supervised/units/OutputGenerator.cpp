@@ -114,6 +114,11 @@ double OutputGenerator::getStdDeviation()
 	return stdDeviation;
 }
 
+vector<double> OutputGenerator::getNominalFuseResults()
+{
+	return vector<double>({ meanValueFuseResultBurn, meanValueFuseResultNotBurn });
+}
+
 double OutputGenerator::truncateFuseResult(double fuseResult, bool burnTest) {
 	double max = 0.0, min = 0.0;
 	if (burnTest) {

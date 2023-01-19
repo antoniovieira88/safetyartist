@@ -4,8 +4,9 @@ SimulationController::SimulationController(
 	string dataMemoryDir,
 	string simulationMemoryDir,
 	bool verboseMode) :
-	generator(), iterationEquivalentTime(1.0), simulationName(""), simulationSpecificParams({}),
-	componentsArray(), testScenario({ 0, vector<int>(), nullptr }),
+	generator(), iterationEquivalentTime(1.0), simulationName(""),
+	simulationSpecificParams({}), componentsArray(),
+	testScenario({ 0, vector<int>(), nullptr }),
 	paramsController(simulationName, simulationSpecificParams, generator, componentsArray, simulationMemoryDir, verboseMode),
 	failureController(componentsArray, testScenario, verboseMode),
 	processUnit(

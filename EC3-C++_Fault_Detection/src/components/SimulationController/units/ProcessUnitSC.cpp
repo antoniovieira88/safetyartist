@@ -11,7 +11,7 @@ ProcessUnitSC::ProcessUnitSC(
 	string dataMemoryDir,
 	string simulationMemoryDir,
 	bool verboseMode) :
-	simulationSpecificParams(simulationSpecificParams),
+	simulationSpecificParams(simulationSpecificParams), nominalFuseResults({ 0.1, 0.9 }),
 	simulationName(simulationName), dataMemoryDir(dataMemoryDir),
 	simulationsDir(simulationMemoryDir + "/Simulations"),
 	defaultComponentsOperationStateFilePath(simulationMemoryDir + "/FailureSpecs_EC3/ComponentsInitialState.csv"),
@@ -44,6 +44,7 @@ void ProcessUnitSC::attach(Supervisor* supervisorPointer, Supervised* supervised
 	ProcessUnitSC::supervisedPointer = supervisedPointer;
 
 	ProcessUnitSC::iterationPointer = supervisorPointer->getIterationPointer();
+	ProcessUnitSC::nominalFuseResults = supervisedPointer->getNominalFuseResults();
 }
 
 void ProcessUnitSC::run()
@@ -232,19 +233,25 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 		numberOfPointsPerClusterDiffTolerance = stod(userInput);
 
 		cout << endl << "3. Enter the supervised system parameters" << endl;
+		cout << "-> nominalFuseResultBurn: " << nominalFuseResults[0] << endl;
+		cout << "-> nominalFuseResultNotBurn: " << nominalFuseResults[1] << endl;
 		cout << "----------------------------------------" << endl;
 		cout << "minNominalFuseResultBurn [double type]: ";
 		cin >> userInput;
 		minNominalFuseResultBurn = stod(userInput);
+		if (minNominalFuseResultBurn > nominalFuseResults[0]) throw invalid_argument("Error: minNominalFuseResultBurn > nominalFuseResultBurn");
 		cout << "maxNominalFuseResultBurn [double type]: ";
 		cin >> userInput;
 		maxNominalFuseResultBurn = stod(userInput);
+		if (maxNominalFuseResultBurn < nominalFuseResults[0]) throw invalid_argument("Error: maxNominalFuseResultBurn < nominalFuseResultBurn");
 		cout << "minNominalFuseResultNotBurn [double type]: ";
 		cin >> userInput;
 		minNominalFuseResultNotBurn = stod(userInput);
+		if (minNominalFuseResultNotBurn > nominalFuseResults[1]) throw invalid_argument("Error: minNominalFuseResultNotBurn > nominalFuseResultNotBurn");
 		cout << "maxNominalFuseResultNotBurn [double type]: ";
 		cin >> userInput;
 		maxNominalFuseResultNotBurn = stod(userInput);
+		if (maxNominalFuseResultNotBurn < nominalFuseResults[1]) throw invalid_argument("Error: maxNominalFuseResultNotBurn < nominalFuseResultNotBurn");
 		cout << "maxStdDeviation [double type]: ";
 		cin >> userInput;
 		maxStdDeviation = stod(userInput);
@@ -281,7 +288,10 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 	catch (invalid_argument& error) {
 		filesystem::remove_all(simulationsDir + "/" + simulationName);
 		filesystem::remove_all(dataMemoryDir + "/" + simulationName);
-		throw AbortSimulationOpExcep("Invalid simulation parameter entered\n");
+		cout << endl << error.what() << endl;
+		cout << "Simulation directories for " + simulationName + " deleted" << endl;
+		throw AbortSimulationOpExcep("Invalid simulation parameter entered: " + userInput + ".\n");
+
 	}
 }
 

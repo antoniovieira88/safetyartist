@@ -16,6 +16,8 @@ Supervisor::Supervisor(
 		NULL,
 		verboseMode)
 {
+	// the nominals values for fuseResult will be set again when a supervised object
+	// is attached to supervisor. The values set come from the Supervised definition
 	Supervisor::nominalFuseResults(0, 0) = nominalFuseResultBurn;
 	Supervisor::nominalFuseResults(0, 1) = nominalFuseResultNotBurn;
 }
@@ -47,6 +49,8 @@ Supervisor::Supervisor(
 
 void Supervisor::attach(Supervised* supervisedPointer) {
 	processUnit.attach(supervisedPointer);
+	nominalFuseResults(0, 0) = supervisedPointer->getNominalFuseResults()[0];
+	nominalFuseResults(0, 1) = supervisedPointer->getNominalFuseResults()[1];
 }
 
 void Supervisor::runTest() {

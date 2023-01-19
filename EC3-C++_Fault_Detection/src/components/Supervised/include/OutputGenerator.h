@@ -36,6 +36,7 @@ public:
 	double generateOutputTruncated(double fuseTest);
 
 	double getStdDeviation();
+	vector<double> getNominalFuseResults();
 
 protected:
 	double meanValueFuseResultBurn;

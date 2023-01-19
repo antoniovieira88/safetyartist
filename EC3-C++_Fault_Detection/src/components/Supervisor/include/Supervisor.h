@@ -6,7 +6,7 @@ class Supervisor {
 public:
 	Supervisor(
 		int maxNumberOfRegisters,
-		double nominalFuseResultBurn, double nominalFuseResultNotBurn,
+		double nominalFuseResultBurn = 0.1, double nominalFuseResultNotBurn = 0.9,
 		string dataMemoryDir = "data/DataMemory",
 		string simulationMemoryDir = "data/SimulationMemory",
 		bool verboseMode = true);

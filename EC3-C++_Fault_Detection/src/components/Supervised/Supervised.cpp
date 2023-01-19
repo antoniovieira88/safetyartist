@@ -29,6 +29,11 @@ double Supervised::getFuseTestOutput()
 	return processUnit.getFuseTestOutput();
 }
 
+vector<double> Supervised::getNominalFuseResults()
+{
+	return correctOutputGenerator.getNominalFuseResults();
+}
+
 void Supervised::setBasicParams(
 	double minNominalFuseResultBurn,
 	double maxNominalFuseResultBurn,

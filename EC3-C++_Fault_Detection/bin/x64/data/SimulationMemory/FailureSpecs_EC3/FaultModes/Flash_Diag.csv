@@ -1,5 +1,0 @@
-id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn
-0,Data Bit Loss,0.34000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-1,Slow Transfer of Data,0.17000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-2,Open,0.23000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-3,Short-Circuit,0.26000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050

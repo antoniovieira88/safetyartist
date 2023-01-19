@@ -11,6 +11,7 @@ public:
 		bool verboseMode = true);
 
 	double getFuseTestOutput();
+	vector<double> getNominalFuseResults();
 
 	void setFuseTestInput(double input);
 	void setKeepPower(double keepPower);
