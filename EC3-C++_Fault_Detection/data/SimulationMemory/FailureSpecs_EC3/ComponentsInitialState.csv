@@ -2,7 +2,7 @@ name,faultModeId,countBetweenFailures
 UC_Diag,-1,0
 Flash_Diag,-1,0
 R1_Diag,-1,0
-OC1_Diag,-1,0
+OC_Diag,-1,0
 R2_Diag,-1,0
 DC_DC_Diag,-1,0
 R1_Sys,-1,0

@@ -2,7 +2,7 @@ name,faultRate
 UC_Diag,1.77315E-8
 Flash_Diag,1.77320E-8
 R1_Diag,4.16120E-9
-OC1_Diag,8.45586E-8
+OC_Diag,8.45586E-8
 R2_Diag,4.16120E-9
 DC_DC_Diag,2.13881E-8
 R1_Sys,4.16120E-9
