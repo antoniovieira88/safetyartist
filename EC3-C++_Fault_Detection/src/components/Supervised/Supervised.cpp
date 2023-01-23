@@ -1,40 +1,34 @@
 #include "include/Supervised.h"
 
 Supervised::Supervised(
-	double nominalFuseResultBurn,
-	double nominalFuseResultNotBurn,
+	double uncertaintyRangeInput,
 	bool verboseMode) :
 	generator(),
-	correctOutputGenerator(
-		nominalFuseResultBurn, nominalFuseResultNotBurn,
-		0.001, generator),
-	failedOutputGenerator(0.001, generator),
+	correctOutputGenerator(uncertaintyRangeInput, generator),
+	failedOutputGenerator(uncertaintyRangeInput, generator),
 	processUnit(correctOutputGenerator, failedOutputGenerator)
 {
 	Supervised::verboseMode = verboseMode;
 }
 
-void Supervised::setFuseTestInput(double input)
+Supervised::Supervised(
+	double nominalFuseResultBurn,
+	double nominalFuseResultNotBurn,
+	double uncertaintyRangeInput,
+	bool verboseMode) :
+	generator(),
+	correctOutputGenerator(
+		nominalFuseResultBurn, nominalFuseResultNotBurn,
+		uncertaintyRangeInput, generator),
+	failedOutputGenerator(uncertaintyRangeInput, generator),
+	processUnit(correctOutputGenerator, failedOutputGenerator)
 {
-	processUnit.setFuseTestInput(input);
-}
-
-void Supervised::setFuseTestScenario(FuseTestScenarioType& testScenario)
-{
-	processUnit.setFuseTestScenario(testScenario);
-}
-
-double Supervised::getFuseTestOutput()
-{
-	return processUnit.getFuseTestOutput();
-}
-
-vector<double> Supervised::getNominalFuseResults()
-{
-	return correctOutputGenerator.getNominalFuseResults();
+	Supervised::verboseMode = verboseMode;
 }
 
 void Supervised::setBasicParams(
+	double nominalValueFuseResultBurn,
+	double nominalValueFuseResultNotBurn,
 	double minNominalFuseResultBurn,
 	double maxNominalFuseResultBurn,
 	double minNominalFuseResultNotBurn,
@@ -43,6 +37,8 @@ void Supervised::setBasicParams(
 	unsigned int seed)
 {
 	correctOutputGenerator.setBasicParams(
+		nominalValueFuseResultBurn,
+		nominalValueFuseResultNotBurn,
 		minNominalFuseResultBurn,
 		maxNominalFuseResultBurn,
 		minNominalFuseResultNotBurn,
@@ -54,6 +50,47 @@ void Supervised::setBasicParams(
 	generator.seed(seed);
 }
 
+/* ---------------------------------------------------------------------------------------- */
+/* FUSE_TEST methods */
+void Supervised::setFuseTestScenario(FuseTestScenarioType& testScenario)
+{
+	processUnit.setFuseTestScenario(testScenario);
+}
+
+void Supervised::setFuseTest(double fuseTest)
+{
+	processUnit.setFuseTest(fuseTest);
+}
+
+double Supervised::runFuseTest()
+{
+	return processUnit.runFuseTest();
+}
+
+vector<double> Supervised::getNominalFuseResults()
+{
+	return correctOutputGenerator.getNominalFuseResults();
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* KEEP_POWER_TEST methods */
+void Supervised::setKeepPowTestScenario(bool fail)
+{
+	processUnit.setKeepPowTestScenario(fail);
+}
+
+void Supervised::setKeepPower(double keepPower)
+{
+	processUnit.setKeepPower(keepPower);
+}
+
+double Supervised::runKeepPowTest()
+{
+	return processUnit.runKeepPowTest();
+}
+
+/* ---------------------------------------------------------------------------------------- */
+/* MT_ENGINE methods */
 void Supervised::loadMtEngineState()
 {
 	generator.loadState(verboseMode);
@@ -62,11 +99,6 @@ void Supervised::loadMtEngineState()
 void Supervised::saveMtEngineState()
 {
 	generator.saveState(verboseMode);
-}
-
-void Supervised::setKeepPower(double keepPower)
-{
-	processUnit.setKeepPower(keepPower);
 }
 
 void Supervised::setMtEngineSrcFile(string srcFileDir)

@@ -32,9 +32,12 @@ struct SimulationSpecificParamsType {
 	unsigned int simulationSeed;
 	double iterationEquivalentTime;
 	// Supervisor
+	double nominalFuseResultBurn;
+	double nominalFuseResultNotBurn;
 	double overallSilhouetteTolerance;
 	double numberOfPointsPerClusterDiffTolerance;
 	double silhouetteDiffTolerance;
+	unsigned int maxNumberOfRegisters;
 	// Supervised
 	double minNominalFuseResultBurn;
 	double maxNominalFuseResultBurn;

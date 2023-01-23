@@ -194,12 +194,13 @@ bool ParamsController::isSurpervisedStartingWithFailure()
 
 // load the simulation specific params 
 // (supervisor params, supervised params, simulationSeed
-// and iterationEquivalentTime) to the 'simulationSpecificParams' struct
+// and iterationEquivalentTime) to the 'simulationSpecificParams' struct,
+// which is instantiated in Simulation Controller scope
 void ParamsController::loadSimulationSpecificParams()
 {
 	fstream simulationParamsFile;
 	string line, word;
-	double doubleParamsType[9];
+	double doubleParamsType[11]; // there are 11 double-type parameters
 
 	simulationParamsFile.open(
 		simulationsDir + "/"
@@ -213,24 +214,39 @@ void ParamsController::loadSimulationSpecificParams()
 	}
 
 	try {
+		stringstream strstream;
 
-		// in this loop, all the 9 first params are collected from the first 9 lines of SimulationParams.csv file.
-		// They are stored in 'double doubleParamsType[8]' (they are all from the same data type: double).
-		for (int i = 0; i < 9; i++) {
+		// the first line corresponds to the header, so it's ignored
+		getline(simulationParamsFile, line);
+
+		// in this loop, all the 11 first params are collected from the first 11 lines of SimulationParams.csv file.
+		// They are stored in 'double doubleParamsType[]' (they are all from the same data type: double).
+		for (int i = 0; i < 11; i++) {
 			getline(simulationParamsFile, line);
-			stringstream strstream(line);
-			getline(strstream, word, ':');
+			strstream = stringstream(line);
+			getline(strstream, word, ',');
 			getline(strstream, word);
 			doubleParamsType[i] = stod(word);
 		}
 
-		// load the simulationSeed parameter (integer type), which corresponds to the last line of 
+		// load the integer-type parameters 'simulationSeed' and 'supervisorMaxNumberOfRegisters',
+		// which are stored at the last two lines of 
 		// the SimulationParams.csv file
+
+		// simulationSeed
 		getline(simulationParamsFile, line);
-		stringstream strstream(line);
-		getline(strstream, word, ':');
+		strstream = stringstream(line);
+		getline(strstream, word, ',');
 		getline(strstream, word);
 		simulationSpecificParams.simulationSeed = stoul(word);
+
+		// supervisorMaxNumberOfRegisters
+		getline(simulationParamsFile, line);
+		strstream = stringstream(line);
+		getline(strstream, word, ',');
+		getline(strstream, word);
+		simulationSpecificParams.maxNumberOfRegisters = stoul(word);
+
 		simulationParamsFile.close();
 
 	}
@@ -242,15 +258,23 @@ void ParamsController::loadSimulationSpecificParams()
 	}
 
 	// the parameters below were read at the following order in SimulationParams.csv
+	// note that the order below is the same as the one presented in
+	// 'ProcessUnitSC::createSimulationParams'
+
+	// Supervisor (doubles)
 	simulationSpecificParams.overallSilhouetteTolerance = doubleParamsType[0];
 	simulationSpecificParams.silhouetteDiffTolerance = doubleParamsType[1];
 	simulationSpecificParams.numberOfPointsPerClusterDiffTolerance = doubleParamsType[2];
-	simulationSpecificParams.minNominalFuseResultBurn = doubleParamsType[3];
-	simulationSpecificParams.maxNominalFuseResultBurn = doubleParamsType[4];
-	simulationSpecificParams.minNominalFuseResultNotBurn = doubleParamsType[5];
-	simulationSpecificParams.maxNominalFuseResultNotBurn = doubleParamsType[6];
-	simulationSpecificParams.maxStdDeviation = doubleParamsType[7];
-	simulationSpecificParams.iterationEquivalentTime = doubleParamsType[8];
+	// Supervised (doubles)
+	simulationSpecificParams.nominalFuseResultBurn = doubleParamsType[3];
+	simulationSpecificParams.nominalFuseResultNotBurn = doubleParamsType[4];
+	simulationSpecificParams.minNominalFuseResultBurn = doubleParamsType[5];
+	simulationSpecificParams.maxNominalFuseResultBurn = doubleParamsType[6];
+	simulationSpecificParams.minNominalFuseResultNotBurn = doubleParamsType[7];
+	simulationSpecificParams.maxNominalFuseResultNotBurn = doubleParamsType[8];
+	simulationSpecificParams.maxStdDeviation = doubleParamsType[9];
+	// Simulation Controller (doubles)
+	simulationSpecificParams.iterationEquivalentTime = doubleParamsType[10];
 }
 
 void ParamsController::setVerboseMode(bool verboseModeValue)

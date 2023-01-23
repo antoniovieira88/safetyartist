@@ -10,9 +10,16 @@ class DataHandler {
 public:
 
 	DataHandler(
-		int maxNumberOfRegisters,
+		int& iteration,
+		unsigned int maxNumberOfRegisters,
+		int numberOfMetrics,
+		std::string testName,
+		bool& verboseMode,
 		std::string dataMemoryDir = "data/DataMemory",
-		std::string simulationMemoryDir = "data/SimulationMemory");
+		std::string simulationMemoryDir = "data/SimulationMemory"
+	);
+
+	void initializeDataHandler(std::string simulationName);
 
 	int loadHistoricalMetrics();
 
@@ -24,7 +31,7 @@ public:
 
 	void reset();
 
-	void insertNewHistoricalData(double fuse_result_burn, double fuse_result_not_burn);
+	void insertNewHistoricalData(mat newData);
 
 	void updateHistoricalData();
 
@@ -36,18 +43,26 @@ public:
 
 	colvec getPreviousMetrics();
 
-	int* getIterationPointer();
+	int getLastIterationInDataMemory();
+	int getNumberOfMetrics();
 
 	void setSimulationName(std::string simulationName);
+	void setMaxNumberOfRegisters(unsigned int maxNumberOfRegisters);
 
 
 private:
-	int iteration;
-	int numberOfRegisters;
-	int maxNumberOfRegisters;
+	int& globalIteration;
+	int lastIterationInDataMemory, numberOfRegisters;
+	unsigned int maxNumberOfRegisters;
+	const int numberOfMetrics;
+	bool& verboseMode;
 
+	// the following variables are fixed for all simulations.
+	// they correspond parameters set at the moment of the instantiation
+	// of the objects dataHandlerFuseTest and dataHandlerKeepPowTest
 	const std::string dataMemoryDir;
 	const std::string simulationsDir;
+	const std::string testName;
 
 	mat historicalMetrics;
 	mat historicalData;

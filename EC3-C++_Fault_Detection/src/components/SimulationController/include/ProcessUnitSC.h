@@ -38,7 +38,6 @@ private:
 	vector<Component>& componentsArray;
 	string& simulationName;
 	SimulationSpecificParamsType& simulationSpecificParams;
-	vector<double> nominalFuseResults;
 
 	Supervisor* supervisorPointer;
 	Supervised* supervisedPointer;

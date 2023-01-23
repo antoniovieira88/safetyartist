@@ -21,7 +21,13 @@ public:
 		double uncertaintyRangeInput,
 		mt19937& generator);
 
+	CorrectOutputGenerator(
+		double uncertaintyRangeInput,
+		mt19937& generator);
+
 	void setBasicParams(
+		double nominalValueFuseResultBurn,
+		double nominalValueFuseResultNotBurn,
 		double minNominalFuseResultBurn,
 		double maxNominalFuseResultBurn,
 		double minNominalFuseResultNotBurn,

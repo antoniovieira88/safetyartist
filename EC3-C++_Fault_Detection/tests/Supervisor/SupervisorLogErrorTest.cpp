@@ -14,10 +14,7 @@ int SupervisorLogErrorTest()
 {
 
 	int iteration;
-	Supervisor supervisor(
-		1000,
-		0.1, 0.9,
-		0.01, 0.01, 0.01);
+	Supervisor supervisor = Supervisor();
 
 	Supervised supervised(0.1, 0.9, 1);
 	ofstream simulationDataFile;

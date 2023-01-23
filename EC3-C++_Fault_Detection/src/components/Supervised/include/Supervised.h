@@ -6,17 +6,30 @@ using namespace std;
 class Supervised {
 public:
 	Supervised(
-		double nominalFuseResultBurn,
-		double nominalFuseResultNotBurn,
+		double uncertaintyRangeInput = 0.000001,
 		bool verboseMode = true);
 
-	double getFuseTestOutput();
+	Supervised(
+		double nominalFuseResultBurn,
+		double nominalFuseResultNotBurn,
+		double uncertaintyRangeInput = 0.000001,
+		bool verboseMode = true);
+
 	vector<double> getNominalFuseResults();
 
-	void setFuseTestInput(double input);
+	// FuseTest
+	void setFuseTestScenario(FuseTestScenarioType& testScenario);
+	void setFuseTest(double fuseTest);
+	double runFuseTest();
+
+	// KeepPowTest
+	void setKeepPowTestScenario(bool fail);
 	void setKeepPower(double keepPower);
-	void setFuseTestScenario(FuseTestScenarioType& fuseTestScenario);
+	double runKeepPowTest();
+
 	void setBasicParams(
+		double nominalValueFuseResultBurn,
+		double nominalValueFuseResultNotBurn,
 		double minNominalFuseResultBurn,
 		double maxNominalFuseResultBurn,
 		double minNominalFuseResultNotBurn,

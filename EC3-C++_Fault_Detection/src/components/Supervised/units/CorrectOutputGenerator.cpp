@@ -39,13 +39,25 @@ CorrectOutputGenerator::CorrectOutputGenerator(
 	)
 {}
 
+CorrectOutputGenerator::CorrectOutputGenerator(
+	double uncertaintyRangeInput,
+	mt19937& generator) : OutputGenerator(
+		uncertaintyRangeInput,
+		generator
+	)
+{}
+
 void CorrectOutputGenerator::setBasicParams(
+	double nominalValueFuseResultBurn,
+	double nominalValueFuseResultNotBurn,
 	double minNominalFuseResultBurn,
 	double maxNominalFuseResultBurn,
 	double minNominalFuseResultNotBurn,
 	double maxNominalFuseResultNotBurn,
 	double maxStdDeviation)
 {
+	meanValueFuseResultBurn = nominalValueFuseResultBurn;
+	meanValueFuseResultNotBurn = nominalValueFuseResultNotBurn;
 	minFuseResultBurn = minNominalFuseResultBurn;
 	maxFuseResultBurn = maxNominalFuseResultBurn;
 	minFuseResultNotBurn = minNominalFuseResultNotBurn;

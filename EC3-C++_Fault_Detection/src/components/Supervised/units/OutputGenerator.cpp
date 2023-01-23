@@ -78,7 +78,7 @@ OutputGenerator::OutputGenerator(
 }
 
 // Implementation of generateOutput method which truncates the value of fuseResult 
-// if it is out of the specifed bounds
+// if it is out of the specified bounds
 
 double OutputGenerator::generateOutputTruncated(double fuseTest)
 {

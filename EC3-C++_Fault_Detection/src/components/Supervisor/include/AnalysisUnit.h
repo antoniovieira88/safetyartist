@@ -14,6 +14,7 @@ public:
 
 	void setDataToCluster(mat dataToCluster);
 
+
 	mat getCentroids();
 	Row<size_t> getAssignments();
 	int getTotalNumberOfPoints();

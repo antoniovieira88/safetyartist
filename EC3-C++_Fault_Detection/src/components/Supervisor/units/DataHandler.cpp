@@ -3,18 +3,39 @@
 using namespace arma;
 
 DataHandler::DataHandler(
-	int maxNumberOfRegisters,
+	int& iteration,
+	unsigned int maxNumberOfRegisters,
+	int numberOfMetrics,
+	std::string testName,
+	bool& verboseMode,
 	std::string dataMemoryDir,
-	std::string simulationMemoryDir) :
+	std::string simulationMemoryDir
+) :
+	globalIteration(iteration), verboseMode(verboseMode),
 	dataMemoryDir(dataMemoryDir), simulationsDir(simulationMemoryDir + "/Simulations"),
-	historicalData(), historicalMetrics(),
-	historicalDataToCluster(), previousMetrics(5, fill::zeros),
-	newMetrics(colvec(5, fill::zeros))
+	testName(testName), historicalData(), historicalMetrics(), numberOfMetrics(numberOfMetrics),
+	historicalDataToCluster(), previousMetrics(numberOfMetrics, fill::zeros),
+	newMetrics(colvec(numberOfMetrics, fill::zeros))
 {
-	DataHandler::iteration = 0;
+	DataHandler::lastIterationInDataMemory = 0;
 	DataHandler::numberOfRegisters = 0;
 	DataHandler::maxNumberOfRegisters = maxNumberOfRegisters;
 	DataHandler::simulationName = "";
+}
+
+void DataHandler::initializeDataHandler(std::string simulationName)
+{
+	setSimulationName(simulationName);
+	// historical data needs to be loaded before historicalMetrics
+	loadHistoricalData();
+	loadHistoricalMetrics();
+
+	if (verboseMode) {
+		cout << "Data Handler for " << testName << " initialized" << endl;
+		cout << "Number of rows in '" << testName << "\HistoricalData.csv': " << historicalData.n_cols << endl;
+		cout << "Number of rows in '" << testName << "\HistoricalMetrics.csv': " << historicalMetrics.n_cols << endl;
+	}
+
 }
 
 int DataHandler::loadHistoricalMetrics()
@@ -22,7 +43,8 @@ int DataHandler::loadHistoricalMetrics()
 	int size = 0;
 	try {
 		mlpack::data::Load(
-			dataMemoryDir + "/" + simulationName + "/HistoricalMetrics.csv",
+			dataMemoryDir + "/" + simulationName + "/"
+			+ testName + "/HistoricalMetrics.csv",
 			historicalMetrics,
 			false,
 			true,
@@ -36,11 +58,11 @@ int DataHandler::loadHistoricalMetrics()
 		if (size > 0) {
 			int iterationInHistoricalMetrics = historicalMetrics(0, size - 1);
 
-			if (iterationInHistoricalMetrics != iteration) {
-				throw IncompatibleIterationExcep(iterationInHistoricalMetrics, iteration);
+			if (iterationInHistoricalMetrics != lastIterationInDataMemory) {
+				throw IncompatibleIterationExcep(iterationInHistoricalMetrics, lastIterationInDataMemory);
 			}
 
-			mat historicalMetricsView = historicalMetrics.submat(1, size - 1, 5, size - 1);
+			mat historicalMetricsView = historicalMetrics.submat(1, size - 1, numberOfMetrics, size - 1);
 			previousMetrics = colvec(historicalMetricsView);
 			newMetrics = previousMetrics;
 		}
@@ -56,7 +78,8 @@ void DataHandler::updateHistoricalMetrics()
 {
 	mlpack::data::Save(
 		dataMemoryDir + "/"
-		+ simulationName + "/HistoricalMetrics.csv",
+		+ simulationName + "/"
+		+ testName + "/HistoricalMetrics.csv",
 		historicalMetrics, true);
 }
 
@@ -64,7 +87,7 @@ void DataHandler::insertNewMetrics(colvec newMetrics) {
 	DataHandler::previousMetrics = colvec(DataHandler::newMetrics);
 	DataHandler::newMetrics = newMetrics;
 
-	colvec newHistoricalMetricsCol = { double(iteration) };
+	colvec newHistoricalMetricsCol = { double(globalIteration) };
 	newHistoricalMetricsCol.insert_rows(1, newMetrics);
 	if (historicalMetrics.n_cols == maxNumberOfRegisters / 2) {
 		historicalMetrics.shed_col(0);
@@ -78,11 +101,22 @@ colvec DataHandler::getPreviousMetrics() {
 	return previousMetrics;
 }
 
+int DataHandler::getLastIterationInDataMemory()
+{
+	return lastIterationInDataMemory;
+}
+
+int DataHandler::getNumberOfMetrics()
+{
+	return numberOfMetrics;
+}
+
 int DataHandler::loadHistoricalData() {
 	int size = 0;
 	try {
 		mlpack::data::Load(
-			dataMemoryDir + "/" + simulationName + "/HistoricalData.csv",
+			dataMemoryDir + "/" + simulationName + "/"
+			+ testName + "/HistoricalData.csv",
 			historicalData,
 			false,
 			true,
@@ -98,7 +132,7 @@ int DataHandler::loadHistoricalData() {
 
 		if (numberOfRegisters > 0) {
 			// here the iteration is updated for the entire application
-			iteration = historicalData(0, numberOfRegisters - 1);
+			lastIterationInDataMemory = historicalData(0, numberOfRegisters - 1);
 			historicalDataToCluster = historicalData.submat(2, 0, 2, numberOfRegisters - 1);
 		}
 	}
@@ -111,30 +145,39 @@ int DataHandler::loadHistoricalData() {
 
 void DataHandler::reset()
 {
-	iteration = 0;
+	lastIterationInDataMemory = 0;
 	numberOfRegisters = 0;
-	previousMetrics = colvec(5, fill::zeros);
-	newMetrics = colvec(5, fill::zeros);
+	previousMetrics = colvec(numberOfMetrics, fill::zeros);
+	newMetrics = colvec(numberOfMetrics, fill::zeros);
 	historicalData = mat();
 	historicalMetrics = mat();
+
+	if (verboseMode) cout << "Data Handler for " << testName << " was reset" << endl;
 }
 
-void DataHandler::insertNewHistoricalData(double fuse_result_burn, double fuse_result_not_burn) {
-	// here the iteration is updated for the entire application
-	iteration++;
-
+void DataHandler::insertNewHistoricalData(mat newData) {
 	if (numberOfRegisters == maxNumberOfRegisters) {
 		historicalData.shed_cols(0, 1);
 	}
 
-	mat newHistoricalData = { {double(iteration),  double(iteration)},
-								{0.0, 1.0},
-								{fuse_result_burn, fuse_result_not_burn},
-	};
+	lastIterationInDataMemory = globalIteration;
 
-	historicalData.insert_cols(historicalData.n_cols, newHistoricalData);
+	// iteration variable is updated in ProcessUnitSR's scope
+	newData.insert_rows(0, rowvec({ double(globalIteration),  double(globalIteration) }));
 
-	updateSimulationHistoricalData(newHistoricalData);
+	/*
+		after the last operation, mat newData will have a format like:
+		| iteration  iteration |
+		| input1     input2    |
+		| output1    output2   |
+
+		-> it is important to remember that the 'mlpack' and 'armadillo'
+		libraries used in this project are column-major
+	*/
+
+	historicalData.insert_cols(historicalData.n_cols, newData);
+
+	updateSimulationHistoricalData(newData);
 
 	numberOfRegisters = historicalData.n_cols;
 
@@ -145,7 +188,8 @@ void DataHandler::insertNewHistoricalData(double fuse_result_burn, double fuse_r
 void DataHandler::updateHistoricalData() {
 	mlpack::data::Save(
 		dataMemoryDir + "/"
-		+ simulationName + "/HistoricalData.csv",
+		+ simulationName + "/"
+		+ testName + "/HistoricalData.csv",
 		historicalData, true);
 };
 
@@ -153,11 +197,11 @@ mat DataHandler::getHistoricalDataToCluster() {
 	return historicalDataToCluster;
 }
 
-void DataHandler::updateSimulationHistoricalData(mat newHistoricalData) {
+void DataHandler::updateSimulationHistoricalData(mat newData) {
 	std::ofstream simulationDataFile;
 
-	int numberOfColumns = newHistoricalData.n_cols;
-	int numberOfRows = newHistoricalData.n_rows;
+	int numberOfColumns = newData.n_cols;
+	int numberOfRows = newData.n_rows;
 	double element;
 
 	simulationDataFile.open(
@@ -167,10 +211,10 @@ void DataHandler::updateSimulationHistoricalData(mat newHistoricalData) {
 
 	for (int j = 0; j < numberOfColumns; j++) {
 		for (int i = 0; i < numberOfRows - 1; i++) {
-			element = newHistoricalData(i, j);
+			element = newData(i, j);
 			simulationDataFile << element << ',';
 		}
-		element = newHistoricalData(numberOfRows - 1, j);
+		element = newData(numberOfRows - 1, j);
 		simulationDataFile << element << endl;
 	}
 
@@ -187,7 +231,7 @@ void DataHandler::updateSimulationHistoricalMetrics(colvec newMetrics) {
 		simulationsDir + "/"
 		+ simulationName + "/HistoricalMetricsFullLog.csv",
 		std::ios_base::app);
-	simulationDataFile << iteration << ',';
+	simulationDataFile << globalIteration << ',';
 	for (int i = 0; i < numberOfRows - 1; i++) {
 		element = newMetrics(i);
 		simulationDataFile << element << ',';
@@ -198,11 +242,12 @@ void DataHandler::updateSimulationHistoricalMetrics(colvec newMetrics) {
 	simulationDataFile.close();
 }
 
-int* DataHandler::getIterationPointer() {
-	return &iteration;
-}
-
 void DataHandler::setSimulationName(std::string simulationName)
 {
 	DataHandler::simulationName = simulationName;
+}
+
+void DataHandler::setMaxNumberOfRegisters(unsigned int maxNumberOfRegisters)
+{
+	DataHandler::maxNumberOfRegisters = maxNumberOfRegisters;
 }

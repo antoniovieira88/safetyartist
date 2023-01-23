@@ -5,18 +5,8 @@ using namespace std;
 class Supervisor {
 public:
 	Supervisor(
-		int maxNumberOfRegisters,
+		int maxNumberOfRegisters = 1000,
 		double nominalFuseResultBurn = 0.1, double nominalFuseResultNotBurn = 0.9,
-		string dataMemoryDir = "data/DataMemory",
-		string simulationMemoryDir = "data/SimulationMemory",
-		bool verboseMode = true);
-
-	Supervisor(
-		int maxNumberOfRegisters,
-		double nominalFuseResultBurn, double nominalFuseResultNotBurn,
-		double overallSilhouetteTolerance,
-		double silhouetteDiffTolerance,
-		double numberOfPointsPerClusterDiffTolerance,
 		string dataMemoryDir = "data/DataMemory",
 		string simulationMemoryDir = "data/SimulationMemory",
 		bool verboseMode = true);
@@ -29,14 +19,19 @@ public:
 	void prepareForSimulation(string simulationName);
 	void setVerboseMode(bool verboseModeValue);
 	void setBasicParams(
+		double nominalValueFuseResultBurn,
+		double nominalValueFuseResultNotBurn,
 		double overallSilhouetteToleranceValue,
 		double silhouetteDiffToleranceValue,
-		double numberOfPointsPerClusterDiffToleranceValue);
+		double numberOfPointsPerClusterDiffToleranceValue,
+		int maxNumberOfRegisters);
 
 private:
 	mat nominalFuseResults;
+	int globalIteration;
 
 	AnalysisUnit analysisUnit;
-	DataHandler dataHandler;
+	DataHandler dataHandlerFuseTest;
+	DataHandler dataHandlerKeepPowTest;
 	ProcessUnitSR processUnit;
 };

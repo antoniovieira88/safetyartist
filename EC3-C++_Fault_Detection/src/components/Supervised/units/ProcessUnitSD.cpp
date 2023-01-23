@@ -8,29 +8,34 @@ ProcessUnitSD::ProcessUnitSD(
 	failedOutputGenerator(failedOutputGenerator),
 	multipleFailureScenario({ 2.0, 3.0, 1.9, 2.1, 2.9, 3.1 }) // member added only for test purpose
 {
-	ProcessUnitSD::testInput = (double NAN);
-	ProcessUnitSD::testOutput = (double NAN);
+	ProcessUnitSD::fuseTest = (double NAN);
 	ProcessUnitSD::keepPower = 0.0;
 	ProcessUnitSD::stdDeviationTest = (double NAN);
 	ProcessUnitSD::fail = false;
 	ProcessUnitSD::failureScenario = nullptr;
 }
 
-void ProcessUnitSD::setFuseTestInput(double testInput)
+// the following method runs the fuseTest based on the current
+// value of fuseTest, which must be by the 'setFuseTest' method
+double ProcessUnitSD::runFuseTest()
 {
+	double fuseResult = (double NAN);
 	if (keepPower == 1.0) {
 		if (fail) {
 			failedOutputGenerator.setFailureScenario(failureScenario);
-			testOutput = failedOutputGenerator.generateOutput(testInput);
+			fuseResult = failedOutputGenerator.generateOutput(fuseTest);
 			stdDeviationTest = failedOutputGenerator.getStdDeviation();
 		}
 		else {
-			testOutput = correctOutputGenerator.generateOutput(testInput);
+			fuseResult = correctOutputGenerator.generateOutput(fuseTest);
 			stdDeviationTest = correctOutputGenerator.getStdDeviation();
 		}
 	}
+
+	return fuseResult;
 }
 
+// ? it seeds refactoring
 void ProcessUnitSD::setFuseTestScenario(FuseTestScenarioType& testScenario)
 {
 	int numberOfFailedComponents = testScenario.numberOfFailedComponents;
@@ -46,10 +51,23 @@ void ProcessUnitSD::setFuseTestScenario(FuseTestScenarioType& testScenario)
 	}
 }
 
-double ProcessUnitSD::getFuseTestOutput()
+void ProcessUnitSD::setFuseTest(double fuseTest)
 {
-	return testOutput;
+	ProcessUnitSD::fuseTest = fuseTest;
 }
+
+// ? to do
+double ProcessUnitSD::runKeepPowTest()
+{
+	return 0.0;
+}
+
+// ? to do
+void ProcessUnitSD::setKeepPowTestScenario(bool fail)
+{
+}
+
+
 
 void ProcessUnitSD::setKeepPower(double keepPower)
 {

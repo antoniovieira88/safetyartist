@@ -12,13 +12,11 @@ class ProcessUnitSR {
 public:
 	ProcessUnitSR(
 		AnalysisUnit& analysisUnit,
-		DataHandler& dataHandler,
+		DataHandler& dataHandlerFuseTest,
+		DataHandler& dataHandlerKeepPowTest,
 		Supervised* supervised,
+		int& globalIteration,
 		bool verboseMode = true);
-
-	ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
-		double overallSilhouetteTolerance, double silhouetteDiffTolerance,
-		double numberOfPointsPerClusterDiffTolerance, bool verboseMode);
 
 	~ProcessUnitSR();
 
@@ -29,26 +27,51 @@ public:
 	void initializeDataHandler(string simulationName);
 
 	void setVerboseMode(bool verboseModeValue);
-	void setBasicParams(
+	void setFuseTestBasicParams(
 		double overallSilhouetteToleranceValue,
 		double silhouetteDiffToleranceValue,
 		double numberOfPointsPerClusterDiffToleranceValue);
 
 private:
 	AnalysisUnit& analysisUnit;
-	DataHandler& dataHandler;
+	DataHandler& dataHandlerFuseTest;
+	DataHandler& dataHandlerKeepPowTest;
 	Supervised* supervisedPointer;
+	int& globalIteration;
 
 	bool verboseMode;
-	int* iterationPointer;
 
-	double fuseTest, keepPower;
-	double overallSilhouetteDecreaseTolerance, silhouetteClustersDecreaseTolerance, imbalanceClustersIncreaseTolerance;
-	faultDiagnosisType detectFailure();
+	// fuseTest variables
+	double fuseTest;
+	double overallSilhouetteDecreaseToleranceFuseTest,
+		silhouetteClustersDecreaseToleranceFuseTest,
+		imbalanceClustersIncreaseToleranceFuseTest;
+	colvec previousMetricsFuseTest, newMetricsFuseTest;
 
-	colvec previousMetrics, newMetrics;
+	// KeepPowTest
+	double keepPower;
+	double overallSilhouetteDecreaseToleranceKeepPowTest,
+		silhouetteClustersDecreaseToleranceKeepPowTest,
+		imbalanceClustersIncreaseToleranceKeepPowTest;
+	colvec previousMetricsKeepPowTest, newMetricsKeepPowTest;
 
-	void provideFuseTestInput(double testInput);
+	faultDiagnosisType detectFailure(
+		colvec& previousMetrics,
+		colvec& newMetrics,
+		bool metricsToAnalyse[5],
+		double imbalanceClustersIncreaseTolerance = 0.0,
+		double silhouetteClustersDecreaseTolerance = 0.0,
+		double overallSilhouetteDecreaseTolerance = 0.0);
+
+	void runFuseTest();
+	void runKeepPowTest();
+	double calculateMetricVariation(
+		colvec& previousMetrics,
+		colvec& newMetrics,
+		int metricIndex);
+
+	double getFuseResult();
+	double getKeepPowReadback();
 	void setKeepPower(double keepPower);
-	double receiveFuseTestOutput();
+	void setFuseTest(double fuseTest);
 };

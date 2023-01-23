@@ -11,7 +11,7 @@ ProcessUnitSC::ProcessUnitSC(
 	string dataMemoryDir,
 	string simulationMemoryDir,
 	bool verboseMode) :
-	simulationSpecificParams(simulationSpecificParams), nominalFuseResults({ 0.1, 0.9 }),
+	simulationSpecificParams(simulationSpecificParams),
 	simulationName(simulationName), dataMemoryDir(dataMemoryDir),
 	simulationsDir(simulationMemoryDir + "/Simulations"),
 	defaultComponentsOperationStateFilePath(simulationMemoryDir + "/FailureSpecs_EC3/ComponentsInitialState.csv"),
@@ -44,7 +44,6 @@ void ProcessUnitSC::attach(Supervisor* supervisorPointer, Supervised* supervised
 	ProcessUnitSC::supervisedPointer = supervisedPointer;
 
 	ProcessUnitSC::iterationPointer = supervisorPointer->getIterationPointer();
-	ProcessUnitSC::nominalFuseResults = supervisedPointer->getNominalFuseResults();
 }
 
 void ProcessUnitSC::run()
@@ -209,16 +208,20 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 {
 	ofstream simulationParamsFile;
 	string userInput;
+
 	// supervisor
 	double overallSilhouetteTolerance, silhouetteDiffTolerance,
 		numberOfPointsPerClusterDiffTolerance;
+	unsigned int maxNumberOfRegisters;
 	// supervised
-	double minNominalFuseResultBurn, maxNominalFuseResultBurn,
+	double nominalFuseResultBurn, nominalFuseResultNotBurn,
+		minNominalFuseResultBurn, maxNominalFuseResultBurn,
 		minNominalFuseResultNotBurn, maxNominalFuseResultNotBurn,
 		maxStdDeviation;
 	// simulation controller
 	unsigned int simulationSeed;
 	double iterationEquivalentTime;
+
 	try {
 		cout << endl << "2. Enter the supervisor system parameters" << endl;
 		cout << "----------------------------------------" << endl;
@@ -231,27 +234,37 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 		cout << "numberOfPointsPerClusterDiffTolerance [integer type]: ";
 		cin >> userInput;
 		numberOfPointsPerClusterDiffTolerance = stod(userInput);
+		cout << "supervisorMaxNumberOfRegisters [positive integer type]: ";
+		cin >> userInput;
+		maxNumberOfRegisters = stoul(userInput);
 
 		cout << endl << "3. Enter the supervised system parameters" << endl;
-		cout << "-> nominalFuseResultBurn: " << nominalFuseResults[0] << endl;
-		cout << "-> nominalFuseResultNotBurn: " << nominalFuseResults[1] << endl;
 		cout << "----------------------------------------" << endl;
+
+		cout << "nominalFuseResultBurn [double type]: " << endl;
+		cin >> userInput;
+		nominalFuseResultBurn = stod(userInput);
+		cout << "nominalFuseResultNotBurn [double type]: " << endl;
+		cin >> userInput;
+		nominalFuseResultNotBurn = stod(userInput);
+
 		cout << "minNominalFuseResultBurn [double type]: ";
 		cin >> userInput;
 		minNominalFuseResultBurn = stod(userInput);
-		if (minNominalFuseResultBurn > nominalFuseResults[0]) throw invalid_argument("Error: minNominalFuseResultBurn > nominalFuseResultBurn");
+		if (minNominalFuseResultBurn > nominalFuseResultBurn) throw invalid_argument("Error: minNominalFuseResultBurn > nominalFuseResultBurn");
 		cout << "maxNominalFuseResultBurn [double type]: ";
 		cin >> userInput;
 		maxNominalFuseResultBurn = stod(userInput);
-		if (maxNominalFuseResultBurn < nominalFuseResults[0]) throw invalid_argument("Error: maxNominalFuseResultBurn < nominalFuseResultBurn");
+		if (maxNominalFuseResultBurn < nominalFuseResultBurn) throw invalid_argument("Error: maxNominalFuseResultBurn < nominalFuseResultBurn");
 		cout << "minNominalFuseResultNotBurn [double type]: ";
 		cin >> userInput;
 		minNominalFuseResultNotBurn = stod(userInput);
-		if (minNominalFuseResultNotBurn > nominalFuseResults[1]) throw invalid_argument("Error: minNominalFuseResultNotBurn > nominalFuseResultNotBurn");
+		if (minNominalFuseResultNotBurn > nominalFuseResultNotBurn) throw invalid_argument("Error: minNominalFuseResultNotBurn > nominalFuseResultNotBurn");
 		cout << "maxNominalFuseResultNotBurn [double type]: ";
 		cin >> userInput;
 		maxNominalFuseResultNotBurn = stod(userInput);
-		if (maxNominalFuseResultNotBurn < nominalFuseResults[1]) throw invalid_argument("Error: maxNominalFuseResultNotBurn < nominalFuseResultNotBurn");
+		if (maxNominalFuseResultNotBurn < nominalFuseResultNotBurn) throw invalid_argument("Error: maxNominalFuseResultNotBurn < nominalFuseResultNotBurn");
+
 		cout << "maxStdDeviation [double type]: ";
 		cin >> userInput;
 		maxStdDeviation = stod(userInput);
@@ -273,19 +286,32 @@ void ProcessUnitSC::createSimulationParams(string simulationName)
 		else simulationSeed = stoul(userInput);
 
 		simulationParamsFile.open(simulationsDir + "/" + simulationName + "/SimulationParams.csv", std::ios::app);
-		simulationParamsFile << "overallSilhouetteTolerance:" << overallSilhouetteTolerance << endl;
-		simulationParamsFile << "silhouetteDiffTolerance:" << silhouetteDiffTolerance << endl;
-		simulationParamsFile << "numberOfPointsPerClusterDiffTolerance:" << numberOfPointsPerClusterDiffTolerance << endl;
-		simulationParamsFile << "minNominalFuseResultBurn:" << minNominalFuseResultBurn << endl;
-		simulationParamsFile << "maxNominalFuseResultBurn:" << maxNominalFuseResultBurn << endl;
-		simulationParamsFile << "minNominalFuseResultNotBurn:" << minNominalFuseResultNotBurn << endl;
-		simulationParamsFile << "maxNominalFuseResultNotBurn:" << maxNominalFuseResultNotBurn << endl;
-		simulationParamsFile << "maxStdDeviation:" << maxStdDeviation << endl;
-		simulationParamsFile << "iterationEquivalentTime:" << iterationEquivalentTime << endl;
-		simulationParamsFile << "simulationSeed:" << simulationSeed;
+
+		// header of the file
+		simulationParamsFile << "parameter,value" << endl;
+
+		// Supervisor (doubles)
+		simulationParamsFile << "overallSilhouetteTolerance," << overallSilhouetteTolerance << endl;
+		simulationParamsFile << "silhouetteDiffTolerance," << silhouetteDiffTolerance << endl;
+		simulationParamsFile << "numberOfPointsPerClusterDiffTolerance," << numberOfPointsPerClusterDiffTolerance << endl;
+		// Supervised (doubles)
+		simulationParamsFile << "nominalFuseResultBurn," << nominalFuseResultBurn << endl;
+		simulationParamsFile << "nominalFuseResultNotBurn," << nominalFuseResultNotBurn << endl;
+		simulationParamsFile << "minNominalFuseResultBurn," << minNominalFuseResultBurn << endl;
+		simulationParamsFile << "maxNominalFuseResultBurn," << maxNominalFuseResultBurn << endl;
+		simulationParamsFile << "minNominalFuseResultNotBurn," << minNominalFuseResultNotBurn << endl;
+		simulationParamsFile << "maxNominalFuseResultNotBurn," << maxNominalFuseResultNotBurn << endl;
+		simulationParamsFile << "maxStdDeviation," << maxStdDeviation << endl;
+		// Simulation Controller (doubles)
+		simulationParamsFile << "iterationEquivalentTime," << iterationEquivalentTime << endl;
+		// integers
+		simulationParamsFile << "simulationSeed," << simulationSeed << endl;
+		simulationParamsFile << "supervisorMaxNumberOfRegisters," << maxNumberOfRegisters;
+
 		simulationParamsFile.close();
 	}
 	catch (invalid_argument& error) {
+		// undo the creation of the simulation directories if any parameter is entered in invalid format
 		filesystem::remove_all(simulationsDir + "/" + simulationName);
 		filesystem::remove_all(dataMemoryDir + "/" + simulationName);
 		cout << endl << error.what() << endl;
@@ -307,14 +333,22 @@ void ProcessUnitSC::setSimulationParams()
 	generator.seed(simulationSpecificParams.simulationSeed);
 
 	// update the collected parameters in the other units
+
+	// supervisor
 	supervisorPointer->setBasicParams(
+		simulationSpecificParams.nominalFuseResultBurn,
+		simulationSpecificParams.nominalFuseResultNotBurn,
 		simulationSpecificParams.overallSilhouetteTolerance,
 		simulationSpecificParams.silhouetteDiffTolerance,
-		simulationSpecificParams.numberOfPointsPerClusterDiffTolerance
+		simulationSpecificParams.numberOfPointsPerClusterDiffTolerance,
+		simulationSpecificParams.maxNumberOfRegisters
 	);
 
+	// supervised
 	supervisedPointer->setMtEngineSrcFile(srcFilesMtEngineStateDir + "/SupervisedMtEngine");
 	supervisedPointer->setBasicParams(
+		simulationSpecificParams.nominalFuseResultBurn,
+		simulationSpecificParams.nominalFuseResultNotBurn,
 		simulationSpecificParams.minNominalFuseResultBurn,
 		simulationSpecificParams.maxNominalFuseResultBurn,
 		simulationSpecificParams.minNominalFuseResultNotBurn,
@@ -324,6 +358,7 @@ void ProcessUnitSC::setSimulationParams()
 	);
 }
 
+// ! it needs re-factor
 void ProcessUnitSC::createLogAndStatusCSVFiles(string simulationName)
 {
 	fstream simulationDataFile;
@@ -334,7 +369,7 @@ void ProcessUnitSC::createLogAndStatusCSVFiles(string simulationName)
 	simulationDataFile.close();
 
 	simulationDataFile.open(dirSM + "/AllHistoricalFailureLog.csv", std::ios::out);
-	simulationDataFile << "iteration,failureOccurred,failureCaught,unsafe" << endl;
+	simulationDataFile << "iteration,failureOccurred,failureCaught,numberOfFailedComponents,unsafe" << endl;
 	simulationDataFile.close();
 
 	simulationDataFile.open(dirSM + "/HistoricalDataFullLog.csv", std::ios::out);
@@ -389,6 +424,8 @@ void ProcessUnitSC::recordHistoricalFailureLog(bool noFaults, bool failureDetect
 
 		if (failureDetected)  simulationDataFile << "T" << ",";
 		else simulationDataFile << "F" << ",";
+
+		simulationDataFile << testScenario.numberOfFailedComponents << ",";
 
 		simulationDataFile << '-' << endl;
 		simulationDataFile.close();
@@ -503,19 +540,34 @@ void ProcessUnitSC::createSimulationFiles(string simulationName)
 		createLogAndStatusCSVFiles(simulationName);
 	}
 
-	string const dirSD = dataMemoryDir + "/" + simulationName;
-	success = filesystem::create_directory(dirSD);
+	const string dirDM = dataMemoryDir + "/" + simulationName;
+	success = filesystem::create_directory(dirDM);
 
 	if (success) {
 		if (verboseMode) {
-			cout << "New simulation output directory successfully created: " << dirSD << endl;
+			cout << "New simulation output directory successfully created: " << dirDM << endl;
 		}
 
-		simulationDataFile.open(dirSD + "/HistoricalData.csv", std::ios::app);
-		simulationDataFile.close();
+		const string dirFuseTest = dirDM + "/FuseTest";
+		const string dirKeepPowerTest = dirDM + "/KeepPowerTest";
 
-		simulationDataFile.open(dirSD + "/HistoricalMetrics.csv", std::ios::app);
-		simulationDataFile.close();
+		success = filesystem::create_directory(dirFuseTest) && filesystem::create_directory(dirKeepPowerTest);
+
+		if (success) {
+			cout << dirFuseTest << " " << dirKeepPowerTest << " directory successfully created" << endl;
+
+			simulationDataFile.open(dirFuseTest + "/HistoricalData.csv", std::ios::app);
+			simulationDataFile.close();
+
+			simulationDataFile.open(dirFuseTest + "/HistoricalMetrics.csv", std::ios::app);
+			simulationDataFile.close();
+
+			simulationDataFile.open(dirKeepPowerTest + "/HistoricalData.csv", std::ios::app);
+			simulationDataFile.close();
+
+			simulationDataFile.open(dirKeepPowerTest + "/HistoricalMetrics.csv", std::ios::app);
+			simulationDataFile.close();
+		}
 	}
 }
 

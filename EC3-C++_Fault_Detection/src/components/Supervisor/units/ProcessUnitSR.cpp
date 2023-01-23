@@ -15,35 +15,32 @@ Moreover, reference members must be initialized using Initializer List.
 
 */
 ProcessUnitSR::ProcessUnitSR(
-	AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
+	AnalysisUnit& analysisUnit,
+	DataHandler& dataHandlerFuseTest,
+	DataHandler& dataHandlerKeepPowTest,
+	Supervised* supervised,
+	int& globalIteration,
 	bool verboseMode) :
-	analysisUnit(analysisUnit), dataHandler(dataHandler)
+	globalIteration(globalIteration),
+	analysisUnit(analysisUnit),
+	dataHandlerFuseTest(dataHandlerFuseTest),
+	dataHandlerKeepPowTest(dataHandlerKeepPowTest)
 {
 	ProcessUnitSR::supervisedPointer = supervised;
 
-	ProcessUnitSR::overallSilhouetteDecreaseTolerance = NAN;
-	ProcessUnitSR::silhouetteClustersDecreaseTolerance = NAN;
-	ProcessUnitSR::imbalanceClustersIncreaseTolerance = NAN;
+	ProcessUnitSR::overallSilhouetteDecreaseToleranceFuseTest = NAN;
+	ProcessUnitSR::silhouetteClustersDecreaseToleranceFuseTest = NAN;
+	ProcessUnitSR::imbalanceClustersIncreaseToleranceFuseTest = NAN;
+	ProcessUnitSR::silhouetteClustersDecreaseToleranceKeepPowTest = NAN;
+	ProcessUnitSR::imbalanceClustersIncreaseToleranceKeepPowTest = NAN;
 	ProcessUnitSR::verboseMode = verboseMode;
 
-	newMetrics = colvec(5, fill::zeros);
-	fuseTest = 1.0;
-	keepPower = 0.0;
-}
+	newMetricsFuseTest = colvec(dataHandlerFuseTest.getNumberOfMetrics(), fill::zeros);
+	previousMetricsFuseTest = colvec(dataHandlerFuseTest.getNumberOfMetrics(), fill::zeros);
 
-ProcessUnitSR::ProcessUnitSR(AnalysisUnit& analysisUnit, DataHandler& dataHandler, Supervised* supervised,
-	double overallSilhouetteDecreaseTolerance, double silhouetteClustersDecreaseTolerance,
-	double imbalanceClustersIncreaseTolerance, bool verboseMode = true) :
-	analysisUnit(analysisUnit), dataHandler(dataHandler)
-{
-	ProcessUnitSR::supervisedPointer = supervised;
+	newMetricsKeepPowTest = colvec(dataHandlerKeepPowTest.getNumberOfMetrics(), fill::zeros);
+	previousMetricsKeepPowTest = colvec(dataHandlerKeepPowTest.getNumberOfMetrics(), fill::zeros);
 
-	ProcessUnitSR::overallSilhouetteDecreaseTolerance = overallSilhouetteDecreaseTolerance;
-	ProcessUnitSR::silhouetteClustersDecreaseTolerance = silhouetteClustersDecreaseTolerance;
-	ProcessUnitSR::imbalanceClustersIncreaseTolerance = imbalanceClustersIncreaseTolerance;
-	ProcessUnitSR::verboseMode = verboseMode;
-
-	newMetrics = colvec(5, fill::zeros);
 	fuseTest = 1.0;
 	keepPower = 0.0;
 }
@@ -64,8 +61,20 @@ void ProcessUnitSR::attach(Supervised* supervisedPointer)
 	}
 }
 
+// ! it needs re-factor!
 void ProcessUnitSR::runTest()
 {
+	globalIteration++;
+	if (globalIteration % 2 == 1) {
+		runFuseTest();
+	}
+	else {
+		// runKeepPowTest();
+	}
+
+}
+
+void ProcessUnitSR::runFuseTest() {
 	arma::mat dataToCluster;
 	double fuseResultBurn = (double NAN);
 	double fuseResultNotBurn = (double NAN);
@@ -73,16 +82,17 @@ void ProcessUnitSR::runTest()
 	bool failure = false;
 
 	if (verboseMode) {
-		cout << "Begin of a new diagnostic test " << endl;
-		cout << "Iteration of the initiated diagnostic test: " << *iterationPointer + 1 << endl;
+		cout << "Begin of a new diagnostic fuse test " << endl;
+		cout << "Iteration of the initiated diagnostic test: " << globalIteration << endl;
 	}
 
 	keepPower = 1.0;
-	fuseTest = 0.0;
-
 	setKeepPower(keepPower);
-	provideFuseTestInput(fuseTest);
-	fuseResultBurn = receiveFuseTestOutput();
+
+	fuseTest = 0.0;
+	setFuseTest(fuseTest);
+
+	fuseResultBurn = getFuseResult();
 
 	if (verboseMode) {
 		cout << "fuse_test = " << fuseTest << endl;
@@ -90,34 +100,44 @@ void ProcessUnitSR::runTest()
 	}
 
 	fuseTest = 1.0;
+	setFuseTest(fuseTest);
 
-	provideFuseTestInput(fuseTest);
-	fuseResultNotBurn = receiveFuseTestOutput();
+	fuseResultNotBurn = getFuseResult();
 
 	if (verboseMode) {
 		cout << "fuse_test = " << fuseTest << endl;
 		cout << "fuse_result_not_burn = " << fuseResultNotBurn << endl;
 	}
 
-	dataHandler.insertNewHistoricalData(fuseResultBurn, fuseResultNotBurn);
-	dataToCluster = dataHandler.getHistoricalDataToCluster();
+	mat fuseResults = { {0.0, 1.0},
+					 {fuseResultBurn, fuseResultNotBurn} };
+
+	dataHandlerFuseTest.insertNewHistoricalData(fuseResults);
+	dataToCluster = dataHandlerFuseTest.getHistoricalDataToCluster();
 
 	analysisUnit.setDataToCluster(dataToCluster);
 	analysisUnit.cluster();
 
 
-	newMetrics = analysisUnit.getNewMetrics();
-	dataHandler.insertNewMetrics(newMetrics);
+	newMetricsFuseTest = analysisUnit.getNewMetrics();
+	dataHandlerFuseTest.insertNewMetrics(newMetricsFuseTest);
 
-	previousMetrics = dataHandler.getPreviousMetrics();
+	previousMetricsFuseTest = dataHandlerFuseTest.getPreviousMetrics();
 
 	if (verboseMode) {
 		cout << "Number of points: " << analysisUnit.getTotalNumberOfPoints() << endl;
 		cout << "Number of clusters: " << analysisUnit.getNumberOfClusters() << endl;
-		cout << "OverallSilhouette: " << newMetrics(overallSilhouette) << endl;
+		cout << "OverallSilhouette: " << newMetricsFuseTest(overallSilhouette) << endl;
 	}
 
-	faultDiagnosisType faultDiagnosis = detectFailure();
+	bool metricsToAnalyse[5] = { true };
+	faultDiagnosisType faultDiagnosis = detectFailure(
+		previousMetricsFuseTest,
+		newMetricsFuseTest,
+		metricsToAnalyse,
+		overallSilhouetteDecreaseToleranceFuseTest,
+		silhouetteClustersDecreaseToleranceFuseTest,
+		imbalanceClustersIncreaseToleranceFuseTest);
 
 	if (faultDiagnosis.failure) {
 		keepPower = 0.0;
@@ -126,76 +146,194 @@ void ProcessUnitSR::runTest()
 	}
 
 	else if (verboseMode) {
-		cout << "-> End of the diagnostic test. No failure detected. " << endl;
-		cout << "Iteration of the finished diagnostic test: " << *iterationPointer << endl;
+		cout << "-> End of the diagnostic fuse test. No failure detected. " << endl;
+		cout << "Iteration of the finished diagnostic fuse test: " << globalIteration << endl;
+	}
+}
+
+// ! not completed yet!!
+void ProcessUnitSR::runKeepPowTest()
+{
+	arma::mat dataToCluster;
+	double keepPowerReadbackOn = (double NAN);
+	double keepPowerReadbackOff = (double NAN);
+	bool failure = false;
+
+	if (verboseMode) {
+		cout << "Begin of a new diagnostic keep power test " << endl;
+		cout << "Iteration of the initiated diagnostic keep power test: " << globalIteration << endl;
 	}
 
+	fuseTest = 1.0;
+	setFuseTest(fuseTest);
+
+	keepPower = 1.0;
+
+	setKeepPower(keepPower);
+	keepPowerReadbackOn = getKeepPowReadback();
+
+	if (verboseMode) {
+		cout << "keep_power = " << fuseTest << endl;
+		cout << "keep_power_readback = " << keepPowerReadbackOn << endl;
+	}
+
+	keepPower = 0.0;
+	setKeepPower(keepPower);
+	keepPowerReadbackOff = getKeepPowReadback();
+
+	if (verboseMode) {
+		cout << "keep_power = " << keepPower << endl;
+		cout << "keep_power_readback = " << keepPowerReadbackOff << endl;
+	}
+
+	mat keepPowerReadbacks = { {1.0, 0.0},
+							  {keepPowerReadbackOn, keepPowerReadbackOff} };
+
+	dataHandlerKeepPowTest.insertNewHistoricalData(keepPowerReadbacks);
+	dataToCluster = dataHandlerKeepPowTest.getHistoricalDataToCluster();
+
+	analysisUnit.setDataToCluster(dataToCluster);
+	analysisUnit.cluster();
+
+
+	newMetricsKeepPowTest = analysisUnit.getNewMetrics();
+	dataHandlerKeepPowTest.insertNewMetrics(newMetricsKeepPowTest);
+
+	previousMetricsKeepPowTest = dataHandlerKeepPowTest.getPreviousMetrics();
+
+	if (verboseMode) {
+		cout << "Number of points: " << analysisUnit.getTotalNumberOfPoints() << endl;
+		cout << "Number of clusters: " << analysisUnit.getNumberOfClusters() << endl;
+		cout << "SilhouetteCluster2 (keep_power_readback = 1): " << newMetricsKeepPowTest(silhouetteCluster2) << endl;
+	}
+
+	bool metricsToAnalyse[5] = { false };
+	metricsToAnalyse[numPointsCluster1]
+		= metricsToAnalyse[numPointsCluster2]
+		= metricsToAnalyse[silhouetteCluster2] = true;
+
+	// ! it needs to change!!
+	faultDiagnosisType faultDiagnosis = detectFailure(
+		previousMetricsKeepPowTest,
+		newMetricsKeepPowTest,
+		metricsToAnalyse,
+		overallSilhouetteDecreaseToleranceFuseTest,
+		silhouetteClustersDecreaseToleranceFuseTest,
+		imbalanceClustersIncreaseToleranceFuseTest);
+
+	if (faultDiagnosis.failure) {
+		fuseTest = 0.0;
+		setFuseTest(fuseTest);
+		throw FailureDetectedExcep(faultDiagnosis);
+	}
+
+	else if (verboseMode) {
+		cout << "-> End of the diagnostic keep power test. No failure detected. " << endl;
+		cout << "Iteration of the finished diagnostic keep power test: " << globalIteration << endl;
+	}
 }
+
+double ProcessUnitSR::calculateMetricVariation(
+	colvec& previousMetrics,
+	colvec& newMetrics,
+	int metricIndex)
+{
+	return newMetrics[metricIndex] - previousMetrics[metricIndex];
+}
+
+double ProcessUnitSR::getFuseResult()
+{
+	return supervisedPointer->runFuseTest();
+}
+
+double ProcessUnitSR::getKeepPowReadback()
+{
+	return supervisedPointer->runKeepPowTest();
+}
+
 
 void ProcessUnitSR::reset()
 {
-	dataHandler.reset();
+	globalIteration = 0;
+	dataHandlerFuseTest.reset();
+	dataHandlerKeepPowTest.reset();
 }
 
-faultDiagnosisType ProcessUnitSR::detectFailure()
+faultDiagnosisType ProcessUnitSR::detectFailure(
+	colvec& previousMetrics,
+	colvec& newMetrics,
+	bool metricsToAnalyse[5],
+	double imbalanceClustersIncreaseTolerance,
+	double silhouetteClustersDecreaseTolerance,
+	double overallSilhouetteDecreaseTolerance
+)
 {
-	double silhouette1NewMetrics, silhouette2NewMetrics, imbalanceClustersNewMetrics, overallSilhouetteNewMetrics;
-	double silhouette1PreviousMetrics, silhouette2PreviousMetrics, imbalanceClustersPreviousMetrics, overallSilhouettePreviousMetrics;
-	double silhouetteCluster1Increase, silhouetteCluster2Increase, imbalanceClustersIncrease, overallSilhouetteIncrease;
+	double imbalanceClustersNewMetrics, imbalanceClustersPreviousMetrics;
+	double silhouetteCluster1Increase, silhouetteCluster2Increase,
+		imbalanceClustersIncrease, overallSilhouetteIncrease;
 	bool failure = false;
+	int metricIndex = 0;
+
 	vector<FailureMetricIndicatorType> failureIndicators;
 
 	if (verboseMode) {
 		cout << "Failure detection process initiated" << endl;
 	}
 
-	silhouette1NewMetrics = newMetrics[silhouetteCluster1]; // silhouette of cluster 1
-	silhouette2NewMetrics = newMetrics[silhouetteCluster2]; // silhouette of cluster 2
-	imbalanceClustersNewMetrics = abs(newMetrics[numPointsCluster1] - newMetrics[numPointsCluster2]); // |number of points in cluster 2 - number of points in cluster 1|
-	overallSilhouetteNewMetrics = newMetrics[overallSilhouette]; // overall silhouette
+	// calculate the variation of each metric (the increase or decrease)
+	// and then its compared to the tolerance value
 
-	silhouette1PreviousMetrics = previousMetrics[silhouetteCluster1]; // silhouette of cluster 1
-	silhouette2PreviousMetrics = previousMetrics[silhouetteCluster2]; // silhouette of cluster 2
-	imbalanceClustersPreviousMetrics = abs(previousMetrics[numPointsCluster1] - previousMetrics[numPointsCluster2]); // |number of points in cluster 2 - number of points in cluster 1|
-	overallSilhouettePreviousMetrics = previousMetrics[overallSilhouette]; // overall silhouette
+	// silhouette of cluster 1
+	if (metricsToAnalyse[silhouetteCluster1]) {
+		silhouetteCluster1Increase = calculateMetricVariation(previousMetrics, newMetrics, metricIndex);
+		if (verboseMode) cout << "Increase in silhouette of cluster 1: " << silhouetteCluster1Increase << endl;
+		metricIndex++;
 
-	// ! calculate the improvement in the metrics
-	silhouetteCluster1Increase = silhouette1NewMetrics - silhouette1PreviousMetrics;
-	silhouetteCluster2Increase = silhouette2NewMetrics - silhouette2PreviousMetrics;
-
-	imbalanceClustersIncrease = imbalanceClustersNewMetrics - imbalanceClustersPreviousMetrics;
-
-	overallSilhouetteIncrease = overallSilhouetteNewMetrics - overallSilhouettePreviousMetrics;
-
-	if (verboseMode) {
-		cout << "Increase in silhouette of cluster 1: " << silhouetteCluster1Increase << endl;
-		cout << "Increase in silhouette of cluster 2: " << silhouetteCluster2Increase << endl;
-		cout << "Increase in cluster imbalance: " << imbalanceClustersIncrease << endl;
-		cout << "Increase in overall silhouette: " << overallSilhouetteIncrease << endl;
+		if (silhouetteCluster1Increase <= -silhouetteClustersDecreaseTolerance) {
+			failure = true;
+			FailureMetricIndicatorType failureIndicator = { silhouetteCluster1, silhouetteCluster1Increase, silhouetteClustersDecreaseTolerance, globalIteration };
+			failureIndicators.push_back(failureIndicator);
+		}
 	}
 
-	// ! compare metrics to determine failure
-	if (silhouetteCluster1Increase <= -silhouetteClustersDecreaseTolerance) {
-		failure = true;
-		FailureMetricIndicatorType failureIndicator = { silhouetteCluster1, silhouetteCluster1Increase, silhouetteClustersDecreaseTolerance, *iterationPointer };
-		failureIndicators.push_back(failureIndicator);
-	}
-	if (silhouetteCluster2Increase <= -silhouetteClustersDecreaseTolerance) {
-		failure = true;
-		FailureMetricIndicatorType failureIndicator = { silhouetteCluster2, silhouetteCluster2Increase, silhouetteClustersDecreaseTolerance, *iterationPointer };
-		failureIndicators.push_back(failureIndicator);
+	// silhouette of cluster 2
+	if (metricsToAnalyse[silhouetteCluster2]) {
+		silhouetteCluster2Increase = calculateMetricVariation(previousMetrics, newMetrics, metricIndex);
+		if (verboseMode) cout << "Increase in silhouette of cluster 2: " << silhouetteCluster2Increase << endl;
+		metricIndex++;
+
+		if (silhouetteCluster2Increase <= -silhouetteClustersDecreaseTolerance) {
+			failure = true;
+			FailureMetricIndicatorType failureIndicator = { silhouetteCluster2, silhouetteCluster2Increase, silhouetteClustersDecreaseTolerance, globalIteration };
+			failureIndicators.push_back(failureIndicator);
+		}
 	}
 
-	if (imbalanceClustersIncrease > imbalanceClustersIncreaseTolerance) {
-		failure = true;
-		FailureMetricIndicatorType failureIndicator = { imbalanceNumPoints, imbalanceClustersIncrease, imbalanceClustersIncreaseTolerance, *iterationPointer };
-		failureIndicators.push_back(failureIndicator);
+	// |number of points in cluster 2 - number of points in cluster 1|
+	if (metricsToAnalyse[numPointsCluster1] && metricsToAnalyse[numPointsCluster2]) {
+		imbalanceClustersNewMetrics = abs(newMetrics[metricIndex + 1] - newMetrics[metricIndex]);
+		imbalanceClustersPreviousMetrics = abs(previousMetrics[metricIndex + 1] - previousMetrics[metricIndex]);
+		imbalanceClustersIncrease = imbalanceClustersNewMetrics - imbalanceClustersPreviousMetrics;
+		if (verboseMode) cout << "Increase in cluster imbalance: " << imbalanceClustersIncrease << endl;
+		metricIndex += 2;
+
+		if (imbalanceClustersIncrease > imbalanceClustersIncreaseTolerance) {
+			failure = true;
+			FailureMetricIndicatorType failureIndicator = { imbalanceNumPoints, imbalanceClustersIncrease, imbalanceClustersIncreaseTolerance, globalIteration };
+			failureIndicators.push_back(failureIndicator);
+		}
 	}
 
-	if (overallSilhouetteIncrease <= -overallSilhouetteDecreaseTolerance) {
-		failure = true;
-		FailureMetricIndicatorType failureIndicator = { overallSilhouette, overallSilhouetteIncrease, overallSilhouetteDecreaseTolerance, *iterationPointer };
-		failureIndicators.push_back(failureIndicator);
+	// overall silhouette
+	if (metricsToAnalyse[overallSilhouette]) {
+		overallSilhouetteIncrease = calculateMetricVariation(previousMetrics, newMetrics, metricIndex);
+		if (verboseMode) cout << "Increase in overall silhouette: " << overallSilhouetteIncrease << endl;
+
+		if (overallSilhouetteIncrease <= -overallSilhouetteDecreaseTolerance) {
+			failure = true;
+			FailureMetricIndicatorType failureIndicator = { overallSilhouette, overallSilhouetteIncrease, overallSilhouetteDecreaseTolerance, globalIteration };
+			failureIndicators.push_back(failureIndicator);
+		}
 	}
 
 	faultDiagnosisType faultDiagnosis{ failure, failureIndicators };
@@ -207,31 +345,47 @@ faultDiagnosisType ProcessUnitSR::detectFailure()
 	return faultDiagnosis;
 }
 
+// ! modify here later
 void ProcessUnitSR::initializeDataHandler(string simulationName)
 {
-	dataHandler.setSimulationName(simulationName);
+	if (verboseMode) cout << "Simulation Name: " << simulationName << endl;
 
-	int numRowsHistoricalData = dataHandler.loadHistoricalData();
-	int numRowsHistoricalMetrics = dataHandler.loadHistoricalMetrics();
+	dataHandlerFuseTest.initializeDataHandler(simulationName);
+	// ! uncomment only after the KeepPowTest feature be added
+	/*dataHandlerKeepPowTest.initializeDataHandler(simulationName);*/
 
-	previousMetrics = dataHandler.getPreviousMetrics();
-	iterationPointer = dataHandler.getIterationPointer();
+	previousMetricsFuseTest = dataHandlerFuseTest.getPreviousMetrics();
+	int lastIterationFuseTest = dataHandlerFuseTest.getLastIterationInDataMemory();
 
-	if (verboseMode) {
-		cout << "Data Handler initialized" << endl;
-		cout << "Simulation Name: " << simulationName << endl;
-		cout << "Number of rows in HistoricalData.csv: " << numRowsHistoricalData << endl;
-		cout << "Number of rows in HistoricalMetrics.csv: " << numRowsHistoricalMetrics << endl;
-	}
+	// ! uncomment only after the KeepPowTest feature be added
+	/*previousMetricsKeepPowTest = dataHandlerKeepPowTest.getPreviousMetrics();
+	int lastIterationKeepPowTest = dataHandlerKeepPowTest.getLastIterationInDataMemory();*/
+
+	// the global iteration parameter is the maximum value between the iterations
+	// values provided by the two dataHandler units
+
+	// ! uncomment only after the KeepPowTest feature be added
+	/*globalIteration = { lastIterationFuseTest > lastIterationKeepPowTest
+		? lastIterationFuseTest
+		: lastIterationKeepPowTest };*/
+
+	globalIteration = lastIterationFuseTest;
 }
 
+// ! modify here later
 void ProcessUnitSR::getReadyForNextSimulationCycle()
 {
-	dataHandler.updateHistoricalData();
-	dataHandler.updateHistoricalMetrics();
+	dataHandlerFuseTest.updateHistoricalData();
+	dataHandlerFuseTest.updateHistoricalMetrics();
 
+
+	/*dataHandlerKeepPowTest.updateHistoricalData();
+	dataHandlerKeepPowTest.updateHistoricalMetrics();*/
+
+	// ! modify here later
 	if (verboseMode) {
-		cout << "HistoricalData.csv and HistoricalMetrics.csv updated in data memory" << endl;
+		cout << "HistoricalData.csv and HistoricalMetrics.csv for Fuse Test"
+			<< "updated in data memory" << endl;
 	}
 }
 
@@ -240,19 +394,14 @@ void ProcessUnitSR::setVerboseMode(bool verboseModeValue)
 	ProcessUnitSR::verboseMode = verboseModeValue;
 }
 
-void ProcessUnitSR::setBasicParams(
+void ProcessUnitSR::setFuseTestBasicParams(
 	double overallSilhouetteToleranceValue,
 	double silhouetteDiffToleranceValue,
 	double numberOfPointsPerClusterDiffToleranceValue)
 {
-	ProcessUnitSR::overallSilhouetteDecreaseTolerance = overallSilhouetteToleranceValue;
-	ProcessUnitSR::silhouetteClustersDecreaseTolerance = silhouetteDiffToleranceValue;
-	ProcessUnitSR::imbalanceClustersIncreaseTolerance = numberOfPointsPerClusterDiffToleranceValue;
-}
-
-void ProcessUnitSR::provideFuseTestInput(double testInput)
-{
-	supervisedPointer->setFuseTestInput(testInput);
+	ProcessUnitSR::overallSilhouetteDecreaseToleranceFuseTest = overallSilhouetteToleranceValue;
+	ProcessUnitSR::silhouetteClustersDecreaseToleranceFuseTest = silhouetteDiffToleranceValue;
+	ProcessUnitSR::imbalanceClustersIncreaseToleranceFuseTest = numberOfPointsPerClusterDiffToleranceValue;
 }
 
 void ProcessUnitSR::setKeepPower(double keepPower)
@@ -260,8 +409,7 @@ void ProcessUnitSR::setKeepPower(double keepPower)
 	supervisedPointer->setKeepPower(keepPower);
 }
 
-double ProcessUnitSR::receiveFuseTestOutput()
+void ProcessUnitSR::setFuseTest(double fuseTest)
 {
-	return supervisedPointer->getFuseTestOutput();
+	supervisedPointer->setFuseTest(fuseTest);
 }
-
