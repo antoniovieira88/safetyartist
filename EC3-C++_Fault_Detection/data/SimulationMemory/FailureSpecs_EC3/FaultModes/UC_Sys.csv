@@ -1,12 +1,12 @@
-id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn
-0,Supply Open,0.12000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-1,Output 'Dig_Out1' Open,0.12000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-2,Output 'Dig_Out2' Open,0.12000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-3,Bidirectional Pin 'SPI' Open,0.30000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-4,Output 'Dig_Out1' Stuck Low,0.03000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-5,Output 'Dig_Out2' Stuck Low,0.03000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-6,Bidirectional Pin 'SPI' Stuck Low,0.03000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-7,Output 'Dig_Out1' Stuck High,0.02667,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-8,Output 'Dig_Out2' Stuck High,0.02667,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-9,Bidirectional Pin 'SPI' Stuck High,0.02677,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
-10,Input Open,0.18000,0.9500,0.0020,0.9200,1.0000,0.0000,0.0050
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn
+0,Supply Open,0.12000,0,0,0,0,0,0,0,1
+1,Output 'Dig_Out1' Open,0.12000,54,4092,51,57,4091,4095,0,1
+2,Output 'Dig_Out2' Open,0.12000,54,4092,51,57,4091,4095,0,1
+3,Bidirectional Pin 'SPI' Open,0.30000,54,4092,51,57,4091,4095,0,1
+4,Output 'Dig_Out1' Stuck Low,0.03000,54,4092,51,57,4091,4095,0,1
+5,Output 'Dig_Out2' Stuck Low,0.03000,54,4092,51,57,4091,4095,0,1
+6,Bidirectional Pin 'SPI' Stuck Low,0.03000,54,4092,51,57,4091,4095,0,1
+7,Output 'Dig_Out1' Stuck High,0.02667,0,0,0,0,0,0,0,1
+8,Output 'Dig_Out2' Stuck High,0.02667,54,4092,51,57,4091,4095,0,1
+9,Bidirectional Pin 'SPI' Stuck High,0.02677,54,4092,51,57,4091,4095,0,1
+10,Input Open,0.18000,54,4092,51,57,4091,4095,0,1
