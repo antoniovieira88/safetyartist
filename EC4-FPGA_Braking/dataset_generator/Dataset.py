@@ -381,7 +381,7 @@ def option1():
     print("The suggestions are based on the data provided by Metro of São Paulo. Intermediate values were found by linear interpolation.")
     
     print("")
-    M = int(input("Insert the mass of the vehicle: "))
+    M = float(input("Insert the mass of the vehicle: "))
     name = str(input("Insert the name of the file: "))
     print("")
 
@@ -406,7 +406,7 @@ def option2():
     print("The suggestions are based on the data provided by Metro of São Paulo. Intermediate values were found by linear interpolation.")
 
     print("")
-    M = int(input("Insert the mass of the vehicle: "))
+    M = float(input("Insert the mass of the vehicle: "))
     prop_zeros = float(input("Insert the proportion of zeros in the output: "))
     name = str(input("Insert the name of the file: "))
     print("")
