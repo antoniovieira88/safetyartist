@@ -1,32 +1,70 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(502,5): warning MSB8004: o diretório Intermediate não termina com uma barra à direita. Essa instância de compilação adicionará a barra conforme necessário para permitir a avaliação adequada do Diretório Intermediate.
 C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(503,5): warning MSB8004: o diretório Output não termina com uma barra à direita. Essa instância de compilação adicionará a barra conforme necessário para permitir a avaliação adequada do Diretório Output.
-  main.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
-C:\dev\vcpkg\installed\x64-windows\include\mlpack\prereqs.hpp(39,1): message : consulte a definição anterior de 'M_PI'
   SimulationController.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
-C:\dev\vcpkg\installed\x64-windows\include\mlpack\prereqs.hpp(39,1): message : consulte a definição anterior de 'M_PI'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
+C:\vcpkg\installed\x64-windows\include\mlpack\base.hpp(43,1): message : consulte a definição anterior de 'M_PI'
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
   FailureController.cpp
   ParamsController.cpp
-C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\components\SimulationController\units\ParamsController.cpp(241,16): error C2374: 'strstream': redefinição; várias inicializações
-C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\src\components\SimulationController\units\ParamsController.cpp(234,16): message : consulte a declaração de 'strstream'
   ProcessUnitSC.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
-C:\dev\vcpkg\installed\x64-windows\include\mlpack\prereqs.hpp(39,1): message : consulte a definição anterior de 'M_PI'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
+C:\vcpkg\installed\x64-windows\include\mlpack\base.hpp(43,1): message : consulte a definição anterior de 'M_PI'
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
   Supervised.cpp
   CorrectOutputGenerator.cpp
   FailedOutputGenerator.cpp
   OutputGenerator.cpp
   ProcessUnitSD.cpp
   Supervisor.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
+C:\vcpkg\installed\x64-windows\include\mlpack\base.hpp(43,1): message : consulte a definição anterior de 'M_PI'
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
   AnalysisUnit.cpp
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
   DataHandler.cpp
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
+C:\Users\GAS-Admin\source\repos\EC3-C++_Fault_Detection\src\components\Supervisor\units\DataHandler.cpp(35,48): warning C4129: 'H': sequência de escape de caractere não reconhecida
+C:\Users\GAS-Admin\source\repos\EC3-C++_Fault_Detection\src\components\Supervisor\units\DataHandler.cpp(36,48): warning C4129: 'H': sequência de escape de caractere não reconhecida
   ProcessUnitSR.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
+C:\vcpkg\installed\x64-windows\include\mlpack\base.hpp(43,1): message : consulte a definição anterior de 'M_PI'
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
   Component.cpp
+  AbortSimulationOpExcep.cpp
   FailureDetectedExcep.cpp
+  IncompatibleIterationExcep.cpp
+  RegistersOverflowExcep.cpp
+  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
+C:\vcpkg\installed\x64-windows\include\mlpack\base.hpp(43,1): message : consulte a definição anterior de 'M_PI'
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
+  SimulatorFailureExcep.cpp
+  Gerando Código...
+  Compilando...
+  KMeans.cpp
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
+  SilhouetteScore.cpp
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
+  MtRandEngine.cpp
+  KMeansTest1.cpp
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
+  KMeansTest2.cpp
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
+  KMeansTest3.cpp
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
+  KMeansTest4.cpp
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
+  RandomGeneratorTest.cpp
   LoadFaultModesTest.cpp
   SimulationControllerTest1.cpp
-C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
-C:\dev\vcpkg\installed\x64-windows\include\mlpack\prereqs.hpp(39,1): message : consulte a definição anterior de 'M_PI'
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
+C:\vcpkg\installed\x64-windows\include\mlpack\base.hpp(43,1): message : consulte a definição anterior de 'M_PI'
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
   SupervisorLogErrorTest.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.22000.0\ucrt\corecrt_math_defines.h(28,1): warning C4005: 'M_PI': redefinição de macro
+C:\vcpkg\installed\x64-windows\include\mlpack\base.hpp(43,1): message : consulte a definição anterior de 'M_PI'
+C:\vcpkg\installed\x64-windows\include\mlpack\core\util\params_impl.hpp(70,34): warning C4804: '>': uso não seguro de tipo 'bool' em operação
   Gerando Código...
+  LINK : .\bin\x64\EC3_Fault_Detection_.exe não encontrado ou não compilado pelo o último link incremental; executando link completo
+     Criando biblioteca .\bin\x64\EC3_Fault_Detection_.lib e objeto .\bin\x64\EC3_Fault_Detection_.exp
+  EC3_Fault_Detection.vcxproj -> C:\Users\GAS-Admin\source\repos\EC3-C++_Fault_Detection\bin\x64\EC3_Fault_Detection_.exe

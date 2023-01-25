@@ -1,4 +1,3 @@
-#include <mlpack/core.hpp>
 #include "../include/CorrectOutputGenerator.h"
 #include <random>
 

@@ -1,46 +1,46 @@
 // Includes all relevant components of mlpack.
 #include <mlpack/core.hpp>
-#include "./include/KMeans.h"
-#include "./include/DataHandler.h"
+#include "../../src/utils/kmeans/include/KMeans.h"
+#include "../../src/components/Supervisor/include/DataHandler.h"
 
 // Convenience.
-using namespace mlpack;
+using namespace std;
 int KMeansTest1()
 {
 	arma::mat data, centroids;
-	data::Load("tests/data/TestsKMeansSilhouette/Example1/data.csv", data, true);
-	data::Load("tests/data/TestsKMeansSilhouette/Example1/centroids.csv", centroids, true);
+	mlpack::data::Load("tests/data/TestsKMeansSilhouette/Example1/data.csv", data);
+	mlpack::data::Load("tests/data/TestsKMeansSilhouette/Example1/centroids.csv", centroids);
 
 	std::cout << "Test started" << endl;
 
-	KMeans KClusters(data, 3, centroids, false);
+	KMeansEC KClusters(data, 3, centroids, false);
 
 	int totalNumberOfPoints = KClusters.getData().n_cols;
 	int numberOfClusters = KClusters.getNumberOfClusters();
 	double overallSilhouette = KClusters.getOverallSilhouette();
-	rowvec clusterSilhouettes = KClusters.getClustersSilhouettes();
-	rowvec numberOfPointsPerCluster = KClusters.getNumberOfPointsPerCluster();
+	arma::rowvec clusterSilhouettes = KClusters.getClustersSilhouettes();
+	arma::rowvec numberOfPointsPerCluster = KClusters.getNumberOfPointsPerCluster();
 
-	std::cout << "Number of clusters: " << numberOfClusters << endl;
+	cout << "Number of clusters: " << numberOfClusters << endl;
 
-	std::cout << "OverallSilhouette: " << overallSilhouette << endl;
+	cout << "OverallSilhouette: " << overallSilhouette << endl;
 
 	int i;
 
 	for (i = 0; i < numberOfPointsPerCluster.n_cols; i++) {
-		std::cout << "Number of points in cluster" << i << ": " << numberOfPointsPerCluster(i) << endl;
+		cout << "Number of points in cluster" << i << ": " << numberOfPointsPerCluster(i) << endl;
 	}
 
 	for (i = 0; i < clusterSilhouettes.n_cols; i++) {
-		std::cout << "Silhouette of cluster" << i << ": " << clusterSilhouettes(i) << endl;
+		cout << "Silhouette of cluster" << i << ": " << clusterSilhouettes(i) << endl;
 	}
 
-	data::Save("tests/data/TestsKMeansSilhouette/Example1/assignments.csv", KClusters.getAssigments(), true);
-	data::Save("tests/data/TestsKMeansSilhouette/Example1/newCentroids.csv", KClusters.getCentroids(), true);
-	data::Save("tests/data/TestsKMeansSilhouette/Example1/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
-	data::Save("tests/data/TestsKMeansSilhouette/Example1/SilhouetteClusters.csv", clusterSilhouettes, true);
+	mlpack::data::Save("tests/data/TestsKMeansSilhouette/Example1/assignments.csv", KClusters.getAssigments(), true);
+	mlpack::data::Save("tests/data/TestsKMeansSilhouette/Example1/newCentroids.csv", KClusters.getCentroids(), true);
+	mlpack::data::Save("tests/data/TestsKMeansSilhouette/Example1/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
+	mlpack::data::Save("tests/data/TestsKMeansSilhouette/Example1/SilhouetteClusters.csv", clusterSilhouettes, true);
 
-	std::cout << "Test completed";
+	cout << "Test completed";
 
 	return 0;
 }

@@ -42,6 +42,10 @@
     <ClCompile Include="src\utils\kmeans\KMeans.cpp" />
     <ClCompile Include="src\utils\kmeans\SilhouetteScore.cpp" />
     <ClCompile Include="src\utils\mt_engine\MtRandEngine.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest1.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest2.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest3.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest4.cpp" />
     <ClCompile Include="tests\RandomGeneratorMt19937\RandomGeneratorTest.cpp" />
     <ClCompile Include="tests\SimulationController\LoadFaultModesTest.cpp" />
     <ClCompile Include="tests\SimulationController\SimulationControllerTest1.cpp" />
@@ -169,11 +173,13 @@
       <ControlFlowGuard>false</ControlFlowGuard>
       <FloatingPointExceptions>true</FloatingPointExceptions>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus /std:c++17 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus /std:c++17 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

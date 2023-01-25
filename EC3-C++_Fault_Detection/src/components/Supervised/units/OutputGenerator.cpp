@@ -1,4 +1,3 @@
-#include <mlpack/core.hpp>
 #include "../include/OutputGenerator.h"
 
 using namespace std;

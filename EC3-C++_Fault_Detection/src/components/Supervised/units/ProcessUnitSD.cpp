@@ -35,7 +35,7 @@ double ProcessUnitSD::runFuseTest()
 	return fuseResult;
 }
 
-// ? it seeds refactoring
+// ? it needs refactoring
 void ProcessUnitSD::setFuseTestScenario(FuseTestScenarioType& testScenario)
 {
 	int numberOfFailedComponents = testScenario.numberOfFailedComponents;

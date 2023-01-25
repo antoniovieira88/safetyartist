@@ -45,10 +45,8 @@ int DataHandler::loadHistoricalMetrics()
 		mlpack::data::Load(
 			dataMemoryDir + "/" + simulationName + "/"
 			+ testName + "/HistoricalMetrics.csv",
-			historicalMetrics,
-			false,
-			true,
-			file_type::csv_ascii);
+			historicalMetrics
+		);
 		size = historicalMetrics.n_cols;
 
 		if (size > maxNumberOfRegisters / 2) {
@@ -117,10 +115,7 @@ int DataHandler::loadHistoricalData() {
 		mlpack::data::Load(
 			dataMemoryDir + "/" + simulationName + "/"
 			+ testName + "/HistoricalData.csv",
-			historicalData,
-			false,
-			true,
-			file_type::csv_ascii
+			historicalData
 		);
 		size = historicalData.n_cols;
 

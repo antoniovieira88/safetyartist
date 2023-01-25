@@ -3,49 +3,49 @@
 #include <mlpack/methods/kmeans/kmeans.hpp>
 #include "SilhouetteScore.h"
 
-using namespace mlpack;
+using namespace std;
 
-class KMeans
+class KMeansEC
 {
 public:
 
-	KMeans(mat data, int numberOfClusters, bool allowEmptyClusters);
+	KMeansEC(arma::mat data, int numberOfClusters, bool allowEmptyClusters);
 
-	KMeans(mat data, int numberOfClusters, mat initialCentroids, bool allowEmptyClusters);
+	KMeansEC(arma::mat data, int numberOfClusters, arma::mat initialCentroids, bool allowEmptyClusters);
 
-	KMeans(mat data, int numberOfClusters, mat initialCentroids, Row<size_t> initialAssignments, bool allowEmptyClusters);
+	KMeansEC(arma::mat data, int numberOfClusters, arma::mat initialCentroids, arma::Row<size_t> initialAssignments, bool allowEmptyClusters);
 
 	size_t getNumberOfClusters();
-	mat getData();
-	mat getCentroids();
-	Row<size_t> getAssigments();
+	arma::mat getData();
+	arma::mat getCentroids();
+	arma::Row<size_t> getAssigments();
 
 	void setNumberOfClusters(int newNumberOfClusters);
-	void setData(mat newData);
+	void setData(arma::mat newData);
 
 	double getOverallSilhouette();
-	double getOverallSilhouette(std::string distanceMetric);
+	double getOverallSilhouette(string distanceMetric);
 
-	rowvec getIndividualSilhouette();
-	rowvec getIndividualSilhouette(std::string distanceMetric);
+	arma::rowvec getIndividualSilhouette();
+	arma::rowvec getIndividualSilhouette(string distanceMetric);
 
-	rowvec getClustersSilhouettes();
-	rowvec getNumberOfPointsPerCluster();
+	arma::rowvec getClustersSilhouettes();
+	arma::rowvec getNumberOfPointsPerCluster();
 
 
 private:
 	size_t numberOfclusters;
-	mat data, centroids;
-	Row<size_t> assignments;
-	rowvec clustersSilhouettes;
-	rowvec numberOfPointsPerCluster;
-	rowvec individualSilhouette;
+	arma::mat data, centroids;
+	arma::Row<size_t> assignments;
+	arma::rowvec clustersSilhouettes;
+	arma::rowvec numberOfPointsPerCluster;
+	arma::rowvec individualSilhouette;
 	bool allowEmptyClusters;
 
 	// ! It is possible to change the distance metric used for the algorithm here settng a param in KMeans<>
 	// For example, to use Manhattan Distance, use KMeans<metric::ManhattanDistance>
-	kmeans::KMeans<> mlpackKMeans;
-	kmeans::KMeans<metric::EuclideanDistance, kmeans::SampleInitialization, mlpack::kmeans::AllowEmptyClusters> mlpackKMeansAllowEmptyClusters;
+	mlpack::KMeans<> mlpackKMeans;
+	mlpack::KMeans<mlpack::EuclideanDistance, mlpack::SampleInitialization, mlpack::AllowEmptyClusters> mlpackKMeansAllowEmptyClusters;
 	
 	void calculateClustersMetrics();
 	void calculateIndividualSilhouette();

@@ -2,21 +2,21 @@
 #include <mlpack/core.hpp>
 #include <string>
 
-using namespace arma;
+using namespace std;
 
-class SilhouetteScore
+class SilhouetteScoreEC
 {
 public:
 
-	static rowvec Individually(mat data, u64_rowvec assignments);
+	static arma::rowvec Individually(arma::mat data, arma::u64_rowvec assignments);
 
-	static double Overall(mat data, u64_rowvec assignments);
+	static double Overall(arma::mat data, arma::u64_rowvec assignments);
 
-	static rowvec Individually(mat data, u64_rowvec assignments, std::string distanceMetric);
+	static arma::rowvec Individually(arma::mat data, arma::u64_rowvec assignments, string distanceMetric);
 
-	static double Overall(mat data, u64_rowvec assignments, std::string distanceMetric);
+	static double Overall(arma::mat data, arma::u64_rowvec assignments, string distanceMetric);
 
-	static void ClustersSilhouette(Row<size_t> assigments, rowvec individualSilhouette, rowvec& clustersSilhouette);
-	static void ClustersSilhouette(Row<size_t> assigments, rowvec individualSilhouette, rowvec& clustersSilhouette, rowvec& numberOfPointsPerCluster);
+	static void ClustersSilhouette(arma::Row<size_t> assigments, arma::rowvec individualSilhouette, arma::rowvec& clustersSilhouette);
+	static void ClustersSilhouette(arma::Row<size_t> assigments, arma::rowvec individualSilhouette, arma::rowvec& clustersSilhouette, arma::rowvec& numberOfPointsPerCluster);
 };
 

@@ -20,7 +20,7 @@ void AnalysisUnit::setDataToCluster(mat dataToCluster) {
 }
 
 void AnalysisUnit::cluster(bool allowEmptyClusters) {
-	KMeans KClusters(dataToCluster, numberOfClusters, initialCentroids, allowEmptyClusters);
+	KMeansEC KClusters(dataToCluster, numberOfClusters, initialCentroids, allowEmptyClusters);
 
 	AnalysisUnit::totalNumberOfPoints = KClusters.getData().n_cols;
 	AnalysisUnit::overallSilhouette = KClusters.getOverallSilhouette();
@@ -31,7 +31,7 @@ void AnalysisUnit::cluster(bool allowEmptyClusters) {
 }
 
 void AnalysisUnit::cluster() {
-	KMeans KClusters(dataToCluster, numberOfClusters, initialCentroids, true);
+	KMeansEC KClusters(dataToCluster, numberOfClusters, initialCentroids, true);
 
 	AnalysisUnit::totalNumberOfPoints = KClusters.getData().n_cols;
 	AnalysisUnit::overallSilhouette = KClusters.getOverallSilhouette();

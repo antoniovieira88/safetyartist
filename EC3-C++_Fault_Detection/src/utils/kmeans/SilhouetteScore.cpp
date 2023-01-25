@@ -3,52 +3,53 @@
 #include <mlpack/core/cv/metrics/silhouette_score.hpp>
 #include <string>
 
-using namespace mlpack;
-rowvec SilhouetteScore::Individually(arma::mat data, arma::u64_rowvec assignments) {
-	metric::EuclideanDistance EuclideanD;
+using namespace std;
 
-	return cv::SilhouetteScore::SamplesScore(data, assignments, EuclideanD);
+arma::rowvec SilhouetteScoreEC::Individually(arma::mat data, arma::u64_rowvec assignments) {
+	mlpack::EuclideanDistance EuclideanD;
+
+	return mlpack::SilhouetteScore::SamplesScore(data, assignments, EuclideanD);
 }
 
-rowvec SilhouetteScore::Individually(mat data, u64_rowvec assignments, std::string distanceMetric)
+arma::rowvec SilhouetteScoreEC::Individually(arma::mat data, arma::u64_rowvec assignments, string distanceMetric)
 {
-	metric::ManhattanDistance manhattanD;
-	metric::SquaredEuclideanDistance sqEuclideanD;
+	mlpack::ManhattanDistance manhattanD;
+	mlpack::SquaredEuclideanDistance sqEuclideanD;
 
 	if (distanceMetric == "manhattan") {
-		return cv::SilhouetteScore::SamplesScore(data, assignments, manhattanD);
+		return mlpack::SilhouetteScore::SamplesScore(data, assignments, manhattanD);
 	}
 
 	else if (distanceMetric == "squared") {
-		return cv::SilhouetteScore::SamplesScore(data, assignments, sqEuclideanD);
+		return mlpack::SilhouetteScore::SamplesScore(data, assignments, sqEuclideanD);
 	}
 
 	return Individually(data, assignments);
 }
 
-double SilhouetteScore::Overall(arma::mat data, arma::u64_rowvec assignments) {
-	metric::EuclideanDistance EuclideanD;
+double SilhouetteScoreEC::Overall(arma::mat data, arma::u64_rowvec assignments) {
+	mlpack::EuclideanDistance EuclideanD;
 
-	return cv::SilhouetteScore::Overall(data, assignments, EuclideanD);
+	return mlpack::SilhouetteScore::Overall(data, assignments, EuclideanD);
 }
 
-double SilhouetteScore::Overall(mat data, u64_rowvec assignments, std::string distanceMetric)
+double SilhouetteScoreEC::Overall(arma::mat data, arma::u64_rowvec assignments, string distanceMetric)
 {
-	metric::ManhattanDistance manhattanD;
-	metric::SquaredEuclideanDistance sqEuclideanD;
+	mlpack::ManhattanDistance manhattanD;
+	mlpack::SquaredEuclideanDistance sqEuclideanD;
 
 	if (distanceMetric == "manhattan") {
-		return cv::SilhouetteScore::Overall(data, assignments, manhattanD);
+		return mlpack::SilhouetteScore::Overall(data, assignments, manhattanD);
 	}
 
 	else if (distanceMetric == "squared") {
-		return cv::SilhouetteScore::Overall(data, assignments, sqEuclideanD);
+		return mlpack::SilhouetteScore::Overall(data, assignments, sqEuclideanD);
 	}
 
 	return Overall(data, assignments);
 }
 
-void SilhouetteScore::ClustersSilhouette(Row<size_t> assigments, rowvec individualSilhouette, rowvec& clustersSilhouette) {
+void SilhouetteScoreEC::ClustersSilhouette(arma::Row<size_t> assigments, arma::rowvec individualSilhouette, arma::rowvec& clustersSilhouette) {
 	int numberOfClusters = clustersSilhouette.n_cols;
 
 	int clustersIterator = 0, numberOfPointsCluster = 0;
@@ -56,7 +57,7 @@ void SilhouetteScore::ClustersSilhouette(Row<size_t> assigments, rowvec individu
 	double silhoutteScoreSumCluster = 0.0;
 
 	for (clustersIterator = 0; clustersIterator < numberOfClusters; clustersIterator++) {
-		Row<size_t> assignmentsTransformed = Row<size_t>(assigments);
+		arma::Row<size_t> assignmentsTransformed = arma::Row<size_t>(assigments);
 
 		assignmentsTransformed.transform([clustersIterator](double label) {return (label == clustersIterator) ? 1 : 0; });
 
@@ -70,7 +71,7 @@ void SilhouetteScore::ClustersSilhouette(Row<size_t> assigments, rowvec individu
 
 }
 
-void SilhouetteScore::ClustersSilhouette(Row<size_t> assigments, rowvec individualSilhouette, rowvec& clustersSilhouette, rowvec& numberOfPointsPerCluster) {
+void SilhouetteScoreEC::ClustersSilhouette(arma::Row<size_t> assigments, arma::rowvec individualSilhouette, arma::rowvec& clustersSilhouette, arma::rowvec& numberOfPointsPerCluster) {
 	int numberOfClusters = clustersSilhouette.n_cols;
 
 	int clustersIterator = 0, numberOfPointsCluster = 0;
@@ -78,7 +79,7 @@ void SilhouetteScore::ClustersSilhouette(Row<size_t> assigments, rowvec individu
 	double silhoutteScoreSumCluster = 0.0;
 
 	for (clustersIterator = 0; clustersIterator < numberOfClusters; clustersIterator++) {
-		Row<size_t> assignmentsTransformed = Row<size_t>(assigments);
+		arma::Row<size_t> assignmentsTransformed = arma::Row<size_t>(assigments);
 
 		assignmentsTransformed.transform([clustersIterator](double label) {return (label == clustersIterator) ? 1 : 0; });
 

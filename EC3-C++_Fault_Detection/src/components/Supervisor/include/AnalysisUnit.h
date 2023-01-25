@@ -1,4 +1,3 @@
-#include <mlpack/core.hpp>
 #include "../../../utils/kmeans/include/KMeans.h"
 
 using namespace arma;
@@ -13,7 +12,6 @@ public:
 	colvec getNewMetrics();
 
 	void setDataToCluster(mat dataToCluster);
-
 
 	mat getCentroids();
 	Row<size_t> getAssignments();
