@@ -6,3 +6,11 @@ C:\Users\GAS-Admin\source\repos\EC3-C++_Fault_Detection\x64\Debug\libwinpthread-
 C:\Users\GAS-Admin\source\repos\EC3-C++_Fault_Detection\x64\Debug\libgfortran-5.dll
 C:\Users\GAS-Admin\source\repos\EC3-C++_Fault_Detection\x64\Debug\libquadmath-0.dll
 C:\Users\GAS-Admin\source\repos\EC3-C++_Fault_Detection\x64\Debug\openblas.dll
+C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.vcxproj.CopyComplete
+C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.exe
+C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\liblapack.dll
+C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\libgcc_s_seh-1.dll
+C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\libwinpthread-1.dll
+C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\libgfortran-5.dll
+C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\libquadmath-0.dll
+C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\openblas.dll

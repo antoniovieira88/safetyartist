@@ -8,11 +8,7 @@ int main()
 	int dumm;
 	// function under test
 	try {
-		SimulationControllerTest1();
-		/*dumm = KMeansTest1();
-		dumm = KMeansTest2();
-		dumm = KMeansTest3();
-		dumm = KMeansTest4();*/
+		SimulationControllerTest1();		
 	}
 	catch (exception& error) {
 		cout << endl << endl << error.what() << endl;

@@ -91,6 +91,9 @@
     <Filter Include="Header Files\mt_rand_engine">
       <UniqueIdentifier>{8fb5068d-ef77-41ee-9f69-a06355eb5dff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tests\KMeansTest">
+      <UniqueIdentifier>{6d698649-ee67-4e46-9de6-8d052cbb9dc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app\main.cpp">
@@ -186,6 +189,9 @@
     <ClCompile Include="tests\KMeans\KMeansTest4.cpp">
       <Filter>Source Files\tests</Filter>
     </ClCompile>
+    <ClCompile Include="tests\KMeans\KMeansTest5.cpp">
+      <Filter>Source Files\tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\structs\structs.h">
@@ -268,6 +274,9 @@
     </ClInclude>
     <ClInclude Include="src\utils\exceptions\include\SimulatorFailureExcep.h">
       <Filter>Header Files\exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\KMeans\include\KMeansTests.h">
+      <Filter>Header Files\tests\KMeansTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
