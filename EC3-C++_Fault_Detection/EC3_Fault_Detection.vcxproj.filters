@@ -85,11 +85,17 @@
     <Filter Include="Source Files\mt_rand_engine">
       <UniqueIdentifier>{9e76451a-e58a-4c88-a816-ab01fb50973d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\RandomGeneratorTest">
-      <UniqueIdentifier>{5f86e4b9-9757-4d8b-8a36-88fee09b3274}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\mt_rand_engine">
       <UniqueIdentifier>{8fb5068d-ef77-41ee-9f69-a06355eb5dff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\file_sys_handler">
+      <UniqueIdentifier>{b2ced0b9-62b9-46b9-9da2-3cccc11cc7e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\file_sys_handler">
+      <UniqueIdentifier>{3678184e-5b46-4e07-bebf-6e44c816cda8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\tests\RandomGeneratorTest">
+      <UniqueIdentifier>{5f86e4b9-9757-4d8b-8a36-88fee09b3274}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -186,6 +192,9 @@
     <ClCompile Include="tests\KMeans\KMeansTest4.cpp">
       <Filter>Source Files\tests</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\filesys_handler\FileSysHandler.cpp">
+      <Filter>Source Files\file_sys_handler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\structs\structs.h">
@@ -261,13 +270,16 @@
       <Filter>Header Files\mt_rand_engine</Filter>
     </ClInclude>
     <ClInclude Include="tests\RandomGeneratorMt19937\include\RandomGeneratorTest.h">
-      <Filter>Header Files\RandomGeneratorTest</Filter>
+      <Filter>Header Files\tests\RandomGeneratorTest</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\exceptions\include\AbortSimulationOpExcep.h">
       <Filter>Header Files\exceptions</Filter>
     </ClInclude>
     <ClInclude Include="src\utils\exceptions\include\SimulatorFailureExcep.h">
       <Filter>Header Files\exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\filesys_handler\include\FileSysHandler.h">
+      <Filter>Header Files\file_sys_handler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

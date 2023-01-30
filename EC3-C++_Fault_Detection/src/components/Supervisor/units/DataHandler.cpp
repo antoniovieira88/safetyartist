@@ -201,7 +201,9 @@ void DataHandler::updateSimulationHistoricalData(mat newData) {
 
 	simulationDataFile.open(
 		simulationsDir + "/" +
-		simulationName + "/HistoricalDataFullLog.csv",
+		simulationName + "/" +
+		testName +
+		"/HistoricalDataFullLog.csv",
 		std::ios_base::app);
 
 	for (int j = 0; j < numberOfColumns; j++) {
@@ -224,7 +226,9 @@ void DataHandler::updateSimulationHistoricalMetrics(colvec newMetrics) {
 
 	simulationDataFile.open(
 		simulationsDir + "/"
-		+ simulationName + "/HistoricalMetricsFullLog.csv",
+		+ simulationName + "/"
+		+ testName
+		+ "/HistoricalMetricsFullLog.csv",
 		std::ios_base::app);
 	simulationDataFile << globalIteration << ',';
 	for (int i = 0; i < numberOfRows - 1; i++) {

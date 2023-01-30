@@ -1,0 +1,2 @@
+iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafe
+8,T,T,1,[ComponentD;ComponentD],-

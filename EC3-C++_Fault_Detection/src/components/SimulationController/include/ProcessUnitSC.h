@@ -1,5 +1,6 @@
 #include "FailureController.h"
 #include "../../../utils/exceptions/include/AbortSimulationOpExcep.h"
+#include "../../../utils/filesys_handler/include/FileSysHandler.h"
 #include "../../Supervisor/include/Supervisor.h"
 #include <filesystem>
 
@@ -30,6 +31,7 @@ public:
 private:
 	const string dataMemoryDir;
 	const string simulationsDir;
+	const string simulationMemoryDir;
 
 	FailureController& failureController;
 	ParamsController& paramsController;
@@ -44,7 +46,6 @@ private:
 	int* iterationPointer;
 
 	bool verboseMode;
-	filesystem::path defaultComponentsOperationStateFilePath;
 
 	void initializeParamsController();
 	void runSimulationCycle(int duration);
@@ -67,8 +68,8 @@ private:
 	void selectSimulation();
 	void setSimulationParams();
 	void createLogAndStatusCSVFiles(string simulationName);
+	void createDataMemoryCSVFiles(string simulationName);
 	void printVerboseMode();
 	void recordHistoricalFailureLog(bool noFaults, bool failureDetected, string LogError = "");
-	ostringstream failedComponentsListString();
+	string failedComponentsListString();
 };
-

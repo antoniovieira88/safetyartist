@@ -1,4 +1,5 @@
 #include "ParamsController.h"
+#include<unordered_set>
 
 using namespace std;
 
@@ -9,13 +10,13 @@ public:
 	void defineNewTestScenario();
 
 	int getNumberOfFailedComponents();
-	vector<string>& getFailedComponentsNameArray();
+	unordered_set<string>& getFailedComponentsNameSet();
 	void setVerboseMode(bool verboseModeValue);
 
 private:
 	vector<Component>& componentsArray;
 	TestScenarioType& testScenario;
-	vector<string> failedComponentsNameArray;
+	unordered_set<string> failedComponentsNameSet;
 
 	bool verboseMode;
 

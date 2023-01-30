@@ -7,7 +7,7 @@ FailureController::FailureController(vector<Component>& componentsArray, TestSce
 	FailureController::numberOfFailedComponents = 0;
 	FailureController::singleFailedComponentId = -1;
 	FailureController::verboseMode = false;
-	FailureController::failedComponentsNameArray = vector<string>();
+	FailureController::failedComponentsNameSet = unordered_set<string>();
 }
 
 FailureController::FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario, bool verboseMode) :
@@ -50,7 +50,7 @@ void FailureController::defineNewTestScenario()
 
 		if (failureModeId != -1) {
 			numberOfFailedComponents++;
-			failedComponentsNameArray.push_back(component.getComponentName());
+			failedComponentsNameSet.insert(component.getComponentName());
 
 			// here, the componentId of the single failed component is captured.
 			// If there are multiple fails, this information will be later ignored
@@ -92,9 +92,9 @@ int FailureController::getNumberOfFailedComponents()
 	return numberOfFailedComponents;
 }
 
-vector<string>& FailureController::getFailedComponentsNameArray()
+unordered_set<string>& FailureController::getFailedComponentsNameSet()
 {
-	return failedComponentsNameArray;
+	return failedComponentsNameSet;
 }
 
 void FailureController::setVerboseMode(bool verboseModeValue)

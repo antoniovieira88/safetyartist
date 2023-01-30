@@ -12,9 +12,9 @@ ProcessUnitSC::ProcessUnitSC(
 	string simulationMemoryDir,
 	bool verboseMode) :
 	simulationSpecificParams(simulationSpecificParams),
-	simulationName(simulationName), dataMemoryDir(dataMemoryDir),
+	simulationName(simulationName),
+	dataMemoryDir(dataMemoryDir), simulationMemoryDir(simulationMemoryDir),
 	simulationsDir(simulationMemoryDir + "/Simulations"),
-	defaultComponentsOperationStateFilePath(simulationMemoryDir + "/FailureSpecs_EC3/ComponentsInitialState.csv"),
 	failureController(failureController),
 	paramsController(paramsController),
 	testScenario(testScenario),
@@ -361,30 +361,56 @@ void ProcessUnitSC::setSimulationParams()
 	);
 }
 
-// ! it needs re-factor
 void ProcessUnitSC::createLogAndStatusCSVFiles(string simulationName)
 {
-	fstream simulationDataFile;
 	string const dirSM = simulationsDir + "/" + simulationName;
+	string const dirSpecs = simulationMemoryDir + "/FailureSpecs_EC3";
 
-	simulationDataFile.open(dirSM + "/HistoricalCaughtFailureMetricsLog.csv", std::ios::out);
-	simulationDataFile << "iteration,metric,tolerance,variation" << endl;
-	simulationDataFile.close();
+	FileSysHandler::createCSVFile(
+		"HistoricalCaughtFailureMetricsLog",
+		dirSM,
+		{ "iteration", "metric", "tolerance", "variation" });
 
-	simulationDataFile.open(dirSM + "/AllHistoricalFailureLog.csv", std::ios::out);
-	simulationDataFile << "iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafe" << endl;
-	simulationDataFile.close();
 
-	simulationDataFile.open(dirSM + "/HistoricalDataFullLog.csv", std::ios::out);
-	simulationDataFile << "iteration,input_test,output_test" << endl;
-	simulationDataFile.close();
+	FileSysHandler::createCSVFile(
+		"AllHistoricalFailureLog",
+		dirSM,
+		{ "iteration", "failureOccurred", "failureCaught", "numberOfFailedComponents", "failedComponentsList", "unsafe" });
 
-	simulationDataFile.open(dirSM + "/HistoricalMetricsFullLog.csv", std::ios::out);
-	simulationDataFile << "iteration,silhouette_cluster1,silhouette_cluster2,n_points_cluster1,n_points_cluster2,overall_silhouette1" << endl;
-	simulationDataFile.close();
 
-	filesystem::path paramsFileTargetPath(dirSM + "/ComponentsOperationalState.csv");
-	filesystem::copy_file(defaultComponentsOperationStateFilePath, paramsFileTargetPath, filesystem::copy_options::overwrite_existing);
+	FileSysHandler::createCSVFile(
+		"HistoricalDataFullLog",
+		dirSM + "/FuseTest",
+		{ "iteration", "fuseTest", "fuseResult" });
+	FileSysHandler::createCSVFile(
+		"HistoricalDataFullLog",
+		dirSM + "/KeepPowerTest",
+		{ "iteration", "keepPower", "keepPowerReadback" });
+
+
+	FileSysHandler::createCSVFile(
+		"HistoricalMetricsFullLog",
+		dirSM + "/FuseTest",
+		{ "iteration", "silhouetteCluster1", "silhouetteCluster2", "numPointsCluster1", "numPointsCluster2", "overallSilhouette" });
+	FileSysHandler::createCSVFile(
+		"HistoricalMetricsFullLog",
+		dirSM + "/KeepPowerTest",
+		{ "iteration", "silhouetteCluster2", "numPointsCluster1", "numPointsCluster2" });
+
+	FileSysHandler::copyFileOverwrite("ComponentsInitialState.csv", "ComponentsOperationalState.csv", dirSpecs, dirSM);
+}
+
+void ProcessUnitSC::createDataMemoryCSVFiles(string simulationName)
+{
+	const string fuseTestDir = dataMemoryDir + "/" + simulationName + "/FuseTest";
+
+	FileSysHandler::createCSVFile("HistoricalMetrics", fuseTestDir);
+	FileSysHandler::createCSVFile("HistoricalData", fuseTestDir);
+
+	const string keepPowerTestDir = dataMemoryDir + "/" + simulationName + "/KeepPowerTest";
+
+	FileSysHandler::createCSVFile("HistoricalMetrics", keepPowerTestDir);
+	FileSysHandler::createCSVFile("HistoricalData", keepPowerTestDir);
 }
 
 void ProcessUnitSC::printVerboseMode()
@@ -440,11 +466,17 @@ void ProcessUnitSC::recordHistoricalFailureLog(bool noFaults, bool failureDetect
 
 string ProcessUnitSC::failedComponentsListString()
 {
-	vector<string>& failedComponentsNameArray = failureController.getFailedComponentsNameArray();
-	ostringstream listStr;
-	copy(failedComponentsNameArray.begin(), failedComponentsNameArray.end(), ",");
+	unordered_set<string>& failedComponentsNameSet = failureController.getFailedComponentsNameSet();
+	string listStr = "[";
+	for (const auto& it : failedComponentsNameSet) {
+		listStr = listStr + it + ";";
+	}
 
-	return listStr.str();
+	listStr.pop_back();
+
+	listStr = listStr + "]";
+
+	return listStr;
 }
 
 int ProcessUnitSC::userSimulationCycleParamsOptions() {
@@ -542,47 +574,29 @@ void ProcessUnitSC::saveMtRandEngines()
 
 void ProcessUnitSC::createSimulationFiles(string simulationName)
 {
-	ofstream simulationDataFile;
 
-	string const dirSM = simulationsDir + "/" + simulationName;
+	const string relativeDirFuseTest = simulationName + "/FuseTest";
+	const string relativeDirKeepPowerTest = simulationName + "/KeepPowerTest";
 
-	bool success = filesystem::create_directory(dirSM);
+	bool success = FileSysHandler::createDirectories(simulationsDir, { relativeDirFuseTest, relativeDirKeepPowerTest });
 
 	if (success) {
 		if (verboseMode) {
-			cout << endl << "New simulation output directory successfully created: " << dirSM << endl;
+			cout << endl << "New simulation output directories successfully created" << endl;
 		}
+
 		createLogAndStatusCSVFiles(simulationName);
 	}
 
-	const string dirDM = dataMemoryDir + "/" + simulationName;
-	success = filesystem::create_directory(dirDM);
+	success = FileSysHandler::createDirectories(dataMemoryDir, { relativeDirFuseTest, relativeDirKeepPowerTest });
+
 
 	if (success) {
 		if (verboseMode) {
-			cout << "New simulation output directory successfully created: " << dirDM << endl;
+			cout << "New data memory output directories successfully created" << endl;
 		}
 
-		const string dirFuseTest = dirDM + "/FuseTest";
-		const string dirKeepPowerTest = dirDM + "/KeepPowerTest";
-
-		success = filesystem::create_directory(dirFuseTest) && filesystem::create_directory(dirKeepPowerTest);
-
-		if (success) {
-			cout << dirFuseTest << " and " << dirKeepPowerTest << " directories successfully created" << endl;
-
-			simulationDataFile.open(dirFuseTest + "/HistoricalData.csv", std::ios::app);
-			simulationDataFile.close();
-
-			simulationDataFile.open(dirFuseTest + "/HistoricalMetrics.csv", std::ios::app);
-			simulationDataFile.close();
-
-			simulationDataFile.open(dirKeepPowerTest + "/HistoricalData.csv", std::ios::app);
-			simulationDataFile.close();
-
-			simulationDataFile.open(dirKeepPowerTest + "/HistoricalMetrics.csv", std::ios::app);
-			simulationDataFile.close();
-		}
+		createDataMemoryCSVFiles(simulationName);
 	}
 }
 
