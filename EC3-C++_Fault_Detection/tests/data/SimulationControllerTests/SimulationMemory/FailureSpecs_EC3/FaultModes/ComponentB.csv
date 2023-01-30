@@ -1,0 +1,3 @@
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn
+0,B1,0.75,1.2,1.8,1.15,1.25,1.75,1.85,1,0
+1,B2,0.25,1.5,1.5,1.4,1.6,1.4,1.6,0,1

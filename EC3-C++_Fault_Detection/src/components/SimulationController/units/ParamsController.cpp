@@ -108,6 +108,9 @@ int ParamsController::setComponentsInitialOperationalState()
 					+ word + ".\n");
 			}
 
+			if (componentId >= componentsArray.size())
+				throw AbortSimulationOpExcep("Incompatible number of components between the files: ComponentsOperationalState.csv and ComponentsFaultRates.csv");
+
 			// if the faultMode is different from "-1", the initialCountBetweenFailures of
 			// the component is automatically updated to zero when "setFaultModeId" is called
 			//  -> obs.: "-1" indicates no fault

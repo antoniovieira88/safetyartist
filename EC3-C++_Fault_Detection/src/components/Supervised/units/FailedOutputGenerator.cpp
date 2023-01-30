@@ -21,12 +21,12 @@ FailedOutputGenerator::FailedOutputGenerator(
 
 void FailedOutputGenerator::setFailureScenario(FailureScenarioType* failureScenario)
 {
-	meanValueFuseResultBurn = failureScenario->meanValueFuseResultBurn;
-	meanValueFuseResultNotBurn = failureScenario->meanValueFuseResultNotBurn;
-	minFuseResultBurn = failureScenario->minFuseResultBurn;
-	maxFuseResultBurn = failureScenario->maxFuseResultBurn;
-	minFuseResultNotBurn = failureScenario->minFuseResultNotBurn;
-	maxFuseResultNotBurn = failureScenario->maxFuseResultNotBurn;
+	meanValueFuseResultBurn = failureScenario->fuseTestFailureScenario.meanValueFuseResultBurn;
+	meanValueFuseResultNotBurn = failureScenario->fuseTestFailureScenario.meanValueFuseResultNotBurn;
+	minFuseResultBurn = failureScenario->fuseTestFailureScenario.minFuseResultBurn;
+	maxFuseResultBurn = failureScenario->fuseTestFailureScenario.maxFuseResultBurn;
+	minFuseResultNotBurn = failureScenario->fuseTestFailureScenario.minFuseResultNotBurn;
+	maxFuseResultNotBurn = failureScenario->fuseTestFailureScenario.maxFuseResultNotBurn;
 }
 
 void FailedOutputGenerator::setMaxStdDeviation(double maxStdDeviation)

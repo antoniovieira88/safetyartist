@@ -23,17 +23,16 @@ DataHandler::DataHandler(
 	DataHandler::simulationName = "";
 }
 
-void DataHandler::initializeDataHandler(std::string simulationName)
+void DataHandler::initializeDataHandler()
 {
-	setSimulationName(simulationName);
 	// historical data needs to be loaded before historicalMetrics
 	loadHistoricalData();
 	loadHistoricalMetrics();
 
 	if (verboseMode) {
 		cout << "Data Handler for " << testName << " initialized" << endl;
-		cout << "Number of rows in '" << testName << "\HistoricalData.csv': " << historicalData.n_cols << endl;
-		cout << "Number of rows in '" << testName << "\HistoricalMetrics.csv': " << historicalMetrics.n_cols << endl;
+		cout << "Number of rows in '" << testName << "/HistoricalData.csv': " << historicalData.n_cols << endl;
+		cout << "Number of rows in '" << testName << "/HistoricalMetrics.csv': " << historicalMetrics.n_cols << endl;
 	}
 
 }
@@ -146,6 +145,7 @@ void DataHandler::reset()
 	newMetrics = colvec(numberOfMetrics, fill::zeros);
 	historicalData = mat();
 	historicalMetrics = mat();
+	historicalDataToCluster = mat();
 
 	if (verboseMode) cout << "Data Handler for " << testName << " was reset" << endl;
 }

@@ -4,16 +4,18 @@ using namespace std;
 
 class FailureController {
 public:
-	FailureController(vector<Component>& componentsArray, FuseTestScenarioType& testScenario);
-	FailureController(vector<Component>& componentsArray, FuseTestScenarioType& testScenario, bool verboseMode);
+	FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario);
+	FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario, bool verboseMode);
 	void defineNewTestScenario();
 
 	int getNumberOfFailedComponents();
+	vector<string>& getFailedComponentsNameArray();
 	void setVerboseMode(bool verboseModeValue);
 
 private:
 	vector<Component>& componentsArray;
-	FuseTestScenarioType& testScenario;
+	TestScenarioType& testScenario;
+	vector<string> failedComponentsNameArray;
 
 	bool verboseMode;
 

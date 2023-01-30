@@ -1,4 +1,5 @@
 #include "../../../utils/kmeans/include/KMeans.h"
+#include "../../../utils/enumerators/enum.h"
 
 using namespace arma;
 
@@ -10,6 +11,7 @@ public:
 	void cluster();
 
 	colvec getNewMetrics();
+	colvec getNewMetrics(bool metricsToAnalyse[5]);
 
 	void setDataToCluster(mat dataToCluster);
 
@@ -31,4 +33,6 @@ private:
 	rowvec clusterSilhouettes;
 	rowvec numberOfPointsPerCluster;
 	colvec newMetrics;
+
+	void appendMetric(colvec& newMetrics, double metric);
 };

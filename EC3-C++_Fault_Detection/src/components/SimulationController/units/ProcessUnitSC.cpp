@@ -3,7 +3,7 @@
 ProcessUnitSC::ProcessUnitSC(
 	FailureController& failureController,
 	ParamsController& paramsController,
-	FuseTestScenarioType& testScenario,
+	TestScenarioType& testScenario,
 	vector<Component>& componentsArray,
 	SimulationSpecificParamsType& simulationSpecificParams,
 	MtRandEngine& generator,
@@ -61,6 +61,8 @@ void ProcessUnitSC::run()
 			cout << "Current selected simulation: '" << simulationName << "'" << endl;
 			cout << "Simulation seed: "
 				<< simulationSpecificParams.simulationSeed << endl;
+			cout << "Nominal values for FuseResult: " << simulationSpecificParams.nominalFuseResultBurn
+				<< " " << simulationSpecificParams.nominalFuseResultNotBurn << endl;
 			cout << "Last iteration performed: " << *iterationPointer << endl;
 			cout << "Iteration equivalent time: " << simulationSpecificParams.iterationEquivalentTime << " hour(s)" << endl;
 			cout << "Current number of faulty components: " << testScenario.numberOfFailedComponents << endl;
@@ -197,7 +199,7 @@ void ProcessUnitSC::selectSimulation()
 	if (simulationFound) {
 		ProcessUnitSC::simulationName = name;
 		setSimulationParams();
-		supervisorPointer->prepareForSimulation(name);
+		supervisorPointer->prepareForSimulation(); // here DataHandler is initialized
 	}
 	else {
 		cout << endl << "Simulation was not found" << endl;
@@ -341,7 +343,8 @@ void ProcessUnitSC::setSimulationParams()
 		simulationSpecificParams.overallSilhouetteTolerance,
 		simulationSpecificParams.silhouetteDiffTolerance,
 		simulationSpecificParams.numberOfPointsPerClusterDiffTolerance,
-		simulationSpecificParams.maxNumberOfRegisters
+		simulationSpecificParams.maxNumberOfRegisters,
+		simulationName
 	);
 
 	// supervised
@@ -369,11 +372,11 @@ void ProcessUnitSC::createLogAndStatusCSVFiles(string simulationName)
 	simulationDataFile.close();
 
 	simulationDataFile.open(dirSM + "/AllHistoricalFailureLog.csv", std::ios::out);
-	simulationDataFile << "iteration,failureOccurred,failureCaught,numberOfFailedComponents,unsafe" << endl;
+	simulationDataFile << "iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafe" << endl;
 	simulationDataFile.close();
 
 	simulationDataFile.open(dirSM + "/HistoricalDataFullLog.csv", std::ios::out);
-	simulationDataFile << "iteration,input_fuse_test,output_fuse_result" << endl;
+	simulationDataFile << "iteration,input_test,output_test" << endl;
 	simulationDataFile.close();
 
 	simulationDataFile.open(dirSM + "/HistoricalMetricsFullLog.csv", std::ios::out);
@@ -427,9 +430,21 @@ void ProcessUnitSC::recordHistoricalFailureLog(bool noFaults, bool failureDetect
 
 		simulationDataFile << testScenario.numberOfFailedComponents << ",";
 
+		if (testScenario.numberOfFailedComponents != 0) simulationDataFile << failedComponentsListString() << ",";
+		else simulationDataFile << "None" << ",";
+
 		simulationDataFile << '-' << endl;
 		simulationDataFile.close();
 	}
+}
+
+string ProcessUnitSC::failedComponentsListString()
+{
+	vector<string>& failedComponentsNameArray = failureController.getFailedComponentsNameArray();
+	ostringstream listStr;
+	copy(failedComponentsNameArray.begin(), failedComponentsNameArray.end(), ",");
+
+	return listStr.str();
 }
 
 int ProcessUnitSC::userSimulationCycleParamsOptions() {
@@ -554,7 +569,7 @@ void ProcessUnitSC::createSimulationFiles(string simulationName)
 		success = filesystem::create_directory(dirFuseTest) && filesystem::create_directory(dirKeepPowerTest);
 
 		if (success) {
-			cout << dirFuseTest << " " << dirKeepPowerTest << " directory successfully created" << endl;
+			cout << dirFuseTest << " and " << dirKeepPowerTest << " directories successfully created" << endl;
 
 			simulationDataFile.open(dirFuseTest + "/HistoricalData.csv", std::ios::app);
 			simulationDataFile.close();
@@ -626,7 +641,7 @@ void ProcessUnitSC::runSimulationCycle(int duration)
 
 		noFaults = (testScenario.numberOfFailedComponents == 0);
 
-		supervisedPointer->setFuseTestScenario(testScenario);
+		supervisedPointer->setTestScenario(testScenario);
 
 		try {
 			supervisorPointer->runTest();

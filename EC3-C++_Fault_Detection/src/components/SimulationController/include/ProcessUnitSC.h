@@ -10,7 +10,7 @@ public:
 	ProcessUnitSC(
 		FailureController& failureController,
 		ParamsController& paramsController,
-		FuseTestScenarioType& testScenario,
+		TestScenarioType& testScenario,
 		vector<Component>& componentsArray,
 		SimulationSpecificParamsType& simulationSpecificParams,
 		MtRandEngine& generator,
@@ -33,7 +33,7 @@ private:
 
 	FailureController& failureController;
 	ParamsController& paramsController;
-	FuseTestScenarioType& testScenario;
+	TestScenarioType& testScenario;
 	MtRandEngine& generator;
 	vector<Component>& componentsArray;
 	string& simulationName;
@@ -69,5 +69,6 @@ private:
 	void createLogAndStatusCSVFiles(string simulationName);
 	void printVerboseMode();
 	void recordHistoricalFailureLog(bool noFaults, bool failureDetected, string LogError = "");
+	ostringstream failedComponentsListString();
 };
 

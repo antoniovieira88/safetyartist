@@ -1,15 +1,16 @@
 #include "../include/FailureController.h"
 
-FailureController::FailureController(vector<Component>& componentsArray, FuseTestScenarioType& testScenario) :
+FailureController::FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario) :
 	componentsArray(componentsArray),
 	testScenario(testScenario)
 {
 	FailureController::numberOfFailedComponents = 0;
 	FailureController::singleFailedComponentId = -1;
 	FailureController::verboseMode = false;
+	FailureController::failedComponentsNameArray = vector<string>();
 }
 
-FailureController::FailureController(vector<Component>& componentsArray, FuseTestScenarioType& testScenario, bool verboseMode) :
+FailureController::FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario, bool verboseMode) :
 	componentsArray(componentsArray),
 	testScenario(testScenario)
 {
@@ -49,6 +50,8 @@ void FailureController::defineNewTestScenario()
 
 		if (failureModeId != -1) {
 			numberOfFailedComponents++;
+			failedComponentsNameArray.push_back(component.getComponentName());
+
 			// here, the componentId of the single failed component is captured.
 			// If there are multiple fails, this information will be later ignored
 			singleFailedComponentId = component.getComponentId();
@@ -87,6 +90,11 @@ void FailureController::defineNewTestScenario()
 int FailureController::getNumberOfFailedComponents()
 {
 	return numberOfFailedComponents;
+}
+
+vector<string>& FailureController::getFailedComponentsNameArray()
+{
+	return failedComponentsNameArray;
 }
 
 void FailureController::setVerboseMode(bool verboseModeValue)

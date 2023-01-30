@@ -54,9 +54,9 @@ void Supervisor::getReadyForNextSimulationCycle()
 	processUnit.getReadyForNextSimulationCycle();
 }
 
-void Supervisor::prepareForSimulation(string simulationName)
+void Supervisor::prepareForSimulation()
 {
-	processUnit.initializeDataHandler(simulationName);
+	processUnit.initializeDataHandlers();
 }
 
 void Supervisor::setVerboseMode(bool verboseModeValue)
@@ -64,20 +64,33 @@ void Supervisor::setVerboseMode(bool verboseModeValue)
 	processUnit.setVerboseMode(verboseModeValue);
 }
 
-// ! need to re-factor later!!
 void Supervisor::setBasicParams(
 	double nominalValueFuseResultBurn,
 	double nominalValueFuseResultNotBurn,
 	double overallSilhouetteToleranceValue,
 	double silhouetteDiffToleranceValue,
 	double numberOfPointsPerClusterDiffToleranceValue,
-	int maxNumberOfRegisters)
+	int maxNumberOfRegisters,
+	string simulationName)
 {
+	// here the centroids for analysis are set
+	// obs.: note that analysisUnit received a reference for the array below
 	nominalFuseResults(0, 0) = nominalValueFuseResultBurn;
 	nominalFuseResults(0, 1) = nominalValueFuseResultNotBurn;
-	dataHandlerFuseTest.setMaxNumberOfRegisters(maxNumberOfRegisters);
+
+	// basic params for processUnit
+	processUnit.setSimulationName(simulationName);
 	processUnit.setFuseTestBasicParams(
 		overallSilhouetteToleranceValue,
 		silhouetteDiffToleranceValue,
-		numberOfPointsPerClusterDiffToleranceValue);
+		numberOfPointsPerClusterDiffToleranceValue); // params for failure detection
+
+	// basic params for dataHandlerFuseTest
+	dataHandlerFuseTest.setMaxNumberOfRegisters(maxNumberOfRegisters);
+	dataHandlerFuseTest.setSimulationName(simulationName);
+
+	// basic params for dataHandlerKeepPowTest
+	dataHandlerKeepPowTest.setMaxNumberOfRegisters(maxNumberOfRegisters);
+	dataHandlerKeepPowTest.setSimulationName(simulationName);
+
 }

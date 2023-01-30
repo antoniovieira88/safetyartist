@@ -23,9 +23,10 @@ public:
 	void runTest();
 	void reset();
 	void getReadyForNextSimulationCycle();
-	void initializeDataHandler(string simulationName);
+	void initializeDataHandlers();
 
 	void setVerboseMode(bool verboseModeValue);
+	void setSimulationName(string simulationName);
 	void setFuseTestBasicParams(
 		double overallSilhouetteToleranceValue,
 		double silhouetteDiffToleranceValue,
@@ -37,6 +38,7 @@ private:
 	DataHandler& dataHandlerKeepPowTest;
 	Supervised* supervisedPointer;
 	int& globalIteration;
+	string simulationName;
 
 	bool verboseMode;
 
@@ -48,7 +50,7 @@ private:
 	colvec previousMetricsFuseTest, newMetricsFuseTest;
 
 	// KeepPowTest
-	double keepPower;
+	int keepPower;
 	double overallSilhouetteDecreaseToleranceKeepPowTest,
 		silhouetteClustersDecreaseToleranceKeepPowTest,
 		imbalanceClustersIncreaseToleranceKeepPowTest;
@@ -70,7 +72,7 @@ private:
 		int metricIndex);
 
 	double getFuseResult();
-	double getKeepPowReadback();
-	void setKeepPower(double keepPower);
+	int getKeepPowReadback();
+	void setKeepPower(int keepPower);
 	void setFuseTest(double fuseTest);
 };

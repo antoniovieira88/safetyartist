@@ -32,11 +32,14 @@ public:
 		double uncertaintyRangeInput,
 		mt19937& generator);
 
-	double generateOutput(double fuseTest);
-	double generateOutputTruncated(double fuseTest);
-
+	// Fuse Tests Methods
+	double generateFuseTestOutput(double fuseTest);
+	double generateFuseTestOutputTruncated(double fuseTest);
 	double getStdDeviation();
 	vector<double> getNominalFuseResults();
+
+	// KeepPowTest Methods
+	int generateKeepPowTestOutput(int keepPower);
 
 protected:
 	double meanValueFuseResultBurn;
@@ -44,6 +47,8 @@ protected:
 
 	double meanValueFuseResultNotBurn;
 	double minFuseResultNotBurn, maxFuseResultNotBurn;
+
+	int keepPowerReadbackOffValue, keepPowerReadbackOnValue;
 
 	double uncertaintyRangeInput;
 	double stdDeviation;

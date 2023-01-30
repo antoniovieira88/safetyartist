@@ -4,8 +4,8 @@
 using namespace std;
 
 CorrectOutputGenerator::CorrectOutputGenerator(
-	double meanValueFuseResultBurn,
-	double meanValueFuseResultNotBurn,
+	double nominalValueFuseResultBurn,
+	double nominalValueFuseResultNotBurn,
 	double minFuseResultBurn,
 	double maxFuseResultBurn,
 	double minFuseResultNotBurn,
@@ -14,8 +14,8 @@ CorrectOutputGenerator::CorrectOutputGenerator(
 	double uncertaintyRangeInput,
 	mt19937& generator)
 	: OutputGenerator(
-		meanValueFuseResultBurn,
-		meanValueFuseResultNotBurn,
+		nominalValueFuseResultBurn,
+		nominalValueFuseResultNotBurn,
 		minFuseResultBurn,
 		maxFuseResultBurn,
 		minFuseResultNotBurn,
@@ -26,13 +26,13 @@ CorrectOutputGenerator::CorrectOutputGenerator(
 	) {}
 
 CorrectOutputGenerator::CorrectOutputGenerator(
-	double meanValueFuseResultBurn,
-	double meanValueFuseResultNotBurn,
+	double nominalValueFuseResultBurn,
+	double nominalValueFuseResultNotBurn,
 	double uncertaintyRangeInput,
 	mt19937& generator) :
 	OutputGenerator(
-		meanValueFuseResultBurn,
-		meanValueFuseResultNotBurn,
+		nominalValueFuseResultBurn,
+		nominalValueFuseResultNotBurn,
 		uncertaintyRangeInput,
 		generator
 	)
@@ -62,4 +62,12 @@ void CorrectOutputGenerator::setBasicParams(
 	minFuseResultNotBurn = minNominalFuseResultNotBurn;
 	maxFuseResultNotBurn = maxNominalFuseResultNotBurn;
 	uniformDist = uniform_real_distribution<double>{ 0.0, maxStdDeviation };
+}
+
+// this function is an override of the method generateKeepPowTestOutput
+// when there is no failure, the output of the test, provided by CorrectOutputGenerator,
+// is simply 'keepPowerReadback == keepPower'
+int CorrectOutputGenerator::generateKeepPowTestOutput(int keepPower)
+{
+	return keepPower;
 };

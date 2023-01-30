@@ -21,6 +21,8 @@ OutputGenerator::OutputGenerator(
 	OutputGenerator::minFuseResultNotBurn = minFuseResultNotBurn;
 	OutputGenerator::maxFuseResultNotBurn = maxFuseResultNotBurn;
 	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
+	OutputGenerator::keepPowerReadbackOffValue = (int NAN);
+	OutputGenerator::keepPowerReadbackOnValue = (int NAN);
 	uniformDist = uniform_real_distribution<double>{ 0.0, maxStdDeviation };
 	stdDeviation = 0.0;
 }
@@ -38,6 +40,8 @@ OutputGenerator::OutputGenerator(
 	OutputGenerator::maxFuseResultBurn = (double NAN);
 	OutputGenerator::minFuseResultNotBurn = (double NAN);
 	OutputGenerator::maxFuseResultNotBurn = (double NAN);
+	OutputGenerator::keepPowerReadbackOffValue = (int NAN);
+	OutputGenerator::keepPowerReadbackOnValue = (int NAN);
 	uniformDist = uniform_real_distribution<double>{ 0.0, 0.1 };
 	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
 	stdDeviation = 0.0;
@@ -55,6 +59,8 @@ OutputGenerator::OutputGenerator(
 	OutputGenerator::maxFuseResultBurn = (double NAN);
 	OutputGenerator::minFuseResultNotBurn = (double NAN);
 	OutputGenerator::maxFuseResultNotBurn = (double NAN);
+	OutputGenerator::keepPowerReadbackOffValue = (int NAN);
+	OutputGenerator::keepPowerReadbackOnValue = (int NAN);
 	uniformDist = uniform_real_distribution<double>{ 0.0, maxStdDeviation };
 	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
 	stdDeviation = 0.0;
@@ -71,15 +77,17 @@ OutputGenerator::OutputGenerator(
 	OutputGenerator::maxFuseResultBurn = (double NAN);
 	OutputGenerator::minFuseResultNotBurn = (double NAN);
 	OutputGenerator::maxFuseResultNotBurn = (double NAN);
+	OutputGenerator::keepPowerReadbackOffValue = (int NAN);
+	OutputGenerator::keepPowerReadbackOnValue = (int NAN);
 	uniformDist = uniform_real_distribution<double>{ 0.0, 0.1 };
 	OutputGenerator::uncertaintyRangeInput = uncertaintyRangeInput;
 	stdDeviation = 0.0;
 }
 
-// Implementation of generateOutput method which truncates the value of fuseResult 
+// Implementation of generateFuseTestOutput method which truncates the value of fuseResult 
 // if it is out of the specified bounds
 
-double OutputGenerator::generateOutputTruncated(double fuseTest)
+double OutputGenerator::generateFuseTestOutputTruncated(double fuseTest)
 {
 	double fuseResult = 0.0;
 	double meanValueFuseResult = 0.0;
@@ -118,6 +126,12 @@ vector<double> OutputGenerator::getNominalFuseResults()
 	return vector<double>({ meanValueFuseResultBurn, meanValueFuseResultNotBurn });
 }
 
+int OutputGenerator::generateKeepPowTestOutput(int keepPower)
+{
+	if (keepPower == 0) return keepPowerReadbackOffValue;
+	return keepPowerReadbackOnValue;
+}
+
 double OutputGenerator::truncateFuseResult(double fuseResult, bool burnTest) {
 	double max = 0.0, min = 0.0;
 	if (burnTest) {
@@ -141,10 +155,10 @@ double OutputGenerator::truncateFuseResult(double fuseResult, bool burnTest) {
 
 };
 
-// Implementation of generateOutput method which raffles a value for fuseResult again 
-// if its value is out of the specifed bounds
+// Implementation of generateFuseTestOutput method which raffles a value for fuseResult again 
+// if its value is out of the specified bounds
 
-double OutputGenerator::generateOutput(double fuseTest)
+double OutputGenerator::generateFuseTestOutput(double fuseTest)
 {
 	double fuseResult = -1.0;
 	double meanValueFuseResult = -1.0;

@@ -10,18 +10,19 @@ public:
 		FailedOutputGenerator& failedOutputGenerator
 	);
 
+	void setTestScenario(TestScenarioType& testScenario);
+
 	// FuseTest
-	void setFuseTestScenario(FuseTestScenarioType& testScenario);
 	void setFuseTest(double fuseTest);
 	double runFuseTest();
 
 	// KeepPowTest
-	void setKeepPowTestScenario(bool fail);
-	void setKeepPower(double keepPower);
-	double runKeepPowTest();
+	void setKeepPower(int keepPower);
+	int runKeepPowTest();
 
 private:
-	double fuseTest, keepPower;
+	double fuseTest;
+	int keepPower;
 	double stdDeviationTest;
 	bool fail;
 

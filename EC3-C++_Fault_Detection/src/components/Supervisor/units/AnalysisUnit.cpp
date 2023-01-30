@@ -61,6 +61,23 @@ colvec AnalysisUnit::getNewMetrics() {
 	return newMetrics;
 }
 
+colvec AnalysisUnit::getNewMetrics(bool metricsToAnalyse[5])
+{
+	colvec newMetrics;
+
+	if (metricsToAnalyse[metrics::silhouetteCluster1]) appendMetric(newMetrics, clusterSilhouettes[0]);
+
+	if (metricsToAnalyse[metrics::silhouetteCluster2]) appendMetric(newMetrics, clusterSilhouettes[1]);
+
+	if (metricsToAnalyse[metrics::numPointsCluster1]) appendMetric(newMetrics, numberOfPointsPerCluster[0]);
+
+	if (metricsToAnalyse[metrics::numPointsCluster2]) appendMetric(newMetrics, numberOfPointsPerCluster[1]);
+
+	if (metricsToAnalyse[metrics::overallSilhouette]) appendMetric(newMetrics, overallSilhouette);
+
+	return newMetrics;
+}
+
 int AnalysisUnit::getTotalNumberOfPoints()
 {
 	return totalNumberOfPoints;
@@ -68,6 +85,13 @@ int AnalysisUnit::getTotalNumberOfPoints()
 
 int AnalysisUnit::getNumberOfClusters() {
 	return numberOfClusters;
+}
+
+void AnalysisUnit::appendMetric(colvec& newMetrics, double metric)
+{
+	int rows_size = newMetrics.n_rows;
+	newMetrics.reshape(rows_size + 1, 1);
+	newMetrics[rows_size] = metric;
 }
 
 mat AnalysisUnit::getCentroids() {

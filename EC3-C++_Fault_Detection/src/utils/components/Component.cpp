@@ -86,26 +86,41 @@ void Component::loadSingleFailureScenarioFromFile(
 	stringstream& strstream,
 	string& word)
 {
-	//failure scenario params expected for the occurrence of a single fault mode
-	FailureScenarioType singleFailureScenario;
+	// failure scenario params expected for the occurrence
+	// of a single fault mode in FuseTest
+	FailureScenarioFuseTestType singleFailureScenarioFuseTest;
 
 	getline(strstream, word, ',');
-	singleFailureScenario.meanValueFuseResultBurn = stod(word);
+	singleFailureScenarioFuseTest.meanValueFuseResultBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenario.meanValueFuseResultNotBurn = stod(word);
+	singleFailureScenarioFuseTest.meanValueFuseResultNotBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenario.minFuseResultBurn = stod(word);
+	singleFailureScenarioFuseTest.minFuseResultBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenario.maxFuseResultBurn = stod(word);
+	singleFailureScenarioFuseTest.maxFuseResultBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenario.minFuseResultNotBurn = stod(word);
+	singleFailureScenarioFuseTest.minFuseResultNotBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenario.maxFuseResultNotBurn = stod(word);
+	singleFailureScenarioFuseTest.maxFuseResultNotBurn = stod(word);
+
+	// failure scenario params expected for the occurrence
+	// of a single fault mode in KeepPowerTest
+	FailureScenarioKeepPowType singleFailureScenarioKeepPowTest;
+
+	getline(strstream, word, ',');
+	singleFailureScenarioKeepPowTest.keepPowerReadbackOffValue = stoi(word);
+
+	getline(strstream, word, ',');
+	singleFailureScenarioKeepPowTest.keepPowerReadbackOnValue = stoi(word);
+
+	// joining both tests params in singleFailureScenario struct;
+	FailureScenarioType singleFailureScenario = { singleFailureScenarioFuseTest ,
+		singleFailureScenarioKeepPowTest };
 
 	singleFailureScenarioArray.push_back(singleFailureScenario);
 }

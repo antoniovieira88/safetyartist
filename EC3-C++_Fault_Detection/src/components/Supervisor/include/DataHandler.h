@@ -19,7 +19,7 @@ public:
 		std::string simulationMemoryDir = "data/SimulationMemory"
 	);
 
-	void initializeDataHandler(std::string simulationName);
+	void initializeDataHandler();
 
 	int loadHistoricalMetrics();
 

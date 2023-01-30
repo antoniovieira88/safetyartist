@@ -16,7 +16,7 @@ public:
 	void reset();
 	int* getIterationPointer();
 	void getReadyForNextSimulationCycle();
-	void prepareForSimulation(string simulationName);
+	void prepareForSimulation();
 	void setVerboseMode(bool verboseModeValue);
 	void setBasicParams(
 		double nominalValueFuseResultBurn,
@@ -24,7 +24,8 @@ public:
 		double overallSilhouetteToleranceValue,
 		double silhouetteDiffToleranceValue,
 		double numberOfPointsPerClusterDiffToleranceValue,
-		int maxNumberOfRegisters);
+		int maxNumberOfRegisters,
+		string simulationName);
 
 private:
 	mat nominalFuseResults;

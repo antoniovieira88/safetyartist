@@ -26,6 +26,10 @@ Supervised::Supervised(
 	Supervised::verboseMode = verboseMode;
 }
 
+// here are set the basic params which are specified in 'simulationsParams.csv'.
+// since the values of keepPowerReadback are the same for all simulations, 
+// there are not taken into account in this method. we can consider the params
+// belows as constants for a given simulation
 void Supervised::setBasicParams(
 	double nominalValueFuseResultBurn,
 	double nominalValueFuseResultNotBurn,
@@ -50,12 +54,13 @@ void Supervised::setBasicParams(
 	generator.seed(seed);
 }
 
+void Supervised::setTestScenario(TestScenarioType& testScenario)
+{
+	processUnit.setTestScenario(testScenario);
+}
+
 /* ---------------------------------------------------------------------------------------- */
 /* FUSE_TEST methods */
-void Supervised::setFuseTestScenario(FuseTestScenarioType& testScenario)
-{
-	processUnit.setFuseTestScenario(testScenario);
-}
 
 void Supervised::setFuseTest(double fuseTest)
 {
@@ -74,17 +79,13 @@ vector<double> Supervised::getNominalFuseResults()
 
 /* ---------------------------------------------------------------------------------------- */
 /* KEEP_POWER_TEST methods */
-void Supervised::setKeepPowTestScenario(bool fail)
-{
-	processUnit.setKeepPowTestScenario(fail);
-}
 
-void Supervised::setKeepPower(double keepPower)
+void Supervised::setKeepPower(int keepPower)
 {
 	processUnit.setKeepPower(keepPower);
 }
 
-double Supervised::runKeepPowTest()
+int Supervised::runKeepPowTest()
 {
 	return processUnit.runKeepPowTest();
 }

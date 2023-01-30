@@ -9,7 +9,7 @@ ProcessUnitSD::ProcessUnitSD(
 	multipleFailureScenario({ 2.0, 3.0, 1.9, 2.1, 2.9, 3.1 }) // member added only for test purpose
 {
 	ProcessUnitSD::fuseTest = (double NAN);
-	ProcessUnitSD::keepPower = 0.0;
+	ProcessUnitSD::keepPower = 0;
 	ProcessUnitSD::stdDeviationTest = (double NAN);
 	ProcessUnitSD::fail = false;
 	ProcessUnitSD::failureScenario = nullptr;
@@ -20,14 +20,14 @@ ProcessUnitSD::ProcessUnitSD(
 double ProcessUnitSD::runFuseTest()
 {
 	double fuseResult = (double NAN);
-	if (keepPower == 1.0) {
+	if (keepPower == 1) {
 		if (fail) {
 			failedOutputGenerator.setFailureScenario(failureScenario);
-			fuseResult = failedOutputGenerator.generateOutput(fuseTest);
+			fuseResult = failedOutputGenerator.generateFuseTestOutput(fuseTest);
 			stdDeviationTest = failedOutputGenerator.getStdDeviation();
 		}
 		else {
-			fuseResult = correctOutputGenerator.generateOutput(fuseTest);
+			fuseResult = correctOutputGenerator.generateFuseTestOutput(fuseTest);
 			stdDeviationTest = correctOutputGenerator.getStdDeviation();
 		}
 	}
@@ -35,8 +35,7 @@ double ProcessUnitSD::runFuseTest()
 	return fuseResult;
 }
 
-// ? it needs refactoring
-void ProcessUnitSD::setFuseTestScenario(FuseTestScenarioType& testScenario)
+void ProcessUnitSD::setTestScenario(TestScenarioType& testScenario)
 {
 	int numberOfFailedComponents = testScenario.numberOfFailedComponents;
 
@@ -56,20 +55,22 @@ void ProcessUnitSD::setFuseTest(double fuseTest)
 	ProcessUnitSD::fuseTest = fuseTest;
 }
 
-// ? to do
-double ProcessUnitSD::runKeepPowTest()
+int ProcessUnitSD::runKeepPowTest()
 {
-	return 0.0;
+	int keepPowerReadback = (int NAN);
+	stdDeviationTest = 0.0; // stdDeviation is set to zero since there is no random number generated for the output test
+	if (fail) {
+		failedOutputGenerator.setFailureScenario(failureScenario);
+		keepPowerReadback = failedOutputGenerator.generateKeepPowTestOutput(keepPower);
+	}
+	else {
+		keepPowerReadback = correctOutputGenerator.generateKeepPowTestOutput(keepPower);
+	}
+
+	return keepPowerReadback;
 }
 
-// ? to do
-void ProcessUnitSD::setKeepPowTestScenario(bool fail)
-{
-}
-
-
-
-void ProcessUnitSD::setKeepPower(double keepPower)
+void ProcessUnitSD::setKeepPower(int keepPower)
 {
 	ProcessUnitSD::keepPower = keepPower;
 }

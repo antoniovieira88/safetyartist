@@ -13,7 +13,7 @@ public:
 
 private:
 	vector<Component> componentsArray;
-	FuseTestScenarioType testScenario;
+	TestScenarioType testScenario;
 	MtRandEngine generator;
 	string simulationName;
 	SimulationSpecificParamsType simulationSpecificParams;

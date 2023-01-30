@@ -5,8 +5,9 @@ using namespace std;
 int SimulationControllerTest1()
 {
 	// Test Params for Simulation Controller
-	string dataMemoryDir = "data/DataMemory",
-		simulationMemoryDir = "data/SimulationMemory";
+	// ! the paths must not start with /
+	string dataMemoryDir = "tests/data/SimulationControllerTests/DataMemory",
+		simulationMemoryDir = "tests/data/SimulationControllerTests/SimulationMemory";
 	bool verboseMode = true;
 
 	// Test Params for Supervisor and Supervised

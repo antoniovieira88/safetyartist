@@ -11,12 +11,3 @@ enum metrics {
 	overallSilhouette = 4,
 	imbalanceNumPoints = 5
 };
-
-enum components {
-	componentA = 0,
-	componentB = 1,
-	componentC = 2,
-	componentD = 3,
-	componentE = 4,
-	componentF = 5
-};

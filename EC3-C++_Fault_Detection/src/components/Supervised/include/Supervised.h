@@ -15,18 +15,21 @@ public:
 		double uncertaintyRangeInput = 0.000001,
 		bool verboseMode = true);
 
-	vector<double> getNominalFuseResults();
+	void setTestScenario(TestScenarioType& testScenario);
 
 	// FuseTest
-	void setFuseTestScenario(FuseTestScenarioType& testScenario);
 	void setFuseTest(double fuseTest);
 	double runFuseTest();
+	vector<double> getNominalFuseResults();
 
 	// KeepPowTest
-	void setKeepPowTestScenario(bool fail);
-	void setKeepPower(double keepPower);
-	double runKeepPowTest();
+	void setKeepPower(int keepPower);
+	int runKeepPowTest();
 
+	// here are set the basic params which are specified in 'simulationsParams.csv'.
+	// since the values of keepPowerReadback are the same for all simulations, 
+	// there are not taken into account in this method. we can consider the params
+	// belows as constants for a given simulation
 	void setBasicParams(
 		double nominalValueFuseResultBurn,
 		double nominalValueFuseResultNotBurn,

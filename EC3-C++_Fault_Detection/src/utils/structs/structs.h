@@ -11,7 +11,7 @@ struct FailureMetricIndicatorType {
 	int iteration;
 };
 
-struct FailureScenarioType {
+struct FailureScenarioFuseTestType {
 	double meanValueFuseResultBurn;
 	double meanValueFuseResultNotBurn;
 	double minFuseResultBurn;
@@ -20,7 +20,17 @@ struct FailureScenarioType {
 	double maxFuseResultNotBurn;
 };
 
-struct FuseTestScenarioType {
+struct FailureScenarioKeepPowType {
+	int keepPowerReadbackOffValue;
+	int keepPowerReadbackOnValue;
+};
+
+struct FailureScenarioType {
+	FailureScenarioFuseTestType fuseTestFailureScenario;
+	FailureScenarioKeepPowType  keepPowFailureScenario;
+};
+
+struct TestScenarioType {
 	int numberOfFailedComponents;
 	vector<int> faultModesArray;
 	FailureScenarioType* failureScenarioPointer;

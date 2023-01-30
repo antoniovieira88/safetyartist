@@ -5,8 +5,8 @@ using namespace std;
 class CorrectOutputGenerator : public OutputGenerator {
 public:
 	CorrectOutputGenerator(
-		double meanValueFuseResultBurn,
-		double meanValueFuseResultNotBurn,
+		double nominalValueFuseResultBurn,
+		double nominalValueFuseResultNotBurn,
 		double minFuseResultBurn,
 		double maxFuseResultBurn,
 		double minFuseResultNotBurn,
@@ -16,8 +16,8 @@ public:
 		mt19937& generator);
 
 	CorrectOutputGenerator(
-		double meanValueFuseResultBurn,
-		double meanValueFuseResultNotBurn,
+		double nominalValueFuseResultBurn,
+		double nominalValueFuseResultNotBurn,
 		double uncertaintyRangeInput,
 		mt19937& generator);
 
@@ -33,4 +33,6 @@ public:
 		double minNominalFuseResultNotBurn,
 		double maxNominalFuseResultNotBurn,
 		double maxStdDeviation);
+
+	int generateKeepPowTestOutput(int keepPower);
 };
