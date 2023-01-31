@@ -48,7 +48,7 @@ void AnalysisUnit::cluster() {
 	| 2 | silhouette of cluster 2 | double|
 	| 3 | number of points in cluster 1 | double |
 	| 4 | number of points in cluster 2 | double |
-	| 5 | overall silhouette | double|
+	| 5 | overall silhouette | double |
 */
 
 colvec AnalysisUnit::getNewMetrics() {

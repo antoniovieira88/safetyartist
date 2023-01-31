@@ -1,15 +1,15 @@
 // Includes all relevant components of mlpack.
 #include <mlpack/core.hpp>
 #include "../../src/utils/kmeans/include/KMeans.h"
-#include "../../src/components/Supervisor/include/DataHandler.h"
 
-// Convenience.
 using namespace std;
+
 int KMeansTest1()
 {
 	arma::mat data, centroids;
-	mlpack::data::Load("tests/data/TestsKMeansSilhouette/Example1/data.csv", data);
-	mlpack::data::Load("tests/data/TestsKMeansSilhouette/Example1/centroids.csv", centroids);
+
+	mlpack::data::Load("./tests/KMeans/KMDataTest1/data.csv", data);
+	mlpack::data::Load("./tests/KMeans/KMDataTest1/centroids.csv", centroids);
 
 	std::cout << "Test started" << endl;
 
@@ -35,10 +35,10 @@ int KMeansTest1()
 		cout << "Silhouette of cluster" << i << ": " << clusterSilhouettes(i) << endl;
 	}
 
-	mlpack::data::Save("tests/data/TestsKMeansSilhouette/Example1/assignments.csv", KClusters.getAssigments(), true);
-	mlpack::data::Save("tests/data/TestsKMeansSilhouette/Example1/newCentroids.csv", KClusters.getCentroids(), true);
-	mlpack::data::Save("tests/data/TestsKMeansSilhouette/Example1/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
-	mlpack::data::Save("tests/data/TestsKMeansSilhouette/Example1/SilhouetteClusters.csv", clusterSilhouettes, true);
+	mlpack::data::Save("./tests/KMeans/KMDataTest1/assignments.csv", KClusters.getAssigments(), true);
+	mlpack::data::Save("./tests/KMeans/KMDataTest1/newCentroids.csv", KClusters.getCentroids(), true);
+	mlpack::data::Save("./tests/KMeans/KMDataTest1/SilhouetteIndividually.csv", KClusters.getIndividualSilhouette(), true);
+	mlpack::data::Save("./tests/KMeans/KMDataTest1/SilhouetteClusters.csv", clusterSilhouettes, true);
 
 	cout << "Test completed";
 

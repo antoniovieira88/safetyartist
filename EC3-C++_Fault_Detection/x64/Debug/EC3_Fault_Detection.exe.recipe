@@ -2,7 +2,11 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
+<<<<<<< HEAD
       <FullPath>C:\Users\lucas\Documents\PoliUSP\IC\EC3-dev\safetyartist\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.exe</FullPath>
+=======
+      <FullPath>C:\Users\GAS-Admin\Documents\safetyartist EC3\EC3-C++_Fault_Detection\x64\Debug\EC3_Fault_Detection.exe</FullPath>
+>>>>>>> 35701d1a4efa697084eaea004f15b5887a6fdd5a
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />
