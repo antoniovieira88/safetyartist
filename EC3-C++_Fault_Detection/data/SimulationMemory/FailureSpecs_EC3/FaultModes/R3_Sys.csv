@@ -1,5 +1,5 @@
-id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn
-0,Open,0.59000,0,0,0,0,0,0,0,0
-1,Short-Circuit,0.05000,54,4092,51,57,4091,4095,1,1
-2,Increase of Resistance Value,0.18000,0,0,0,0,0,0,0,0
-3,Decrease of Resistance Value,0.18000,54,4092,51,57,4091,4095,1,1
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn,fmSafety,fmDetectableFuse,fmDetectableKeepPow,classMultipleFaults
+0,Open,0.59000,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+1,Short-Circuit,0.05000,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+2,Increase of Resistance Value,0.18000,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+3,Decrease of Resistance Value,0.18000,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable

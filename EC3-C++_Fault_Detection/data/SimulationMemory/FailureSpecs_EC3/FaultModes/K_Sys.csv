@@ -1,23 +1,23 @@
-id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn
-0,Interruption of Any Coil,7.85714E-2,0,0,0,0,0,0,0,0
-1,Interruption of NO Contact,1.44444E-2,0,0,0,0,0,0,0,0
-2,Interruption of NC Contact,1.44444E-2,54,4092,51,57,4091,4095,1,1
-3,Short-circuit or decrease of insulation resistance across open contacts,6.33333E-2,54,4092,51,57,4091,4095,1,1
-4,Short-circuit or decrease of insulation resistance between coil and contact,6.33333E-2,54,4092,51,57,4091,4095,0,0
-5,Short-circuit or decrease of insulation resistance between contact and contact,6.33333E-2,0,0,0,0,0,0,0,1
-6,Welding of NO contacts,1.44444E-2,54,4092,51,57,4091,4095,1,1
-7,Welding of NC contacts,1.44444E-2,0,0,0,0,0,0,0,0
-8,Increase of NO contact resistance,1.44444E-2,0,0,0,0,0,0,0,0
-9,Increase of NC contact resistance,1.44444E-2,54,4092,51,57,4091,4095,1,1
-10,Contact chatter,2.88889E-2,0,0,0,0,0,0,0,1
-11,Increase of pick-up current,7.85714E-2,0,0,0,0,0,0,0,0
-12,Decrease of pick-up current,2.88889E-2,54,4092,51,57,4091,4095,0,1
-13,Increase of drop-away current,7.85714E-2,54,4092,51,57,4091,4095,0,1
-14,Decrease of drop-away current,2.88889E-2,54,4092,51,57,4091,4095,1,1
-15,Change of pick-up to drop-away ratio,2.88889E-2,54,4092,51,57,4091,4095,0,1
-16,Increase of pick-up time,7.85714E-2,0,0,0,0,0,0,0,1
-17,Decrease of pick-up time,2.88889E-2,54,4092,51,57,4091,4095,0,1
-18,Increase of drop-away time,7.85714E-2,54,4092,51,57,4091,4095,1,1
-19,Decrease of drop-away time,2.88889E-2,54,4092,51,57,4091,4095,0,1
-20,Relay does not pick up,7.85714E-2,0,0,0,0,0,0,0,0
-21,Relay does not drop away,7.85714E-2,54,4092,51,57,4091,4095,1,1
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn,fmSafety,fmDetectableFuse,fmDetectableKeepPow,classMultipleFaults
+0,Interruption of Any Coil,7.85714E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+1,Interruption of NO Contact,1.44444E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+2,Interruption of NC Contact,1.44444E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+3,Short-circuit or decrease of insulation resistance across open contacts,6.33333E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+4,Short-circuit or decrease of insulation resistance between coil and contact,6.33333E-2,54,4092,51,57,4091,4095,0,0,safe,no,yes,not_applicable
+5,Short-circuit or decrease of insulation resistance between contact and contact,6.33333E-2,0,0,0,0,0,0,0,1,safe,outside_scope,yes,not_applicable
+6,Welding of NO contacts,1.44444E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+7,Welding of NC contacts,1.44444E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+8,Increase of NO contact resistance,1.44444E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+9,Increase of NC contact resistance,1.44444E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+10,Contact chatter,2.88889E-2,0,0,0,0,0,0,0,1,safe,outside_scope,yes,not_applicable
+11,Increase of pick-up current,7.85714E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+12,Decrease of pick-up current,2.88889E-2,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
+13,Increase of drop-away current,7.85714E-2,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
+14,Decrease of drop-away current,2.88889E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+15,Change of pick-up to drop-away ratio,2.88889E-2,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
+16,Increase of pick-up time,7.85714E-2,0,0,0,0,0,0,0,1,safe,outside_scope,no,not_applicable
+17,Decrease of pick-up time,2.88889E-2,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
+18,Increase of drop-away time,7.85714E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+19,Decrease of drop-away time,2.88889E-2,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
+20,Relay does not pick up,7.85714E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+21,Relay does not drop away,7.85714E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
