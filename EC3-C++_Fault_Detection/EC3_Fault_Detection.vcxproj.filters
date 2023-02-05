@@ -97,6 +97,9 @@
     <Filter Include="Header Files\tests\RandomGeneratorTest">
       <UniqueIdentifier>{5f86e4b9-9757-4d8b-8a36-88fee09b3274}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tests\KMeansTests">
+      <UniqueIdentifier>{ea8f3770-f79d-479f-863f-c3c6f7200a2f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app\main.cpp">
@@ -195,6 +198,9 @@
     <ClCompile Include="src\utils\filesys_handler\FileSysHandler.cpp">
       <Filter>Source Files\file_sys_handler</Filter>
     </ClCompile>
+    <ClCompile Include="tests\KMeans\KMeansTest5.cpp">
+      <Filter>Source Files\tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\structs\structs.h">
@@ -280,6 +286,9 @@
     </ClInclude>
     <ClInclude Include="src\utils\filesys_handler\include\FileSysHandler.h">
       <Filter>Header Files\file_sys_handler</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\KMeans\include\KMeansTests.h">
+      <Filter>Header Files\tests\KMeansTests</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
