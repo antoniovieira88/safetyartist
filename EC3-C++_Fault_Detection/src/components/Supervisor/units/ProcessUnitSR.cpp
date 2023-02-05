@@ -1,6 +1,4 @@
 #include "../include/ProcessUnitSR.h"
-#include <vector>
-#include <algorithm>
 
 /*
 
@@ -216,7 +214,7 @@ void ProcessUnitSR::runKeepPowTest()
 	if (verboseMode) {
 		cout << "Number of points: " << analysisUnit.getTotalNumberOfPoints() << endl;
 		cout << "Number of clusters: " << analysisUnit.getNumberOfClusters() << endl;
-		cout << "SilhouetteCluster2 (keep_power_readback = 1): " << newMetricsKeepPowTest(silhouetteCluster2) << endl;
+		cout << "SilhouetteCluster2 (keep_power_readback = 1): " << newMetricsKeepPowTest(2) << endl;
 	}
 
 	// ! it needs to change!!
@@ -279,6 +277,7 @@ faultDiagnosisType ProcessUnitSR::detectFailure(
 	double silhouetteCluster1Increase, silhouetteCluster2Increase,
 		imbalanceClustersIncrease, overallSilhouetteIncrease;
 	bool failure = false;
+	bool anyMetricAnalysed = false;
 	int metricIndex = 0;
 
 	vector<FailureMetricIndicatorType> failureIndicators;
@@ -292,6 +291,7 @@ faultDiagnosisType ProcessUnitSR::detectFailure(
 
 	// silhouette of cluster 1
 	if (metricsToAnalyse[silhouetteCluster1]) {
+		anyMetricAnalysed = true;
 		silhouetteCluster1Increase = calculateMetricVariation(previousMetrics, newMetrics, metricIndex);
 		if (verboseMode) cout << "Increase in silhouette of cluster 1: " << silhouetteCluster1Increase << endl;
 		metricIndex++;
@@ -305,6 +305,7 @@ faultDiagnosisType ProcessUnitSR::detectFailure(
 
 	// silhouette of cluster 2
 	if (metricsToAnalyse[silhouetteCluster2]) {
+		anyMetricAnalysed = true;
 		silhouetteCluster2Increase = calculateMetricVariation(previousMetrics, newMetrics, metricIndex);
 		if (verboseMode) cout << "Increase in silhouette of cluster 2: " << silhouetteCluster2Increase << endl;
 		metricIndex++;
@@ -318,6 +319,7 @@ faultDiagnosisType ProcessUnitSR::detectFailure(
 
 	// |number of points in cluster 2 - number of points in cluster 1|
 	if (metricsToAnalyse[numPointsCluster1] && metricsToAnalyse[numPointsCluster2]) {
+		anyMetricAnalysed = true;
 		imbalanceClustersNewMetrics = abs(newMetrics[metricIndex + 1] - newMetrics[metricIndex]);
 		imbalanceClustersPreviousMetrics = abs(previousMetrics[metricIndex + 1] - previousMetrics[metricIndex]);
 		imbalanceClustersIncrease = imbalanceClustersNewMetrics - imbalanceClustersPreviousMetrics;
@@ -333,6 +335,7 @@ faultDiagnosisType ProcessUnitSR::detectFailure(
 
 	// overall silhouette
 	if (metricsToAnalyse[overallSilhouette]) {
+		anyMetricAnalysed = true;
 		overallSilhouetteIncrease = calculateMetricVariation(previousMetrics, newMetrics, metricIndex);
 		if (verboseMode) cout << "Increase in overall silhouette: " << overallSilhouetteIncrease << endl;
 
@@ -342,6 +345,9 @@ faultDiagnosisType ProcessUnitSR::detectFailure(
 			failureIndicators.push_back(failureIndicator);
 		}
 	}
+
+	// it throws an exception if no metric has been analyzed
+	if (!anyMetricAnalysed) throw exception();
 
 	faultDiagnosisType faultDiagnosis{ failure, failureIndicators };
 
@@ -368,9 +374,11 @@ void ProcessUnitSR::initializeDataHandlers()
 	// the global iteration parameter is the maximum value between the iterations
 	// values provided by the two dataHandler units
 
-	globalIteration = { lastIterationFuseTest > lastIterationKeepPowTest
+	globalIteration =
+	{ lastIterationFuseTest > lastIterationKeepPowTest
 		? lastIterationFuseTest
-		: lastIterationKeepPowTest };
+		: lastIterationKeepPowTest
+	};
 }
 
 void ProcessUnitSR::getReadyForNextSimulationCycle()

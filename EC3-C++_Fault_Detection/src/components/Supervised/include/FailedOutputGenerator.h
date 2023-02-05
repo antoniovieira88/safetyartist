@@ -15,6 +15,7 @@ public:
 		mt19937& generator);
 
 	void setFailureScenario(FailureScenarioType* failureScenario);
+	int generateKeepPowTestOutput(int keepPower);
 	void setMaxStdDeviation(double maxStdDeviation);
 
 };

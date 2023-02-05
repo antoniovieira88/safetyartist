@@ -38,9 +38,6 @@ public:
 	double getStdDeviation();
 	vector<double> getNominalFuseResults();
 
-	// KeepPowTest Methods
-	int generateKeepPowTestOutput(int keepPower);
-
 protected:
 	double meanValueFuseResultBurn;
 	double minFuseResultBurn, maxFuseResultBurn;

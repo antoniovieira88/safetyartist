@@ -1,2 +1,3 @@
-.vs/
-bin/
+/.vs
+/bin
+/x64/Debug

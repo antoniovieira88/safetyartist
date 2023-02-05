@@ -1,0 +1,5 @@
+iteration,metric,tolerance,variation
+5,silhouetteCluster1,0.012900,-0.261600
+5,silhouetteCluster2,0.012900,-0.505872
+5,imbalanceNumPoints,0.000000,2.000000
+5,overallSilhouette,0.014500,-0.338351

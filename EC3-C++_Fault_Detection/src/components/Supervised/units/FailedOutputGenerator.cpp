@@ -27,6 +27,9 @@ void FailedOutputGenerator::setFailureScenario(FailureScenarioType* failureScena
 	maxFuseResultBurn = failureScenario->fuseTestFailureScenario.maxFuseResultBurn;
 	minFuseResultNotBurn = failureScenario->fuseTestFailureScenario.minFuseResultNotBurn;
 	maxFuseResultNotBurn = failureScenario->fuseTestFailureScenario.maxFuseResultNotBurn;
+
+	keepPowerReadbackOffValue = failureScenario->keepPowFailureScenario.keepPowerReadbackOffValue;
+	keepPowerReadbackOnValue = failureScenario->keepPowFailureScenario.keepPowerReadbackOnValue;
 }
 
 void FailedOutputGenerator::setMaxStdDeviation(double maxStdDeviation)
@@ -34,4 +37,9 @@ void FailedOutputGenerator::setMaxStdDeviation(double maxStdDeviation)
 	uniformDist = uniform_real_distribution<double>{ 0.0, maxStdDeviation };
 }
 
+int FailedOutputGenerator::generateKeepPowTestOutput(int keepPower)
+{
+	if (keepPower == 0) return keepPowerReadbackOffValue;
+	return keepPowerReadbackOnValue;
+}
 

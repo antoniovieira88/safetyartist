@@ -1,4 +1,5 @@
 #include <vector>
+#include <algorithm>
 #include "AnalysisUnit.h"
 #include "DataHandler.h"
 #include "../../Supervised/include/Supervised.h"
