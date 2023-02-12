@@ -11,7 +11,7 @@ Supervisor::Supervisor(
 	analysisUnit(2, nominalFuseResults),
 	dataHandlerFuseTest(globalIteration, maxNumberOfRegisters, 5,
 		"FuseTest", verboseMode, dataMemoryDir, simulationMemoryDir),
-	dataHandlerKeepPowTest(globalIteration, maxNumberOfRegisters, 3,
+	dataHandlerKeepPowTest(globalIteration, maxNumberOfRegisters, 2,
 		"KeepPowerTest", verboseMode, dataMemoryDir, simulationMemoryDir),
 	processUnit(
 		analysisUnit,
@@ -93,4 +93,25 @@ void Supervisor::setBasicParams(
 	dataHandlerKeepPowTest.setMaxNumberOfRegisters(maxNumberOfRegisters);
 	dataHandlerKeepPowTest.setSimulationName(simulationName);
 
+}
+
+FuseTestResultsType Supervisor::getFuseTestResults()
+{
+	return processUnit.getFuseTestResults();
+}
+
+KeepPowerTestResultsType Supervisor::getKeepPowerTestResults()
+{
+	return processUnit.getKeepPowerTestResults();
+}
+
+void Supervisor::deleteRecordsFromLatestIteration()
+{
+	processUnit.deleteRecordsFromLatestIteration();
+}
+
+void Supervisor::logFilesConfig(bool enable)
+{
+	dataHandlerFuseTest.logFilesConfig(enable);
+	dataHandlerKeepPowTest.logFilesConfig(enable);
 }

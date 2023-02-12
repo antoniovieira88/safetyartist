@@ -100,6 +100,12 @@
     <Filter Include="Header Files\tests\KMeansTests">
       <UniqueIdentifier>{ea8f3770-f79d-479f-863f-c3c6f7200a2f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\json">
+      <UniqueIdentifier>{dcb751dd-3327-44af-98c0-d7168f42b141}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\json">
+      <UniqueIdentifier>{9d9ec192-d703-464c-a408-6c797dfaaf03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app\main.cpp">
@@ -201,6 +207,9 @@
     <ClCompile Include="tests\KMeans\KMeansTest5.cpp">
       <Filter>Source Files\tests</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\json\JsonSerializer.cpp">
+      <Filter>Source Files\json</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\structs\structs.h">
@@ -289,6 +298,9 @@
     </ClInclude>
     <ClInclude Include="tests\KMeans\include\KMeansTests.h">
       <Filter>Header Files\tests\KMeansTests</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\json\include\JsonSerializer.h">
+      <Filter>Header Files\json</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

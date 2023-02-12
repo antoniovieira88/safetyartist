@@ -217,11 +217,26 @@ string Component::getCurrentFaultModeName()
 
 }
 
-FailureScenarioType* Component::getSingleFailureScenarioPointer()
+FailureScenarioType* Component::getPointerForCurrentSingleFailureScenario()
 {
 	if (currentFaultModeId == -1) return nullptr;
 
 	return &singleFailureScenarioArray[currentFaultModeId];
+}
+
+FailureScenarioType* Component::getPointerForSpecifFailureScenario(int faultModeId)
+{
+	return &singleFailureScenarioArray[faultModeId];
+}
+
+vector<FailureScenarioType>* Component::getPointerForSingleFailureScenarioArray()
+{
+	return &singleFailureScenarioArray;
+}
+
+string Component::getFaultModeName(int faultModeId)
+{
+	return faultModesArray.at(faultModeId);
 }
 
 bool Component::checkFaultModeIdValidity(int id)

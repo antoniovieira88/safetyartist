@@ -27,6 +27,12 @@ public:
 		int maxNumberOfRegisters,
 		string simulationName);
 
+	FuseTestResultsType getFuseTestResults();
+	KeepPowerTestResultsType getKeepPowerTestResults();
+
+	void deleteRecordsFromLatestIteration();
+	void logFilesConfig(bool enable);
+
 private:
 	mat nominalFuseResults;
 	int globalIteration;

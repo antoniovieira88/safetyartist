@@ -1,0 +1,134 @@
+[
+    {
+        "FaultModeId": 0,
+        "FaultModeName": "A1",
+        "FuseTest": {
+            "Burn": 0.29564986042383395,
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "NotBurn": 0.5935772608893664,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0,
+                "overallSilhouette": 0.9568635056099197,
+                "silhouetteCluster1": 0.9623740562089619,
+                "silhouetteCluster2": 0.9513529550108776
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0,
+                "overallSilhouette": 0.9717417012573705,
+                "silhouetteCluster1": 0.9728226265790123,
+                "silhouetteCluster2": 0.9706607759357287
+            }
+        },
+        "KeepPowerTest": {
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "Off": 1,
+            "On": 0,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0
+            }
+        }
+    },
+    {
+        "FaultModeId": 1,
+        "FaultModeName": "A2",
+        "FuseTest": {
+            "Burn": 0.38502485253958835,
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "NotBurn": 0.512504006418742,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0,
+                "overallSilhouette": 0.9490083163319949,
+                "silhouetteCluster1": 0.9553778505775741,
+                "silhouetteCluster2": 0.9426387820864157
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0,
+                "overallSilhouette": 0.9717417012573705,
+                "silhouetteCluster1": 0.9728226265790123,
+                "silhouetteCluster2": 0.9706607759357287
+            }
+        },
+        "KeepPowerTest": {
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "Off": 0,
+            "On": 1,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0
+            }
+        }
+    },
+    {
+        "FaultModeId": 2,
+        "FaultModeName": "A3",
+        "FuseTest": {
+            "Burn": 0.5184182860004868,
+            "FaultDiagnosis": {
+                "Failure": true,
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": 0.0,
+                        "Variation": 2.0
+                    }
+                ]
+            },
+            "NotBurn": 0.8013846634149858,
+            "newMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 51.0,
+                "overallSilhouette": 0.9561891090313784,
+                "silhouetteCluster1": 0.9724974393160637,
+                "silhouetteCluster2": 0.9405203211107985
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0,
+                "overallSilhouette": 0.9717417012573705,
+                "silhouetteCluster1": 0.9728226265790123,
+                "silhouetteCluster2": 0.9706607759357287
+            }
+        },
+        "KeepPowerTest": {
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "Off": 0,
+            "On": 1,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0
+            }
+        }
+    }
+]

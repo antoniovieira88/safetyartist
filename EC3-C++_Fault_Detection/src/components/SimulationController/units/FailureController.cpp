@@ -19,7 +19,7 @@ FailureController::FailureController(vector<Component>& componentsArray, TestSce
 	FailureController::verboseMode = verboseMode;
 }
 
-void FailureController::defineNewTestScenario()
+void FailureController::defineNewRandomTestScenario()
 {
 	testScenario.faultModesArray.clear();
 	numberOfFailedComponents = 0;
@@ -67,7 +67,7 @@ void FailureController::defineNewTestScenario()
 	testScenario.numberOfFailedComponents = numberOfFailedComponents;
 
 	if (numberOfFailedComponents == 1) {
-		testScenario.failureScenarioPointer = componentsArray[singleFailedComponentId].getSingleFailureScenarioPointer();
+		testScenario.failureScenarioPointer = componentsArray[singleFailedComponentId].getPointerForCurrentSingleFailureScenario();
 	}
 	else if (numberOfFailedComponents == 0) {
 		testScenario.failureScenarioPointer = nullptr;
@@ -85,6 +85,32 @@ void FailureController::defineNewTestScenario()
 		cout << "------------------" << endl;
 	}
 
+}
+
+void FailureController::defineTestScenarioWithoutFailure()
+{
+	testScenario.numberOfFailedComponents = 0;
+
+	// failure scenario is set to null
+	testScenario.failureScenarioPointer = nullptr;
+
+	// all fault modes in test scenario are set to -1 (no failure)
+	testScenario.faultModesArray.clear();
+	testScenario.faultModesArray = vector<int>(componentsArray.size(), -1);
+
+}
+
+void FailureController::defineTestScenarioForSpecificFailure(int componentId, int faultModeId, FailureScenarioType* failureScenarioPointer)
+{
+	testScenario.numberOfFailedComponents = 1;
+
+	// failure scenario is set to the specif fault mode for the desired component
+	testScenario.failureScenarioPointer = failureScenarioPointer;
+
+	// all fault modes in test scenario are set to -1 (no failure) except for specific component set to fail
+	testScenario.faultModesArray.clear();
+	testScenario.faultModesArray = vector<int>(componentsArray.size(), -1);
+	testScenario.faultModesArray[componentId] = faultModeId;
 }
 
 int FailureController::getNumberOfFailedComponents()

@@ -81,17 +81,19 @@ void DataHandler::updateHistoricalMetrics()
 }
 
 void DataHandler::insertNewMetrics(colvec newMetrics) {
-	DataHandler::previousMetrics = colvec(DataHandler::newMetrics);
-	DataHandler::newMetrics = newMetrics;
-
 	colvec newHistoricalMetricsCol = { double(globalIteration) };
 	newHistoricalMetricsCol.insert_rows(1, newMetrics);
+
 	if (historicalMetrics.n_cols == maxNumberOfRegisters / 2) {
 		historicalMetrics.shed_col(0);
 	}
+
 	historicalMetrics.insert_cols(historicalMetrics.n_cols, newHistoricalMetricsCol);
 
-	updateSimulationHistoricalMetrics(newMetrics);
+	DataHandler::previousMetrics = colvec(DataHandler::newMetrics);
+	DataHandler::newMetrics = newMetrics;
+
+	if (allowLogFiles) updateSimulationHistoricalMetrics(newMetrics);
 }
 
 colvec DataHandler::getPreviousMetrics() {
@@ -153,6 +155,9 @@ void DataHandler::reset()
 void DataHandler::insertNewHistoricalData(mat newData) {
 	if (numberOfRegisters == maxNumberOfRegisters) {
 		historicalData.shed_cols(0, 1);
+
+		/*cout << "New last iterations: " << historicalData(0, historicalData.n_cols - 2) << ", " << historicalData(0, historicalData.n_cols - 1) << endl;
+		cout << "New last fuseResults : " << historicalData(2, historicalData.n_cols - 2) << ", " << historicalData(2, historicalData.n_cols - 1) << endl;*/
 	}
 
 	lastIterationInDataMemory = globalIteration;
@@ -172,11 +177,21 @@ void DataHandler::insertNewHistoricalData(mat newData) {
 
 	historicalData.insert_cols(historicalData.n_cols, newData);
 
-	updateSimulationHistoricalData(newData);
+	if (allowLogFiles) updateSimulationHistoricalData(newData);
 
 	numberOfRegisters = historicalData.n_cols;
 
-	historicalDataToCluster = historicalData.submat(2, 0, 2, historicalData.n_cols - 1);
+	historicalDataToCluster = historicalData.submat(2, 0, 2, numberOfRegisters - 1);
+
+	//if (numberOfRegisters == maxNumberOfRegisters) {
+	//	cout << "New last iterations: " << historicalData(0, historicalData.n_cols - 2) << ", " << historicalData(0, historicalData.n_cols - 1) << endl;
+	//	cout << "New last fuseResults : " << historicalData(2, historicalData.n_cols - 2) << ", " << historicalData(2, historicalData.n_cols - 1) << endl;
+
+	//	cout << "New previous last iterations: " << historicalData(0, historicalData.n_cols - 4) << ", " << historicalData(0, historicalData.n_cols - 3) << endl;
+	//	cout << "New previous last fuseResults : " << historicalData(2, historicalData.n_cols - 4) << ", " << historicalData(2, historicalData.n_cols - 3) << endl;
+
+	//	cout << "New last fuseResults (cluster) : " << historicalDataToCluster(0, historicalDataToCluster.n_cols - 2) << ", " << historicalDataToCluster(0, historicalDataToCluster.n_cols - 1) << endl;
+	//}
 
 }
 
@@ -249,4 +264,57 @@ void DataHandler::setSimulationName(std::string simulationName)
 void DataHandler::setMaxNumberOfRegisters(unsigned int maxNumberOfRegisters)
 {
 	DataHandler::maxNumberOfRegisters = maxNumberOfRegisters;
+}
+
+void DataHandler::deleteRecordsFromOldestIteration()
+{
+	// obs.: remember that all data stored in armadillo's mat is in a column-major format
+
+	// it eliminates the first two input-output records stored in historicalData
+	// obs.: remember that each iteration (test) always produces two records in historicalData,
+	// since tests are executed for all possible input values (0 and 1
+	// for 'Fuse Test' and 'Keep Power Test') Therefore, data from the first iteration are being
+	// removed from memory here
+	historicalData.shed_cols(0, 1);
+
+	// it eliminates the first (oldest) record of metrics stored in historicalMetrics
+	// obs.: remember that each iteration (test)  always produces a single record 
+	// in historicalMetrics
+	historicalMetrics.shed_col(0);
+
+	numberOfRegisters = historicalData.n_cols;
+	historicalDataToCluster = historicalData.submat(2, 0, 2, numberOfRegisters - 1);
+}
+
+void DataHandler::deleteRecordsFromLatestIteration()
+{
+	/*cout << "Last iterations: " << historicalData(0, historicalData.n_cols - 2) << ", " << historicalData(0, historicalData.n_cols - 1) << endl;
+	cout << "Last fuseResults : " << historicalData(2, historicalData.n_cols - 2) << ", " << historicalData(2, historicalData.n_cols - 1) << endl;*/
+
+	// it eliminates the last (most recent) two input-output records stored in historicalData
+	// obs.: remember that each iteration (test) always produces two records in historicalData,
+	// since tests are executed for all possible input values (0 and 1
+	// for 'Fuse Test' and 'Keep Power Test'). Therefore, data from last iteration are being
+	// removed from memory here
+	historicalData.shed_cols(historicalData.n_cols - 2, historicalData.n_cols - 1);
+
+	/*cout << "New last iterations: " << historicalData(0, historicalData.n_cols - 2) << ", " << historicalData(0, historicalData.n_cols - 1) << endl;
+	cout << "New last fuseResults : " << historicalData(2, historicalData.n_cols - 2) << ", " << historicalData(2, historicalData.n_cols - 1) << endl;*/
+
+	// it eliminates the last metric stored in historicalMetrics
+	// obs.: remember that data is stored in a column-major format
+	historicalMetrics.shed_col(historicalMetrics.n_cols - 1);
+
+	int lastMetricIndex = historicalMetrics.n_cols - 1;
+
+	DataHandler::newMetrics = historicalMetrics.submat(1, lastMetricIndex, numberOfMetrics, lastMetricIndex);
+	DataHandler::previousMetrics = historicalMetrics.submat(1, lastMetricIndex - 1, numberOfMetrics, lastMetricIndex - 1);
+
+	numberOfRegisters = historicalData.n_cols;
+	historicalDataToCluster = historicalData.submat(2, 0, 2, numberOfRegisters - 1);
+}
+
+void DataHandler::logFilesConfig(bool enable)
+{
+	allowLogFiles = enable;
 }

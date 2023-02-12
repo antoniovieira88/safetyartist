@@ -51,7 +51,7 @@ void ProcessUnitSC::run()
 	int duration;
 	char userOption = 0;
 
-	while (userOption != 'e') {
+	while (userOption != 'f') {
 		cout << endl << "***********************";
 		cout << endl << "EC3 Fault Detection C++";
 		cout << endl << "***********************";
@@ -75,7 +75,8 @@ void ProcessUnitSC::run()
 		cout << " b) Run a cycle of iterations in the current selected simulation" << endl;
 		cout << " c) Create a new simulation in SimulationMemory" << endl;
 		cout << " d) Set verbose mode " << endl;
-		cout << " e) Exit program" << endl << endl;
+		cout << " e) Run single failure injection test" << endl;
+		cout << " f) Exit program" << endl << endl;
 
 		cout << "Type an option to continue: " << endl;
 		cout << "Input: ";
@@ -131,6 +132,21 @@ void ProcessUnitSC::run()
 			break;
 		case 101:
 			// option e)
+			if (simulationName != "") {
+				try {
+					singleFailureInjectionOption();
+				}
+				catch (AbortSimulationOpExcep& error) {
+					cout << endl << error.what() << endl;
+				}
+
+			}
+			else {
+				cout << endl << "Operation aborted. Error: You must select a simulation first." << endl;
+			}
+			break;
+		case 102:
+			// option f)
 			cout << endl << "Exiting program..." << endl;
 			break;
 		default:
@@ -395,7 +411,7 @@ void ProcessUnitSC::createLogAndStatusCSVFiles(string simulationName)
 	FileSysHandler::createCSVFile(
 		"HistoricalMetricsFullLog",
 		dirSM + "/KeepPowerTest",
-		{ "iteration", "silhouetteCluster2", "numPointsCluster1", "numPointsCluster2" });
+		{ "iteration", "numPointsCluster1", "numPointsCluster2" });
 
 	FileSysHandler::copyFileOverwrite("ComponentsInitialState.csv", "ComponentsOperationalState.csv", dirSpecs, dirSM);
 }
@@ -477,6 +493,48 @@ string ProcessUnitSC::failedComponentsListString()
 	listStr = listStr + "]";
 
 	return listStr;
+}
+
+string ProcessUnitSC::createLogFileForComponentAvaliation(string componentName, string faultModesAvaliationsDir)
+{
+	string filename = componentName + "_AnalysisResult";
+	return FileSysHandler::createJsonFile(filename, faultModesAvaliationsDir);
+}
+
+string ProcessUnitSC::createFaultModesAvaliationDir()
+{
+	const string faultModesAvaliationsBaseDir = simulationsDir + "/" + simulationName;
+	FileSysHandler::createDirectories(faultModesAvaliationsBaseDir, { "AllFaultModesAnalysis" });
+	return faultModesAvaliationsBaseDir + "/AllFaultModesAnalysis";
+}
+
+void ProcessUnitSC::collectResultsFromSingleIteration(FuseTestResultsType& fuseTestResult, KeepPowerTestResultsType& keepPowerTestResult)
+{
+	try {
+		supervisorPointer->runTest();
+	}
+	catch (exception& error) {};
+
+	if (*iterationPointer % 2 == 1) {
+		fuseTestResult = supervisorPointer->getFuseTestResults();
+	}
+	else {
+		keepPowerTestResult = supervisorPointer->getKeepPowerTestResults();
+	}
+}
+
+void ProcessUnitSC::exportJsonFaultModeAnalysisArray(vector<FaultModeAnalysisResultType>& faultModeDataArray, string destinyFilePath)
+{
+	json faultModeDataJson = json(faultModeDataArray);
+
+	ofstream simulationJsonDataFile(
+		destinyFilePath,
+		std::ios_base::out);
+
+	simulationJsonDataFile << faultModeDataJson.dump(4, ' ');
+
+	simulationJsonDataFile.close();
+
 }
 
 int ProcessUnitSC::userSimulationCycleParamsOptions() {
@@ -600,6 +658,116 @@ void ProcessUnitSC::createSimulationFiles(string simulationName)
 	}
 }
 
+void ProcessUnitSC::avaliateComponentFaultModes(Component& component, string componentJsonDestinyFilePath)
+{
+	int faultModeId = 0;
+	int componentId = component.getComponentId();
+	string faultModeName;
+	FuseTestResultsType fuseTestResult;
+	KeepPowerTestResultsType keepPowerTestResult;
+	FaultModeAnalysisResultType faultModeAnalysisResult;
+	vector<FaultModeAnalysisResultType> faultModeAnalysisResultArray;
+
+	vector<FailureScenarioType>* faultModeParamsArray = component.getPointerForSingleFailureScenarioArray();
+
+	for (FailureScenarioType& faultModeParams : *faultModeParamsArray) {
+		faultModeName = component.getFaultModeName(faultModeId);
+
+		failureController.defineTestScenarioForSpecificFailure(componentId, faultModeId, &faultModeParams);
+		supervisedPointer->setTestScenario(testScenario);
+
+		collectResultsFromSingleIteration(fuseTestResult, keepPowerTestResult);
+
+		collectResultsFromSingleIteration(fuseTestResult, keepPowerTestResult);
+
+		faultModeAnalysisResult = FaultModeAnalysisResultType({
+			faultModeId,
+			faultModeName,
+			fuseTestResult,
+			keepPowerTestResult,
+			});
+
+		faultModeAnalysisResultArray.push_back(faultModeAnalysisResult);
+
+		supervisorPointer->deleteRecordsFromLatestIteration();
+
+		faultModeId++;
+	}
+
+	exportJsonFaultModeAnalysisArray(faultModeAnalysisResultArray, componentJsonDestinyFilePath);
+}
+
+void ProcessUnitSC::singleFailureInjectionOption()
+{
+	char userOption = 0;
+
+	cout << endl << "Single Failure Injection Test" << endl;
+
+	int duration = simulationSpecificParams.maxNumberOfRegisters - 2;
+
+	cout << "All fault modes of each component is about to be tested individually over a non-faulty "
+		<< duration << "-register database. Data from previous simulation cycles stored in the under test"
+		<< "directory will be lost. \n \n Are you sure you would like to continue ? " << endl;
+
+
+	cout << endl << "Input [y/n]: ";
+
+	cin.get(userOption);
+	if (userOption == '\n') {
+		cin.get(userOption);
+	}
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+	if (userOption == 'y') {
+		singleFailureInjectionTest();
+	}
+}
+
+void ProcessUnitSC::singleFailureInjectionTest()
+{
+	string componentJsonDestinyFilePath;
+	int duration = simulationSpecificParams.maxNumberOfRegisters - 2;
+
+	cout << endl << "Reseting simulation..." << endl;
+	resetSupervisor();
+	resetComponentsOperationalStates();
+	createLogAndStatusCSVFiles(simulationName);
+
+	const string faultModesAvaliationsDir = createFaultModesAvaliationDir();
+
+	cout << endl << "Results from Single Failure Injection Test will be available in "
+		<< faultModesAvaliationsDir << " directory." << endl;
+
+	setVerboseMode(false);
+
+	cout << "Cycle of " << duration << "-non-faulty iterations starting..." << endl;
+
+	runSimulationCycle(duration, true);
+	getReadyForNextSimulationCycle();
+
+	supervisorPointer->logFilesConfig(false);
+
+	cout << "Cycle of " << duration << "-non-faulty iterations completed" << endl;
+
+	cout << endl << "Single-failure injection process started" << endl;
+	cout << "Wait until all possible fault modes had been tested." << endl;
+
+	for (Component& component : componentsArray) {
+
+		componentJsonDestinyFilePath = createLogFileForComponentAvaliation(
+			component.getComponentName(),
+			faultModesAvaliationsDir
+		);
+
+		avaliateComponentFaultModes(component, componentJsonDestinyFilePath);
+	}
+
+	cout << endl << "Single-failure injection process completed" << endl;
+	cout << "Results are available in " << faultModesAvaliationsDir << " directory." << endl;
+
+	supervisorPointer->logFilesConfig(true);
+}
+
 bool ProcessUnitSC::searchForSimulationDirectories(string simulationName)
 {
 	string dirSM = simulationsDir + "/" + simulationName;
@@ -631,7 +799,7 @@ void ProcessUnitSC::setVerboseMode(bool verboseModeValue)
 	supervisorPointer->setVerboseMode(verboseModeValue);
 }
 
-void ProcessUnitSC::runSimulationCycle(int duration)
+void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 {
 	ofstream simulationDataFile;
 	string logError;
@@ -651,7 +819,8 @@ void ProcessUnitSC::runSimulationCycle(int duration)
 
 		if (verboseMode) cout << endl << "Begin of the new iteration " << *iterationPointer + 1 << endl;
 
-		failureController.defineNewTestScenario();
+		if (noFailuresMode) failureController.defineTestScenarioWithoutFailure();
+		else failureController.defineNewRandomTestScenario();
 
 		noFaults = (testScenario.numberOfFailedComponents == 0);
 
@@ -660,8 +829,8 @@ void ProcessUnitSC::runSimulationCycle(int duration)
 		try {
 			supervisorPointer->runTest();
 			failureDetected = false;
-			if (noFaults) cout << endl << "-> No failure in the supervised system. Supervisor didn't detect any fault" << endl;
-			else {
+			if (noFaults && !noFailuresMode) cout << endl << "-> No failure in the supervised system. Supervisor didn't detect any fault" << endl;
+			else if (!noFaults) {
 				cout << endl << "-> There was a fault in the supervised system"
 					<< " but supervisor didn't detect it" << endl;
 				recordHistoricalFailureLog(noFaults, failureDetected);
@@ -711,4 +880,3 @@ void ProcessUnitSC::resetSupervisor()
 		supervisorPointer->reset();
 	}
 }
-

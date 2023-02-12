@@ -1,6 +1,6 @@
 #include "include/FailureDetectedExcep.h"
 
-FailureDetectedExcep::FailureDetectedExcep(faultDiagnosisType faultDiagnosis)
+FailureDetectedExcep::FailureDetectedExcep(FaultDiagnosisType faultDiagnosis)
 {
 	failureIndicators = faultDiagnosis.failureIndicators;
 	errorMsg = "-> Failure detected by supervisor\n";

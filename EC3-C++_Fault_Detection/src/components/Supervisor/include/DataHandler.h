@@ -49,6 +49,10 @@ public:
 	void setSimulationName(std::string simulationName);
 	void setMaxNumberOfRegisters(unsigned int maxNumberOfRegisters);
 
+	void deleteRecordsFromOldestIteration();
+	void deleteRecordsFromLatestIteration();
+	void logFilesConfig(bool enable);
+
 
 private:
 	int& globalIteration;
@@ -56,6 +60,7 @@ private:
 	unsigned int maxNumberOfRegisters;
 	const int numberOfMetrics;
 	bool& verboseMode;
+	bool allowLogFiles;
 
 	// the following variables are fixed for all simulations.
 	// they correspond parameters set at the moment of the instantiation

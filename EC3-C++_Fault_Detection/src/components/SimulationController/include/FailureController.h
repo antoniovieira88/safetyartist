@@ -7,7 +7,10 @@ class FailureController {
 public:
 	FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario);
 	FailureController(vector<Component>& componentsArray, TestScenarioType& testScenario, bool verboseMode);
-	void defineNewTestScenario();
+
+	void defineNewRandomTestScenario();
+	void defineTestScenarioWithoutFailure();
+	void defineTestScenarioForSpecificFailure(int componentId, int faultModeId, FailureScenarioType* failureScenarioPointer);
 
 	int getNumberOfFailedComponents();
 	unordered_set<string>& getFailedComponentsNameSet();

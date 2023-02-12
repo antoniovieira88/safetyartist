@@ -13,6 +13,7 @@ public:
 	static bool copyFileOverwrite(string filenameSrc, string filenameDest, string relativeSrcDir, string relativeDestDir);
 	static void createCSVFile(string filename, string relativeBaseDir);
 	static void createCSVFile(string filename, string relativeBaseDir, vector<string> headers);
+	static string createJsonFile(string filename, string relativeBaseDir);
 	static bool searchForDirectory(string dir);
 	static bool searchForDirectories(vector<string> dirs);
 

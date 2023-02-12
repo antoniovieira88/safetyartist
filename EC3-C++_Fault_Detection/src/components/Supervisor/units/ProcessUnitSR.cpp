@@ -34,6 +34,7 @@ ProcessUnitSR::ProcessUnitSR(
 	ProcessUnitSR::imbalanceClustersIncreaseToleranceKeepPowTest = NAN;
 	ProcessUnitSR::verboseMode = verboseMode;
 	ProcessUnitSR::simulationName = "";
+	ProcessUnitSR::lastPerfomedTest = test::none;
 
 	newMetricsFuseTest = colvec(dataHandlerFuseTest.getNumberOfMetrics(), fill::zeros);
 	previousMetricsFuseTest = colvec(dataHandlerFuseTest.getNumberOfMetrics(), fill::zeros);
@@ -66,18 +67,17 @@ void ProcessUnitSR::runTest()
 	globalIteration++;
 	if (globalIteration % 2 == 1) {
 		runFuseTest();
+		lastPerfomedTest = test::fuseTest;
 	}
 	else {
 		runKeepPowTest();
+		lastPerfomedTest = test::keepPowerTest;
 	}
 
 }
 
 void ProcessUnitSR::runFuseTest() {
 	arma::mat dataToCluster;
-	double fuseResultBurn = (double NAN);
-	double fuseResultNotBurn = (double NAN);
-	double keepPower(double NAN);
 	bool failure = false;
 
 	if (verboseMode) {
@@ -85,7 +85,7 @@ void ProcessUnitSR::runFuseTest() {
 		cout << "Iteration of the initiated diagnostic test: " << globalIteration << endl;
 	}
 
-	keepPower = 1.0;
+	keepPower = 1;
 	setKeepPower(keepPower);
 
 	fuseTest = 0.0;
@@ -133,7 +133,7 @@ void ProcessUnitSR::runFuseTest() {
 	bool metricsToAnalyse[5];
 	fill_n(metricsToAnalyse, 5, true);
 
-	faultDiagnosisType faultDiagnosis = detectFailure(
+	detectFailure(
 		previousMetricsFuseTest,
 		newMetricsFuseTest,
 		metricsToAnalyse,
@@ -144,6 +144,7 @@ void ProcessUnitSR::runFuseTest() {
 	if (faultDiagnosis.failure) {
 		keepPower = 0.0;
 		setKeepPower(keepPower);
+		lastPerfomedTest = test::fuseTest;
 		throw FailureDetectedExcep(faultDiagnosis);
 	}
 
@@ -156,8 +157,6 @@ void ProcessUnitSR::runFuseTest() {
 void ProcessUnitSR::runKeepPowTest()
 {
 	arma::mat dataToCluster;
-	int keepPowerReadbackOn = (int NAN);
-	int keepPowerReadbackOff = (int NAN);
 	bool failure = false;
 
 	if (verboseMode) {
@@ -204,7 +203,6 @@ void ProcessUnitSR::runKeepPowTest()
 	// only the metrics below are used in KeepPowerTest.
 	metricsToAnalyse[numPointsCluster1] = true;
 	metricsToAnalyse[numPointsCluster2] = true;
-	metricsToAnalyse[silhouetteCluster2] = true;
 
 	newMetricsKeepPowTest = analysisUnit.getNewMetrics(metricsToAnalyse);
 	dataHandlerKeepPowTest.insertNewMetrics(newMetricsKeepPowTest);
@@ -214,11 +212,9 @@ void ProcessUnitSR::runKeepPowTest()
 	if (verboseMode) {
 		cout << "Number of points: " << analysisUnit.getTotalNumberOfPoints() << endl;
 		cout << "Number of clusters: " << analysisUnit.getNumberOfClusters() << endl;
-		cout << "SilhouetteCluster2 (keep_power_readback = 1): " << newMetricsKeepPowTest(2) << endl;
 	}
 
-	// ! it needs to change!!
-	faultDiagnosisType faultDiagnosis = detectFailure(
+	detectFailure(
 		previousMetricsKeepPowTest,
 		newMetricsKeepPowTest,
 		metricsToAnalyse,
@@ -229,6 +225,7 @@ void ProcessUnitSR::runKeepPowTest()
 	if (faultDiagnosis.failure) {
 		fuseTest = 0.0;
 		setFuseTest(fuseTest);
+		lastPerfomedTest = test::keepPowerTest;
 		throw FailureDetectedExcep(faultDiagnosis);
 	}
 
@@ -256,7 +253,6 @@ int ProcessUnitSR::getKeepPowReadback()
 	return supervisedPointer->runKeepPowTest();
 }
 
-
 void ProcessUnitSR::reset()
 {
 	globalIteration = 0;
@@ -264,7 +260,7 @@ void ProcessUnitSR::reset()
 	dataHandlerKeepPowTest.reset();
 }
 
-faultDiagnosisType ProcessUnitSR::detectFailure(
+void ProcessUnitSR::detectFailure(
 	colvec& previousMetrics,
 	colvec& newMetrics,
 	bool metricsToAnalyse[5],
@@ -349,13 +345,11 @@ faultDiagnosisType ProcessUnitSR::detectFailure(
 	// it throws an exception if no metric has been analyzed
 	if (!anyMetricAnalysed) throw exception();
 
-	faultDiagnosisType faultDiagnosis{ failure, failureIndicators };
+	faultDiagnosis = { failure, failureIndicators };
 
 	if (verboseMode) {
 		cout << "Failure detection process finished" << endl;
 	}
-
-	return faultDiagnosis;
 }
 
 void ProcessUnitSR::initializeDataHandlers()
@@ -416,6 +410,43 @@ void ProcessUnitSR::setFuseTestBasicParams(
 	ProcessUnitSR::imbalanceClustersIncreaseToleranceFuseTest = numberOfPointsPerClusterDiffToleranceValue;
 }
 
+FuseTestResultsType ProcessUnitSR::getFuseTestResults()
+{
+	if (lastPerfomedTest == test::keepPowerTest) return {};
+
+	MetricsFuseTestType newMetrics = getFuseTestMetricsStruct(newMetricsFuseTest);
+	MetricsFuseTestType previousMetrics = getFuseTestMetricsStruct(previousMetricsFuseTest);
+
+	return FuseTestResultsType({
+		faultDiagnosis,
+		previousMetrics,
+		newMetrics,
+		fuseResultBurn,
+		fuseResultNotBurn });
+}
+
+KeepPowerTestResultsType ProcessUnitSR::getKeepPowerTestResults()
+{
+	if (lastPerfomedTest == test::fuseTest) return {};
+
+	MetricsKeepPowerTestType newMetrics = getKeepPowerTestMetricsStruct(newMetricsKeepPowTest);
+	MetricsKeepPowerTestType previousMetrics = getKeepPowerTestMetricsStruct(previousMetricsKeepPowTest);
+
+	return KeepPowerTestResultsType(
+		{ faultDiagnosis,
+		previousMetrics,
+		newMetrics,
+		keepPowerReadbackOn,
+		keepPowerReadbackOff });
+}
+
+void ProcessUnitSR::deleteRecordsFromLatestIteration()
+{
+	dataHandlerFuseTest.deleteRecordsFromLatestIteration();
+	dataHandlerKeepPowTest.deleteRecordsFromLatestIteration();
+	globalIteration -= 2;
+}
+
 void ProcessUnitSR::setKeepPower(int keepPower)
 {
 	supervisedPointer->setKeepPower(keepPower);
@@ -425,3 +456,23 @@ void ProcessUnitSR::setFuseTest(double fuseTest)
 {
 	supervisedPointer->setFuseTest(fuseTest);
 }
+
+MetricsFuseTestType ProcessUnitSR::getFuseTestMetricsStruct(colvec metricsArray)
+{
+	MetricsFuseTestType metricsStruct;
+	metricsStruct.numPointsCluster1 = metricsArray[numPointsCluster1];
+	metricsStruct.numPointsCluster2 = metricsArray[numPointsCluster2];
+	metricsStruct.silhouetteCluster1 = metricsArray[silhouetteCluster1];
+	metricsStruct.silhouetteCluster2 = metricsArray[silhouetteCluster2];
+	metricsStruct.overallSilhouette = metricsArray[overallSilhouette];
+
+	return metricsStruct;
+}
+
+MetricsKeepPowerTestType ProcessUnitSR::getKeepPowerTestMetricsStruct(colvec metricsArray) {
+	MetricsKeepPowerTestType metricsStruct;
+	metricsStruct.numPointsCluster1 = metricsArray[0];
+	metricsStruct.numPointsCluster2 = metricsArray[1];
+
+	return metricsStruct;
+};

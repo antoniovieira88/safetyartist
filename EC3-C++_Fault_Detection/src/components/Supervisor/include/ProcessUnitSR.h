@@ -33,6 +33,12 @@ public:
 		double silhouetteDiffToleranceValue,
 		double numberOfPointsPerClusterDiffToleranceValue);
 
+	FuseTestResultsType getFuseTestResults();
+	KeepPowerTestResultsType getKeepPowerTestResults();
+
+
+	void deleteRecordsFromLatestIteration();
+
 private:
 	AnalysisUnit& analysisUnit;
 	DataHandler& dataHandlerFuseTest;
@@ -40,11 +46,15 @@ private:
 	Supervised* supervisedPointer;
 	int& globalIteration;
 	string simulationName;
+	FaultDiagnosisType faultDiagnosis;
+	test lastPerfomedTest;
 
 	bool verboseMode;
 
 	// fuseTest variables
 	double fuseTest;
+	double fuseResultBurn;
+	double fuseResultNotBurn;
 	double overallSilhouetteDecreaseToleranceFuseTest,
 		silhouetteClustersDecreaseToleranceFuseTest,
 		imbalanceClustersIncreaseToleranceFuseTest;
@@ -52,12 +62,14 @@ private:
 
 	// KeepPowTest
 	int keepPower;
+	int keepPowerReadbackOn;
+	int keepPowerReadbackOff;
 	double overallSilhouetteDecreaseToleranceKeepPowTest,
 		silhouetteClustersDecreaseToleranceKeepPowTest,
 		imbalanceClustersIncreaseToleranceKeepPowTest;
 	colvec previousMetricsKeepPowTest, newMetricsKeepPowTest;
 
-	faultDiagnosisType detectFailure(
+	void detectFailure(
 		colvec& previousMetrics,
 		colvec& newMetrics,
 		bool metricsToAnalyse[5],
@@ -76,4 +88,7 @@ private:
 	int getKeepPowReadback();
 	void setKeepPower(int keepPower);
 	void setFuseTest(double fuseTest);
+
+	MetricsFuseTestType getFuseTestMetricsStruct(colvec metricsArray);
+	MetricsKeepPowerTestType getKeepPowerTestMetricsStruct(colvec metricsArray);
 };

@@ -1,5 +1,0 @@
-name,faultModeId,countBetweenFailures
-ComponentA,-1,8
-ComponentB,-1,8
-ComponentC,-1,8
-ComponentD,0,inf

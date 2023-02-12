@@ -1,6 +1,7 @@
 #include "FailureController.h"
 #include "../../../utils/exceptions/include/AbortSimulationOpExcep.h"
 #include "../../../utils/filesys_handler/include/FileSysHandler.h"
+#include "../../../utils/json/include/JsonSerializer.h"
 #include "../../Supervisor/include/Supervisor.h"
 #include <filesystem>
 
@@ -48,7 +49,7 @@ private:
 	bool verboseMode;
 
 	void initializeParamsController();
-	void runSimulationCycle(int duration);
+	void runSimulationCycle(int duration, bool noFailuresMode = false);
 
 	void resetComponentsOperationalStates();
 	void resetSupervisor();
@@ -57,6 +58,9 @@ private:
 	void saveMtRandEngines();
 
 	void createSimulationFiles(string simulationName);
+	void avaliateComponentFaultModes(Component& component, string componentJsonDestinyFilePath);
+	void singleFailureInjectionOption();
+	void singleFailureInjectionTest();
 
 	int userSimulationCycleParamsOptions();
 
@@ -72,4 +76,11 @@ private:
 	void printVerboseMode();
 	void recordHistoricalFailureLog(bool noFaults, bool failureDetected, string LogError = "");
 	string failedComponentsListString();
+
+	string createLogFileForComponentAvaliation(string componentName, string faultModesAvaliationsDir);
+	string createFaultModesAvaliationDir();
+
+	void collectResultsFromSingleIteration(FuseTestResultsType& fuseTestResults, KeepPowerTestResultsType& keepPowerTestResults);
+
+	void exportJsonFaultModeAnalysisArray(vector<FaultModeAnalysisResultType>& faultModeData, string destinyFilePath);
 };

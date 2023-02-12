@@ -40,6 +40,7 @@
     <ClCompile Include="src\app\main.cpp" />
     <ClCompile Include="src\utils\exceptions\SimulatorFailureExcep.cpp" />
     <ClCompile Include="src\utils\filesys_handler\FileSysHandler.cpp" />
+    <ClCompile Include="src\utils\json\JsonSerializer.cpp" />
     <ClCompile Include="src\utils\kmeans\KMeans.cpp" />
     <ClCompile Include="src\utils\kmeans\SilhouetteScore.cpp" />
     <ClCompile Include="src\utils\mt_engine\MtRandEngine.cpp" />
@@ -75,6 +76,7 @@
     <ClInclude Include="src\utils\exceptions\include\RegistersOverflowExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\SimulatorFailureExcep.h" />
     <ClInclude Include="src\utils\filesys_handler\include\FileSysHandler.h" />
+    <ClInclude Include="src\utils\json\include\JsonSerializer.h" />
     <ClInclude Include="src\utils\kmeans\include\KMeans.h" />
     <ClInclude Include="src\utils\kmeans\include\SilhouetteScore.h" />
     <ClInclude Include="src\utils\mt_engine\include\MtRandEngine.h" />

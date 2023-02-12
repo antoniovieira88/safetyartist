@@ -44,6 +44,15 @@ void FileSysHandler::createCSVFile(string filename, string relativeBaseDir, vect
 	file.close();
 }
 
+string FileSysHandler::createJsonFile(string filename, string relativeBaseDir)
+{
+	fstream file;
+	if (filename.find(".") == -1) filename = filename + ".json";
+	file.open(relativeBaseDir + "/" + filename, ios::out);
+	file.close();
+	return relativeBaseDir + "/" + filename;
+}
+
 bool FileSysHandler::searchForDirectory(string dir)
 {
 	return filesystem::exists(dir);

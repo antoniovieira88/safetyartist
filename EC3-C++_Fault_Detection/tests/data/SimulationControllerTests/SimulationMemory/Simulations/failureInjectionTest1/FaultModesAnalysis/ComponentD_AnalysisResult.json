@@ -1,0 +1,78 @@
+[
+  {
+    "FaultModeId": 0,
+    "FaultModeName": "D1",
+    "FuseTest": {
+      "Burn": 0.7309170308772248,
+      "FaultDiagnosis": {
+        "Failure": true,
+        "FailureIndicators": [
+          { "Metric": "imbalanceNumPoints", "Tolerance": 0.0, "Variation": 2.0 }
+        ]
+      },
+      "NotBurn": 0.8082249202601204,
+      "newMetrics": {
+        "numPointsCluster1": 49.0,
+        "numPointsCluster2": 51.0,
+        "overallSilhouette": 0.9655880034211114,
+        "silhouetteCluster1": 0.9726462014887844,
+        "silhouetteCluster2": 0.9588065974345236
+      },
+      "previousMetrics": {
+        "numPointsCluster1": 49.0,
+        "numPointsCluster2": 49.0,
+        "overallSilhouette": 0.9717417012573705,
+        "silhouetteCluster1": 0.9728226265790123,
+        "silhouetteCluster2": 0.9706607759357287
+      }
+    },
+    "KeepPowerTest": {
+      "FaultDiagnosis": { "Failure": false, "FailureIndicators": [] },
+      "Off": 1,
+      "On": 0,
+      "newMetrics": { "numPointsCluster1": 50.0, "numPointsCluster2": 50.0 },
+      "previousMetrics": {
+        "numPointsCluster1": 49.0,
+        "numPointsCluster2": 49.0
+      }
+    }
+  },
+  {
+    "FaultModeId": 1,
+    "FaultModeName": "D2",
+    "FuseTest": {
+      "Burn": 0.15868781735460163,
+      "FaultDiagnosis": {
+        "Failure": true,
+        "FailureIndicators": [
+          { "Metric": "imbalanceNumPoints", "Tolerance": 0.0, "Variation": 2.0 }
+        ]
+      },
+      "NotBurn": 0.3248029052423703,
+      "newMetrics": {
+        "numPointsCluster1": 51.0,
+        "numPointsCluster2": 49.0,
+        "overallSilhouette": 0.9646861406140362,
+        "silhouetteCluster1": 0.9591411192215101,
+        "silhouetteCluster2": 0.9704574894103389
+      },
+      "previousMetrics": {
+        "numPointsCluster1": 49.0,
+        "numPointsCluster2": 49.0,
+        "overallSilhouette": 0.9717417012573705,
+        "silhouetteCluster1": 0.9728226265790123,
+        "silhouetteCluster2": 0.9706607759357287
+      }
+    },
+    "KeepPowerTest": {
+      "FaultDiagnosis": { "Failure": false, "FailureIndicators": [] },
+      "Off": 0,
+      "On": 1,
+      "newMetrics": { "numPointsCluster1": 50.0, "numPointsCluster2": 50.0 },
+      "previousMetrics": {
+        "numPointsCluster1": 49.0,
+        "numPointsCluster2": 49.0
+      }
+    }
+  }
+]

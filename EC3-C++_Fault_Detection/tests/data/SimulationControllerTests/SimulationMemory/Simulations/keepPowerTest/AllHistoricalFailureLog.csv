@@ -1,3 +1,1 @@
 iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafe
-4,T,F,1,[ComponentA],-
-5,T,T,2,[ComponentA;ComponentD],-

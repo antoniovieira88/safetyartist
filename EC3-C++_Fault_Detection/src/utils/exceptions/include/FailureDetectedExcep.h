@@ -4,21 +4,6 @@
 
 using namespace std;
 
-static string metricStr[] =
-{
-  "silhouetteCluster1",
-  "silhouetteCluster2",
-  "numPointsCluster1",
-  "numPointsCluster2",
-  "overallSilhouette",
-  "imbalanceNumPoints"
-};
-
-struct faultDiagnosisType {
-	bool failure;
-	vector<FailureMetricIndicatorType> failureIndicators;
-};
-
 class FailureDetectedExcep : public exception {
 private:
 	vector<FailureMetricIndicatorType> failureIndicators;
@@ -28,7 +13,7 @@ private:
 	void buildLogError();
 
 public:
-	FailureDetectedExcep(faultDiagnosisType faultDiagnosis);
+	FailureDetectedExcep(FaultDiagnosisType faultDiagnosis);
 	vector<FailureMetricIndicatorType> getFailureIndicators();
 	const char* what() const throw();
 	string getLogError();

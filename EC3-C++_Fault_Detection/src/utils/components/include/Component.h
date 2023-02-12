@@ -9,8 +9,6 @@
 #include "../../exceptions/include/AbortSimulationOpExcep.h"
 #include "../../exceptions/include/SimulatorFailureExcep.h"
 
-using namespace std;
-
 #pragma once
 class Component {
 public:
@@ -37,8 +35,11 @@ public:
 	double getReliability();
 	string getComponentName();
 	string getCurrentFaultModeName();
+	FailureScenarioType* getPointerForCurrentSingleFailureScenario();
+	FailureScenarioType* getPointerForSpecifFailureScenario(int faultModeId);
+	vector<FailureScenarioType>* getPointerForSingleFailureScenarioArray();
+	string getFaultModeName(int faultModeId);
 
-	FailureScenarioType* getSingleFailureScenarioPointer();
 
 	bool checkFaultModeIdValidity(int id);
 

@@ -11,6 +11,11 @@ struct FailureMetricIndicatorType {
 	int iteration;
 };
 
+struct FaultDiagnosisType {
+	bool failure;
+	vector<FailureMetricIndicatorType> failureIndicators;
+};
+
 struct FailureScenarioFuseTestType {
 	double meanValueFuseResultBurn;
 	double meanValueFuseResultNotBurn;
@@ -30,12 +35,22 @@ struct FailureScenarioType {
 	FailureScenarioKeepPowType  keepPowFailureScenario;
 };
 
+struct FaultModeType {
+	int id;
+	string name;
+	fmSafety fmSafety;
+	fmDetectable fmDetectableFuse;
+	fmDetectable fmDetectableKeepPow;
+	classMultipleFaults classMultipleFaults;
+	FailureScenarioFuseTestType fuseTestFailureScenario;
+	FailureScenarioKeepPowType  keepPowFailureScenario;
+};
+
 struct TestScenarioType {
 	int numberOfFailedComponents;
 	vector<int> faultModesArray;
 	FailureScenarioType* failureScenarioPointer;
 };
-
 
 struct SimulationSpecificParamsType {
 	// Simulation controller
@@ -54,4 +69,40 @@ struct SimulationSpecificParamsType {
 	double minNominalFuseResultNotBurn;
 	double maxNominalFuseResultNotBurn;
 	double maxStdDeviation;
+};
+
+struct MetricsFuseTestType {
+	double silhouetteCluster1;
+	double silhouetteCluster2;
+	double numPointsCluster1;
+	double numPointsCluster2;
+	double overallSilhouette;
+};
+
+struct MetricsKeepPowerTestType {
+	double numPointsCluster1;
+	double numPointsCluster2;
+};
+
+struct FuseTestResultsType {
+	FaultDiagnosisType faultDiagnosis;
+	MetricsFuseTestType previousMetrics;
+	MetricsFuseTestType newMetrics;
+	double fuseResultBurn;
+	double fuseResultNotBurn;
+};
+
+struct KeepPowerTestResultsType {
+	FaultDiagnosisType faultDiagnosis;
+	MetricsKeepPowerTestType previousMetrics;
+	MetricsKeepPowerTestType newMetrics;
+	int keepPowerReadbackOn;
+	int keepPowerReadbackOff;
+};
+
+struct FaultModeAnalysisResultType {
+	int faultModeId;
+	string faultModeName;
+	FuseTestResultsType fuseTestResult;
+	KeepPowerTestResultsType keepPowerTestResult;
 };
