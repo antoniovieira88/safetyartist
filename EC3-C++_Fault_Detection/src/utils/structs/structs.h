@@ -1,4 +1,4 @@
-#include "../enumerators/enum.h"
+#include "../enumerators/include/enum.h"
 #include <vector>
 
 #pragma once
@@ -38,18 +38,18 @@ struct FailureScenarioType {
 struct FaultModeType {
 	int id;
 	string name;
+	double probability;
 	fmSafety fmSafety;
 	fmDetectable fmDetectableFuse;
 	fmDetectable fmDetectableKeepPow;
 	classMultipleFaults classMultipleFaults;
-	FailureScenarioFuseTestType fuseTestFailureScenario;
-	FailureScenarioKeepPowType  keepPowFailureScenario;
 };
 
 struct TestScenarioType {
 	int numberOfFailedComponents;
-	vector<int> faultModesArray;
-	FailureScenarioType* failureScenarioPointer;
+	vector<FaultModeType*> nonDetectFailuresFuseTstArray;
+	vector<FaultModeType*> nonDetectFailuresKeepPowTstArray;
+	FailureScenarioType* singleFailureScenarioPointer;
 };
 
 struct SimulationSpecificParamsType {
@@ -101,8 +101,7 @@ struct KeepPowerTestResultsType {
 };
 
 struct FaultModeAnalysisResultType {
-	int faultModeId;
-	string faultModeName;
+	FaultModeType faultMode;
 	FuseTestResultsType fuseTestResult;
 	KeepPowerTestResultsType keepPowerTestResult;
 };

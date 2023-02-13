@@ -6,6 +6,8 @@ using json = nlohmann::json;
 namespace std {
 	void to_json(json& j, const FaultModeAnalysisResultType& obj);
 
+	void to_json(json& j, const FaultModeType& obj);
+
 	void to_json(json& j, const FuseTestResultsType& obj);
 
 	void to_json(json& j, const MetricsFuseTestType& obj);

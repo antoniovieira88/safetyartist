@@ -6,7 +6,7 @@ SimulationController::SimulationController(
 	bool verboseMode) :
 	generator(), iterationEquivalentTime(1.0), simulationName(""),
 	simulationSpecificParams({}), componentsArray(),
-	testScenario({ 0, vector<int>(), nullptr }),
+	testScenario({ 0, vector<FaultModeType*>(), vector<FaultModeType*>(), nullptr }),
 	paramsController(simulationName, simulationSpecificParams, generator, componentsArray, simulationMemoryDir, verboseMode),
 	failureController(componentsArray, testScenario, verboseMode),
 	processUnit(

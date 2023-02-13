@@ -10,7 +10,7 @@ public:
 
 	void defineNewRandomTestScenario();
 	void defineTestScenarioWithoutFailure();
-	void defineTestScenarioForSpecificFailure(int componentId, int faultModeId, FailureScenarioType* failureScenarioPointer);
+	void defineTestScenarioForSpecificFailure(int componentId, int faultModeId, FailureScenarioType* singleFailureScenarioPointer);
 
 	int getNumberOfFailedComponents();
 	unordered_set<string>& getFailedComponentsNameSet();

@@ -2,10 +2,22 @@
 
 void std::to_json(json& j, const FaultModeAnalysisResultType& obj) {
 	j = json{
-		{"FaultModeId", obj.faultModeId},
-		{"FaultModeName", obj.faultModeName},
+		{"FaultModeId", obj.faultMode.id},
+		{"FaultModeName", obj.faultMode.name},
+		{"AddInfo", json(obj.faultMode)},
 		{"FuseTest", json(obj.fuseTestResult)},
 		{"KeepPowerTest", json(obj.keepPowerTestResult)},
+	};
+}
+
+void std::to_json(json& j, const FaultModeType& obj)
+{
+	j = json{
+		{"probability", obj.probability},
+		{"fmSafety", fmSafetyStr[obj.fmSafety]},
+		{"fmDetectableFuse", fmDetectableStr[obj.fmDetectableFuse]},
+		{"fmDetectableKeepPow", fmDetectableStr[obj.fmDetectableKeepPow]},
+		{"classMultipleFaults", classMultipleFaultsStr[obj.classMultipleFaults]},
 	};
 }
 

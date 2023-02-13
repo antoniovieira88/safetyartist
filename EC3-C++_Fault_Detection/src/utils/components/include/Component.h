@@ -5,6 +5,7 @@
 #include <random>
 #include <iostream>
 #include <limits>
+#include "../../enumerators/include/enum.h"
 #include "../../structs/structs.h"
 #include "../../exceptions/include/AbortSimulationOpExcep.h"
 #include "../../exceptions/include/SimulatorFailureExcep.h"
@@ -35,9 +36,11 @@ public:
 	double getReliability();
 	string getComponentName();
 	string getCurrentFaultModeName();
+	FaultModeType getFaultModeStruct(int faultModeId);
 	FailureScenarioType* getPointerForCurrentSingleFailureScenario();
 	FailureScenarioType* getPointerForSpecifFailureScenario(int faultModeId);
 	vector<FailureScenarioType>* getPointerForSingleFailureScenarioArray();
+	FaultModeType* getPointerForFaultMode(int faultModeId);
 	string getFaultModeName(int faultModeId);
 
 
@@ -60,7 +63,7 @@ private:
 	discrete_distribution<> discreteDist;
 	uniform_real_distribution<double> uniformDist;
 
-	vector<string> faultModesArray;
+	vector<FaultModeType> faultModesArray;
 	vector<double> faultModesWeightArray;
 	vector<FailureScenarioType> singleFailureScenarioArray;
 

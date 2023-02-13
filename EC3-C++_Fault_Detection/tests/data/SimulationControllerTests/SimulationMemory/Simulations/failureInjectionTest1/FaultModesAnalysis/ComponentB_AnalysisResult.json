@@ -1,5 +1,12 @@
 [
     {
+        "AddInfo": {
+            "classMultipleFaults": "cm0",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "fmSafety": "safe",
+            "probability": 0.75
+        },
         "FaultModeId": 0,
         "FaultModeName": "B1",
         "FuseTest": {
@@ -48,7 +55,14 @@
         }
     },
     {
-        "FaultModeId": 1,
+        "AddInfo": {
+            "classMultipleFaults": "cm0",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "fmSafety": "safe",
+            "probability": 0.25
+        },
+        "FaultModeId": 0,
         "FaultModeName": "B2",
         "FuseTest": {
             "Burn": 1.5125918260274247,

@@ -42,7 +42,7 @@ void ProcessUnitSD::setTestScenario(TestScenarioType& testScenario)
 	ProcessUnitSD::fail = (numberOfFailedComponents > 0);
 
 	if (fail) {
-		if (numberOfFailedComponents == 1) failureScenario = testScenario.failureScenarioPointer;
+		if (numberOfFailedComponents == 1) failureScenario = testScenario.singleFailureScenarioPointer;
 		else failureScenario = &multipleFailureScenario; // this solution is only temporary
 	}
 	else {

@@ -504,8 +504,8 @@ string ProcessUnitSC::createLogFileForComponentAvaliation(string componentName, 
 string ProcessUnitSC::createFaultModesAvaliationDir()
 {
 	const string faultModesAvaliationsBaseDir = simulationsDir + "/" + simulationName;
-	FileSysHandler::createDirectories(faultModesAvaliationsBaseDir, { "AllFaultModesAnalysis" });
-	return faultModesAvaliationsBaseDir + "/AllFaultModesAnalysis";
+	FileSysHandler::createDirectories(faultModesAvaliationsBaseDir, { "FaultModesAnalysis" });
+	return faultModesAvaliationsBaseDir + "/FaultModesAnalysis";
 }
 
 void ProcessUnitSC::collectResultsFromSingleIteration(FuseTestResultsType& fuseTestResult, KeepPowerTestResultsType& keepPowerTestResult)
@@ -662,7 +662,7 @@ void ProcessUnitSC::avaliateComponentFaultModes(Component& component, string com
 {
 	int faultModeId = 0;
 	int componentId = component.getComponentId();
-	string faultModeName;
+	FaultModeType faultMode;
 	FuseTestResultsType fuseTestResult;
 	KeepPowerTestResultsType keepPowerTestResult;
 	FaultModeAnalysisResultType faultModeAnalysisResult;
@@ -671,7 +671,7 @@ void ProcessUnitSC::avaliateComponentFaultModes(Component& component, string com
 	vector<FailureScenarioType>* faultModeParamsArray = component.getPointerForSingleFailureScenarioArray();
 
 	for (FailureScenarioType& faultModeParams : *faultModeParamsArray) {
-		faultModeName = component.getFaultModeName(faultModeId);
+		faultMode = component.getFaultModeStruct(faultModeId);
 
 		failureController.defineTestScenarioForSpecificFailure(componentId, faultModeId, &faultModeParams);
 		supervisedPointer->setTestScenario(testScenario);
@@ -681,8 +681,7 @@ void ProcessUnitSC::avaliateComponentFaultModes(Component& component, string com
 		collectResultsFromSingleIteration(fuseTestResult, keepPowerTestResult);
 
 		faultModeAnalysisResult = FaultModeAnalysisResultType({
-			faultModeId,
-			faultModeName,
+			faultMode,
 			fuseTestResult,
 			keepPowerTestResult,
 			});

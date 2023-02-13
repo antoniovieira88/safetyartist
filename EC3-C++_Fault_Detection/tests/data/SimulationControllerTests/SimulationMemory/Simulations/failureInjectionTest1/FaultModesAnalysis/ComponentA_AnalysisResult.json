@@ -1,5 +1,12 @@
 [
     {
+        "AddInfo": {
+            "classMultipleFaults": "not_applicable",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "fmSafety": "safe",
+            "probability": 0.6
+        },
         "FaultModeId": 0,
         "FaultModeName": "A1",
         "FuseTest": {
@@ -42,7 +49,14 @@
         }
     },
     {
-        "FaultModeId": 1,
+        "AddInfo": {
+            "classMultipleFaults": "not_applicable",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "fmSafety": "safe",
+            "probability": 0.3
+        },
+        "FaultModeId": 0,
         "FaultModeName": "A2",
         "FuseTest": {
             "Burn": 0.38502485253958835,
@@ -84,7 +98,14 @@
         }
     },
     {
-        "FaultModeId": 2,
+        "AddInfo": {
+            "classMultipleFaults": "not_applicable",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "fmSafety": "safe",
+            "probability": 0.1
+        },
+        "FaultModeId": 0,
         "FaultModeName": "A3",
         "FuseTest": {
             "Burn": 0.5184182860004868,

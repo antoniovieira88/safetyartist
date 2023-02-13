@@ -53,7 +53,11 @@ void Component::loadFaultModes(string dir)
 	// the first line corresponds to the header, so it is ignored
 	getline(faultModesFile, line);
 	try {
+		int faultModeId = 0;
 		while (getline(faultModesFile, line)) {
+			// faultMode struct
+			FaultModeType faultMode({ faultModeId });
+
 			stringstream strstream(line);
 
 			// the first word of the line is considered to be the fault mode id.
@@ -64,14 +68,29 @@ void Component::loadFaultModes(string dir)
 
 			// the second word of the line is considered to be the fault mode name
 			getline(strstream, word, ',');
-			faultModesArray.push_back(word);
+			faultMode.name = word;
 
 			// the third word of the line is considered to be the fault mode weight
 			getline(strstream, word, ',');
 			faultModeWeight = stod(word);
 			faultModesWeightArray.push_back(faultModeWeight);
+			faultMode.probability = faultModeWeight;
 
 			loadSingleFailureScenarioFromFile(strstream, word);
+
+			getline(strstream, word, ',');
+			faultMode.fmSafety = stringToFmSafetyEnum[word];
+
+			getline(strstream, word, ',');
+			faultMode.fmDetectableFuse = stringToFmDetectableEnum[word];
+
+			getline(strstream, word, ',');
+			faultMode.fmDetectableKeepPow = stringToFmDetectableEnum[word];
+
+			getline(strstream, word, ',');
+			faultMode.classMultipleFaults = stringToClassMultipleFaultsEnum[word];
+
+			faultModesArray.push_back(faultMode);
 		}
 
 		faultModesFile.close();
@@ -213,7 +232,7 @@ string Component::getCurrentFaultModeName()
 {
 	if (currentFaultModeId == -1) return "No fault";
 
-	return faultModesArray[currentFaultModeId];
+	return faultModesArray[currentFaultModeId].name;
 
 }
 
@@ -234,9 +253,19 @@ vector<FailureScenarioType>* Component::getPointerForSingleFailureScenarioArray(
 	return &singleFailureScenarioArray;
 }
 
+FaultModeType* Component::getPointerForFaultMode(int faultModeId)
+{
+	return &faultModesArray[faultModeId];
+}
+
+FaultModeType Component::getFaultModeStruct(int faultModeId)
+{
+	return faultModesArray[faultModeId];
+}
+
 string Component::getFaultModeName(int faultModeId)
 {
-	return faultModesArray.at(faultModeId);
+	return faultModesArray[faultModeId].name;
 }
 
 bool Component::checkFaultModeIdValidity(int id)
