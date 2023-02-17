@@ -1,5 +1,5 @@
 id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn,fmSafety,fmDetectableFuse,fmDetectableKeepPow,classMultipleFaults
-0,No Output,0.23000,0,0,0,0,0,0,0,0,safe,not_applicable,not_applicable,not_applicable
+0,No Output,0.23000,0,0,0,0,0,0,0,0,safe,outside_scope,outside_scope,not_applicable
 1,Increase in Output Voltage,0.25667,0,0,0,0,0,0,0,1,safe,outside_scope,no,not_applicable
 2,Decrease in Output Voltage,0.25667,0,0,0,0,0,0,0,1,safe,outside_scope,no,not_applicable
 3,Noisy Output,0.25667,0,0,0,0,0,0,0,1,safe,outside_scope,no,not_applicable
