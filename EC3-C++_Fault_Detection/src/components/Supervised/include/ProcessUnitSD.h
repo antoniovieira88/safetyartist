@@ -26,10 +26,8 @@ private:
 	double stdDeviationTest;
 	bool fail;
 
-	FailureScenarioType* failureScenario;
-
-	// member added only for test purpose
-	FailureScenarioType multipleFailureScenario;
+	FailureScenarioFuseType* failureScenarioFuseTestPointer;
+	FailureScenarioKeepPowType* failureScenarioKeepPowTestPointer;
 
 	CorrectOutputGenerator& correctOutputGenerator;
 	FailedOutputGenerator& failedOutputGenerator;

@@ -158,8 +158,6 @@ double OutputGenerator::generateFuseTestOutput(double fuseTest)
 	double meanValueFuseResult = -1.0;
 	bool burnTest = false;
 
-	stdDeviation = uniformDist(generator);
-
 	if (abs(fuseTest - 0.0) < uncertaintyRangeInput) {
 		meanValueFuseResult = meanValueFuseResultBurn;
 		burnTest = true;
@@ -171,8 +169,17 @@ double OutputGenerator::generateFuseTestOutput(double fuseTest)
 		throw runtime_error("Invalid test fuseTest");
 	}
 
+	bool fuseResultLimitsEqual = checkFuseResultLimitValuesEquality(burnTest);
+	// if the maximal and minimum possible values for fuseResult are equal,
+	// random no result needs to be generated.
+	if (fuseResultLimitsEqual) return meanValueFuseResult;
+
+	stdDeviation = uniformDist(generator);
+
 	auto normalDistFuseResult = normal_distribution<double>{ meanValueFuseResult, stdDeviation };
 
+	// infinite loop is avoided because the maximum and minimum values equality
+	// was checked before
 	do {
 		fuseResult = normalDistFuseResult(generator);
 	} while (checkFuseResultOutOfBounds(fuseResult, burnTest));
@@ -191,5 +198,18 @@ bool OutputGenerator::checkFuseResultOutOfBounds(double fuseResult, bool burnTes
 		min = minFuseResultNotBurn;
 	}
 	return (fuseResult > max) || (fuseResult < min);
+}
+bool OutputGenerator::checkFuseResultLimitValuesEquality(bool burnTest)
+{
+	double max = 0.0, min = 0.0;
+	if (burnTest) {
+		max = maxFuseResultBurn;
+		min = minFuseResultBurn;
+	}
+	else {
+		max = maxFuseResultNotBurn;
+		min = minFuseResultNotBurn;
+	}
+	return (abs(max - min) < uncertaintyRangeInput);
 };
 

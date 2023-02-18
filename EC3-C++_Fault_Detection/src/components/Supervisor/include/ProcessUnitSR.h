@@ -15,6 +15,8 @@ public:
 		DataHandler& dataHandlerFuseTest,
 		DataHandler& dataHandlerKeepPowTest,
 		Supervised* supervised,
+		mat& nominalFuseResults,
+		mat& nominalKeepPowReadbacks,
 		int& globalIteration,
 		bool verboseMode = true);
 
@@ -35,7 +37,7 @@ public:
 
 	FuseTestResultsType getFuseTestResults();
 	KeepPowerTestResultsType getKeepPowerTestResults();
-
+	test getLastPerfomedTest();
 
 	void deleteRecordsFromLatestIteration();
 
@@ -44,6 +46,8 @@ private:
 	DataHandler& dataHandlerFuseTest;
 	DataHandler& dataHandlerKeepPowTest;
 	Supervised* supervisedPointer;
+	mat& nominalFuseResults;
+	mat& nominalKeepPowReadbacks;
 	int& globalIteration;
 	string simulationName;
 	FaultDiagnosisType faultDiagnosis;

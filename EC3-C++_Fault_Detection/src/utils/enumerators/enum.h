@@ -14,6 +14,12 @@ namespace std {
 		imbalanceNumPoints = 5
 	};
 
+	enum componentOpStatus {
+		noFault = 0,
+		newFault = 1,
+		previousFault = 2
+	};
+
 	enum test {
 		none = 0,
 		fuseTest = 1,

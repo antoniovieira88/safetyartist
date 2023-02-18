@@ -5,7 +5,6 @@
 #include <random>
 #include <iostream>
 #include <limits>
-#include "../../enumerators/include/enum.h"
 #include "../../structs/structs.h"
 #include "../../exceptions/include/AbortSimulationOpExcep.h"
 #include "../../exceptions/include/SimulatorFailureExcep.h"
@@ -25,7 +24,7 @@ public:
 
 	void calculateReliability();
 	void repair();
-	bool generateNewOperationalState();
+	enum componentOpStatus generateNewOperationalState();
 
 	void setCountBetweenFailures(int countBetweenFailures);
 	void setFaultMode(int faultModeId);
@@ -39,7 +38,7 @@ public:
 	FaultModeType getFaultModeStruct(int faultModeId);
 	FailureScenarioType* getPointerForCurrentSingleFailureScenario();
 	FailureScenarioType* getPointerForSpecifFailureScenario(int faultModeId);
-	vector<FailureScenarioType>* getPointerForSingleFailureScenarioArray();
+	vector<FaultModeType>* getPointerForFaultModesArray();
 	FaultModeType* getPointerForFaultMode(int faultModeId);
 	string getFaultModeName(int faultModeId);
 
@@ -55,6 +54,7 @@ private:
 	int countBetweenFailures, currentFaultModeId;
 	double reliability;
 	bool isFaulty;
+
 	bool& verboseMode;
 
 	double& iterationEquivalentTime;
@@ -65,11 +65,14 @@ private:
 
 	vector<FaultModeType> faultModesArray;
 	vector<double> faultModesWeightArray;
-	vector<FailureScenarioType> singleFailureScenarioArray;
-
 
 	void loadFaultModes(string dir);
 	void loadSingleFailureScenarioFromFile(
 		stringstream& strstream,
-		string& word);
+		string& word,
+		FaultModeType& faultMode,
+		string fileDir,
+		int faultModeId);
+
+	bool checkBoundsValidity(double min, double mean, double max);
 };

@@ -537,6 +537,16 @@ void ProcessUnitSC::exportJsonFaultModeAnalysisArray(vector<FaultModeAnalysisRes
 
 }
 
+test ProcessUnitSC::getNextTestToBePerfomed()
+{
+	test lastPerfomedTest = supervisorPointer->getLastPerfomedTest();
+	if (lastPerfomedTest == keepPowerTest || lastPerfomedTest == none) {
+		return fuseTest;
+	}
+
+	return keepPowerTest;
+}
+
 int ProcessUnitSC::userSimulationCycleParamsOptions() {
 	int duration = 0;
 	bool exit = false;
@@ -661,19 +671,18 @@ void ProcessUnitSC::createSimulationFiles(string simulationName)
 void ProcessUnitSC::avaliateComponentFaultModes(Component& component, string componentJsonDestinyFilePath)
 {
 	int faultModeId = 0;
-	int componentId = component.getComponentId();
 	FaultModeType faultMode;
+
 	FuseTestResultsType fuseTestResult;
 	KeepPowerTestResultsType keepPowerTestResult;
+
 	FaultModeAnalysisResultType faultModeAnalysisResult;
 	vector<FaultModeAnalysisResultType> faultModeAnalysisResultArray;
 
-	vector<FailureScenarioType>* faultModeParamsArray = component.getPointerForSingleFailureScenarioArray();
+	vector<FaultModeType>* faultModesArrayPointer = component.getPointerForFaultModesArray();
 
-	for (FailureScenarioType& faultModeParams : *faultModeParamsArray) {
-		faultMode = component.getFaultModeStruct(faultModeId);
-
-		failureController.defineTestScenarioForSpecificFailure(componentId, faultModeId, &faultModeParams);
+	for (FaultModeType& faultMode : *faultModesArrayPointer) {
+		failureController.defineTestScenarioForSpecificFaultMode(&faultMode);
 		supervisedPointer->setTestScenario(testScenario);
 
 		collectResultsFromSingleIteration(fuseTestResult, keepPowerTestResult);
@@ -818,8 +827,10 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 
 		if (verboseMode) cout << endl << "Begin of the new iteration " << *iterationPointer + 1 << endl;
 
+		test nextTextToBePerfomed = getNextTestToBePerfomed();
+
 		if (noFailuresMode) failureController.defineTestScenarioWithoutFailure();
-		else failureController.defineNewRandomTestScenario();
+		else failureController.defineNewRandomTestScenario(nextTextToBePerfomed);
 
 		noFaults = (testScenario.numberOfFailedComponents == 0);
 

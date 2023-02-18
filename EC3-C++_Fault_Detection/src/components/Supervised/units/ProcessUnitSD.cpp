@@ -5,14 +5,14 @@ ProcessUnitSD::ProcessUnitSD(
 	FailedOutputGenerator& failedOutputGenerator)
 	:
 	correctOutputGenerator(correctOutputGenerator),
-	failedOutputGenerator(failedOutputGenerator),
-	multipleFailureScenario({ 2.0, 3.0, 1.9, 2.1, 2.9, 3.1 }) // member added only for test purpose
+	failedOutputGenerator(failedOutputGenerator)
 {
 	ProcessUnitSD::fuseTest = (double NAN);
 	ProcessUnitSD::keepPower = 0;
 	ProcessUnitSD::stdDeviationTest = (double NAN);
 	ProcessUnitSD::fail = false;
-	ProcessUnitSD::failureScenario = nullptr;
+	ProcessUnitSD::failureScenarioFuseTestPointer = nullptr;
+	ProcessUnitSD::failureScenarioKeepPowTestPointer = nullptr;
 }
 
 // the following method runs the fuseTest based on the current
@@ -22,7 +22,7 @@ double ProcessUnitSD::runFuseTest()
 	double fuseResult = (double NAN);
 	if (keepPower == 1) {
 		if (fail) {
-			failedOutputGenerator.setFailureScenario(failureScenario);
+			failedOutputGenerator.setFailureScenarioFuseTst(failureScenarioFuseTestPointer);
 			fuseResult = failedOutputGenerator.generateFuseTestOutput(fuseTest);
 			stdDeviationTest = failedOutputGenerator.getStdDeviation();
 		}
@@ -42,11 +42,12 @@ void ProcessUnitSD::setTestScenario(TestScenarioType& testScenario)
 	ProcessUnitSD::fail = (numberOfFailedComponents > 0);
 
 	if (fail) {
-		if (numberOfFailedComponents == 1) failureScenario = testScenario.singleFailureScenarioPointer;
-		else failureScenario = &multipleFailureScenario; // this solution is only temporary
+		failureScenarioFuseTestPointer = testScenario.fuseTestFailureScenarioPointer;
+		failureScenarioKeepPowTestPointer = testScenario.keepPowTestFailureScenarioPointer;
 	}
 	else {
-		failureScenario = nullptr;
+		failureScenarioFuseTestPointer = nullptr;
+		failureScenarioKeepPowTestPointer = nullptr;
 	}
 }
 
@@ -60,7 +61,7 @@ int ProcessUnitSD::runKeepPowTest()
 	int keepPowerReadback = (int NAN);
 	stdDeviationTest = 0.0; // stdDeviation is set to zero since there is no random number generated for the output test
 	if (fail) {
-		failedOutputGenerator.setFailureScenario(failureScenario);
+		failedOutputGenerator.setFailureScenarioKeepPowTst(failureScenarioKeepPowTestPointer);
 		keepPowerReadback = failedOutputGenerator.generateKeepPowTestOutput(keepPower);
 	}
 	else {

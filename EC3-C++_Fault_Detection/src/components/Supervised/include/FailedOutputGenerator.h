@@ -14,7 +14,8 @@ public:
 		double uncertaintyRangeInput,
 		mt19937& generator);
 
-	void setFailureScenario(FailureScenarioType* failureScenario);
+	void setFailureScenarioFuseTst(FailureScenarioFuseType* failureScenarioPointer);
+	void setFailureScenarioKeepPowTst(FailureScenarioKeepPowType* failureScenarioPointer);
 	int generateKeepPowTestOutput(int keepPower);
 	void setMaxStdDeviation(double maxStdDeviation);
 

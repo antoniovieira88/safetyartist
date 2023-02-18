@@ -1,14 +1,15 @@
 #include "include/Supervisor.h"
 
 Supervisor::Supervisor(
+	string dataMemoryDir,
+	string simulationMemoryDir,
 	int maxNumberOfRegisters,
 	double nominalFuseResultBurn,
 	double nominalFuseResultNotBurn,
-	string dataMemoryDir,
-	string simulationMemoryDir,
 	bool verboseMode) :
 	nominalFuseResults(1, 2),
-	analysisUnit(2, nominalFuseResults),
+	nominalKeepPowReadbacks(1, 2),
+	analysisUnit(2),
 	dataHandlerFuseTest(globalIteration, maxNumberOfRegisters, 5,
 		"FuseTest", verboseMode, dataMemoryDir, simulationMemoryDir),
 	dataHandlerKeepPowTest(globalIteration, maxNumberOfRegisters, 2,
@@ -18,6 +19,8 @@ Supervisor::Supervisor(
 		dataHandlerFuseTest,
 		dataHandlerKeepPowTest,
 		nullptr,
+		nominalFuseResults,
+		nominalKeepPowReadbacks,
 		globalIteration,
 		verboseMode)
 {
@@ -25,6 +28,11 @@ Supervisor::Supervisor(
 	// is attached to supervisor. The values set come from the Supervised definition
 	Supervisor::nominalFuseResults(0, 0) = nominalFuseResultBurn;
 	Supervisor::nominalFuseResults(0, 1) = nominalFuseResultNotBurn;
+
+	// the nominal values for keepPowerReadback are constants,
+	// independently of the simulation parameters
+	Supervisor::nominalKeepPowReadbacks(0, 0) = 0;
+	Supervisor::nominalKeepPowReadbacks(0, 1) = 1;
 
 	Supervisor::globalIteration = 0;
 }
@@ -114,4 +122,9 @@ void Supervisor::logFilesConfig(bool enable)
 {
 	dataHandlerFuseTest.logFilesConfig(enable);
 	dataHandlerKeepPowTest.logFilesConfig(enable);
+}
+
+test Supervisor::getLastPerfomedTest()
+{
+	return processUnit.getLastPerfomedTest();
 }

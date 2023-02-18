@@ -5,10 +5,10 @@ using namespace std;
 class Supervisor {
 public:
 	Supervisor(
-		int maxNumberOfRegisters = 1000,
-		double nominalFuseResultBurn = 0.1, double nominalFuseResultNotBurn = 0.9,
 		string dataMemoryDir = "data/DataMemory",
 		string simulationMemoryDir = "data/SimulationMemory",
+		int maxNumberOfRegisters = 1000,
+		double nominalFuseResultBurn = 0.1, double nominalFuseResultNotBurn = 0.9,
 		bool verboseMode = true);
 
 	void attach(Supervised* supervised);
@@ -32,9 +32,11 @@ public:
 
 	void deleteRecordsFromLatestIteration();
 	void logFilesConfig(bool enable);
+	test getLastPerfomedTest();
 
 private:
 	mat nominalFuseResults;
+	mat nominalKeepPowReadbacks;
 	int globalIteration;
 
 	AnalysisUnit analysisUnit;

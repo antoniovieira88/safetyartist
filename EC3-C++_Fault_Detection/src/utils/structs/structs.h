@@ -1,4 +1,4 @@
-#include "../enumerators/include/enum.h"
+#include "../enumerators/enum.h"
 #include <vector>
 
 #pragma once
@@ -16,7 +16,7 @@ struct FaultDiagnosisType {
 	vector<FailureMetricIndicatorType> failureIndicators;
 };
 
-struct FailureScenarioFuseTestType {
+struct FailureScenarioFuseType {
 	double meanValueFuseResultBurn;
 	double meanValueFuseResultNotBurn;
 	double minFuseResultBurn;
@@ -31,7 +31,7 @@ struct FailureScenarioKeepPowType {
 };
 
 struct FailureScenarioType {
-	FailureScenarioFuseTestType fuseTestFailureScenario;
+	FailureScenarioFuseType fuseFailureScenario;
 	FailureScenarioKeepPowType  keepPowFailureScenario;
 };
 
@@ -43,13 +43,13 @@ struct FaultModeType {
 	fmDetectable fmDetectableFuse;
 	fmDetectable fmDetectableKeepPow;
 	classMultipleFaults classMultipleFaults;
+	FailureScenarioType singleFailureScenario;
 };
 
 struct TestScenarioType {
 	int numberOfFailedComponents;
-	vector<FaultModeType*> nonDetectFailuresFuseTstArray;
-	vector<FaultModeType*> nonDetectFailuresKeepPowTstArray;
-	FailureScenarioType* singleFailureScenarioPointer;
+	FailureScenarioFuseType* fuseFailureScenarioPointer;
+	FailureScenarioKeepPowType* keepPowFailureScenarioPointer;
 };
 
 struct SimulationSpecificParamsType {

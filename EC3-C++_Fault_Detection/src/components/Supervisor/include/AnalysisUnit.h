@@ -5,15 +5,12 @@ using namespace arma;
 
 class AnalysisUnit {
 public:
-	AnalysisUnit(int numberOfClusters, mat& initialCentroids);
+	AnalysisUnit(int numberOfClusters);
 
-	void cluster(bool allowEmptyClusters);
-	void cluster();
+	void cluster(mat& dataToCluster, mat& initialCentroids, bool allowEmptyClusters = true);
 
 	colvec getNewMetrics();
 	colvec getNewMetrics(bool metricsToAnalyse[5]);
-
-	void setDataToCluster(mat dataToCluster);
 
 	mat getCentroids();
 	Row<size_t> getAssignments();
@@ -24,7 +21,7 @@ private:
 	// Data related to KMeans clusters
 	mat dataToCluster, centroids;
 	Row<size_t> assignments;
-	mat& initialCentroids;
+	mat initialCentroids;
 
 	// Metrics for KMeans algorithm
 	int numberOfClusters;

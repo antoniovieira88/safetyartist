@@ -18,9 +18,13 @@ ProcessUnitSR::ProcessUnitSR(
 	DataHandler& dataHandlerFuseTest,
 	DataHandler& dataHandlerKeepPowTest,
 	Supervised* supervised,
+	mat& nominalFuseResults,
+	mat& nominalKeepPowReadbacks,
 	int& globalIteration,
 	bool verboseMode) :
 	globalIteration(globalIteration),
+	nominalFuseResults(nominalFuseResults),
+	nominalKeepPowReadbacks(nominalKeepPowReadbacks),
 	analysisUnit(analysisUnit),
 	dataHandlerFuseTest(dataHandlerFuseTest),
 	dataHandlerKeepPowTest(dataHandlerKeepPowTest)
@@ -114,9 +118,7 @@ void ProcessUnitSR::runFuseTest() {
 	dataHandlerFuseTest.insertNewHistoricalData(fuseResults);
 	dataToCluster = dataHandlerFuseTest.getHistoricalDataToCluster();
 
-	analysisUnit.setDataToCluster(dataToCluster);
-	analysisUnit.cluster();
-
+	analysisUnit.cluster(dataToCluster, nominalFuseResults);
 
 	newMetricsFuseTest = analysisUnit.getNewMetrics();
 	dataHandlerFuseTest.insertNewMetrics(newMetricsFuseTest);
@@ -195,8 +197,7 @@ void ProcessUnitSR::runKeepPowTest()
 	dataHandlerKeepPowTest.insertNewHistoricalData(keepPowerReadbacks);
 	dataToCluster = dataHandlerKeepPowTest.getHistoricalDataToCluster();
 
-	analysisUnit.setDataToCluster(dataToCluster);
-	analysisUnit.cluster();
+	analysisUnit.cluster(dataToCluster, nominalKeepPowReadbacks);
 
 	bool metricsToAnalyse[5];
 	fill_n(metricsToAnalyse, 5, false);
@@ -438,6 +439,11 @@ KeepPowerTestResultsType ProcessUnitSR::getKeepPowerTestResults()
 		newMetrics,
 		keepPowerReadbackOn,
 		keepPowerReadbackOff });
+}
+
+test ProcessUnitSR::getLastPerfomedTest()
+{
+	return lastPerfomedTest;
 }
 
 void ProcessUnitSR::deleteRecordsFromLatestIteration()

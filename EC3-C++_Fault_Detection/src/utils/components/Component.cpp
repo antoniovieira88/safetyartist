@@ -52,8 +52,8 @@ void Component::loadFaultModes(string dir)
 
 	// the first line corresponds to the header, so it is ignored
 	getline(faultModesFile, line);
+	int faultModeId = 0;
 	try {
-		int faultModeId = 0;
 		while (getline(faultModesFile, line)) {
 			// faultMode struct
 			FaultModeType faultMode({ faultModeId });
@@ -76,7 +76,7 @@ void Component::loadFaultModes(string dir)
 			faultModesWeightArray.push_back(faultModeWeight);
 			faultMode.probability = faultModeWeight;
 
-			loadSingleFailureScenarioFromFile(strstream, word);
+			loadSingleFailureScenarioFromFile(strstream, word, fileDir, faultModeId);
 
 			getline(strstream, word, ',');
 			faultMode.fmSafety = stringToFmSafetyEnum[word];
@@ -91,41 +91,69 @@ void Component::loadFaultModes(string dir)
 			faultMode.classMultipleFaults = stringToClassMultipleFaultsEnum[word];
 
 			faultModesArray.push_back(faultMode);
+			faultModeId++;
 		}
 
 		faultModesFile.close();
 	}
 	catch (invalid_argument& error) {
 		throw SimulatorFailureExcep("Invalid parameter argument in " + fileDir + ".",
-			" SimulationController.ComponentInstance<" + name + ">. \n Argument: '" + word + "'.\n");
+			" SimulationController.ComponentInstance<" + name + ">::faultModeId =" + to_string(faultModeId) + ". \n Argument : '" + word +
+			"'.\n");
 	}
 }
 
 void Component::loadSingleFailureScenarioFromFile(
 	stringstream& strstream,
-	string& word)
+	string& word,
+	FaultModeType& faultMode,
+	string fileDir,
+	int faultModeId)
 {
 	// failure scenario params expected for the occurrence
 	// of a single fault mode in FuseTest
-	FailureScenarioFuseTestType singleFailureScenarioFuseTest;
+	FailureScenarioFuseType singleFailureScenarioFuseTest;
+
+	double meanValueFuseResultBurn, meanValueFuseResultNotBurn;
+	double minFuseResultBurn, maxFuseResultBurn;
+	double minFuseResultNotBurn, maxFuseResultNotBurn;
 
 	getline(strstream, word, ',');
-	singleFailureScenarioFuseTest.meanValueFuseResultBurn = stod(word);
+	meanValueFuseResultBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenarioFuseTest.meanValueFuseResultNotBurn = stod(word);
+	meanValueFuseResultNotBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenarioFuseTest.minFuseResultBurn = stod(word);
+	minFuseResultBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenarioFuseTest.maxFuseResultBurn = stod(word);
+	maxFuseResultBurn = stod(word);
+
+	if (!checkBoundsValidity(minFuseResultBurn, meanValueFuseResultBurn, maxFuseResultBurn)) {
+		throw SimulatorFailureExcep("Invalid combination of fuseResultBurn bounds in " + fileDir,
+			"SimulationController.ComponentInstance<" + name + ">::faultModeId = '" + to_string(faultModeId) + "'.\n");
+	}
 
 	getline(strstream, word, ',');
-	singleFailureScenarioFuseTest.minFuseResultNotBurn = stod(word);
+	minFuseResultNotBurn = stod(word);
 
 	getline(strstream, word, ',');
-	singleFailureScenarioFuseTest.maxFuseResultNotBurn = stod(word);
+	maxFuseResultNotBurn = stod(word);
+
+	if (!checkBoundsValidity(minFuseResultNotBurn, meanValueFuseResultNotBurn, maxFuseResultNotBurn)) {
+		throw SimulatorFailureExcep("Invalid combination of fuseResultNotBurn bounds in " + fileDir,
+			"SimulationController.ComponentInstance<" + name + ">::FaultModeId = '" + to_string(faultModeId) + "'.\n");
+	}
+
+	singleFailureScenarioFuseTest = {
+		meanValueFuseResultBurn,
+		meanValueFuseResultNotBurn,
+		minFuseResultBurn,
+		maxFuseResultBurn,
+		minFuseResultNotBurn,
+		maxFuseResultNotBurn
+	};
 
 	// failure scenario params expected for the occurrence
 	// of a single fault mode in KeepPowerTest
@@ -141,7 +169,7 @@ void Component::loadSingleFailureScenarioFromFile(
 	FailureScenarioType singleFailureScenario = { singleFailureScenarioFuseTest ,
 		singleFailureScenarioKeepPowTest };
 
-	singleFailureScenarioArray.push_back(singleFailureScenario);
+	faultMode.singleFailureScenario = singleFailureScenario;
 }
 
 void Component::repair()
@@ -181,7 +209,7 @@ void Component::calculateReliability()
 	else reliability = 0.0;
 }
 
-bool Component::generateNewOperationalState()
+enum componentOpStatus Component::generateNewOperationalState()
 {
 	double pseudoRandomNumber;
 	if (!isFaulty) {
@@ -192,15 +220,17 @@ bool Component::generateNewOperationalState()
 		if (isFaulty) {
 			currentFaultModeId = discreteDist(generator);
 			countBetweenFailures = infinity;
+			return newFault;
 		}
 		else {
 			// the -1 value for currentFailureMode means that the component is operating without any fault
 			currentFaultModeId = -1;
 			countBetweenFailures++;
+			return noFault;
 		}
 	}
 
-	return isFaulty;
+	return previousFault;
 }
 
 int Component::getComponentId()
@@ -240,17 +270,17 @@ FailureScenarioType* Component::getPointerForCurrentSingleFailureScenario()
 {
 	if (currentFaultModeId == -1) return nullptr;
 
-	return &singleFailureScenarioArray[currentFaultModeId];
+	return &faultModesArray[currentFaultModeId].singleFailureScenario;
 }
 
 FailureScenarioType* Component::getPointerForSpecifFailureScenario(int faultModeId)
 {
-	return &singleFailureScenarioArray[faultModeId];
+	return &faultModesArray[faultModeId].singleFailureScenario;
 }
 
-vector<FailureScenarioType>* Component::getPointerForSingleFailureScenarioArray()
+vector<FaultModeType>* Component::getPointerForFaultModesArray()
 {
-	return &singleFailureScenarioArray;
+	return &faultModesArray;
 }
 
 FaultModeType* Component::getPointerForFaultMode(int faultModeId)
@@ -274,3 +304,7 @@ bool Component::checkFaultModeIdValidity(int id)
 	return (id >= -1 && id < numberOfFaultModes);
 }
 
+bool Component::checkBoundsValidity(double min, double mean, double max)
+{
+	return (min <= mean && mean <= max);
+};

@@ -19,17 +19,20 @@ FailedOutputGenerator::FailedOutputGenerator(
 
 {}
 
-void FailedOutputGenerator::setFailureScenario(FailureScenarioType* failureScenario)
+void FailedOutputGenerator::setFailureScenarioFuseTst(FailureScenarioFuseType* failureScenarioPointer)
 {
-	meanValueFuseResultBurn = failureScenario->fuseTestFailureScenario.meanValueFuseResultBurn;
-	meanValueFuseResultNotBurn = failureScenario->fuseTestFailureScenario.meanValueFuseResultNotBurn;
-	minFuseResultBurn = failureScenario->fuseTestFailureScenario.minFuseResultBurn;
-	maxFuseResultBurn = failureScenario->fuseTestFailureScenario.maxFuseResultBurn;
-	minFuseResultNotBurn = failureScenario->fuseTestFailureScenario.minFuseResultNotBurn;
-	maxFuseResultNotBurn = failureScenario->fuseTestFailureScenario.maxFuseResultNotBurn;
+	meanValueFuseResultBurn = failureScenarioPointer->meanValueFuseResultBurn;
+	meanValueFuseResultNotBurn = failureScenarioPointer->meanValueFuseResultNotBurn;
+	minFuseResultBurn = failureScenarioPointer->minFuseResultBurn;
+	maxFuseResultBurn = failureScenarioPointer->maxFuseResultBurn;
+	minFuseResultNotBurn = failureScenarioPointer->minFuseResultNotBurn;
+	maxFuseResultNotBurn = failureScenarioPointer->maxFuseResultNotBurn;
+}
 
-	keepPowerReadbackOffValue = failureScenario->keepPowFailureScenario.keepPowerReadbackOffValue;
-	keepPowerReadbackOnValue = failureScenario->keepPowFailureScenario.keepPowerReadbackOnValue;
+void FailedOutputGenerator::setFailureScenarioKeepPowTst(FailureScenarioKeepPowType* failureScenarioPointer)
+{
+	keepPowerReadbackOffValue = failureScenarioPointer->keepPowerReadbackOffValue;
+	keepPowerReadbackOnValue = failureScenarioPointer->keepPowerReadbackOnValue;
 }
 
 void FailedOutputGenerator::setMaxStdDeviation(double maxStdDeviation)

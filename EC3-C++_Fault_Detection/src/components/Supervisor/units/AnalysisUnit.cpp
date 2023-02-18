@@ -2,8 +2,7 @@
 
 using namespace mlpack;
 
-AnalysisUnit::AnalysisUnit(int numberOfClusters, mat& initialCentroids)
-	: initialCentroids(initialCentroids)
+AnalysisUnit::AnalysisUnit(int numberOfClusters)
 {
 	AnalysisUnit::numberOfClusters = numberOfClusters;
 
@@ -12,26 +11,12 @@ AnalysisUnit::AnalysisUnit(int numberOfClusters, mat& initialCentroids)
 	clusterSilhouettes = rowvec(2, fill::zeros);
 	numberOfPointsPerCluster = rowvec(2, fill::zeros);
 	newMetrics = colvec(5, fill::zeros);
+	initialCentroids = mat();
 	overallSilhouette = 0.0;
 }
 
-void AnalysisUnit::setDataToCluster(mat dataToCluster) {
-	AnalysisUnit::dataToCluster = dataToCluster;
-}
-
-void AnalysisUnit::cluster(bool allowEmptyClusters) {
+void AnalysisUnit::cluster(mat& dataToCluster, mat& initialCentroids, bool allowEmptyClusters) {
 	KMeansEC KClusters(dataToCluster, numberOfClusters, initialCentroids, allowEmptyClusters);
-
-	AnalysisUnit::totalNumberOfPoints = KClusters.getData().n_cols;
-	AnalysisUnit::overallSilhouette = KClusters.getOverallSilhouette();
-	AnalysisUnit::clusterSilhouettes = KClusters.getClustersSilhouettes();
-	AnalysisUnit::assignments = KClusters.getAssigments();
-	AnalysisUnit::centroids = KClusters.getCentroids();
-	AnalysisUnit::numberOfPointsPerCluster = KClusters.getNumberOfPointsPerCluster();
-}
-
-void AnalysisUnit::cluster() {
-	KMeansEC KClusters(dataToCluster, numberOfClusters, initialCentroids, true);
 
 	AnalysisUnit::totalNumberOfPoints = KClusters.getData().n_cols;
 	AnalysisUnit::overallSilhouette = KClusters.getOverallSilhouette();

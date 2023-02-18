@@ -285,4 +285,3 @@ void ParamsController::setVerboseMode(bool verboseModeValue)
 	ParamsController::verboseMode = verboseModeValue;
 }
 
-

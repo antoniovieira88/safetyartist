@@ -55,4 +55,5 @@ protected:
 
 	double truncateFuseResult(double fuseResult, bool burnTest);
 	bool checkFuseResultOutOfBounds(double fuseResult, bool burnTest);
+	bool checkFuseResultLimitValuesEquality(bool burnTest);
 };

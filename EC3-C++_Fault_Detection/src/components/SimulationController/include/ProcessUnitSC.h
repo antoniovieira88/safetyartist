@@ -83,4 +83,6 @@ private:
 	void collectResultsFromSingleIteration(FuseTestResultsType& fuseTestResults, KeepPowerTestResultsType& keepPowerTestResults);
 
 	void exportJsonFaultModeAnalysisArray(vector<FaultModeAnalysisResultType>& faultModeData, string destinyFilePath);
+
+	test getNextTestToPerfomed();
 };
