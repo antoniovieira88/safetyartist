@@ -42,8 +42,8 @@ void ProcessUnitSD::setTestScenario(TestScenarioType& testScenario)
 	ProcessUnitSD::fail = (numberOfFailedComponents > 0);
 
 	if (fail) {
-		failureScenarioFuseTestPointer = testScenario.fuseTestFailureScenarioPointer;
-		failureScenarioKeepPowTestPointer = testScenario.keepPowTestFailureScenarioPointer;
+		failureScenarioFuseTestPointer = testScenario.fuseFailureScenarioPointer;
+		failureScenarioKeepPowTestPointer = testScenario.keepPowFailureScenarioPointer;
 	}
 	else {
 		failureScenarioFuseTestPointer = nullptr;

@@ -4,10 +4,10 @@ SimulationController::SimulationController(
 	string dataMemoryDir,
 	string simulationMemoryDir,
 	bool verboseMode) :
-	generator(), iterationEquivalentTime(1.0), simulationName(""),
+	generator(), simulationName(""), iterationPointer(nullptr),
 	simulationSpecificParams({}), componentsArray(),
-	testScenario({ 0, vector<FaultModeType*>(), vector<FaultModeType*>(), nullptr }),
-	paramsController(simulationName, simulationSpecificParams, generator, componentsArray, simulationMemoryDir, verboseMode),
+	testScenario({ 0, false, false, false, false, vector<int>(), nullptr, nullptr }),
+	paramsController(simulationName, simulationSpecificParams, generator, componentsArray, iterationPointer, simulationMemoryDir, verboseMode),
 	failureController(componentsArray, testScenario, verboseMode),
 	processUnit(
 		failureController,
@@ -17,21 +17,36 @@ SimulationController::SimulationController(
 		simulationSpecificParams,
 		generator,
 		simulationName,
+		iterationPointer,
 		dataMemoryDir,
 		simulationMemoryDir,
 		verboseMode
 	)
 {
+	SimulationController::iterationEquivalentTime = (double NAN);
 	SimulationController::verboseMode = verboseMode;
 }
 
 void SimulationController::attach(Supervisor* supervisorPointer, Supervised* supervisedPointer)
 {
 	processUnit.attach(supervisorPointer, supervisedPointer);
+	iterationPointer = supervisorPointer->getIterationPointer();
 
 	if (verboseMode) {
 		cout << endl << "Supervisor and Supervised attached to Simulation Controller" << endl;
 	}
+}
+
+void* SimulationController::getObjectMemberRef(simulationMemberObj obj)
+{
+	void* pointerForObject = nullptr;
+
+	switch (obj) {
+	default:
+		break;
+	}
+
+	return pointerForObject;
 }
 
 void SimulationController::run()

@@ -12,11 +12,13 @@ public:
 
 	void defineNewRandomTestScenario(test nextTestToBePerfomed);
 	void defineTestScenarioWithoutFailure();
-	void defineTestScenarioForSpecificFaultMode(FaultModeType* faultModePointer);
+	void defineTestScenarioForSpecificSingleFaultMode(FaultModeType* faultModePointer);
+	void addNewFailureToTestScenario(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed);
 
 	int getNumberOfFailedComponents();
-	unordered_set<string>& getFailedComponentsNameSet();
 	void setVerboseMode(bool verboseModeValue);
+
+	void reset();
 
 private:
 	vector<Component>& componentsArray;
@@ -27,15 +29,14 @@ private:
 
 	bool verboseMode;
 
-	bool failureScenarioKeepPowTstLocked;
-	bool failureScenarioFuseTstLocked;
+	bool failureScenarioKeepPowTstLocked, failureScenarioFuseTstLocked;
 
 	int numberOfFailedComponents, maxNumberOfFailuresWithImpact;
-	int singleFailedComponentId;
+
+	void updateTestScenarioFlags(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed);
 
 	fmDetectable getFmDetectableForNextText(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed);
 
-	void updateTestScenario(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed);
 	void resolveFailureScenarioForMultipleFailuresWithImpact(FaultModeType* pointerForNewFaultMode);
 
 	void resolveFuseFailureScenario(FaultModeType* pointerForLastFaultMode, FaultModeType* pointerForNewFaultMode);

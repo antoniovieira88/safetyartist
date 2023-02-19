@@ -9,6 +9,7 @@ private:
 	vector<FailureMetricIndicatorType> failureIndicators;
 	string errorMsg;
 	string logError;
+	test perfomedTest;
 
 	void buildLogError();
 
@@ -17,4 +18,6 @@ public:
 	vector<FailureMetricIndicatorType> getFailureIndicators();
 	const char* what() const throw();
 	string getLogError();
+	string getPerfomedTestName();
+	string getErrorMsg();
 };

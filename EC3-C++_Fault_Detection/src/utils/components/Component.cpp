@@ -7,13 +7,14 @@ Component::Component(
 	string name,
 	int componentId,
 	double faultRate,
+	int*& iterationPointer,
 	double& iterationEquivalentTime,
 	mt19937& generator,
 	string faultModesDir,
 	bool& verboseMode
 ) :
 	faultRate(faultRate),
-	name(name),
+	name(name), iterationPointer(iterationPointer),
 	generator(generator),
 	iterationEquivalentTime(iterationEquivalentTime),
 	componentId(componentId), verboseMode(verboseMode)
@@ -34,6 +35,7 @@ Component::Component(
 	Component::uniformDist = uniformDist;
 
 	Component::verboseMode = verboseMode;
+	Component::iterationOnFailure = 0;
 }
 
 void Component::loadFaultModes(string dir)
@@ -56,7 +58,7 @@ void Component::loadFaultModes(string dir)
 	try {
 		while (getline(faultModesFile, line)) {
 			// faultMode struct
-			FaultModeType faultMode({ faultModeId });
+			FaultModeType faultMode({ faultModeId, componentId });
 
 			stringstream strstream(line);
 
@@ -76,7 +78,7 @@ void Component::loadFaultModes(string dir)
 			faultModesWeightArray.push_back(faultModeWeight);
 			faultMode.probability = faultModeWeight;
 
-			loadSingleFailureScenarioFromFile(strstream, word, fileDir, faultModeId);
+			loadSingleFailureScenarioFromFile(strstream, word, faultMode, fileDir, faultModeId);
 
 			getline(strstream, word, ',');
 			faultMode.fmSafety = stringToFmSafetyEnum[word];
@@ -218,6 +220,7 @@ enum componentOpStatus Component::generateNewOperationalState()
 		isFaulty = pseudoRandomNumber > reliability;
 
 		if (isFaulty) {
+			iterationOnFailure = *iterationPointer;
 			currentFaultModeId = discreteDist(generator);
 			countBetweenFailures = infinity;
 			return newFault;
@@ -296,6 +299,11 @@ FaultModeType Component::getFaultModeStruct(int faultModeId)
 string Component::getFaultModeName(int faultModeId)
 {
 	return faultModesArray[faultModeId].name;
+}
+
+int Component::getIterationOnFailure()
+{
+	return iterationOnFailure;
 }
 
 bool Component::checkFaultModeIdValidity(int id)

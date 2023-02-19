@@ -1,5 +1,5 @@
 #include "../../../utils/kmeans/include/KMeans.h"
-#include "../../../utils/enumerators/include/enum.h"
+#include "../../../utils/enumerators/enum.h"
 
 using namespace arma;
 

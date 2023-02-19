@@ -11,10 +11,10 @@ public:
 		SimulationSpecificParamsType& simulationSpecificParams,
 		mt19937& generator,
 		vector<Component>& componentsArray,
+		int*& iterationPointer,
 		string simulationMemoryDir = "data/SimulationMemory",
 		bool verboseMode = true
 	);
-
 
 	void loadFailureSpecs();
 	int setComponentsInitialOperationalState();
@@ -34,6 +34,7 @@ private:
 	const string simulationsDir;
 
 	string& simulationName;
+	int*& iterationPointer;
 	SimulationSpecificParamsType& simulationSpecificParams;
 
 	mt19937& generator;

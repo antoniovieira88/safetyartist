@@ -4,11 +4,13 @@ using namespace std;
 
 class SimulationController {
 public:
+
 	SimulationController(
 		string dataMemoryDir = "data/DataMemory",
 		string simulationMemoryDir = "data/SimulationMemory",
 		bool verboseMode = true);
 	void attach(Supervisor* supervisorPointer, Supervised* supervisedPointer);
+	void* getObjectMemberRef(simulationMemberObj obj);
 	void run();
 
 private:
@@ -16,6 +18,7 @@ private:
 	TestScenarioType testScenario;
 	MtRandEngine generator;
 	string simulationName;
+	int* iterationPointer;
 	SimulationSpecificParamsType simulationSpecificParams;
 
 	ParamsController paramsController;

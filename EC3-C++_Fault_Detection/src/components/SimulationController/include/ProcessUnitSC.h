@@ -17,6 +17,7 @@ public:
 		SimulationSpecificParamsType& simulationSpecificParams,
 		MtRandEngine& generator,
 		string& simulationName,
+		int*& iterationPointer,
 		string dataMemoryDir = "data/DataMemory",
 		string simulationMemoryDir = "data/SimulationMemory",
 		bool verboseMode = true
@@ -44,7 +45,7 @@ private:
 
 	Supervisor* supervisorPointer;
 	Supervised* supervisedPointer;
-	int* iterationPointer;
+	int*& iterationPointer;
 
 	bool verboseMode;
 
@@ -84,5 +85,5 @@ private:
 
 	void exportJsonFaultModeAnalysisArray(vector<FaultModeAnalysisResultType>& faultModeData, string destinyFilePath);
 
-	test getNextTestToPerfomed();
+	test getNextTestToBePerfomed();
 };

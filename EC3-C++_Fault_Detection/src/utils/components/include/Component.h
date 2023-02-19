@@ -17,6 +17,7 @@ public:
 		string name,
 		int componentId,
 		double failureRate,
+		int*& iterationPointer,
 		double& iterationEquivalentTime,
 		mt19937& generator,
 		string faultModesDir,
@@ -41,6 +42,7 @@ public:
 	vector<FaultModeType>* getPointerForFaultModesArray();
 	FaultModeType* getPointerForFaultMode(int faultModeId);
 	string getFaultModeName(int faultModeId);
+	int getIterationOnFailure();
 
 
 	bool checkFaultModeIdValidity(int id);
@@ -51,11 +53,14 @@ private:
 	const int componentId;
 	const int infinity = numeric_limits<int>::max();
 
-	int countBetweenFailures, currentFaultModeId;
+
+	int countBetweenFailures, currentFaultModeId, iterationOnFailure;
 	double reliability;
 	bool isFaulty;
 
 	bool& verboseMode;
+
+	int*& iterationPointer;
 
 	double& iterationEquivalentTime;
 

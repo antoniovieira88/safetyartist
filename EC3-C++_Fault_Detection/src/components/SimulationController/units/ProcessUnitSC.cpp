@@ -8,11 +8,12 @@ ProcessUnitSC::ProcessUnitSC(
 	SimulationSpecificParamsType& simulationSpecificParams,
 	MtRandEngine& generator,
 	string& simulationName,
+	int*& iterationPointer,
 	string dataMemoryDir,
 	string simulationMemoryDir,
 	bool verboseMode) :
 	simulationSpecificParams(simulationSpecificParams),
-	simulationName(simulationName),
+	simulationName(simulationName), iterationPointer(iterationPointer),
 	dataMemoryDir(dataMemoryDir), simulationMemoryDir(simulationMemoryDir),
 	simulationsDir(simulationMemoryDir + "/Simulations"),
 	failureController(failureController),
@@ -385,7 +386,7 @@ void ProcessUnitSC::createLogAndStatusCSVFiles(string simulationName)
 	FileSysHandler::createCSVFile(
 		"HistoricalCaughtFailureMetricsLog",
 		dirSM,
-		{ "iteration", "metric", "tolerance", "variation" });
+		{ "iteration", "testName", "metric", "tolerance", "variation" });
 
 
 	FileSysHandler::createCSVFile(
@@ -482,10 +483,9 @@ void ProcessUnitSC::recordHistoricalFailureLog(bool noFaults, bool failureDetect
 
 string ProcessUnitSC::failedComponentsListString()
 {
-	unordered_set<string>& failedComponentsNameSet = failureController.getFailedComponentsNameSet();
 	string listStr = "[";
-	for (const auto& it : failedComponentsNameSet) {
-		listStr = listStr + it + ";";
+	for (int& failedComponenteId : testScenario.failedComponentsIdArray) {
+		listStr = listStr + componentsArray[failedComponenteId].getComponentName() + ";";
 	}
 
 	listStr.pop_back();
@@ -515,7 +515,9 @@ void ProcessUnitSC::collectResultsFromSingleIteration(FuseTestResultsType& fuseT
 	}
 	catch (exception& error) {};
 
-	if (*iterationPointer % 2 == 1) {
+	test lastPerfomedTest = supervisorPointer->getLastPerfomedTest();
+
+	if (lastPerfomedTest == fuseTest) {
 		fuseTestResult = supervisorPointer->getFuseTestResults();
 	}
 	else {
@@ -682,7 +684,7 @@ void ProcessUnitSC::avaliateComponentFaultModes(Component& component, string com
 	vector<FaultModeType>* faultModesArrayPointer = component.getPointerForFaultModesArray();
 
 	for (FaultModeType& faultMode : *faultModesArrayPointer) {
-		failureController.defineTestScenarioForSpecificFaultMode(&faultMode);
+		failureController.defineTestScenarioForSpecificSingleFaultMode(&faultMode);
 		supervisedPointer->setTestScenario(testScenario);
 
 		collectResultsFromSingleIteration(fuseTestResult, keepPowerTestResult);
@@ -812,6 +814,7 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 	ofstream simulationDataFile;
 	string logError;
 
+	// it indicates whenever there is a failed component or not
 	bool noFaults = true;
 
 	cout << endl << "New cycle of iterations started" << endl;
@@ -832,6 +835,7 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 		if (noFailuresMode) failureController.defineTestScenarioWithoutFailure();
 		else failureController.defineNewRandomTestScenario(nextTextToBePerfomed);
 
+		// 'noFaults' indicates whenever there is a failed component or not
 		noFaults = (testScenario.numberOfFailedComponents == 0);
 
 		supervisedPointer->setTestScenario(testScenario);
@@ -839,24 +843,28 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 		try {
 			supervisorPointer->runTest();
 			failureDetected = false;
-			if (noFaults && !noFailuresMode) cout << endl << "-> No failure in the supervised system. Supervisor didn't detect any fault" << endl;
+
+			if (noFaults) {
+				if (verboseMode) cout << endl << "-> No failure in the supervised system. Supervisor didn't detect any fault" << endl;
+			}
 			else if (!noFaults) {
 				cout << endl << "-> There was a fault in the supervised system"
 					<< " but supervisor didn't detect it" << endl;
 				recordHistoricalFailureLog(noFaults, failureDetected);
 			}
+
 			duration--;
 		}
 		catch (FailureDetectedExcep& error) {
 			failureDetected = true;
 
-			if (verboseMode) cout << error.what() << endl;
-			if (noFaults && verboseMode) cout << "-> Supervisor identified a failure that doesn't exist (misdiagnose)" << endl;
+			cout << error.what() << endl;
+			if (noFaults) cout << "-> Supervisor identified a failure that doesn't exist (misdiagnose)" << endl;
 
 			logError = error.getLogError();
 			recordHistoricalFailureLog(noFaults, failureDetected, logError);
 			duration = 0;
-			cout << endl << "Simulation finished: keepPower set off in Fuse Test" << endl;;
+			cout << endl << "Simulation finished: " << endl;
 		};
 
 	}
@@ -881,7 +889,7 @@ void ProcessUnitSC::resetComponentsOperationalStates()
 
 	if (verboseMode) cout << "Components restored to normal operational states" << endl;
 
-	testScenario.numberOfFailedComponents = 0;
+	failureController.reset();
 }
 
 void ProcessUnitSC::resetSupervisor()

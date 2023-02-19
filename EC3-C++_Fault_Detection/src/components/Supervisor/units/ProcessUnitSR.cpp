@@ -70,12 +70,12 @@ void ProcessUnitSR::runTest()
 {
 	globalIteration++;
 	if (globalIteration % 2 == 1) {
-		runFuseTest();
 		lastPerfomedTest = test::fuseTest;
+		runFuseTest();
 	}
 	else {
-		runKeepPowTest();
 		lastPerfomedTest = test::keepPowerTest;
+		runKeepPowTest();
 	}
 
 }
@@ -146,7 +146,6 @@ void ProcessUnitSR::runFuseTest() {
 	if (faultDiagnosis.failure) {
 		keepPower = 0.0;
 		setKeepPower(keepPower);
-		lastPerfomedTest = test::fuseTest;
 		throw FailureDetectedExcep(faultDiagnosis);
 	}
 
@@ -223,10 +222,10 @@ void ProcessUnitSR::runKeepPowTest()
 		0.0,
 		0);
 
+
 	if (faultDiagnosis.failure) {
 		fuseTest = 0.0;
 		setFuseTest(fuseTest);
-		lastPerfomedTest = test::keepPowerTest;
 		throw FailureDetectedExcep(faultDiagnosis);
 	}
 
@@ -346,7 +345,7 @@ void ProcessUnitSR::detectFailure(
 	// it throws an exception if no metric has been analyzed
 	if (!anyMetricAnalysed) throw exception();
 
-	faultDiagnosis = { failure, failureIndicators };
+	faultDiagnosis = { failure, failureIndicators, lastPerfomedTest };
 
 	if (verboseMode) {
 		cout << "Failure detection process finished" << endl;

@@ -14,6 +14,7 @@ struct FailureMetricIndicatorType {
 struct FaultDiagnosisType {
 	bool failure;
 	vector<FailureMetricIndicatorType> failureIndicators;
+	test perfomedTest;
 };
 
 struct FailureScenarioFuseType {
@@ -37,6 +38,7 @@ struct FailureScenarioType {
 
 struct FaultModeType {
 	int id;
+	int componentId;
 	string name;
 	double probability;
 	fmSafety fmSafety;
@@ -48,6 +50,11 @@ struct FaultModeType {
 
 struct TestScenarioType {
 	int numberOfFailedComponents;
+	bool outsideScopeFailureGenerated;
+	bool detectableFailureGenerated;
+	bool unsafeFailureGenerated;
+	bool impactlessFailureGenerated;
+	vector<int> failedComponentsIdArray;
 	FailureScenarioFuseType* fuseFailureScenarioPointer;
 	FailureScenarioKeepPowType* keepPowFailureScenarioPointer;
 };
@@ -104,4 +111,10 @@ struct FaultModeAnalysisResultType {
 	FaultModeType faultMode;
 	FuseTestResultsType fuseTestResult;
 	KeepPowerTestResultsType keepPowerTestResult;
+};
+
+struct FailureEventType {
+	string componentName;
+	int iteration;
+	FaultModeType faultMode;
 };

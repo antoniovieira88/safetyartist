@@ -3,7 +3,14 @@
 FailureDetectedExcep::FailureDetectedExcep(FaultDiagnosisType faultDiagnosis)
 {
 	failureIndicators = faultDiagnosis.failureIndicators;
-	errorMsg = "-> Failure detected by supervisor\n";
+	perfomedTest = faultDiagnosis.perfomedTest;
+	errorMsg = "-> Failure detected by supervisor ";
+	if (perfomedTest == fuseTest) {
+		errorMsg = errorMsg + " in Fuse Test. Keep power set off to ensure safety\n";
+	}
+	else {
+		errorMsg = errorMsg + " in Keep Power Test. Fuse Test set off to ensure safety\n";
+	}
 	buildLogError();
 }
 
@@ -17,6 +24,11 @@ string FailureDetectedExcep::getLogError()
 	return logError;
 }
 
+string FailureDetectedExcep::getPerfomedTestName()
+{
+	return testStr[perfomedTest];
+}
+
 void FailureDetectedExcep::buildLogError()
 {
 	logError = "";
@@ -24,6 +36,7 @@ void FailureDetectedExcep::buildLogError()
 
 		logError = logError +
 			to_string(failureIndicator.iteration) + "," +
+			testStr[perfomedTest] + "," +
 			metricStr[failureIndicator.metric] + "," +
 			to_string(failureIndicator.tolerance) + "," +
 			to_string(failureIndicator.variation) + "\n";

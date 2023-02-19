@@ -6,10 +6,10 @@ FailureController::FailureController(vector<Component>& componentsArray, TestSce
 {
 	FailureController::maxNumberOfFailuresWithImpact = 2;
 	FailureController::numberOfFailedComponents = 0;
-	FailureController::singleFailedComponentId = -1;
 	FailureController::verboseMode = verboseMode;
 	FailureController::failureScenarioFuseTstLocked = false;
 	FailureController::failureScenarioKeepPowTstLocked = false;
+	FailureController::failuresWithImpactArray = vector<FaultModeType*>();
 }
 
 void FailureController::defineNewRandomTestScenario(test nextTestToBePerfomed)
@@ -38,11 +38,8 @@ void FailureController::defineNewRandomTestScenario(test nextTestToBePerfomed)
 			int faultModeId = component.getCurrentFaultModeId();
 			FaultModeType* pointerForNewFaultMode = component.getPointerForFaultMode(faultModeId);
 
-			updateTestScenario(pointerForNewFaultMode);
+			addNewFailureToTestScenario(pointerForNewFaultMode, nextTestToBePerfomed);
 
-			// the names of the failed components is captured for log
-			// purposes (they appear in the log file 'AllHistoricalFailures.csv')
-			failedComponentsNameSet.insert(component.getComponentName());
 		}
 
 		if (verboseMode) {
@@ -63,19 +60,12 @@ void FailureController::defineNewRandomTestScenario(test nextTestToBePerfomed)
 
 void FailureController::defineTestScenarioWithoutFailure()
 {
-	testScenario.numberOfFailedComponents = 0;
-
-	// failure scenario for each test is set to null
-	testScenario.fuseFailureScenarioPointer = nullptr;
-	testScenario.keepPowFailureScenarioPointer = nullptr;
-
-	failureScenarioFuseTstLocked = false;
-	failureScenarioKeepPowTstLocked = false;
-
-	failuresWithImpactArray.clear();
+	// failure controller is restored to default condition,
+	// which means no failure
+	reset();
 }
 
-void FailureController::defineTestScenarioForSpecificFaultMode(FaultModeType* faultModePointer)
+void FailureController::defineTestScenarioForSpecificSingleFaultMode(FaultModeType* faultModePointer)
 {
 	testScenario.numberOfFailedComponents = 1;
 
@@ -89,14 +79,38 @@ int FailureController::getNumberOfFailedComponents()
 	return numberOfFailedComponents;
 }
 
-unordered_set<string>& FailureController::getFailedComponentsNameSet()
-{
-	return failedComponentsNameSet;
-}
-
 void FailureController::setVerboseMode(bool verboseModeValue)
 {
 	FailureController::verboseMode = verboseModeValue;
+}
+
+void FailureController::reset()
+{
+	numberOfFailedComponents = 0;
+
+	// reset of testScenario for the entire application
+	testScenario.numberOfFailedComponents = 0;
+	testScenario.detectableFailureGenerated = false;
+	testScenario.outsideScopeFailureGenerated = false;
+	testScenario.unsafeFailureGenerated = false;
+	testScenario.fuseFailureScenarioPointer = nullptr;
+	testScenario.keepPowFailureScenarioPointer = nullptr;
+
+	failureScenarioFuseTstLocked = false;
+	failureScenarioKeepPowTstLocked = false;
+
+	failuresWithImpactArray.clear();
+}
+
+void FailureController::updateTestScenarioFlags(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed)
+{
+	fmDetectable fmDetectable = getFmDetectableForNextText(pointerForNewFaultMode, nextTestToBePerfomed);
+	fmSafety fmSafety = pointerForNewFaultMode->fmSafety;
+
+	if (fmDetectable == yes) testScenario.detectableFailureGenerated = true;
+	if (fmDetectable == outsideScope) testScenario.outsideScopeFailureGenerated = true;
+	if (fmDetectable == impactless) testScenario.outsideScopeFailureGenerated = true;
+	if (fmSafety == yes) testScenario.unsafeFailureGenerated = true;
 }
 
 fmDetectable FailureController::getFmDetectableForNextText(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed)
@@ -107,12 +121,20 @@ fmDetectable FailureController::getFmDetectableForNextText(FaultModeType* pointe
 	return pointerForFaultMode->fmDetectableKeepPow;
 }
 
-void FailureController::updateTestScenario(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed)
+void FailureController::addNewFailureToTestScenario(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed)
 {
 	numberOfFailedComponents++;
 	testScenario.numberOfFailedComponents = numberOfFailedComponents;
 
+	int failedComponentId = pointerForNewFaultMode->componentId;
+	testScenario.failedComponentsIdArray.push_back(failedComponentId);
+
 	fmDetectable fmDetectable = getFmDetectableForNextText(pointerForNewFaultMode, nextTestToBePerfomed);
+	fmSafety fmSafety = pointerForNewFaultMode->fmSafety;
+
+	if (fmDetectable == yes) testScenario.detectableFailureGenerated = true;
+	if (fmDetectable == outsideScope) testScenario.outsideScopeFailureGenerated = true;
+	if (fmSafety == yes) testScenario.unsafeFailureGenerated = true;
 
 	int numberOFFailuresWithImpact = failuresWithImpactArray.size();
 
@@ -181,4 +203,3 @@ void FailureController::resolveKeepPowFailureScenario(FaultModeType* pointerForL
 		}
 	}
 }
-

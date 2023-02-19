@@ -47,6 +47,22 @@ namespace std {
 		notApplicable = 4
 	};
 
+	enum simulationMemberObj {
+		processUnit = 0,
+		paramsController = 1,
+		failureController = 2,
+		supervisorSys = 3,
+		supervisedSys = 4,
+		generator = 5,
+		simulationName = 6,
+		iterationPointer = 7,
+		simulationSpecificParams = 8,
+		verboseMode = 9,
+		iterationEquivalentTime = 10,
+		componentsArray = 11,
+		testScenario = 12,
+	};
+
 	static string metricStr[] =
 	{
 	  "silhouetteCluster1",
