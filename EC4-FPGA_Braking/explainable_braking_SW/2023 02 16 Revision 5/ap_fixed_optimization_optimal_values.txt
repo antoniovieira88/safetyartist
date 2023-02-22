@@ -1,0 +1,15 @@
+Optimal values
+ap_fixed<18,11> | error recall = 0.0346981263011803% | recall SKL = 99.01110340041637% | recall HDL = 98.9764052741152%
+ap_fixed<18,12> | error recall = 0.0867453157529452% | recall SKL = 99.01110340041637% | recall HDL = 98.92435808466344%
+ap_fixed<19,11> | error recall = 0.0173490631505957% | recall SKL = 99.01110340041637% | recall HDL = 98.99375433726578%
+ap_fixed<19,12> | error recall = 0.0346981263011803% | recall SKL = 99.01110340041637% | recall HDL = 98.9764052741152%
+ap_fixed<20,11> | error recall = 0.0173490631505957% | recall SKL = 99.01110340041637% | recall HDL = 98.99375433726578%
+ap_fixed<20,12> | error recall = 0.0173490631505957% | recall SKL = 99.01110340041637% | recall HDL = 98.99375433726578%
+ap_fixed<21,11> | error recall = 0.0% | recall SKL = 99.01110340041637% | recall HDL = 99.01110340041637%
+ap_fixed<21,12> | error recall = 0.0173490631505957% | recall SKL = 99.01110340041637% | recall HDL = 98.99375433726578%
+ap_fixed<22,11> | error recall = 0.0% | recall SKL = 99.01110340041637% | recall HDL = 99.01110340041637%
+ap_fixed<22,12> | error recall = 0.0% | recall SKL = 99.01110340041637% | recall HDL = 99.01110340041637%
+ap_fixed<23,11> | error recall = 0.0% | recall SKL = 99.01110340041637% | recall HDL = 99.01110340041637%
+ap_fixed<23,12> | error recall = 0.0% | recall SKL = 99.01110340041637% | recall HDL = 99.01110340041637%
+ap_fixed<24,11> | error recall = 0.0% | recall SKL = 99.01110340041637% | recall HDL = 99.01110340041637%
+ap_fixed<24,12> | error recall = 0.0% | recall SKL = 99.01110340041637% | recall HDL = 99.01110340041637%

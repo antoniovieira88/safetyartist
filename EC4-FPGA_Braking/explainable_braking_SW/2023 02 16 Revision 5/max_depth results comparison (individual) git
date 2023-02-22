@@ -1,0 +1,23 @@
+Precision T1 max_depth_16: 97.35041235304439
+Precision T1 max_depth_13: 96.67244367417678
+Precision T1 max_depth_9: 96.73950745750955
+
+Recall T1 max_depth_16: 96.25260235947259
+Recall T1 max_depth_13: 96.77307425399029
+Recall T1 max_depth_9: 96.77307425399029
+*********************************************
+Precision T2 max_depth_16: 96.91336373202385
+Precision T2 max_depth_13: 96.39764461378594
+Precision T2 max_depth_9: 96.64697706740793
+
+Recall T2 max_depth_16: 95.87092297015961
+Recall T2 max_depth_13: 96.56488549618321
+Recall T2 max_depth_9: 96.51283830673144
+*********************************************
+Precision T3 max_depth_16: 97.25764192139738
+Precision T3 max_depth_13: 96.80611005033848
+Precision T3 max_depth_9: 96.46140503035559
+
+Recall T3 max_depth_16: 96.59958362248439
+Recall T3 max_depth_13: 96.7557251908397
+Recall T3 max_depth_9: 96.47814018043026
