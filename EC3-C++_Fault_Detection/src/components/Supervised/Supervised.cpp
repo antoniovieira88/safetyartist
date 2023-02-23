@@ -67,7 +67,7 @@ void Supervised::setFuseTest(double fuseTest)
 	processUnit.setFuseTest(fuseTest);
 }
 
-double Supervised::runFuseTest()
+double Supervised::getFuseResult()
 {
 	return processUnit.runFuseTest();
 }
@@ -85,7 +85,7 @@ void Supervised::setKeepPower(int keepPower)
 	processUnit.setKeepPower(keepPower);
 }
 
-int Supervised::runKeepPowTest()
+int Supervised::getKeepPowReadback()
 {
 	return processUnit.runKeepPowTest();
 }

@@ -19,4 +19,6 @@ namespace std {
 	void to_json(json& j, const FaultDiagnosisType& obj);
 
 	void to_json(json& j, const FailureMetricIndicatorType& obj);
+
+	void to_json(json& j, const FailureEventType& obj);
 }

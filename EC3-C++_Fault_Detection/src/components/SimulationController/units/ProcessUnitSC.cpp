@@ -26,6 +26,7 @@ ProcessUnitSC::ProcessUnitSC(
 	ProcessUnitSC::supervisedPointer = nullptr;
 	ProcessUnitSC::iterationPointer = nullptr;
 	ProcessUnitSC::verboseMode = verboseMode;
+	ProcessUnitSC::failureEventsArray = vector<FailureEventType>();
 
 	// load the constant failure specifications: faultRates, componentsList,
 	// failureModes, etc.
@@ -52,7 +53,7 @@ void ProcessUnitSC::run()
 	int duration;
 	char userOption = 0;
 
-	while (userOption != 'f') {
+	while (userOption != 'g') {
 		cout << endl << "***********************";
 		cout << endl << "EC3 Fault Detection C++";
 		cout << endl << "***********************";
@@ -77,7 +78,8 @@ void ProcessUnitSC::run()
 		cout << " c) Create a new simulation in SimulationMemory" << endl;
 		cout << " d) Set verbose mode " << endl;
 		cout << " e) Run single failure injection test" << endl;
-		cout << " f) Exit program" << endl << endl;
+		cout << " f) Run multiple failure injection test" << endl;
+		cout << " g) Exit program" << endl << endl;
 
 		cout << "Type an option to continue: " << endl;
 		cout << "Input: ";
@@ -148,6 +150,10 @@ void ProcessUnitSC::run()
 			break;
 		case 102:
 			// option f)
+			multipleFailuresTestOption();
+			break;
+		case 103:
+			// option g)
 			cout << endl << "Exiting program..." << endl;
 			break;
 		default:
@@ -155,6 +161,25 @@ void ProcessUnitSC::run()
 			break;
 		}
 	}
+}
+
+void ProcessUnitSC::updateFailureEventsArray(bool failureDetected, test testName)
+{
+	FailureEventType failureEvent;
+	for (FaultModeType*& newFaultModePointer : testScenario.newFaultModesArray) {
+
+		failureEvent.componentName = componentsArray[newFaultModePointer->componentId].getComponentName();
+		failureEvent.faultMode = *newFaultModePointer;
+		failureEvent.iteration = *iterationPointer;
+		failureEvent.testName = testName;
+		failureEvent.failureDetected = failureDetected;
+		failureEvent.fuseTestResults = supervisorPointer->getFuseTestResults();
+		failureEvent.keepPowerTestResults = supervisorPointer->getKeepPowerTestResults();
+
+		failureEventsArray.push_back(failureEvent);
+	}
+
+	testScenario.newFaultModesArray.clear();
 }
 
 void ProcessUnitSC::chooseVerboseMode()
@@ -384,16 +409,21 @@ void ProcessUnitSC::createLogAndStatusCSVFiles(string simulationName)
 	string const dirSpecs = simulationMemoryDir + "/FailureSpecs_EC3";
 
 	FileSysHandler::createCSVFile(
+		"InjectedFailuresInput",
+		dirSM,
+		{ "hitIteration", "componentId", "failureId" });
+
+	FileSysHandler::createCSVFile(
 		"HistoricalCaughtFailureMetricsLog",
 		dirSM,
 		{ "iteration", "testName", "metric", "tolerance", "variation" });
 
-
 	FileSysHandler::createCSVFile(
 		"AllHistoricalFailureLog",
 		dirSM,
-		{ "iteration", "failureOccurred", "failureCaught", "numberOfFailedComponents", "failedComponentsList", "unsafe" });
-
+		{ "iteration", "failureOccurred", "failureCaught", "numberOfFailedComponents", "failedComponentsList",
+		"unsafeFailureGenerated", "outsideScopeFailureGenerated",
+		"detectableFailureGenerated", "impactlessFailureGenerated" });
 
 	FileSysHandler::createCSVFile(
 		"HistoricalDataFullLog",
@@ -465,20 +495,23 @@ void ProcessUnitSC::recordHistoricalFailureLog(bool noFaults, bool failureDetect
 
 		simulationDataFile << *iterationPointer << ",";
 
-		if (noFaults)  simulationDataFile << "F" << ",";
-		else simulationDataFile << "T" << ",";
+		simulationDataFile << boolStr[noFaults] << ",";
 
-		if (failureDetected)  simulationDataFile << "T" << ",";
-		else simulationDataFile << "F" << ",";
+		simulationDataFile << boolStr[failureDetected] << ",";
 
 		simulationDataFile << testScenario.numberOfFailedComponents << ",";
 
 		if (testScenario.numberOfFailedComponents != 0) simulationDataFile << failedComponentsListString() << ",";
 		else simulationDataFile << "None" << ",";
 
-		simulationDataFile << '-' << endl;
+		simulationDataFile << boolStr[testScenario.unsafeFailureGenerated] << ",";
+		simulationDataFile << boolStr[testScenario.outsideScopeFailureGenerated] << ",";
+		simulationDataFile << boolStr[testScenario.detectableFailureGenerated] << ",";
+		simulationDataFile << boolStr[testScenario.impactlessFailureGenerated] << endl;
+
 		simulationDataFile.close();
 	}
+
 }
 
 string ProcessUnitSC::failedComponentsListString()
@@ -549,6 +582,59 @@ test ProcessUnitSC::getNextTestToBePerfomed()
 	return keepPowerTest;
 }
 
+void ProcessUnitSC::verifyTestScenarioForSimulationEnd(test perfomedTest)
+{
+	if (testScenario.detectableFailureGenerated) {
+		throw ForcedSimulationEndExcep("a supervisor miss on catching a detectable failure", perfomedTest);
+	}
+
+	if (testScenario.unsafeFailureGenerated) {
+		throw ForcedSimulationEndExcep("an unsafe non-detected failure", perfomedTest);
+	}
+
+	if (testScenario.outsideScopeFailureGenerated) {
+		throw ForcedSimulationEndExcep("an out-of-scope non-detected failure", perfomedTest);
+	}
+}
+
+void ProcessUnitSC::exportFailureEventsHistoryJson()
+{
+	json failureEventsHistoryJson = json(failureEventsArray);
+	const string destinyFilePath = simulationsDir + "/" + simulationName +
+		"/FailureEventsHistory" + to_string(*iterationPointer) + ".json";
+
+	ofstream simulationJsonDataFile(
+		destinyFilePath,
+		std::ios_base::out);
+
+	simulationJsonDataFile << failureEventsHistoryJson.dump(4, ' ');
+
+	simulationJsonDataFile.close();
+}
+
+void ProcessUnitSC::multipleFailuresTestOption()
+{
+	if (simulationName != "") {
+		MultiFailureRunner multiFailureRunner(
+			failureController,
+			testScenario,
+			simulationName,
+			componentsArray,
+			supervisorPointer,
+			supervisedPointer,
+			dataMemoryDir,
+			simulationMemoryDir,
+			verboseMode);
+
+		multiFailureRunner.run();
+	}
+
+	else {
+		cout << endl << "Operation aborted. Error: You must select a simulation first." << endl;
+	}
+
+}
+
 int ProcessUnitSC::userSimulationCycleParamsOptions() {
 	int duration = 0;
 	bool exit = false;
@@ -588,6 +674,7 @@ int ProcessUnitSC::userSimulationCycleParamsOptions() {
 			resetSupervisor();
 			resetComponentsOperationalStates();
 			createLogAndStatusCSVFiles(simulationName);
+			createDataMemoryCSVFiles(simulationName);
 			break;
 		case 99:
 			// option c)
@@ -812,7 +899,7 @@ void ProcessUnitSC::setVerboseMode(bool verboseModeValue)
 void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 {
 	ofstream simulationDataFile;
-	string logError;
+	string failureLog;
 
 	// it indicates whenever there is a failed component or not
 	bool noFaults = true;
@@ -826,14 +913,14 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 
 	while (duration > 0) {
 		bool failureDetected = false;
-		logError = "";
+		failureLog = "";
 
 		if (verboseMode) cout << endl << "Begin of the new iteration " << *iterationPointer + 1 << endl;
 
-		test nextTextToBePerfomed = getNextTestToBePerfomed();
+		test testName = getNextTestToBePerfomed();
 
 		if (noFailuresMode) failureController.defineTestScenarioWithoutFailure();
-		else failureController.defineNewRandomTestScenario(nextTextToBePerfomed);
+		else failureController.defineNewRandomTestScenario(testName);
 
 		// 'noFaults' indicates whenever there is a failed component or not
 		noFaults = (testScenario.numberOfFailedComponents == 0);
@@ -847,33 +934,45 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 			if (noFaults) {
 				if (verboseMode) cout << endl << "-> No failure in the supervised system. Supervisor didn't detect any fault" << endl;
 			}
-			else if (!noFaults) {
+			else {
 				cout << endl << "-> There was a fault in the supervised system"
-					<< " but supervisor didn't detect it" << endl;
+					<< " but supervisor didn't detect it in " << testStr[testName] << endl;
+
 				recordHistoricalFailureLog(noFaults, failureDetected);
+				updateFailureEventsArray(failureDetected, testName);
+
+				verifyTestScenarioForSimulationEnd(testName);
+
 			}
 
 			duration--;
 		}
-		catch (FailureDetectedExcep& error) {
+		catch (FailureDetectedExcep& excep) {
 			failureDetected = true;
 
-			cout << error.what() << endl;
-			if (noFaults) cout << "-> Supervisor identified a failure that doesn't exist (misdiagnose)" << endl;
+			cout << excep.what() << endl;
+			if (noFaults) cout << "-> Supervisor identified a failure that doesn't exist (misdiagnose) in " << endl;
 
-			logError = error.getLogError();
-			recordHistoricalFailureLog(noFaults, failureDetected, logError);
+			failureLog = excep.getFailureLog();
+			recordHistoricalFailureLog(noFaults, failureDetected, failureLog);
+			updateFailureEventsArray(failureDetected, testName);
+
 			duration = 0;
-			cout << endl << "Simulation finished: " << endl;
-		};
+			cout << endl << "Simulation finished in " << testStr[testName] << endl;
+		}
+		catch (ForcedSimulationEndExcep& excep) {
+			cout << excep.what() << endl;
+			updateFailureEventsArray(failureDetected, testName);
+			duration = 0;
+			cout << endl << "Simulation finished in " << testStr[testName] << endl;
+		}
+
+		if (verboseMode) cout << "End of iteration " << *iterationPointer << endl << endl;
 
 	}
 
-	if (verboseMode) {
-		cout << "End of iteration " << *iterationPointer << endl;
-		cout << " " << endl;
-	}
 	cout << endl << "Cycle of iterations completed" << endl;
+	exportFailureEventsHistoryJson();
 }
 
 void ProcessUnitSC::initializeParamsController()

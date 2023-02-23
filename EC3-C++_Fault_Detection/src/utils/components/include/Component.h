@@ -29,6 +29,7 @@ public:
 
 	void setCountBetweenFailures(int countBetweenFailures);
 	void setFaultMode(int faultModeId);
+	void setIterationAtFailure(int iteration);
 
 	int getComponentId();
 	int getCurrentFaultModeId();
@@ -44,7 +45,6 @@ public:
 	string getFaultModeName(int faultModeId);
 	int getIterationOnFailure();
 
-
 	bool checkFaultModeIdValidity(int id);
 
 private:
@@ -54,7 +54,7 @@ private:
 	const int infinity = numeric_limits<int>::max();
 
 
-	int countBetweenFailures, currentFaultModeId, iterationOnFailure;
+	int countBetweenFailures, currentFaultModeId, iterationAtFailure;
 	double reliability;
 	bool isFaulty;
 

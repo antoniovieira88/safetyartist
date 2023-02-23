@@ -23,6 +23,9 @@
     <ClCompile Include="src\components\SimulationController\units\FailureController.cpp" />
     <ClCompile Include="src\components\SimulationController\units\ParamsController.cpp" />
     <ClCompile Include="src\components\SimulationController\units\ProcessUnitSC.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\IterationRunner.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\MultiFailureRunner.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\SimulationFileHandler.cpp" />
     <ClCompile Include="src\components\Supervised\Supervised.cpp" />
     <ClCompile Include="src\components\Supervised\units\CorrectOutputGenerator.cpp" />
     <ClCompile Include="src\components\Supervised\units\FailedOutputGenerator.cpp" />
@@ -35,6 +38,7 @@
     <ClCompile Include="src\utils\components\Component.cpp" />
     <ClCompile Include="src\utils\exceptions\AbortSimulationOpExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\FailureDetectedExcep.cpp" />
+    <ClCompile Include="src\utils\exceptions\ForcedSimulationEndExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp" />
     <ClCompile Include="src\utils\exceptions\RegistersOverflowExcep.cpp" />
     <ClCompile Include="src\app\main.cpp" />
@@ -56,9 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\components\SimulationController\include\FailureController.h" />
+    <ClInclude Include="src\components\SimulationController\include\IterationRunner.h" />
+    <ClInclude Include="src\components\SimulationController\include\MultiFailureRunner.h" />
     <ClInclude Include="src\components\SimulationController\include\ParamsController.h" />
     <ClInclude Include="src\components\SimulationController\include\ProcessUnitSC.h" />
     <ClInclude Include="src\components\SimulationController\include\SimulationController.h" />
+    <ClInclude Include="src\components\SimulationController\include\SimulationFileHandler.h" />
     <ClInclude Include="src\components\Supervised\include\CorrectOutputGenerator.h" />
     <ClInclude Include="src\components\Supervised\include\FailedOutputGenerator.h" />
     <ClInclude Include="src\components\Supervised\include\OutputGenerator.h" />
@@ -72,6 +79,7 @@
     <ClInclude Include="src\utils\enumerators\enum.h" />
     <ClInclude Include="src\utils\exceptions\include\AbortSimulationOpExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\FailureDetectedExcep.h" />
+    <ClInclude Include="src\utils\exceptions\include\ForcedSimulationEndExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\IncompatibleIterationExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\RegistersOverflowExcep.h" />
     <ClInclude Include="src\utils\exceptions\include\SimulatorFailureExcep.h" />

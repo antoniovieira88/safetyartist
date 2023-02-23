@@ -34,7 +34,7 @@ int SupervisorLogErrorTest()
 		catch (FailureDetectedExcep& error) {
 			cout << error.what() << endl;
 
-			logError = error.getLogError();
+			logError = error.getFailureLog();
 
 			simulationDataFile.open("data/SimulationMemory/HistoricalCatchedFailureMetricsLog.csv", std::ios_base::app);
 

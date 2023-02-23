@@ -11,13 +11,12 @@ private:
 	string logError;
 	test perfomedTest;
 
-	void buildLogError();
+	void buildFailureLog();
 
 public:
 	FailureDetectedExcep(FaultDiagnosisType faultDiagnosis);
 	vector<FailureMetricIndicatorType> getFailureIndicators();
 	const char* what() const throw();
-	string getLogError();
+	string getFailureLog();
 	string getPerfomedTestName();
-	string getErrorMsg();
 };

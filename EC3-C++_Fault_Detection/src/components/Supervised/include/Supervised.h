@@ -19,12 +19,12 @@ public:
 
 	// FuseTest
 	void setFuseTest(double fuseTest);
-	double runFuseTest();
+	double getFuseResult();
 	vector<double> getNominalFuseResults();
 
 	// KeepPowTest
 	void setKeepPower(int keepPower);
-	int runKeepPowTest();
+	int getKeepPowReadback();
 
 	// here are set the basic params which are specified in 'simulationsParams.csv'.
 	// since the values of keepPowerReadback are the same for all simulations, 

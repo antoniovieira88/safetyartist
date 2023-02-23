@@ -35,7 +35,7 @@ Component::Component(
 	Component::uniformDist = uniformDist;
 
 	Component::verboseMode = verboseMode;
-	Component::iterationOnFailure = 0;
+	Component::iterationAtFailure = 0;
 }
 
 void Component::loadFaultModes(string dir)
@@ -188,8 +188,7 @@ void Component::setCountBetweenFailures(int countBetweenFailures)
 
 void Component::setFaultMode(int faultModeId)
 {
-	bool test = checkFaultModeIdValidity(faultModeId);
-	if (!test) {
+	if (!checkFaultModeIdValidity(faultModeId)) {
 		throw AbortSimulationOpExcep("FaultModeId" +
 			to_string(faultModeId) + " is out of bounds\n");;
 	}
@@ -197,12 +196,18 @@ void Component::setFaultMode(int faultModeId)
 
 	if (faultModeId == -1) {
 		isFaulty = false;
+		iterationAtFailure = -1;
 	}
 	else {
 		isFaulty = true;
 		countBetweenFailures = infinity;
 		reliability = 0.0;
 	}
+}
+
+void Component::setIterationAtFailure(int iteration)
+{
+	Component::iterationAtFailure = iteration;
 }
 
 void Component::calculateReliability()
@@ -220,7 +225,7 @@ enum componentOpStatus Component::generateNewOperationalState()
 		isFaulty = pseudoRandomNumber > reliability;
 
 		if (isFaulty) {
-			iterationOnFailure = *iterationPointer;
+			iterationAtFailure = *iterationPointer;
 			currentFaultModeId = discreteDist(generator);
 			countBetweenFailures = infinity;
 			return newFault;
@@ -303,7 +308,7 @@ string Component::getFaultModeName(int faultModeId)
 
 int Component::getIterationOnFailure()
 {
-	return iterationOnFailure;
+	return iterationAtFailure;
 }
 
 bool Component::checkFaultModeIdValidity(int id)

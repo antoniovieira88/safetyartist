@@ -54,6 +54,7 @@ struct TestScenarioType {
 	bool detectableFailureGenerated;
 	bool unsafeFailureGenerated;
 	bool impactlessFailureGenerated;
+	vector<FaultModeType*> newFaultModesArray;
 	vector<int> failedComponentsIdArray;
 	FailureScenarioFuseType* fuseFailureScenarioPointer;
 	FailureScenarioKeepPowType* keepPowFailureScenarioPointer;
@@ -115,6 +116,16 @@ struct FaultModeAnalysisResultType {
 
 struct FailureEventType {
 	string componentName;
-	int iteration;
 	FaultModeType faultMode;
+	test testName;
+	int iteration;
+	int iterationOnFailure;
+	bool failureDetected;
+	FuseTestResultsType fuseTestResults;
+	KeepPowerTestResultsType keepPowerTestResults;
+};
+
+struct InjectedFailureType {
+	int hitIteration;
+	FaultModeType* injectedFautMode;
 };

@@ -34,11 +34,14 @@ void FailureController::defineNewRandomTestScenario(test nextTestToBePerfomed)
 		componentOpStatus status = component.generateNewOperationalState();
 
 		// update of TestScenario when a new failure is identified
-		if (status == newFault) {
+		if (status != noFault) {
 			int faultModeId = component.getCurrentFaultModeId();
-			FaultModeType* pointerForNewFaultMode = component.getPointerForFaultMode(faultModeId);
+			FaultModeType* pointerForFaultMode = component.getPointerForFaultMode(faultModeId);
+			updateTestScenarioFlags(pointerForFaultMode, nextTestToBePerfomed);
 
-			addNewFailureToTestScenario(pointerForNewFaultMode, nextTestToBePerfomed);
+			if (status == newFault) {
+				addNewFailureToTestScenario(pointerForFaultMode, nextTestToBePerfomed);
+			}
 
 		}
 
@@ -95,6 +98,7 @@ void FailureController::reset()
 	testScenario.unsafeFailureGenerated = false;
 	testScenario.fuseFailureScenarioPointer = nullptr;
 	testScenario.keepPowFailureScenarioPointer = nullptr;
+	testScenario.newFaultModesArray.clear();
 
 	failureScenarioFuseTstLocked = false;
 	failureScenarioKeepPowTstLocked = false;
@@ -102,15 +106,15 @@ void FailureController::reset()
 	failuresWithImpactArray.clear();
 }
 
-void FailureController::updateTestScenarioFlags(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed)
+void FailureController::updateTestScenarioFlags(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed)
 {
-	fmDetectable fmDetectable = getFmDetectableForNextText(pointerForNewFaultMode, nextTestToBePerfomed);
-	fmSafety fmSafety = pointerForNewFaultMode->fmSafety;
+	fmDetectable fmDetectable = getFmDetectableForNextText(pointerForFaultMode, nextTestToBePerfomed);
+	fmSafety fmSafety = pointerForFaultMode->fmSafety;
 
 	if (fmDetectable == yes) testScenario.detectableFailureGenerated = true;
 	if (fmDetectable == outsideScope) testScenario.outsideScopeFailureGenerated = true;
-	if (fmDetectable == impactless) testScenario.outsideScopeFailureGenerated = true;
-	if (fmSafety == yes) testScenario.unsafeFailureGenerated = true;
+	if (fmDetectable == impactless) testScenario.impactlessFailureGenerated = true;
+	if (fmSafety == unsafe) testScenario.unsafeFailureGenerated = true;
 }
 
 fmDetectable FailureController::getFmDetectableForNextText(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed)
@@ -126,15 +130,13 @@ void FailureController::addNewFailureToTestScenario(FaultModeType* pointerForNew
 	numberOfFailedComponents++;
 	testScenario.numberOfFailedComponents = numberOfFailedComponents;
 
+	updateTestScenarioFlags(pointerForNewFaultMode, nextTestToBePerfomed);
+
 	int failedComponentId = pointerForNewFaultMode->componentId;
+	testScenario.newFaultModesArray.push_back(pointerForNewFaultMode);
 	testScenario.failedComponentsIdArray.push_back(failedComponentId);
 
 	fmDetectable fmDetectable = getFmDetectableForNextText(pointerForNewFaultMode, nextTestToBePerfomed);
-	fmSafety fmSafety = pointerForNewFaultMode->fmSafety;
-
-	if (fmDetectable == yes) testScenario.detectableFailureGenerated = true;
-	if (fmDetectable == outsideScope) testScenario.outsideScopeFailureGenerated = true;
-	if (fmSafety == yes) testScenario.unsafeFailureGenerated = true;
 
 	int numberOFFailuresWithImpact = failuresWithImpactArray.size();
 
@@ -144,6 +146,19 @@ void FailureController::addNewFailureToTestScenario(FaultModeType* pointerForNew
 
 		if (fmDetectable != impactless) {
 			failuresWithImpactArray.push_back(pointerForNewFaultMode);
+			classMultipleFaults eqClassNewFm = pointerForNewFaultMode->classMultipleFaults;
+			if (eqClassNewFm == cm2) {
+				failureScenarioFuseTstLocked = true;
+			}
+
+			else if (eqClassNewFm == cm1) {
+				failureScenarioKeepPowTstLocked = true;
+			}
+
+			else if (eqClassNewFm == cm3) {
+				failureScenarioFuseTstLocked = true;
+				failureScenarioKeepPowTstLocked = true;
+			}
 		}
 	}
 
@@ -202,4 +217,15 @@ void FailureController::resolveKeepPowFailureScenario(FaultModeType* pointerForL
 			testScenario.keepPowFailureScenarioPointer = &(pointerForNewFaultMode->singleFailureScenario.keepPowFailureScenario);
 		}
 	}
+}
+
+void FailureController::resetComponentsOperationalStates()
+{
+	for (Component& component : componentsArray) {
+		component.repair();
+	}
+
+	if (verboseMode) cout << "Components restored to normal operational states" << endl;
+
+	reset();
 }

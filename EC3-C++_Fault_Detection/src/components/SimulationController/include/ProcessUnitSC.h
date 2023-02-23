@@ -1,9 +1,4 @@
-#include "FailureController.h"
-#include "../../../utils/exceptions/include/AbortSimulationOpExcep.h"
-#include "../../../utils/filesys_handler/include/FileSysHandler.h"
-#include "../../../utils/json/include/JsonSerializer.h"
-#include "../../Supervisor/include/Supervisor.h"
-#include <filesystem>
+#include "MultiFailureRunner.h"
 
 using namespace std;
 
@@ -34,6 +29,8 @@ private:
 	const string dataMemoryDir;
 	const string simulationsDir;
 	const string simulationMemoryDir;
+
+	vector<FailureEventType> failureEventsArray;
 
 	FailureController& failureController;
 	ParamsController& paramsController;
@@ -84,6 +81,12 @@ private:
 	void collectResultsFromSingleIteration(FuseTestResultsType& fuseTestResults, KeepPowerTestResultsType& keepPowerTestResults);
 
 	void exportJsonFaultModeAnalysisArray(vector<FaultModeAnalysisResultType>& faultModeData, string destinyFilePath);
+	void updateFailureEventsArray(bool failureDetected, test testName);
 
 	test getNextTestToBePerfomed();
+	void verifyTestScenarioForSimulationEnd(test perfomedTest);
+
+	void exportFailureEventsHistoryJson();
+
+	void multipleFailuresTestOption();
 };

@@ -1,5 +1,4 @@
 #include "ParamsController.h"
-#include<unordered_set>
 
 using namespace std;
 
@@ -18,13 +17,14 @@ public:
 	int getNumberOfFailedComponents();
 	void setVerboseMode(bool verboseModeValue);
 
+	void resetComponentsOperationalStates();
+
 	void reset();
 
 private:
 	vector<Component>& componentsArray;
 
 	TestScenarioType& testScenario;
-	unordered_set<string> failedComponentsNameSet;
 	vector<FaultModeType*> failuresWithImpactArray;
 
 	bool verboseMode;
@@ -33,7 +33,7 @@ private:
 
 	int numberOfFailedComponents, maxNumberOfFailuresWithImpact;
 
-	void updateTestScenarioFlags(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed);
+	void updateTestScenarioFlags(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed);
 
 	fmDetectable getFmDetectableForNextText(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed);
 

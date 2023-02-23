@@ -8,13 +8,14 @@ int LoadFaultModesTest()
 	mt19937 generator(10);
 
 	int iteration;
+	int* iterationGlobal = &iteration;
 	double stepDuration = 1.0;
 	string simulationName = "LoadFaultModesTest";
 	SimulationSpecificParamsType params{};
 
 	cout << "Test started" << endl;
 
-	ParamsController paramsController(simulationName, params, generator, componentsArray);
+	ParamsController paramsController(simulationName, params, generator, componentsArray, iterationGlobal);
 	paramsController.loadFailureSpecs();
 
 	for (iteration = 1; iteration < 20; iteration++) {

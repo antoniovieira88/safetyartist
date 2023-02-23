@@ -17,7 +17,7 @@ int main()
 		cout << "Simulator run canceled" << endl;
 	}
 
-	cout << endl << endl << "Press any button to close the terminal" << endl;
+	cout << endl << endl << "Press any button to close the terminal";
 
 	getchar();
 

@@ -42,7 +42,7 @@ void ParamsController::loadFailureSpecs()
 	while (getline(faultRatesFile, line)) {
 		stringstream strstream(line);
 
-		// the first word of the line is considered to be the component
+		// the first word of the line is considered to be the component name
 		getline(strstream, word, ',');
 		componentName = word;
 
@@ -76,6 +76,7 @@ int ParamsController::setComponentsInitialOperationalState()
 	string line, word;
 	int componentId = 0, faultModeId = -1, numberOfFaultyComponents = 0;
 	int initialCountBetweenFailures = 0;
+	int iterationAtFailure = -1;
 
 	componentsOperationalStateFile.open(
 		simulationsDir + "/" + simulationName
@@ -90,19 +91,19 @@ int ParamsController::setComponentsInitialOperationalState()
 
 	try {
 		// the first line corresponds is a header, so it is ignored
-		getline(componentsOperationalStateFile, line);
+		std::getline(componentsOperationalStateFile, line);
 
 		// each subsequent line corresponds to a component
-		while (getline(componentsOperationalStateFile, line)) {
+		while (std::getline(componentsOperationalStateFile, line)) {
 			stringstream strstream(line);
 
 			// the first word is considered to be the component id
 			// in this loop, it is simply ignored, as the components list has already been defined when this function is called
-			getline(strstream, word, ',');
+			std::getline(strstream, word, ',');
 
 			try {
 				// the second word is considered to be the faultModeId from the last iteration
-				getline(strstream, word, ',');
+				std::getline(strstream, word, ',');
 				faultModeId = stoi(word);
 			}
 			catch (invalid_argument& error) {
@@ -115,23 +116,43 @@ int ParamsController::setComponentsInitialOperationalState()
 
 			// if the faultMode is different from "-1", the initialCountBetweenFailures of
 			// the component is automatically updated to zero when "setFaultModeId" is called
-			//  -> obs.: "-1" indicates no fault
+			//  -> obs.: "-1" indicates no fault. When it equals to "-1", the interationAtFailure 
+			// of the component is automatically set to "-1" (no fault condition)
 			componentsArray[componentId].setFaultMode(faultModeId);
 
 			// only when there is no fault, it is necessary to retrieve the countBetweenFailures from the last iteration
 			//  -> obs.: "-1" indicates no fault
 			if (faultModeId == -1) {
-				getline(strstream, word);
+				// the second word is considered to be the countBetweenFailures
+				std::getline(strstream, word);
 				initialCountBetweenFailures = stoi(word);
 				componentsArray[componentId].setCountBetweenFailures(initialCountBetweenFailures);
 				componentsArray[componentId].calculateReliability();
 			}
+			// only when there is a fault is necessary to retrieve the interationAtFailure from the previous failure
 			else {
-				// this is only a flag variable which helps restore the components states to a default initial condition
-				// obs.: this flag is later used in SimulationController::ProcessUnitSC::userInputOptions as the return of
-				// method ParamsController::isSurpervisedStartingWithFailure()
-				initialFaults = true;
-				numberOfFaultyComponents++;
+				try {
+					// the second word is considered to be the countBetweenFailures.
+					// In this case, this value is ignored (we already know it is set to infinity since
+					// the component has a fault)
+					std::getline(strstream, word, ',');
+
+					// the third word is considered to be the iteration number at which the component first failed
+					// -> obs.: "-1" indicates no fault
+					std::getline(strstream, word, ',');
+					iterationAtFailure = stoi(word);
+					componentsArray[componentId].setIterationAtFailure(iterationAtFailure);
+
+					// this is only a flag variable which helps restore the components states to a default initial condition
+					// obs.: this flag is later used in SimulationController::ProcessUnitSC::userInputOptions as the return of
+					// method ParamsController::isSurpervisedStartingWithFailure()
+					initialFaults = true;
+					numberOfFaultyComponents++;
+				}
+				catch (invalid_argument& error) {
+					throw AbortSimulationOpExcep("Invalid parameter entered in  ComponentsOperationalState.csv, ComponentID = "
+						+ to_string(componentId) + ".\n");
+				}
 			}
 
 			componentId++;
@@ -178,11 +199,14 @@ void ParamsController::updateComponentsOperationalStateFile()
 		// if the component is in any faultMode, the string "inf" is written in the countBetweenFailures column.
 		// Otherwise, the finite countBetweenFailures's value is written
 		if (componentFaultModeId == -1) {
-			componentsOperationalStateFile << component.getCountBetweenFailures() << endl;
+			componentsOperationalStateFile << component.getCountBetweenFailures() << ",";
 		}
 		else {
-			componentsOperationalStateFile << "inf" << endl;
+			componentsOperationalStateFile << "inf" << ",";
 		}
+
+		componentsOperationalStateFile << component.getIterationOnFailure() << endl;
+
 	}
 
 	if (verboseMode) {

@@ -76,3 +76,28 @@ void std::to_json(json& j, const FailureMetricIndicatorType& obj) {
 		{"Variation", obj.variation},
 	};
 }
+
+void std::to_json(json& j, const FailureEventType& obj)
+{
+	j = json{
+		{"Component", obj.componentName},
+		{"FaultMode", obj.faultMode.name},
+		{"FaultModeId", obj.faultMode.id},
+		{"Iteration", obj.iteration},
+		{"IterationOnFailure", obj.iterationOnFailure},
+		{"PerfomedTest", testStr[obj.testName]},
+		{"FaultModeInfo", json(obj.faultMode)},
+		{"FailureDetected", obj.failureDetected}
+	};
+
+	if (obj.testName == fuseTest) {
+		j["SupervisorResult"] = obj.fuseTestResults;
+		j["NominalValues"]["Burn"] = obj.faultMode.singleFailureScenario.fuseFailureScenario.meanValueFuseResultBurn;
+		j["NominalValues"]["NotBurn"] = obj.faultMode.singleFailureScenario.fuseFailureScenario.meanValueFuseResultNotBurn;
+	}
+	else {
+		j["SupervisorResult"] = obj.keepPowerTestResults;
+		j["NominalValues"]["On"] = obj.faultMode.singleFailureScenario.keepPowFailureScenario.keepPowerReadbackOnValue;
+		j["NominalValues"]["Off"] = obj.faultMode.singleFailureScenario.keepPowFailureScenario.keepPowerReadbackOffValue;
+	}
+}

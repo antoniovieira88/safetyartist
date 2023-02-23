@@ -245,12 +245,12 @@ double ProcessUnitSR::calculateMetricVariation(
 
 double ProcessUnitSR::getFuseResult()
 {
-	return supervisedPointer->runFuseTest();
+	return supervisedPointer->getFuseResult();
 }
 
 int ProcessUnitSR::getKeepPowReadback()
 {
-	return supervisedPointer->runKeepPowTest();
+	return supervisedPointer->getKeepPowReadback();
 }
 
 void ProcessUnitSR::reset()

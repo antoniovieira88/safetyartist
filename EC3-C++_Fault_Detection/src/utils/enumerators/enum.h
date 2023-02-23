@@ -1,5 +1,6 @@
 #include <string>
 #include <map>
+#include <iostream>
 
 using namespace std;
 
@@ -51,8 +52,6 @@ namespace std {
 		processUnit = 0,
 		paramsController = 1,
 		failureController = 2,
-		supervisorSys = 3,
-		supervisedSys = 4,
 		generator = 5,
 		simulationName = 6,
 		iterationPointer = 7,
@@ -119,5 +118,10 @@ namespace std {
 		{"cm2", cm2},
 		{"cm3", cm3},
 		{"not_applicable", notApplicable}
+	};
+
+	static map<bool, string> boolStr = {
+		{false, "F"},
+		{true, "T"}
 	};
 }

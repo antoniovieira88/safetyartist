@@ -106,6 +106,12 @@
     <Filter Include="Header Files\json">
       <UniqueIdentifier>{9d9ec192-d703-464c-a408-6c797dfaaf03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\SimulationController\units\ProcessUnit">
+      <UniqueIdentifier>{fba48ef9-b048-431b-a4db-66158a8bbeed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SimulationController\units\ProcessUnit\modules">
+      <UniqueIdentifier>{5b2e27c4-ed2f-4615-abbd-a71a04116d82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app\main.cpp">
@@ -210,6 +216,18 @@
     <ClCompile Include="src\utils\json\JsonSerializer.cpp">
       <Filter>Source Files\json</Filter>
     </ClCompile>
+    <ClCompile Include="src\utils\exceptions\ForcedSimulationEndExcep.cpp">
+      <Filter>Source Files\exceptions</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\MultiFailureRunner.cpp">
+      <Filter>Source Files\SimulationController\units\ProcessUnit\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\SimulationFileHandler.cpp">
+      <Filter>Source Files\SimulationController\units\ProcessUnit\modules</Filter>
+    </ClCompile>
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\IterationRunner.cpp">
+      <Filter>Source Files\SimulationController\units\ProcessUnit\modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\structs\structs.h">
@@ -301,6 +319,18 @@
     </ClInclude>
     <ClInclude Include="src\utils\json\include\JsonSerializer.h">
       <Filter>Header Files\json</Filter>
+    </ClInclude>
+    <ClInclude Include="src\utils\exceptions\include\ForcedSimulationEndExcep.h">
+      <Filter>Header Files\exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\SimulationController\include\MultiFailureRunner.h">
+      <Filter>Header Files\SimulationController\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\SimulationController\include\SimulationFileHandler.h">
+      <Filter>Header Files\SimulationController\units</Filter>
+    </ClInclude>
+    <ClInclude Include="src\components\SimulationController\include\IterationRunner.h">
+      <Filter>Header Files\SimulationController\units</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

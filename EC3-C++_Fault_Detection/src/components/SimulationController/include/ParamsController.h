@@ -1,6 +1,7 @@
 #include "../../../utils/components/include/Component.h"
 #include "../../../utils/exceptions/include/AbortSimulationOpExcep.h"
 #include "../../../utils/exceptions/include/SimulatorFailureExcep.h"
+#include "../../../utils/exceptions/include/ForcedSimulationEndExcep.h"
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 
 AbortSimulationOpExcep::AbortSimulationOpExcep(string reason)
 {
-	AbortSimulationOpExcep::errorMsg = "Operation aborted. \nError: " + reason;
+	AbortSimulationOpExcep::errorMsg = "Operation aborted. \nReason: " + reason;
 }
 
 const char* AbortSimulationOpExcep::what() const throw()
