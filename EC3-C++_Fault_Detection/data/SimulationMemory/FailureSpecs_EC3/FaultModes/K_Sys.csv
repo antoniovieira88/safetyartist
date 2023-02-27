@@ -4,12 +4,12 @@ id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseRe
 2,Interruption of NC Contact,1.44444E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
 3,Short-circuit or decrease of insulation resistance across open contacts,6.33333E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
 4,Short-circuit or decrease of insulation resistance between coil and contact,6.33333E-2,54,4092,51,57,4091,4095,0,0,safe,no,yes,not_applicable
-5,Short-circuit or decrease of insulation resistance between contact and contact,6.33333E-2,0,0,0,0,0,0,0,1,safe,outside_scope,yes,not_applicable
+5,Short-circuit or decrease of insulation resistance between contact and contact,6.33333E-2,0,0,0,0,0,0,0,1,safe,outside_scope,no,not_applicable
 6,Welding of NO contacts,1.44444E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
 7,Welding of NC contacts,1.44444E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
 8,Increase of NO contact resistance,1.44444E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
 9,Increase of NC contact resistance,1.44444E-2,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
-10,Contact chatter,2.88889E-2,0,0,0,0,0,0,0,1,safe,outside_scope,yes,not_applicable
+10,Contact chatter,2.88889E-2,0,0,0,0,0,0,0,1,safe,outside_scope,no,not_applicable
 11,Increase of pick-up current,7.85714E-2,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
 12,Decrease of pick-up current,2.88889E-2,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
 13,Increase of drop-away current,7.85714E-2,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
