@@ -125,3 +125,52 @@ void SimulationFileHandler::createSimulationFiles(string simulationName)
 		createDataMemoryCSVFiles(simulationName);
 	}
 }
+
+string SimulationFileHandler::createLogFileForComponentAvaliation(string componentName, string faultModesAvaliationsDir)
+{
+	string filename = componentName + "_AnalysisResult";
+	return FileSysHandler::createJsonFile(filename, faultModesAvaliationsDir);
+}
+
+string SimulationFileHandler::createFaultModesAvaliationDir(string simulationName)
+{
+	const string faultModesAvaliationsBaseDir = simulationsDir + "/" + simulationName;
+	FileSysHandler::createDirectories(faultModesAvaliationsBaseDir, { "FaultModesAnalysis" });
+	return faultModesAvaliationsBaseDir + "/FaultModesAnalysis";
+}
+
+void SimulationFileHandler::resetCSVFiles(string simulationName)
+{
+	createLogAndStatusCSVFiles(simulationName);
+	createDataMemoryCSVFiles(simulationName);
+}
+
+void SimulationFileHandler::defineSimulationParamsFile(SimulationSpecificParamsType simulationParams, string simulationName)
+{
+	ofstream simulationParamsFile;
+
+	simulationParamsFile.open(simulationsDir + "/" + simulationName + "/SimulationParams.csv", std::ios::app);
+
+	// header of the file
+	simulationParamsFile << "parameter,value" << endl;
+
+	// Supervisor (doubles)
+	simulationParamsFile << "overallSilhouetteTolerance," << simulationParams.overallSilhouetteTolerance << endl;
+	simulationParamsFile << "silhouetteDiffTolerance," << simulationParams.silhouetteDiffTolerance << endl;
+	simulationParamsFile << "numberOfPointsPerClusterDiffTolerance," << simulationParams.numberOfPointsPerClusterDiffTolerance << endl;
+	// Supervised (doubles)
+	simulationParamsFile << "nominalFuseResultBurn," << simulationParams.nominalFuseResultBurn << endl;
+	simulationParamsFile << "nominalFuseResultNotBurn," << simulationParams.nominalFuseResultNotBurn << endl;
+	simulationParamsFile << "minNominalFuseResultBurn," << simulationParams.minNominalFuseResultBurn << endl;
+	simulationParamsFile << "maxNominalFuseResultBurn," << simulationParams.maxNominalFuseResultBurn << endl;
+	simulationParamsFile << "minNominalFuseResultNotBurn," << simulationParams.minNominalFuseResultNotBurn << endl;
+	simulationParamsFile << "maxNominalFuseResultNotBurn," << simulationParams.maxNominalFuseResultNotBurn << endl;
+	simulationParamsFile << "maxStdDeviation," << simulationParams.maxStdDeviation << endl;
+	// Simulation Controller (doubles)
+	simulationParamsFile << "iterationEquivalentTime," << simulationParams.iterationEquivalentTime << endl;
+	// integers
+	simulationParamsFile << "simulationSeed," << simulationParams.simulationSeed << endl;
+	simulationParamsFile << "supervisorMaxNumberOfRegisters," << simulationParams.maxNumberOfRegisters;
+
+	simulationParamsFile.close();
+}

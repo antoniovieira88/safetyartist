@@ -55,8 +55,7 @@ private:
 	void loadMtRandEngines();
 	void saveMtRandEngines();
 
-	void createSimulationFiles(string simulationName);
-	void avaliateComponentFaultModes(Component& component, string componentJsonDestinyFilePath);
+	void avaliateComponentFaultModes(Component& component, vector<FaultModeAnalysisResultType>& faultModeAnalysisResultArray);
 	void singleFailureInjectionOption();
 	void singleFailureInjectionTest();
 
@@ -64,29 +63,15 @@ private:
 
 	void chooseVerboseMode();
 	void createNewSimulation();
-	void createSimulationParams(string simulationName);
-	bool searchForSimulationDirectories(string simulationName);
+	void collectNewSimulationParams(SimulationSpecificParamsType& simulationParams, string simulationName);
 	void loadSimulation();
 	void selectSimulation();
 	void setSimulationParams();
-	void createLogAndStatusCSVFiles(string simulationName);
-	void createDataMemoryCSVFiles(string simulationName);
 	void printVerboseMode();
-	void recordHistoricalFailureLog(bool noFaults, bool failureDetected, string LogError = "");
-	string failedComponentsListString();
-
-	string createLogFileForComponentAvaliation(string componentName, string faultModesAvaliationsDir);
-	string createFaultModesAvaliationDir();
 
 	void collectResultsFromSingleIteration(FuseTestResultsType& fuseTestResults, KeepPowerTestResultsType& keepPowerTestResults);
 
-	void exportJsonFaultModeAnalysisArray(vector<FaultModeAnalysisResultType>& faultModeData, string destinyFilePath);
-	void updateFailureEventsArray(bool failureDetected, test testName);
-
 	test getNextTestToBePerfomed();
-	void verifyTestScenarioForSimulationEnd(test perfomedTest);
-
-	void exportFailureEventsHistoryJson();
 
 	void multipleFailuresTestOption();
 };

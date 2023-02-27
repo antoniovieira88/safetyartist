@@ -11,6 +11,10 @@ public:
 	void createLogAndStatusCSVFiles(string simulationName);
 	void createDataMemoryCSVFiles(string simulationName);
 	void exportFailureEventsHistoryJson(vector<FailureEventType>& failureEventsArray, int iteration, string simulationName);
+	string createLogFileForComponentAvaliation(string componentName, string faultModesAvaliationsDir);
+	string createFaultModesAvaliationDir(string simulationName);
+	void resetCSVFiles(string simulationName);
+	void defineSimulationParamsFile(SimulationSpecificParamsType simulationParams, string simulationName);
 private:
 
 	string dataMemoryDir, simulationMemoryDir, simulationsDir;

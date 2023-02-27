@@ -33,6 +33,7 @@ void IterationRunner::runTest()
 	// 'noFaults' indicates whenever there is a failed component or not
 	noFaults = (testScenario.numberOfFailedComponents == 0);
 
+
 	if (verboseMode && !noFaults) {
 		cout << endl << "TestScenario with failures" << endl;
 		cout << "Number of Failed Components: " << testScenario.numberOfFailedComponents << endl;

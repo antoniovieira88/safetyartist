@@ -2,7 +2,8 @@
 
 void std::to_json(json& j, const FaultModeAnalysisResultType& obj) {
 	j = json{
-		{"FaultModeId", obj.faultMode.id},
+		{"ComponentName", obj.componentName},
+		{"FaultModeId", to_string(obj.faultMode.id)},
 		{"FaultModeName", obj.faultMode.name},
 		{"AddInfo", json(obj.faultMode)},
 		{"FuseTest", json(obj.fuseTestResult)},
@@ -13,8 +14,8 @@ void std::to_json(json& j, const FaultModeAnalysisResultType& obj) {
 void std::to_json(json& j, const FaultModeType& obj)
 {
 	j = json{
-		{"componentId", obj.componentId},
-		{"probability", obj.probability},
+		{"componentId", to_string(obj.componentId)},
+		{"probability", to_string(obj.probability)},
 		{"fmSafety", fmSafetyStr[obj.fmSafety]},
 		{"fmDetectableFuse", fmDetectableStr[obj.fmDetectableFuse]},
 		{"fmDetectableKeepPow", fmDetectableStr[obj.fmDetectableKeepPow]},
@@ -24,29 +25,32 @@ void std::to_json(json& j, const FaultModeType& obj)
 
 void std::to_json(json& j, const FuseTestResultsType& obj) {
 	j = json{
-		{"Burn", obj.fuseResultBurn},
-		{"NotBurn", obj.fuseResultNotBurn},
+		{"Burn", to_string(obj.fuseResultBurn)},
+		{"NotBurn", to_string(obj.fuseResultNotBurn)},
 		{"FaultDiagnosis", json(obj.faultDiagnosis)},
 		{"previousMetrics", json(obj.previousMetrics)},
-		{"newMetrics", json(obj.newMetrics)}
+		{"newMetrics", json(obj.newMetrics)},
+		{"overallScoreVar", convertDoubleToStr(obj.newMetrics.overallSilhouette - obj.previousMetrics.overallSilhouette)},
+		{"cluster1ScoreVar", convertDoubleToStr(obj.newMetrics.silhouetteCluster1 - obj.previousMetrics.silhouetteCluster1)},
+		{"cluster2ScoreVar", convertDoubleToStr(obj.newMetrics.silhouetteCluster2 - obj.previousMetrics.silhouetteCluster2)},
 	};
 }
 
 void std::to_json(json& j, const MetricsFuseTestType& obj)
 {
 	j = json{
-		{"silhouetteCluster1", obj.silhouetteCluster1},
-		{"silhouetteCluster2", obj.silhouetteCluster2},
-		{"numPointsCluster1", obj.numPointsCluster1},
-		{"numPointsCluster2", obj.numPointsCluster2},
-		{"overallSilhouette", obj.overallSilhouette},
+		{"silhouetteCluster1", convertDoubleToStr(obj.silhouetteCluster1)},
+		{"silhouetteCluster2", convertDoubleToStr(obj.silhouetteCluster2)},
+		{"numPointsCluster1", convertDoubleToStr(obj.numPointsCluster1)},
+		{"numPointsCluster2", convertDoubleToStr(obj.numPointsCluster2)},
+		{"overallSilhouette", convertDoubleToStr(obj.overallSilhouette)},
 	};
 }
 
 void std::to_json(json& j, const KeepPowerTestResultsType& obj) {
 	j = json{
-		{"On", obj.keepPowerReadbackOn},
-		{"Off", obj.keepPowerReadbackOff},
+		{"On", to_string(obj.keepPowerReadbackOn)},
+		{"Off", to_string(obj.keepPowerReadbackOff)},
 		{"FaultDiagnosis", json(obj.faultDiagnosis)},
 		{"previousMetrics", json(obj.previousMetrics)},
 		{"newMetrics", json(obj.newMetrics)}
@@ -56,14 +60,14 @@ void std::to_json(json& j, const KeepPowerTestResultsType& obj) {
 void std::to_json(json& j, const MetricsKeepPowerTestType& obj)
 {
 	j = json{
-		{"numPointsCluster1", obj.numPointsCluster1},
-		{"numPointsCluster2", obj.numPointsCluster2},
+		{"numPointsCluster1", to_string(obj.numPointsCluster1)},
+		{"numPointsCluster2", to_string(obj.numPointsCluster2)},
 	};
 }
 
 void std::to_json(json& j, const FaultDiagnosisType& obj) {
 	j = json{
-		{"Failure", obj.failure},
+		{"Failure", boolStr[obj.failure]},
 		{"PerfomedTest", testStr[obj.perfomedTest]},
 		{"FailureIndicators", json(obj.failureIndicators)},
 	};
@@ -72,8 +76,8 @@ void std::to_json(json& j, const FaultDiagnosisType& obj) {
 void std::to_json(json& j, const FailureMetricIndicatorType& obj) {
 	j = json{
 		{"Metric", metricStr[obj.metric]},
-		{"Tolerance", obj.tolerance},
-		{"Variation", obj.variation},
+		{"Tolerance", to_string(obj.tolerance)},
+		{"Variation", convertDoubleToStr(obj.variation)},
 	};
 }
 
@@ -100,4 +104,13 @@ void std::to_json(json& j, const FailureEventType& obj)
 		j["NominalValues"]["On"] = obj.faultMode.singleFailureScenario.keepPowFailureScenario.keepPowerReadbackOnValue;
 		j["NominalValues"]["Off"] = obj.faultMode.singleFailureScenario.keepPowFailureScenario.keepPowerReadbackOffValue;
 	}
+}
+
+string std::convertDoubleToStr(double value)
+{
+	ostringstream ss;
+
+	ss << value;
+
+	return ss.str();
 }

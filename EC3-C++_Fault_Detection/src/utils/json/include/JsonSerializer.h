@@ -1,7 +1,7 @@
 #include "../../structs/structs.h"
 #include <nlohmann/json.hpp>
 
-using json = nlohmann::json;
+using json = nlohmann::ordered_json;
 
 namespace std {
 	void to_json(json& j, const FaultModeAnalysisResultType& obj);
@@ -21,4 +21,6 @@ namespace std {
 	void to_json(json& j, const FailureMetricIndicatorType& obj);
 
 	void to_json(json& j, const FailureEventType& obj);
+
+	string convertDoubleToStr(double value);
 }

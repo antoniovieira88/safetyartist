@@ -109,6 +109,7 @@ struct KeepPowerTestResultsType {
 };
 
 struct FaultModeAnalysisResultType {
+	string componentName;
 	FaultModeType faultMode;
 	FuseTestResultsType fuseTestResult;
 	KeepPowerTestResultsType keepPowerTestResult;

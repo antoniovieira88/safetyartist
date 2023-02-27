@@ -1,6 +1,11 @@
 #include <string>
 #include <map>
 #include <iostream>
+#include <fstream>
+#include <sstream>
+#include <vector>
+#include <random>
+#include <limits>
 
 using namespace std;
 
@@ -121,7 +126,7 @@ namespace std {
 	};
 
 	static map<bool, string> boolStr = {
-		{false, "F"},
-		{true, "T"}
+		{false, "False"},
+		{true, "True"}
 	};
 }

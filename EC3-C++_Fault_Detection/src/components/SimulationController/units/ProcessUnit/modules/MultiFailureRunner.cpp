@@ -179,8 +179,7 @@ void MultiFailureRunner::restoreDefaultSimulationCondition()
 {
 	resetSupervisor();
 	failureController.resetComponentsOperationalStates();
-	simulationFileHandler.createLogAndStatusCSVFiles(simulationName);
-	simulationFileHandler.createDataMemoryCSVFiles(simulationName);
+	simulationFileHandler.resetCSVFiles(simulationName);
 }
 
 void MultiFailureRunner::resetSupervisor()
