@@ -18,11 +18,11 @@ id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseRe
 16,Increase of Gate Threshold Voltage,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,yes,not_applicable
 17,Decrease of Gate Threshold Voltage,1.30769E-2,0,2038,0,0,0,4093,0,1,safe,maybe,no,cm2
 18,Decrease of Drain-Source Breakdown Voltage,1.30769E-2,0,2038,0,0,0,4093,0,1,safe,maybe,no,cm2
-19,Decrease of Gate-Source Maximum Rated Voltage,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,no,not_applicable
+19,Decrease of Gate-Source Maximum Rated Voltage,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,yes,not_applicable
 20,Decrease of Drain-Gate Maximum Rated Voltage,1.30769E-2,2038,2038,0,4093,0,4093,0,1,safe,maybe,no,cm2
 21,Change of Turn-On Time,1.30769E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
 22,Change of Turn-Off Time,1.30769E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
-23,Increase of Leakage Current IGS,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,no,not_applicable
+23,Increase of Leakage Current IGS,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,yes,not_applicable
 24,Increase of Leakage Current IDS,1.30769E-2,0,2038,0,0,0,4093,0,1,safe,maybe,no,cm2
 25,Increase of Leakage Current IGD,1.30769E-2,2038,2038,0,4093,0,4093,0,1,safe,maybe,no,cm2
 26,Change of Static Drain to Source On-State Resistance,1.30769E-2,2063,4092,111,4087,4091,4095,0,1,safe,maybe,no,cm2
