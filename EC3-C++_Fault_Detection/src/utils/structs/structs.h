@@ -122,6 +122,7 @@ struct FailureEventType {
 	int iteration;
 	int iterationOnFailure;
 	bool failureDetected;
+	bool forcedEnd;
 	FuseTestResultsType fuseTestResults;
 	KeepPowerTestResultsType keepPowerTestResults;
 };

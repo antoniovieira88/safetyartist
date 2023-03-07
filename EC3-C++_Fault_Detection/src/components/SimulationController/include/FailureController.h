@@ -33,9 +33,9 @@ private:
 
 	int numberOfFailedComponents, maxNumberOfFailuresWithImpact;
 
-	void updateTestScenarioFlags(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed);
+	void updateTestScenarioFlags(test nextTestToBePerfomed);
 
-	fmDetectable getFmDetectableForNextText(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed);
+	fmDetectable getFmDetectableForATest(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed);
 
 	void resolveFailureScenarioForMultipleFailuresWithImpact(FaultModeType* pointerForNewFaultMode);
 

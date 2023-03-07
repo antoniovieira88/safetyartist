@@ -69,3 +69,16 @@ bool FileSysHandler::searchForDirectories(vector<string> dirs)
 	}
 	return dirsFound;
 }
+
+void FileSysHandler::listAllFiles(string srcDir, vector<string>& filesList, string regexExpr)
+{
+	bool dirFound = searchForDirectories({ srcDir });
+
+	if (dirFound) {
+		for (const auto& entry : filesystem::directory_iterator(srcDir)) {
+			string filename = entry.path().filename().string();
+			if (regex_search(filename, regex(regexExpr)))
+				filesList.push_back(entry.path().filename().string());
+		}
+	}
+}

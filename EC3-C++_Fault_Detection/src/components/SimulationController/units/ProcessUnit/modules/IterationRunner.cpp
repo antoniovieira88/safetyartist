@@ -54,6 +54,7 @@ void IterationRunner::runTest()
 			cout << endl << "-> There was a fault in the supervised system"
 				<< " but supervisor didn't detect it in " << testStr[testName] << endl;
 
+			updateTestScenarioFlags(testName);
 			recordHistoricalFailureLog(noFaults, failureDetected);
 			updateFailureEventsArray(failureDetected, testName);
 
@@ -69,6 +70,7 @@ void IterationRunner::runTest()
 		if (noFaults) cout << "-> Supervisor identified a failure that doesn't exist (misdiagnose) in " << endl;
 
 		failureLog = excep.getFailureLog();
+		updateTestScenarioFlags(testName);
 		recordHistoricalFailureLog(noFaults, failureDetected, failureLog);
 		updateFailureEventsArray(failureDetected, testName);
 
@@ -78,7 +80,8 @@ void IterationRunner::runTest()
 	}
 	catch (ForcedSimulationEndExcep& excep) {
 		cout << excep.what() << endl;
-		updateFailureEventsArray(failureDetected, testName);
+
+		failureEventsArray.back().forcedEnd = true;
 
 		cout << endl << "Simulation finished in " << testStr[testName] << endl;
 
@@ -186,6 +189,7 @@ void IterationRunner::updateFailureEventsArray(bool failureDetected, test testNa
 		failureEvent.failureDetected = failureDetected;
 		failureEvent.fuseTestResults = supervisorPointer->getFuseTestResults();
 		failureEvent.keepPowerTestResults = supervisorPointer->getKeepPowerTestResults();
+		failureEvent.forcedEnd = false;
 
 		failureEventsArray.push_back(failureEvent);
 
@@ -197,3 +201,27 @@ void IterationRunner::updateFailureEventsArray(bool failureDetected, test testNa
 
 	}
 }
+
+void IterationRunner::updateTestScenarioFlags(test performedTest)
+{
+	if (testScenario.newFaultModesArray.size() > 0) {
+		FaultModeType* pointerForLastFaultMode = testScenario.newFaultModesArray.back();
+		fmDetectable fmDetectable = getFmDetectableForATest(pointerForLastFaultMode, performedTest);
+		fmSafety fmSafety = pointerForLastFaultMode->fmSafety;
+
+		if (fmDetectable == yes) testScenario.detectableFailureGenerated = true;
+		if (fmDetectable == outsideScope) testScenario.outsideScopeFailureGenerated = true;
+		if (fmDetectable == impactless) testScenario.impactlessFailureGenerated = true;
+		if (fmSafety == unsafe) testScenario.unsafeFailureGenerated = true;
+	}
+}
+
+fmDetectable IterationRunner::getFmDetectableForATest(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed)
+{
+	if (nextTestToBePerfomed == fuseTest)
+		return pointerForFaultMode->fmDetectableFuse;
+
+	return pointerForFaultMode->fmDetectableKeepPow;
+}
+
+

@@ -30,12 +30,20 @@ private:
 
 	bool& verboseMode;
 
-	string simulationsDir;
+	string simulationsDir, outputFilename;
 	vector<InjectedFailureType> injectedFailuresArray;
 
-	void collectInjectedFailures();
-	void runSimulationCycleWithInjectedFailures();
+	void chooseOption();
+
+	void runAllTests(string srcDir);
+	void runSpecificTest(string inputFilename, string srcDir);
+
+	void collectInjectedFailures(string inputFilename, string srcDir);
+	void runSimulationCycleWithInjectedFailures(string testName);
 
 	void restoreDefaultSimulationCondition();
 	void resetSupervisor();
+
+	string readTestName();
+	string extractTestName(string inputFilename);
 };

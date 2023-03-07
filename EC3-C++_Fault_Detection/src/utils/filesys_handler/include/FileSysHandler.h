@@ -1,5 +1,6 @@
 #include <filesystem>
 #include <fstream>
+#include <regex>
 #include "../../../utils/json/include/JsonSerializer.h"
 
 #pragma once
@@ -15,5 +16,5 @@ public:
 	static string createJsonFile(string filename, string relativeBaseDir);
 	static bool searchForDirectory(string dir);
 	static bool searchForDirectories(vector<string> dirs);
-
+	static void listAllFiles(string srcDir, vector<string>& filesList, string regexExpr = ".*");
 };

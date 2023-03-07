@@ -7,6 +7,6 @@ id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseRe
 5,Decrease of Light Sensitivity,0.08333,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
 6,Increase of Leakage Current,0.12500,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
 7,Reduced Insulation Between Input and Output,0.12500,54,4092,51,57,4091,4095,0,0,safe,no,yes,not_applicable
-8,Change on Switching Time,0.08333,54,4092,51,57,4091,4095,1,0,safe,no,no,not_applicable
+8,Change on Switching Time,0.08333,54,4092,51,57,4091,4095,1,0,safe,no,no,cm1
 9,Increase on Current Gain,0.08333,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
 10,Decrease on Current Gain,0.08333,0,0,0,0,0,0,0,1,safe,outside_scope,no,not_applicable

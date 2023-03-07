@@ -10,11 +10,13 @@ public:
 	void exportJsonFaultModeAnalysisArray(vector<FaultModeAnalysisResultType>& faultModeDataArray, string destinyFilePath);
 	void createLogAndStatusCSVFiles(string simulationName);
 	void createDataMemoryCSVFiles(string simulationName);
-	void exportFailureEventsHistoryJson(vector<FailureEventType>& failureEventsArray, int iteration, string simulationName);
+	void exportFailureEventsHistoryJson(vector<FailureEventType>& failureEventsArray, string filename, string simulationName);
+	void exportFailureEventsHistoryJson(vector<FailureEventType>& failureEventsArray, string destinyFilePath);
 	string createLogFileForComponentAvaliation(string componentName, string faultModesAvaliationsDir);
 	string createFaultModesAvaliationDir(string simulationName);
 	void resetCSVFiles(string simulationName);
 	void defineSimulationParamsFile(SimulationSpecificParamsType simulationParams, string simulationName);
+	void createMultiFailureOutputLogCSVFiles(string outputLogBaseDir, string testName);
 private:
 
 	string dataMemoryDir, simulationMemoryDir, simulationsDir;

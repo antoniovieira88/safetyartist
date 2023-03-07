@@ -68,7 +68,7 @@ void std::to_json(json& j, const MetricsKeepPowerTestType& obj)
 void std::to_json(json& j, const FaultDiagnosisType& obj) {
 	j = json{
 		{"Failure", boolStr[obj.failure]},
-		{"PerfomedTest", testStr[obj.perfomedTest]},
+		{"PerformedTest", testStr[obj.perfomedTest]},
 		{"FailureIndicators", json(obj.failureIndicators)},
 	};
 }
@@ -89,9 +89,10 @@ void std::to_json(json& j, const FailureEventType& obj)
 		{"FaultModeId", obj.faultMode.id},
 		{"Iteration", obj.iteration},
 		{"IterationOnFailure", obj.iterationOnFailure},
-		{"PerfomedTest", testStr[obj.testName]},
+		{"PerformedTest", testStr[obj.testName]},
 		{"FaultModeInfo", json(obj.faultMode)},
-		{"FailureDetected", obj.failureDetected}
+		{"FailureDetected", obj.failureDetected},
+		{"ForcedEnd", obj.forcedEnd}
 	};
 
 	if (obj.testName == fuseTest) {

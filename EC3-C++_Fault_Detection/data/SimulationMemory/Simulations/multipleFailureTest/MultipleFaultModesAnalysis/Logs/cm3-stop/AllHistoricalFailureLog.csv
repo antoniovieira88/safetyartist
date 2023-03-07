@@ -1,0 +1,2 @@
+iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafeFailureGenerated,outsideScopeFailureGenerated,detectableFailureGenerated,impactlessFailureGenerated
+60,True,False,1,[DC_DC_Sys],True,False,False,False

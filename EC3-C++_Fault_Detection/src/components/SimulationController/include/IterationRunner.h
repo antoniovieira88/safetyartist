@@ -37,4 +37,8 @@ private:
 	string failedComponentsListString();
 
 	void updateFailureEventsArray(bool failureDetected, test testName);
+
+	void updateTestScenarioFlags(test performedTest);
+
+	fmDetectable getFmDetectableForATest(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed);
 };

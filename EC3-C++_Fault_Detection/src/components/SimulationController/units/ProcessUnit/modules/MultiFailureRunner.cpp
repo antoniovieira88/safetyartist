@@ -21,6 +21,7 @@ MultiFailureRunner::MultiFailureRunner(
 	verboseMode(verboseMode)
 {
 	MultiFailureRunner::simulationsDir = simulationMemoryDir + "/Simulations";
+	MultiFailureRunner::outputFilename = "";
 	MultiFailureRunner::injectedFailuresArray = vector<InjectedFailureType>();
 }
 
@@ -42,13 +43,17 @@ void MultiFailureRunner::run()
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 	if (userOption == 'y') {
-		cout << "Perform an experimental test over pre-determined injected failures. In order to inject a certain failure, "
-			<< "enter the related specifications in a new line of the 'InjectedFailuresInput.csv' file following the format below: " << endl;
-		cout << "'hitIteration','componentId','faultModeId'" << endl << endl;
-		cout << "-> Example: 12,0,50" << endl;
-		cout << "Important Note: The failures must be entered in the order correspondent to the hit iterations" << endl;
+		cout << endl << "In order to perform an experimental test over pre-determined injected failures, "
+			<< "follow these steps: " << endl << endl;
+		cout << "1. Create a new file '[my-test-name]_input.csv' in 'MultipleFaultModesAnalysis/Results' directory."
+			<< endl << "-> Example: my-test_input.csv " << endl;
+		cout << "2. Insert the csv header 'hitIteration,componentId,faultModeId' in the first line of the file." << endl
+			<< "For each failure to be injected, write a new line with the specifications indicated in the header." << endl
+			<< "Use commas to separate the information. " << endl;
+		cout << "-> Example: 12,0,50" << endl << endl;
+		cout << "Important Note: The failures must be entered in the order correspondent to the hit iterations" << endl << endl;
 
-		cout << "Press 'c' to continue or 'q' to exit" << endl;
+		cout << "Press 'c' if you have accomplished the previous steps or 'q' to exit" << endl;
 
 		cin.get(userOption);
 		if (userOption == '\n') {
@@ -57,34 +62,92 @@ void MultiFailureRunner::run()
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
 		if (userOption == 'c') {
-			collectInjectedFailures();
-			if (injectedFailuresArray.size() > 0) {
-				runSimulationCycleWithInjectedFailures();
-			}
+			chooseOption();
 		}
 	}
 }
 
-void MultiFailureRunner::collectInjectedFailures()
+void MultiFailureRunner::chooseOption()
 {
-	fstream injectedFailureFiles;
+	char userOption = 0;
+	string testNameInput;
+
+	const string resultsDir = simulationsDir + "/" + simulationName + "/MultipleFaultModesAnalysis/Results";
+
+	cout << endl << "Options available:" << endl;
+	cout << " a) Run all the test input files available in 'MultipleFaultModesAnalysis/Results' directory" << endl;
+	cout << " b) Run a specific test input file" << endl;
+	cout << " c) Cancel operation" << endl;
+
+	cout << "Type an option to continue " << endl;
+	cout << "Input: ";
+
+	cin.get(userOption);
+	if (userOption == '\n') {
+		cin.get(userOption);
+	}
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+
+	switch (userOption) {
+	case 'a':
+		runAllTests(resultsDir);
+		break;
+	case 'b':
+		testNameInput = readTestName();
+		runSpecificTest(testNameInput + "_input.csv", resultsDir);
+		break;
+	case 'c':
+		cout << "Operation canceled" << endl;
+		break;
+	default:
+		cout << "Invalid option" << endl;
+		cout << "Operation canceled" << endl;
+		break;
+	}
+}
+
+void MultiFailureRunner::runAllTests(string srcDir)
+{
+	vector<string> inputFilesList;
+
+	FileSysHandler::listAllFiles(srcDir, inputFilesList, "(input\\.csv)");
+
+	for (string& inputFilename : inputFilesList) {
+		runSpecificTest(inputFilename, srcDir);
+	}
+}
+
+void MultiFailureRunner::runSpecificTest(string inputFilename, string srcDir)
+{
+	collectInjectedFailures(inputFilename, srcDir);
+	if (injectedFailuresArray.size() > 0) {
+		string testName = extractTestName(inputFilename);
+		runSimulationCycleWithInjectedFailures(testName);
+	}
+}
+
+void MultiFailureRunner::collectInjectedFailures(string inputFilename, string srcDir)
+{
+	fstream injectedFailureFile;
 	string line, word;
 
 	int componentId, faultModeId, hitIteration;
-	const string simulationDir = simulationsDir + "/" + simulationName;
 
-	injectedFailureFiles.open(simulationDir + "/InjectedFailuresInput.csv", ios::in);
-	if (injectedFailureFiles.fail()) {
+	injectedFailuresArray.clear();
+
+	injectedFailureFile.open(srcDir + "/" + inputFilename, ios::in);
+
+	if (injectedFailureFile.fail()) {
 		throw SimulatorFailureExcep(
 			simulationsDir +
 			"/InjectedFailuresInput.csv file could not be accessed",
 			"SimulationController.ProcessUnit.MultiFailureRunner");
 	}
 	// the first line corresponds to the header, so it is ignored
-	getline(injectedFailureFiles, line);
+	getline(injectedFailureFile, line);
 
 	// each subsequent line corresponds to a injected failure
-	while (getline(injectedFailureFiles, line)) {
+	while (getline(injectedFailureFile, line)) {
 		stringstream strstream(line);
 
 		// the first word of the line is considered to be the hit iteration
@@ -106,17 +169,24 @@ void MultiFailureRunner::collectInjectedFailures()
 		injectedFailuresArray.push_back(injectedFailure);
 	}
 
-	injectedFailureFiles.close();
+	injectedFailureFile.close();
 }
 
-void MultiFailureRunner::runSimulationCycleWithInjectedFailures()
+void MultiFailureRunner::runSimulationCycleWithInjectedFailures(string testName)
 {
 	int nextHitIteration;
 	test nextTextToBePerfomed;
-	const string simulationDir = simulationsDir + "/" + simulationName;
 	bool injectionFailureTestEnd = false;
 
+	const string outputLogBaseDir = simulationsDir + "/" + simulationName + "/MultipleFaultModesAnalysis/Logs";
+	const string outputResultsDir = simulationsDir + "/" + simulationName + "/MultipleFaultModesAnalysis/Results";
+	const string outputLogDir = outputLogBaseDir + "/" + testName;
+
+	simulationFileHandler.createMultiFailureOutputLogCSVFiles(outputLogBaseDir, testName);
+
 	int* iterationPointer = supervisorPointer->getIterationPointer();
+
+	failureEventsArray.clear();
 
 	IterationRunner iterationRunner(
 		supervisorPointer,
@@ -125,7 +195,7 @@ void MultiFailureRunner::runSimulationCycleWithInjectedFailures()
 		testScenario,
 		failureEventsArray,
 		iterationPointer,
-		simulationDir,
+		outputLogDir,
 		verboseMode);
 
 	restoreDefaultSimulationCondition();
@@ -141,7 +211,6 @@ void MultiFailureRunner::runSimulationCycleWithInjectedFailures()
 				iterationRunner.runTest();
 			}
 			catch (exception& exp) {
-				cout << endl << "Injection Test finished" << endl;
 				injectionFailureTestEnd = true;
 				break;
 			}
@@ -164,15 +233,19 @@ void MultiFailureRunner::runSimulationCycleWithInjectedFailures()
 	}
 
 	if (!injectionFailureTestEnd) {
-		try {
-			iterationRunner.runTest();
-		}
-		catch (exception& exp) {
-			cout << endl << "Injection Test finished" << endl;
+		for (int i = 0; i < 2; i++) {
+			try {
+				iterationRunner.runTest();
+			}
+			catch (exception& exp) {
+				break;
+			}
 		}
 	}
 
-	simulationFileHandler.exportFailureEventsHistoryJson(failureEventsArray, *iterationPointer, simulationName);
+	cout << endl << "Injection Test finished" << endl;
+	const string outputResultFilePath = outputResultsDir + "/" + testName + "_output.json";
+	simulationFileHandler.exportFailureEventsHistoryJson(failureEventsArray, outputResultFilePath);
 }
 
 void MultiFailureRunner::restoreDefaultSimulationCondition()
@@ -187,4 +260,20 @@ void MultiFailureRunner::resetSupervisor()
 	if (supervisorPointer) {
 		supervisorPointer->reset();
 	}
+}
+
+string MultiFailureRunner::readTestName()
+{
+	string testName;
+	cout << endl << "Enter a name correspondent to the desired test" << endl;
+	cout << "Input [string]: ";
+	cin >> testName;
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	return testName;
+}
+
+string MultiFailureRunner::extractTestName(string inputFilename)
+{
+	int separatorNameIndex = inputFilename.find('_');
+	return inputFilename.substr(0, separatorNameIndex);
 }

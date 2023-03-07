@@ -1,0 +1,128 @@
+[
+    {
+        "Component": "R2_Diag",
+        "FaultMode": "Increase of Resistance Value",
+        "FaultModeId": 2,
+        "Iteration": 60,
+        "IterationOnFailure": 60,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "4",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm1"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "29.000000",
+                "numPointsCluster2": "29.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "30.000000",
+                "numPointsCluster2": "30.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "R2_Diag",
+        "FaultMode": "Increase of Resistance Value",
+        "FaultModeId": 2,
+        "Iteration": 61,
+        "IterationOnFailure": 60,
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "4",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm1"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "52.523461",
+            "NotBurn": "4094.274347",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999667",
+                "silhouetteCluster2": "0.999734",
+                "numPointsCluster1": "30",
+                "numPointsCluster2": "30",
+                "overallSilhouette": "0.9997"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999661",
+                "silhouetteCluster2": "0.999722",
+                "numPointsCluster1": "31",
+                "numPointsCluster2": "31",
+                "overallSilhouette": "0.999692"
+            },
+            "overallScoreVar": "-8.54372e-06",
+            "cluster1ScoreVar": "-5.19751e-06",
+            "cluster2ScoreVar": "-1.18899e-05"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "D_Sys",
+        "FaultMode": "Increase of Conducting-State Voltage",
+        "FaultModeId": 4,
+        "Iteration": 64,
+        "IterationOnFailure": 64,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "12",
+            "probability": "0.033330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": true,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "31.000000",
+                "numPointsCluster2": "31.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "32.000000",
+                "numPointsCluster2": "32.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 1
+        }
+    }
+]

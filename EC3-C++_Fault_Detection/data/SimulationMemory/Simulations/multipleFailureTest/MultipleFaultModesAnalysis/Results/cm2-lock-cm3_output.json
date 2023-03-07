@@ -1,0 +1,137 @@
+[
+    {
+        "Component": "R1_Sys",
+        "FaultMode": "Decrease of Resistance Value",
+        "FaultModeId": 3,
+        "Iteration": 60,
+        "IterationOnFailure": 60,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "6",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "29.000000",
+                "numPointsCluster2": "29.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "30.000000",
+                "numPointsCluster2": "30.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "R1_Sys",
+        "FaultMode": "Decrease of Resistance Value",
+        "FaultModeId": 3,
+        "Iteration": 61,
+        "IterationOnFailure": 60,
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "6",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "3808.488869",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999643",
+                "silhouetteCluster2": "0.999703",
+                "numPointsCluster1": "30",
+                "numPointsCluster2": "30",
+                "overallSilhouette": "0.999673"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998806",
+                "silhouetteCluster2": "0.995012",
+                "numPointsCluster1": "31",
+                "numPointsCluster2": "31",
+                "overallSilhouette": "0.996909"
+            },
+            "overallScoreVar": "-0.00276427",
+            "cluster1ScoreVar": "-0.000837596",
+            "cluster2ScoreVar": "-0.00469094"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 3806.0
+        }
+    },
+    {
+        "Component": "DC_DC_Sys",
+        "FaultMode": "Increase in Output Voltage",
+        "FaultModeId": 1,
+        "Iteration": 65,
+        "IterationOnFailure": 65,
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "22",
+            "probability": "0.256670",
+            "fmSafety": "unsafe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm3"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": true,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "3807.460303",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.99807",
+                "silhouetteCluster2": "0.990869",
+                "numPointsCluster1": "32",
+                "numPointsCluster2": "32",
+                "overallSilhouette": "0.994469"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.997423",
+                "silhouetteCluster2": "0.987264",
+                "numPointsCluster1": "33",
+                "numPointsCluster2": "33",
+                "overallSilhouette": "0.992343"
+            },
+            "overallScoreVar": "-0.002126",
+            "cluster1ScoreVar": "-0.000647077",
+            "cluster2ScoreVar": "-0.00360492"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    }
+]

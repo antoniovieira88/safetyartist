@@ -81,7 +81,7 @@ void ProcessUnitSC::run()
 		cout << " f) Run multiple failure injection test" << endl;
 		cout << " g) Exit program" << endl << endl;
 
-		cout << "Type an option to continue: " << endl;
+		cout << "Type an option to continue " << endl;
 		cout << "Input: ";
 
 		cin.get(userOption);
@@ -698,7 +698,8 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 	cout << endl << "Cycle of iterations completed" << endl;
 
 	SimulationFileHandler simulationFileHandler(dataMemoryDir, simulationMemoryDir);
-	simulationFileHandler.exportFailureEventsHistoryJson(failureEventsArray, *iterationPointer, simulationName);
+	string outputFilePath = "SimulationCycle" + to_string(*iterationPointer);
+	simulationFileHandler.exportFailureEventsHistoryJson(failureEventsArray, outputFilePath);
 }
 
 void ProcessUnitSC::initializeParamsController()

@@ -42,11 +42,15 @@ void ParamsController::loadFailureSpecs()
 	while (getline(faultRatesFile, line)) {
 		stringstream strstream(line);
 
-		// the first word of the line is considered to be the component name
+		// the first word of the line corresponds to the componentId, which only servers
+		// as line number helper. Therefore, it is ignored.
+		getline(strstream, word, ',');
+
+		// the second word of the line corresponds to the component name
 		getline(strstream, word, ',');
 		componentName = word;
 
-		// the second word of the line is considered to be the failure rate
+		// the third word of the line corresponds to the failure rate
 		getline(strstream, word, ',');
 		faultRate = stod(word);
 
@@ -97,12 +101,17 @@ int ParamsController::setComponentsInitialOperationalState()
 		while (std::getline(componentsOperationalStateFile, line)) {
 			stringstream strstream(line);
 
-			// the first word is considered to be the component id
+			// the first word corresponds to the component id
 			// in this loop, it is simply ignored, as the components list has already been defined when this function is called
 			std::getline(strstream, word, ',');
 
+
+			// the second word corresponds to the component name
+			// in this loop, it is simply ignored
+			std::getline(strstream, word, ',');
+
 			try {
-				// the second word is considered to be the faultModeId from the last iteration
+				// the second word corresponds to the faultModeId from the last iteration
 				std::getline(strstream, word, ',');
 				faultModeId = stoi(word);
 			}
@@ -123,7 +132,7 @@ int ParamsController::setComponentsInitialOperationalState()
 			// only when there is no fault, it is necessary to retrieve the countBetweenFailures from the last iteration
 			//  -> obs.: "-1" indicates no fault
 			if (faultModeId == -1) {
-				// the second word is considered to be the countBetweenFailures
+				// the second word corresponds to the countBetweenFailures
 				std::getline(strstream, word);
 				initialCountBetweenFailures = stoi(word);
 				componentsArray[componentId].setCountBetweenFailures(initialCountBetweenFailures);
@@ -132,12 +141,12 @@ int ParamsController::setComponentsInitialOperationalState()
 			// only when there is a fault is necessary to retrieve the interationAtFailure from the previous failure
 			else {
 				try {
-					// the second word is considered to be the countBetweenFailures.
+					// the second word corresponds to the countBetweenFailures.
 					// In this case, this value is ignored (we already know it is set to infinity since
 					// the component has a fault)
 					std::getline(strstream, word, ',');
 
-					// the third word is considered to be the iteration number at which the component first failed
+					// the third word corresponds to the iteration number at which the component first failed
 					// -> obs.: "-1" indicates no fault
 					std::getline(strstream, word, ',');
 					iterationAtFailure = stoi(word);

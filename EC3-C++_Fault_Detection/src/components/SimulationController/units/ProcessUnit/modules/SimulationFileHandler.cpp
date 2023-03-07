@@ -21,11 +21,24 @@ void SimulationFileHandler::exportJsonFaultModeAnalysisArray(vector<FaultModeAna
 
 };
 
-void SimulationFileHandler::exportFailureEventsHistoryJson(vector<FailureEventType>& failureEventsArray, int iteration, string simulationName)
+void SimulationFileHandler::exportFailureEventsHistoryJson(vector<FailureEventType>& failureEventsArray, string destinyFilePath)
+{
+	json failureEventsHistoryJson = json(failureEventsArray);
+
+	ofstream simulationJsonDataFile(
+		destinyFilePath,
+		std::ios_base::out);
+
+	simulationJsonDataFile << failureEventsHistoryJson.dump(4, ' ');
+
+	simulationJsonDataFile.close();
+}
+
+void SimulationFileHandler::exportFailureEventsHistoryJson(vector<FailureEventType>& failureEventsArray, string filename, string simulationName)
 {
 	json failureEventsHistoryJson = json(failureEventsArray);
 	const string destinyFilePath = simulationsDir + "/" + simulationName +
-		"/FailureEventsHistory" + to_string(iteration) + ".json";
+		"/" + filename + "_FailureEventsHistory.json";
 
 	ofstream simulationJsonDataFile(
 		destinyFilePath,
@@ -83,6 +96,25 @@ void SimulationFileHandler::createLogAndStatusCSVFiles(string simulationName)
 		{ "iteration", "numPointsCluster1", "numPointsCluster2" });
 
 	FileSysHandler::copyFileOverwrite("ComponentsInitialState.csv", "ComponentsOperationalState.csv", dirSpecs, dirSM);
+}
+
+void SimulationFileHandler::createMultiFailureOutputLogCSVFiles(string outputLogBaseDir, string testName)
+{
+	FileSysHandler::createDirectories(outputLogBaseDir, { testName });
+
+	const string outputLogDir = outputLogBaseDir + "/" + testName;
+
+	FileSysHandler::createCSVFile(
+		"HistoricalCaughtFailureMetricsLog",
+		outputLogDir,
+		{ "iteration", "testName", "metric", "tolerance", "variation" });
+
+	FileSysHandler::createCSVFile(
+		"AllHistoricalFailureLog",
+		outputLogDir,
+		{ "iteration", "failureOccurred", "failureCaught", "numberOfFailedComponents", "failedComponentsList",
+		"unsafeFailureGenerated", "outsideScopeFailureGenerated",
+		"detectableFailureGenerated", "impactlessFailureGenerated" });
 }
 
 void SimulationFileHandler::createDataMemoryCSVFiles(string simulationName)

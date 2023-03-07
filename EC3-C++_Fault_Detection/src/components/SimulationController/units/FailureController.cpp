@@ -37,8 +37,6 @@ void FailureController::defineNewRandomTestScenario(test nextTestToBePerfomed)
 		if (status != noFault) {
 			int faultModeId = component.getCurrentFaultModeId();
 			FaultModeType* pointerForFaultMode = component.getPointerForFaultMode(faultModeId);
-			updateTestScenarioFlags(pointerForFaultMode, nextTestToBePerfomed);
-
 			if (status == newFault) {
 				addNewFailureToTestScenario(pointerForFaultMode, nextTestToBePerfomed);
 			}
@@ -99,6 +97,7 @@ void FailureController::reset()
 	testScenario.fuseFailureScenarioPointer = nullptr;
 	testScenario.keepPowFailureScenarioPointer = nullptr;
 	testScenario.newFaultModesArray.clear();
+	testScenario.failedComponentsIdArray.clear();
 
 	failureScenarioFuseTstLocked = false;
 	failureScenarioKeepPowTstLocked = false;
@@ -106,10 +105,11 @@ void FailureController::reset()
 	failuresWithImpactArray.clear();
 }
 
-void FailureController::updateTestScenarioFlags(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed)
+void FailureController::updateTestScenarioFlags(test performedTest)
 {
-	fmDetectable fmDetectable = getFmDetectableForNextText(pointerForFaultMode, nextTestToBePerfomed);
-	fmSafety fmSafety = pointerForFaultMode->fmSafety;
+	FaultModeType* pointerForLastFaultMode = testScenario.newFaultModesArray.back();
+	fmDetectable fmDetectable = getFmDetectableForATest(pointerForLastFaultMode, performedTest);
+	fmSafety fmSafety = pointerForLastFaultMode->fmSafety;
 
 	if (fmDetectable == yes) testScenario.detectableFailureGenerated = true;
 	if (fmDetectable == outsideScope) testScenario.outsideScopeFailureGenerated = true;
@@ -117,7 +117,7 @@ void FailureController::updateTestScenarioFlags(FaultModeType* pointerForFaultMo
 	if (fmSafety == unsafe) testScenario.unsafeFailureGenerated = true;
 }
 
-fmDetectable FailureController::getFmDetectableForNextText(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed)
+fmDetectable FailureController::getFmDetectableForATest(FaultModeType* pointerForFaultMode, test nextTestToBePerfomed)
 {
 	if (nextTestToBePerfomed == fuseTest)
 		return pointerForFaultMode->fmDetectableFuse;
@@ -130,13 +130,11 @@ void FailureController::addNewFailureToTestScenario(FaultModeType* pointerForNew
 	numberOfFailedComponents++;
 	testScenario.numberOfFailedComponents = numberOfFailedComponents;
 
-	updateTestScenarioFlags(pointerForNewFaultMode, nextTestToBePerfomed);
-
 	int failedComponentId = pointerForNewFaultMode->componentId;
 	testScenario.newFaultModesArray.push_back(pointerForNewFaultMode);
 	testScenario.failedComponentsIdArray.push_back(failedComponentId);
 
-	fmDetectable fmDetectable = getFmDetectableForNextText(pointerForNewFaultMode, nextTestToBePerfomed);
+	fmDetectable fmDetectable = getFmDetectableForATest(pointerForNewFaultMode, nextTestToBePerfomed);
 
 	int numberOFFailuresWithImpact = failuresWithImpactArray.size();
 
