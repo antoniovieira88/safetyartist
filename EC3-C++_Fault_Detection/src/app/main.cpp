@@ -1,6 +1,4 @@
-// change the directory to run different tests
-#include "../../tests/SimulationController/include/SimulationControllerTest1.h"
-//#include "../../tests/RandomGeneratorMt19937/include/RandomGeneratorTest.h"
+#include "../components/SimulationController/include/SimulationController.h"
 
 using namespace std;
 
