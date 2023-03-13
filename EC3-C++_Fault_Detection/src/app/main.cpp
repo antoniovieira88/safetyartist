@@ -6,11 +6,22 @@ using namespace std;
 
 int main()
 {
-	int dumm;
-	// function under test
+	string dataMemoryDir = "data/DataMemory";
+	string simulationMemoryDir = "data/SimulationMemory";
+	bool verboseMode = true;
+
 	try {
-		SimulationControllerTest1();
-		/*RandomGeneratorUnityUniformityTest();*/
+		Supervisor supervisor(dataMemoryDir, simulationMemoryDir);
+
+		Supervised supervised;
+
+		supervisor.attach(&supervised);
+
+		SimulationController simulationController(dataMemoryDir, simulationMemoryDir, verboseMode);
+
+		simulationController.attach(&supervisor, &supervised);
+
+		simulationController.run();
 	}
 	catch (exception& error) {
 		cout << endl << endl << error.what() << endl;

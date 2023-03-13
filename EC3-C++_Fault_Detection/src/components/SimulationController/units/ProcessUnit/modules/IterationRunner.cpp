@@ -51,7 +51,7 @@ void IterationRunner::runTest()
 			if (verboseMode) cout << endl << "-> No failure in the supervised system. Supervisor didn't detect any fault" << endl;
 		}
 		else {
-			cout << endl << "-> There was a fault in the supervised system"
+			if (verboseMode) cout << endl << "-> There was a fault in the supervised system"
 				<< " but supervisor didn't detect it in " << testStr[testName] << endl;
 
 			updateTestScenarioFlags(testName);
@@ -66,24 +66,24 @@ void IterationRunner::runTest()
 	catch (FailureDetectedExcep& excep) {
 		failureDetected = true;
 
-		cout << excep.what() << endl;
-		if (noFaults) cout << "-> Supervisor identified a failure that doesn't exist (misdiagnose) in " << endl;
+		if (verboseMode) cout << endl << excep.what() << endl;
+		if (verboseMode && noFaults) cout << endl << "-> Supervisor identified a failure that doesn't exist (misdiagnose) in " << endl;
 
 		failureLog = excep.getFailureLog();
 		updateTestScenarioFlags(testName);
 		recordHistoricalFailureLog(noFaults, failureDetected, failureLog);
 		updateFailureEventsArray(failureDetected, testName);
 
-		cout << endl << "Simulation finished in " << testStr[testName] << endl;
+		if (verboseMode) cout << endl << "Simulation finished in " << testStr[testName] << endl;
 
 		throw excep;
 	}
 	catch (ForcedSimulationEndExcep& excep) {
-		cout << excep.what() << endl;
+		if (verboseMode) cout << endl << excep.what() << endl;
 
 		failureEventsArray.back().forcedEnd = true;
 
-		cout << endl << "Simulation finished in " << testStr[testName] << endl;
+		if (verboseMode) cout << endl << "Simulation finished in " << testStr[testName] << endl;
 
 		throw excep;
 	}

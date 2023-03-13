@@ -57,7 +57,7 @@ void ProcessUnitSC::run()
 		cout << endl << "***********************";
 		cout << endl << "EC3 Fault Detection C++";
 		cout << endl << "***********************";
-		cout << endl << endl << "Main Menu" << endl << endl;
+		cout << endl << endl << "Control Menu" << endl << endl;
 		printVerboseMode();
 		if (simulationName != "") {
 			cout << "Current selected simulation: '" << simulationName << "'" << endl;
@@ -150,7 +150,12 @@ void ProcessUnitSC::run()
 			break;
 		case 102:
 			// option f)
-			multipleFailuresTestOption();
+			try {
+				multipleFailuresTestOption();
+			}
+			catch (AbortSimulationOpExcep& error) {
+				cout << endl << error.what() << endl;
+			}
 			break;
 		case 103:
 			// option g)
@@ -395,6 +400,8 @@ test ProcessUnitSC::getNextTestToBePerfomed()
 void ProcessUnitSC::multipleFailuresTestOption()
 {
 	if (simulationName != "") {
+		bool originalVerboseMode = verboseMode;
+		if (originalVerboseMode) setVerboseMode(false);
 		MultiFailureRunner multiFailureRunner(
 			failureController,
 			testScenario,
@@ -407,6 +414,7 @@ void ProcessUnitSC::multipleFailuresTestOption()
 			verboseMode);
 
 		multiFailureRunner.run();
+		if (originalVerboseMode) setVerboseMode(originalVerboseMode);
 	}
 
 	else {
@@ -552,6 +560,8 @@ void ProcessUnitSC::avaliateComponentFaultModes(
 void ProcessUnitSC::singleFailureInjectionOption()
 {
 	char userOption = 0;
+
+	setVerboseMode(false);
 
 	cout << endl << "Single Failure Injection Test" << endl;
 

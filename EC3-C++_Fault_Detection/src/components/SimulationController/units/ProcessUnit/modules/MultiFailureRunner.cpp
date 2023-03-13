@@ -53,7 +53,7 @@ void MultiFailureRunner::run()
 		cout << "-> Example: 12,0,50" << endl << endl;
 		cout << "Important Note: The failures must be entered in the order correspondent to the hit iterations" << endl << endl;
 
-		cout << "Press 'c' if you have accomplished the previous steps or 'q' to exit" << endl;
+		cout << "Press 'c' if you have accomplished the previous steps or 'q' to exit: ";
 
 		cin.get(userOption);
 		if (userOption == '\n') {
@@ -122,7 +122,11 @@ void MultiFailureRunner::runSpecificTest(string inputFilename, string srcDir)
 	collectInjectedFailures(inputFilename, srcDir);
 	if (injectedFailuresArray.size() > 0) {
 		string testName = extractTestName(inputFilename);
+		cout << endl << endl << "Injection Test " << testName << " initiated." << endl;
+		cout << "Wait until it is completed" << endl;
+		cout << ".";
 		runSimulationCycleWithInjectedFailures(testName);
+		cout << endl << "Injection Test " << testName << " finished" << endl;
 	}
 }
 
@@ -138,10 +142,9 @@ void MultiFailureRunner::collectInjectedFailures(string inputFilename, string sr
 	injectedFailureFile.open(srcDir + "/" + inputFilename, ios::in);
 
 	if (injectedFailureFile.fail()) {
-		throw SimulatorFailureExcep(
-			simulationsDir +
-			"/InjectedFailuresInput.csv file could not be accessed",
-			"SimulationController.ProcessUnit.MultiFailureRunner");
+		throw AbortSimulationOpExcep(
+			srcDir + "/" + inputFilename +
+			" file could not be accessed");
 	}
 	// the first line corresponds to the header, so it is ignored
 	getline(injectedFailureFile, line);
@@ -204,6 +207,7 @@ void MultiFailureRunner::runSimulationCycleWithInjectedFailures(string testName)
 	supervisedPointer->setTestScenario(testScenario);
 
 	for (InjectedFailureType& injectedFailure : injectedFailuresArray) {
+		cout << ".";
 		nextHitIteration = injectedFailure.hitIteration;
 
 		while (*iterationPointer < nextHitIteration - 1) {
@@ -243,7 +247,6 @@ void MultiFailureRunner::runSimulationCycleWithInjectedFailures(string testName)
 		}
 	}
 
-	cout << endl << "Injection Test finished" << endl;
 	const string outputResultFilePath = outputResultsDir + "/" + testName + "_output.json";
 	simulationFileHandler.exportFailureEventsHistoryJson(failureEventsArray, outputResultFilePath);
 }

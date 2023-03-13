@@ -1,0 +1,9 @@
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn,fmSafety,fmDetectableFuse,fmDetectableKeepPow,classMultipleFaults
+0,Open,0.29000,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+1,Short-Circuit,0.51000,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+2,Increase of Reverse Current,0.03333,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+3,Decrease of Reverse Breakdown Voltage,0.03333,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+4,Increase of Conducting-State Voltage,0.03333,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+5,Decrease of Conducting-State Voltage,0.03333,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+6,Increase of Threshold Voltage,0.03333,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+7,Decrease of Threshold Voltage,0.03333,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
