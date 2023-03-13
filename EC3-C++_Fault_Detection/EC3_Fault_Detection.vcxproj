@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,12 +19,89 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="tests\main.cpp" />
+    <ClCompile Include="src\components\SimulationController\SimulationController.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\FailureController.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ParamsController.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnitSC.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\IterationRunner.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\MultiFailureRunner.cpp" />
+    <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\SimulationFileHandler.cpp" />
+    <ClCompile Include="src\components\Supervised\Supervised.cpp" />
+    <ClCompile Include="src\components\Supervised\units\CorrectOutputGenerator.cpp" />
+    <ClCompile Include="src\components\Supervised\units\FailedOutputGenerator.cpp" />
+    <ClCompile Include="src\components\Supervised\units\OutputGenerator.cpp" />
+    <ClCompile Include="src\components\Supervised\units\ProcessUnitSD.cpp" />
+    <ClCompile Include="src\components\Supervisor\Supervisor.cpp" />
+    <ClCompile Include="src\components\Supervisor\units\AnalysisUnit.cpp" />
+    <ClCompile Include="src\components\Supervisor\units\DataHandler.cpp" />
+    <ClCompile Include="src\components\Supervisor\units\ProcessUnitSR.cpp" />
+    <ClCompile Include="src\utils\components\Component.cpp" />
+    <ClCompile Include="src\utils\exceptions\AbortSimulationOpExcep.cpp" />
+    <ClCompile Include="src\utils\exceptions\FailureDetectedExcep.cpp" />
+    <ClCompile Include="src\utils\exceptions\ForcedSimulationEndExcep.cpp" />
+    <ClCompile Include="src\utils\exceptions\IncompatibleIterationExcep.cpp" />
+    <ClCompile Include="src\utils\exceptions\RegistersOverflowExcep.cpp" />
+    <ClCompile Include="src\app\main.cpp" />
+    <ClCompile Include="src\utils\exceptions\SimulatorFailureExcep.cpp" />
+    <ClCompile Include="src\utils\filesys_handler\FileSysHandler.cpp" />
+    <ClCompile Include="src\utils\json\JsonSerializer.cpp" />
+    <ClCompile Include="src\utils\kmeans\KMeans.cpp" />
+    <ClCompile Include="src\utils\kmeans\SilhouetteScore.cpp" />
+    <ClCompile Include="src\utils\mt_engine\MtRandEngine.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest1.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest2.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest3.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest4.cpp" />
+    <ClCompile Include="tests\KMeans\KMeansTest5.cpp" />
+    <ClCompile Include="tests\RandomGeneratorMt19937\RandomGeneratorTest.cpp" />
+    <ClCompile Include="tests\SimulationController\LoadFaultModesTest.cpp" />
+    <ClCompile Include="tests\SimulationController\SimulationControllerTest1.cpp" />
+    <ClCompile Include="tests\Supervisor\SupervisorLogErrorTest.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\components\SimulationController\include\FailureController.h" />
+    <ClInclude Include="src\components\SimulationController\include\IterationRunner.h" />
+    <ClInclude Include="src\components\SimulationController\include\MultiFailureRunner.h" />
+    <ClInclude Include="src\components\SimulationController\include\ParamsController.h" />
+    <ClInclude Include="src\components\SimulationController\include\ProcessUnitSC.h" />
+    <ClInclude Include="src\components\SimulationController\include\SimulationController.h" />
+    <ClInclude Include="src\components\SimulationController\include\SimulationFileHandler.h" />
+    <ClInclude Include="src\components\Supervised\include\CorrectOutputGenerator.h" />
+    <ClInclude Include="src\components\Supervised\include\FailedOutputGenerator.h" />
+    <ClInclude Include="src\components\Supervised\include\OutputGenerator.h" />
+    <ClInclude Include="src\components\Supervised\include\ProcessUnitSD.h" />
+    <ClInclude Include="src\components\Supervised\include\Supervised.h" />
+    <ClInclude Include="src\components\Supervisor\include\AnalysisUnit.h" />
+    <ClInclude Include="src\components\Supervisor\include\DataHandler.h" />
+    <ClInclude Include="src\components\Supervisor\include\ProcessUnitSR.h" />
+    <ClInclude Include="src\components\Supervisor\include\Supervisor.h" />
+    <ClInclude Include="src\utils\components\include\Component.h" />
+    <ClInclude Include="src\utils\enumerators\enum.h" />
+    <ClInclude Include="src\utils\exceptions\include\AbortSimulationOpExcep.h" />
+    <ClInclude Include="src\utils\exceptions\include\FailureDetectedExcep.h" />
+    <ClInclude Include="src\utils\exceptions\include\ForcedSimulationEndExcep.h" />
+    <ClInclude Include="src\utils\exceptions\include\IncompatibleIterationExcep.h" />
+    <ClInclude Include="src\utils\exceptions\include\RegistersOverflowExcep.h" />
+    <ClInclude Include="src\utils\exceptions\include\SimulatorFailureExcep.h" />
+    <ClInclude Include="src\utils\filesys_handler\include\FileSysHandler.h" />
+    <ClInclude Include="src\utils\json\include\JsonSerializer.h" />
+    <ClInclude Include="src\utils\kmeans\include\KMeans.h" />
+    <ClInclude Include="src\utils\kmeans\include\SilhouetteScore.h" />
+    <ClInclude Include="src\utils\mt_engine\include\MtRandEngine.h" />
+    <ClInclude Include="src\utils\structs\structs.h" />
+    <ClInclude Include="tests\KMeans\include\KMeansTests.h" />
+    <ClInclude Include="tests\RandomGeneratorMt19937\include\RandomGeneratorTest.h" />
+    <ClInclude Include="tests\SimulationController\include\LoadFaultModesTest.h" />
+    <ClInclude Include="tests\Supervisor\include\SupervisorLogErrorTest.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <ProjectGuid>{B2AC7F7E-3335-429E-8ACE-1CD40B34BB84}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -71,6 +148,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>.\bin\x64</OutDir>
+    <IntDir>.\bin\x64\obj</IntDir>
+    <TargetName>$(ProjectName)_$(Plataform)</TargetName>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -99,6 +181,20 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
     </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <ControlFlowGuard>false</ControlFlowGuard>
+      <FloatingPointExceptions>true</FloatingPointExceptions>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus /std:c++17 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/Zc:__cplusplus /std:c++17 %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

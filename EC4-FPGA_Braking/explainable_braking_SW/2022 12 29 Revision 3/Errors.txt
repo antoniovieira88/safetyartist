@@ -1,0 +1,5 @@
+mean absolute error = 1.3273513988954326%
+standard deviation = 0.7530164858595245%
+mean squared error = 0.0232889556412589%
+root mean squared error = 1.5260719393678301%
+error percentile 75% = 1.5625%

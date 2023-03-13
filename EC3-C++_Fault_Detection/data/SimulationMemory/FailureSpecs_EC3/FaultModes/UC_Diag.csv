@@ -1,0 +1,13 @@
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn,fmSafety,fmDetectableFuse,fmDetectableKeepPow,classMultipleFaults
+0,Supply Open,0.12000,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+1,Output 'Dig_Out1' Open,0.12000,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
+2,Output 'Dig_Out2' Open,0.12000,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+3,Bidirectional Pin 'SPI' Open,0.24000,54,4092,51,57,4091,4095,0,1,safe,no,no,cm0
+4,Output 'Dig_Out1' Stuck Low,0.03000,0,0,0,0,0,0,1,1,safe,yes,yes,not_applicable
+5,Output 'Dig_Out2' Stuck Low,0.03000,0,0,0,0,0,0,0,0,safe,yes,yes,not_applicable
+6,Bidirectional Pin 'SPI' Stuck Low,0.03000,54,4092,51,57,4091,4095,0,1,safe,no,no,cm0
+7,Output 'Dig_Out1' Stuck High,0.02667,4092,4093,4092,4092,4093,4093,0,1,safe,yes,no,not_applicable
+8,Output 'Dig_Out2' Stuck High,0.02667,54,4092,51,57,4091,4095,1,1,safe,no,yes,not_applicable
+9,Bidirectional Pin 'SPI' Stuck High,0.02677,54,4092,51,57,4091,4095,0,1,safe,no,no,cm0
+10,Input 'Anal_In1' Open,0.12000,194,191,120,315,191,191,0,1,safe,yes,no,not_applicable
+11,Input 'Dig_In1' Open,0.12000,54,4092,51,57,4091,4095,0,1,safe,no,no,cm1

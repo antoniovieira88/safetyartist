@@ -1,0 +1,176 @@
+[
+    {
+        "Component": "R1_Sys",
+        "FaultMode": "Decrease of Resistance Value",
+        "FaultModeId": 3,
+        "Iteration": 60,
+        "IterationOnFailure": 60,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "6",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "29.000000",
+                "numPointsCluster2": "29.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "30.000000",
+                "numPointsCluster2": "30.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "R1_Sys",
+        "FaultMode": "Decrease of Resistance Value",
+        "FaultModeId": 3,
+        "Iteration": 61,
+        "IterationOnFailure": 60,
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "6",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "3808.731180",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999552",
+                "silhouetteCluster2": "0.999751",
+                "numPointsCluster1": "30",
+                "numPointsCluster2": "30",
+                "overallSilhouette": "0.999651"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998716",
+                "silhouetteCluster2": "0.995063",
+                "numPointsCluster1": "31",
+                "numPointsCluster2": "31",
+                "overallSilhouette": "0.99689"
+            },
+            "overallScoreVar": "-0.00276185",
+            "cluster1ScoreVar": "-0.000836293",
+            "cluster2ScoreVar": "-0.0046874"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 3806.0
+        }
+    },
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Short-Circuit",
+        "FaultModeId": 1,
+        "Iteration": 64,
+        "IterationOnFailure": 64,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.200000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "31.000000",
+                "numPointsCluster2": "31.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "32.000000",
+                "numPointsCluster2": "32.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Short-Circuit",
+        "FaultModeId": 1,
+        "Iteration": 65,
+        "IterationOnFailure": 64,
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.200000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": true,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "3806.064640",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.997982",
+                "silhouetteCluster2": "0.990937",
+                "numPointsCluster1": "32",
+                "numPointsCluster2": "32",
+                "overallSilhouette": "0.994459"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.997336",
+                "silhouetteCluster2": "0.987309",
+                "numPointsCluster1": "33",
+                "numPointsCluster2": "33",
+                "overallSilhouette": "0.992322"
+            },
+            "overallScoreVar": "-0.00213717",
+            "cluster1ScoreVar": "-0.000645777",
+            "cluster2ScoreVar": "-0.00362857"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 0.0
+        }
+    }
+]

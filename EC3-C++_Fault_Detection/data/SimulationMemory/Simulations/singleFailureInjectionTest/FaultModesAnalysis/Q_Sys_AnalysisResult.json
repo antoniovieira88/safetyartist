@@ -1,0 +1,1745 @@
+[
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "0",
+        "FaultModeName": "Interruption of Gate",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.026429",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "1",
+        "FaultModeName": "Interruption of Source",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.026429",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "2",
+        "FaultModeName": "Interruption of Drain",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.026429",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "3",
+        "FaultModeName": "Interruption of Gate and Source",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.026429",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "4",
+        "FaultModeName": "Interruption of Gate and Drain",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.026429",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "5",
+        "FaultModeName": "Interruption of Source and Drain",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.026429",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "6",
+        "FaultModeName": "Interruption of Gate; Source and Drain",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.026429",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "7",
+        "FaultModeName": "Short-Circuit Between Source and Drain",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.092143",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "8",
+        "FaultModeName": "Short-Circuit Between Gate and Drain",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.092143",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "9",
+        "FaultModeName": "Short-Circuit Between Source and Gate",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.092143",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "10",
+        "FaultModeName": "Short-Circuit Between Source; Gate and Drain",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.092143",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "11",
+        "FaultModeName": "Short-Circuit Between Source and Drain with Interruption of Gate",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.092143",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "12",
+        "FaultModeName": "Short-Circuit Between Gate and Drain with Interruption of Source",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.092143",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "13",
+        "FaultModeName": "Short-Circuit Between Source and Gate with Interruption of Drain",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.092143",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "14",
+        "FaultModeName": "Increase of Forward Transcondutance",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "55.887762",
+            "NotBurn": "4092.172962",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999669",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999698"
+            },
+            "overallScoreVar": "-7.86941e-07",
+            "cluster1ScoreVar": "-4.76816e-06",
+            "cluster2ScoreVar": "3.19428e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "15",
+        "FaultModeName": "Decrease of Forward Transcondutance",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "2039.046620",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.02915"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0145756"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.970524",
+                "silhouetteCluster2": "0.999723",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.985123"
+            },
+            "overallScoreVar": "-0.0145756",
+            "cluster1ScoreVar": "-0.02915",
+            "cluster2ScoreVar": "-1.09871e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "16",
+        "FaultModeName": "Increase of Gate Threshold Voltage",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "2038.028665",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0291255"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0145633"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.970548",
+                "silhouetteCluster2": "0.999723",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.985135"
+            },
+            "overallScoreVar": "-0.0145633",
+            "cluster1ScoreVar": "-0.0291255",
+            "cluster2ScoreVar": "-1.0973e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "17",
+        "FaultModeName": "Decrease of Gate Threshold Voltage",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "2036.666410",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0290343"
+                    },
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0148093"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.97064",
+                "silhouetteCluster2": "0.999721",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.984889"
+            },
+            "overallScoreVar": "-0.0148093",
+            "cluster1ScoreVar": "-0.0290343",
+            "cluster2ScoreVar": "-2.61155e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "18",
+        "FaultModeName": "Decrease of Drain-Source Breakdown Voltage",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "2040.930626",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0291351"
+                    },
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0148607"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.970539",
+                "silhouetteCluster2": "0.999721",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.984838"
+            },
+            "overallScoreVar": "-0.0148607",
+            "cluster1ScoreVar": "-0.0291351",
+            "cluster2ScoreVar": "-2.61738e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "19",
+        "FaultModeName": "Decrease of Gate-Source Maximum Rated Voltage",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "2038.407795",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0291346"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0145679"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.970539",
+                "silhouetteCluster2": "0.999723",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.985131"
+            },
+            "overallScoreVar": "-0.0145679",
+            "cluster1ScoreVar": "-0.0291346",
+            "cluster2ScoreVar": "-1.09783e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "20",
+        "FaultModeName": "Decrease of Drain-Gate Maximum Rated Voltage",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FuseTest": {
+            "Burn": "2037.985906",
+            "NotBurn": "2036.280385",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0559258"
+                    },
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0285253"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.943748",
+                "silhouetteCluster2": "0.999718",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.971173"
+            },
+            "overallScoreVar": "-0.0285253",
+            "cluster1ScoreVar": "-0.0559258",
+            "cluster2ScoreVar": "-5.42509e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "21",
+        "FaultModeName": "Change of Turn-On Time",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "22",
+        "FaultModeName": "Change of Turn-Off Time",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "23",
+        "FaultModeName": "Increase of Leakage Current IGS",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "2037.123845",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0291037"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0145524"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.97057",
+                "silhouetteCluster2": "0.999723",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.985146"
+            },
+            "overallScoreVar": "-0.0145524",
+            "cluster1ScoreVar": "-0.0291037",
+            "cluster2ScoreVar": "-1.09604e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "24",
+        "FaultModeName": "Increase of Leakage Current IDS",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "2036.964820",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0290413"
+                    },
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0148129"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.970632",
+                "silhouetteCluster2": "0.999721",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.984886"
+            },
+            "overallScoreVar": "-0.0148129",
+            "cluster1ScoreVar": "-0.0290413",
+            "cluster2ScoreVar": "-2.61196e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "25",
+        "FaultModeName": "Increase of Leakage Current IGD",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FuseTest": {
+            "Burn": "2038.548551",
+            "NotBurn": "2037.857725",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0559749"
+                    },
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0285504"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.943699",
+                "silhouetteCluster2": "0.999718",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.971148"
+            },
+            "overallScoreVar": "-0.0285504",
+            "cluster1ScoreVar": "-0.0559749",
+            "cluster2ScoreVar": "-5.42807e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "Q_Sys",
+        "FaultModeId": "26",
+        "FaultModeName": "Change of Static Drain to Source On-State Resistance",
+        "AddInfo": {
+            "componentId": "15",
+            "probability": "0.013077",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm2"
+        },
+        "FuseTest": {
+            "Burn": "2062.010352",
+            "NotBurn": "4093.223746",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster1",
+                        "Tolerance": "0.029000",
+                        "Variation": "-0.0297085"
+                    },
+                    {
+                        "Metric": "overallSilhouette",
+                        "Tolerance": "0.014500",
+                        "Variation": "-0.0148553"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.969965",
+                "silhouetteCluster2": "0.999722",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.984843"
+            },
+            "overallScoreVar": "-0.0148553",
+            "cluster1ScoreVar": "-0.0297085",
+            "cluster2ScoreVar": "-2.02137e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    }
+]

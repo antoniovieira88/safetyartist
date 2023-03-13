@@ -1,0 +1,89 @@
+[
+    {
+        "Component": "C_Sys",
+        "FaultMode": "Open",
+        "FaultModeId": 0,
+        "Iteration": 60,
+        "IterationOnFailure": 60,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "23",
+            "probability": "0.350000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "29.000000",
+                "numPointsCluster2": "29.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "30.000000",
+                "numPointsCluster2": "30.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "C_Sys",
+        "FaultMode": "Open",
+        "FaultModeId": 0,
+        "Iteration": 61,
+        "IterationOnFailure": 60,
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "23",
+            "probability": "0.350000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": true,
+        "SupervisorResult": {
+            "Burn": "52.192886",
+            "NotBurn": "4092.342778",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999684",
+                "silhouetteCluster2": "0.999764",
+                "numPointsCluster1": "30",
+                "numPointsCluster2": "30",
+                "overallSilhouette": "0.999724"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999769",
+                "numPointsCluster1": "31",
+                "numPointsCluster2": "31",
+                "overallSilhouette": "0.999721"
+            },
+            "overallScoreVar": "-3.18756e-06",
+            "cluster1ScoreVar": "-1.07019e-05",
+            "cluster2ScoreVar": "4.3268e-06"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    }
+]

@@ -1,0 +1,176 @@
+[
+    {
+        "Component": "R2_Diag",
+        "FaultMode": "Increase of Resistance Value",
+        "FaultModeId": 2,
+        "Iteration": 60,
+        "IterationOnFailure": 60,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "4",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm1"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "29.000000",
+                "numPointsCluster2": "29.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "30.000000",
+                "numPointsCluster2": "30.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "R2_Diag",
+        "FaultMode": "Increase of Resistance Value",
+        "FaultModeId": 2,
+        "Iteration": 61,
+        "IterationOnFailure": 60,
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "4",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm1"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "53.720788",
+            "NotBurn": "4092.020414",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999665",
+                "silhouetteCluster2": "0.999741",
+                "numPointsCluster1": "30",
+                "numPointsCluster2": "30",
+                "overallSilhouette": "0.999703"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.99967",
+                "silhouetteCluster2": "0.999746",
+                "numPointsCluster1": "31",
+                "numPointsCluster2": "31",
+                "overallSilhouette": "0.999708"
+            },
+            "overallScoreVar": "4.88433e-06",
+            "cluster1ScoreVar": "4.79969e-06",
+            "cluster2ScoreVar": "4.96897e-06"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "D_Sys",
+        "FaultMode": "Increase of Conducting-State Voltage",
+        "FaultModeId": 4,
+        "Iteration": 65,
+        "IterationOnFailure": 65,
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "12",
+            "probability": "0.033330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "53.244412",
+            "NotBurn": "4093.367122",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999676",
+                "silhouetteCluster2": "0.999729",
+                "numPointsCluster1": "32",
+                "numPointsCluster2": "32",
+                "overallSilhouette": "0.999702"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999677",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "33",
+                "numPointsCluster2": "33",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "-8.76096e-08",
+            "cluster1ScoreVar": "1.00336e-06",
+            "cluster2ScoreVar": "-1.17858e-06"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "D_Sys",
+        "FaultMode": "Increase of Conducting-State Voltage",
+        "FaultModeId": 4,
+        "Iteration": 66,
+        "IterationOnFailure": 65,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "12",
+            "probability": "0.033330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": true,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "32.000000",
+                "numPointsCluster2": "32.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "33.000000",
+                "numPointsCluster2": "33.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 1
+        }
+    }
+]

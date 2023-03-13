@@ -1,0 +1,630 @@
+[
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "0",
+        "FaultModeName": "Supply Open",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.120000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "1",
+        "FaultModeName": "Output 'Dig_Out1' Open",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.120000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "51.540859",
+            "NotBurn": "4091.843291",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999661",
+                "silhouetteCluster2": "0.999726",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999694"
+            },
+            "overallScoreVar": "-5.02365e-06",
+            "cluster1ScoreVar": "-1.23592e-05",
+            "cluster2ScoreVar": "2.31188e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "2",
+        "FaultModeName": "Output 'Dig_Out2' Open",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.120000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "53.975375",
+            "NotBurn": "4092.365212",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "3.45784e-06",
+            "cluster1ScoreVar": "3.83127e-06",
+            "cluster2ScoreVar": "3.08441e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "3",
+        "FaultModeName": "Bidirectional Pin 'SPI' Open",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.300000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "51.840603",
+            "NotBurn": "4092.633683",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999664",
+                "silhouetteCluster2": "0.999726",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999695"
+            },
+            "overallScoreVar": "-3.50619e-06",
+            "cluster1ScoreVar": "-9.60008e-06",
+            "cluster2ScoreVar": "2.5877e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "4",
+        "FaultModeName": "Output 'Dig_Out1' Stuck Low",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.030000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "54.394306",
+            "NotBurn": "4091.741195",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999677",
+                "silhouetteCluster2": "0.999726",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999701"
+            },
+            "overallScoreVar": "2.69642e-06",
+            "cluster1ScoreVar": "3.57783e-06",
+            "cluster2ScoreVar": "1.815e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "5",
+        "FaultModeName": "Output 'Dig_Out2' Stuck Low",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.030000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "53.947188",
+            "NotBurn": "4091.507449",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999701"
+            },
+            "overallScoreVar": "2.12056e-06",
+            "cluster1ScoreVar": "3.8131e-06",
+            "cluster2ScoreVar": "4.28027e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "6",
+        "FaultModeName": "Bidirectional Pin 'SPI' Stuck Low",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.030000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "53.909121",
+            "NotBurn": "4092.125023",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "3.4762e-06",
+            "cluster1ScoreVar": "3.7701e-06",
+            "cluster2ScoreVar": "3.1823e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "7",
+        "FaultModeName": "Output 'Dig_Out1' Stuck High",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.026670",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "8",
+        "FaultModeName": "Output 'Dig_Out2' Stuck High",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.026670",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "53.998815",
+            "NotBurn": "4093.718848",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999721",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999699"
+            },
+            "overallScoreVar": "7.45891e-07",
+            "cluster1ScoreVar": "3.83817e-06",
+            "cluster2ScoreVar": "-2.34639e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "9",
+        "FaultModeName": "Bidirectional Pin 'SPI' Stuck High",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.026770",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "54.274514",
+            "NotBurn": "4092.068502",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "3.42227e-06",
+            "cluster1ScoreVar": "3.74115e-06",
+            "cluster2ScoreVar": "3.1034e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "UC_Sys",
+        "FaultModeId": "10",
+        "FaultModeName": "Input Open",
+        "AddInfo": {
+            "componentId": "20",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "54.184428",
+            "NotBurn": "4092.391426",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "3.42455e-06",
+            "cluster1ScoreVar": "3.7963e-06",
+            "cluster2ScoreVar": "3.0528e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    }
+]

@@ -1,0 +1,250 @@
+[
+    {
+        "ComponentName": "R2_Sys",
+        "FaultModeId": "0",
+        "FaultModeName": "Open",
+        "AddInfo": {
+            "componentId": "8",
+            "probability": "0.590000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "R2_Sys",
+        "FaultModeId": "1",
+        "FaultModeName": "Short-Circuit",
+        "AddInfo": {
+            "componentId": "8",
+            "probability": "0.050000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "R2_Sys",
+        "FaultModeId": "2",
+        "FaultModeName": "Increase of Resistance Value",
+        "AddInfo": {
+            "componentId": "8",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "R2_Sys",
+        "FaultModeId": "3",
+        "FaultModeName": "Decrease of Resistance Value",
+        "AddInfo": {
+            "componentId": "8",
+            "probability": "0.180000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998676",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.99919"
+            },
+            "overallScoreVar": "-0.000509244",
+            "cluster1ScoreVar": "-0.000997679",
+            "cluster2ScoreVar": "1.45096e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    }
+]

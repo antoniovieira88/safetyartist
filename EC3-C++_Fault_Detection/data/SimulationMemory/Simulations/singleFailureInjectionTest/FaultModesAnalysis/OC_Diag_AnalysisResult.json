@@ -1,0 +1,654 @@
+[
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "0",
+        "FaultModeName": "Open Diode",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "56.135889",
+            "NotBurn": "4091.921329",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999667",
+                "silhouetteCluster2": "0.999726",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999697"
+            },
+            "overallScoreVar": "-2.2103e-06",
+            "cluster1ScoreVar": "-7.05856e-06",
+            "cluster2ScoreVar": "2.63796e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "1",
+        "FaultModeName": "Open Emitter",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "53.747590",
+            "NotBurn": "4092.388566",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999677",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "3.26077e-06",
+            "cluster1ScoreVar": "3.4641e-06",
+            "cluster2ScoreVar": "3.05743e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "2",
+        "FaultModeName": "Open Collector",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "52.441454",
+            "NotBurn": "4091.419895",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999669",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999696"
+            },
+            "overallScoreVar": "-2.30709e-06",
+            "cluster1ScoreVar": "-4.44871e-06",
+            "cluster2ScoreVar": "-1.65471e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "3",
+        "FaultModeName": "Open Base",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "54.570926",
+            "NotBurn": "4093.409153",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999677",
+                "silhouetteCluster2": "0.999723",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.9997"
+            },
+            "overallScoreVar": "1.48623e-06",
+            "cluster1ScoreVar": "3.22297e-06",
+            "cluster2ScoreVar": "-2.50516e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "4",
+        "FaultModeName": "Increase of Light Sensitivity",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "55.479827",
+            "NotBurn": "4091.291338",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999672",
+                "silhouetteCluster2": "0.999723",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999697"
+            },
+            "overallScoreVar": "-1.28947e-06",
+            "cluster1ScoreVar": "-1.42566e-06",
+            "cluster2ScoreVar": "-1.15327e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "5",
+        "FaultModeName": "Decrease of Light Sensitivity",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "54.058797",
+            "NotBurn": "4094.733607",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999713",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999695"
+            },
+            "overallScoreVar": "-3.66393e-06",
+            "cluster1ScoreVar": "3.84636e-06",
+            "cluster2ScoreVar": "-1.11742e-05"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "6",
+        "FaultModeName": "Increase of Leakage Current",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.125000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "54.026975",
+            "NotBurn": "4093.205988",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999725",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999701"
+            },
+            "overallScoreVar": "2.33599e-06",
+            "cluster1ScoreVar": "3.84304e-06",
+            "cluster2ScoreVar": "8.28942e-07"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "7",
+        "FaultModeName": "Reduced Insulation Between Input and Output",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.125000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "53.480064",
+            "NotBurn": "4092.057101",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999676",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.80643e-06",
+            "cluster1ScoreVar": "2.53155e-06",
+            "cluster2ScoreVar": "3.08131e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "8",
+        "FaultModeName": "Change on Switching Time",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "52.296716",
+            "NotBurn": "4093.136597",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999668",
+                "silhouetteCluster2": "0.999725",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999697"
+            },
+            "overallScoreVar": "-2.24826e-06",
+            "cluster1ScoreVar": "-5.64493e-06",
+            "cluster2ScoreVar": "1.14842e-06"
+        },
+        "KeepPowerTest": {
+            "On": "0",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "9",
+        "FaultModeName": "Increase on Current Gain",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "56.891781",
+            "NotBurn": "4091.921653",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999659",
+                "silhouetteCluster2": "0.999726",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999693"
+            },
+            "overallScoreVar": "-5.9559e-06",
+            "cluster1ScoreVar": "-1.45501e-05",
+            "cluster2ScoreVar": "2.63831e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "OC_Diag",
+        "FaultModeId": "10",
+        "FaultModeName": "Decrease on Current Gain",
+        "AddInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "53.977198",
+            "NotBurn": "4094.496342",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999715",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999696"
+            },
+            "overallScoreVar": "-2.5529e-06",
+            "cluster1ScoreVar": "3.83504e-06",
+            "cluster2ScoreVar": "-8.94083e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
+            }
+        }
+    }
+]

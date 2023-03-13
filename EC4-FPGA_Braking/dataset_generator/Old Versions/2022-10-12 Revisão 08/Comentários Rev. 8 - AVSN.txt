@@ -1,0 +1,30 @@
+write_dataset:
+
+126: ".cvs" --> ".csv" (comentário; sem impacto para a segurança)
+133: Corrigir comentário sobre a impressão do dataframe em Excel (inclui reduzido e completo); problema propagado da Rev. 7.
+
+create_dataset:
+196: "Escreve o (...) como uma linha no dataframe" (comentário; aparentemente, faltou alguma coisa no texto).
+
+create_stratifiedDataset:
+1) Interessante colocar comentários sobre pontos-chave do processamento:
+- 'ceil' para '1' serve para arredondar para cima o número de uns para atingir a proporção de uns desejada.
+- minimum_dataset serve para calcular quantos dataset 'normais' precisariam ser gerados para atingir minimamente a quantidade desejada de 1s;
+- frac = 1/(minimum_dataset + 1) na chamada de "stratify_data" serve para gerar uma base de dados que tem a mesma quantidade de dados de uma base "regular".
+- Dúvida: Por que "frac" precisa ser desse jeito sempre? Verificado como melhor opção frente a bases maiores ou menores?
+
+2) Justificar valor padrão de "prop_zeros". Se não for justificável, apagar.
+
+stratify_data:
+1) 304-309: Comentar que a base gerada não semente específica e que os seus registros serão embaralhados aleatoriamente.
+Interessante colocar comentários sobre pontos-chave do processamento:
+- 'ceil' para '1' serve para arredondar para cima o número de uns para atingir a proporção de uns desejada.
+
+2) Se random_state = None, como é feito o sorteio aleatorio? Random_state relaciona à semente e ao algoritmo de sorteio pseualeatório, não? Quais as condições padrão para o 'None'?
+Refletir nos comentários das linhas 304-309.
+
+Main - sugestão para usabilidade:
+1) Fazer um 'if/else' para o usuário escolher se quer gerar base de dados normal ou estratificada;
+2) Quando escolher base estratificada, digitar um número entre 0 e 1 com a proporção de zeros desejada;
+3) Interromper a contagem do tempo de execução enquanto o usuário estiver fazendo as escolhas (variáveis auxiliares para acumular tempo inicial e tempo pós-escolhas?).
+

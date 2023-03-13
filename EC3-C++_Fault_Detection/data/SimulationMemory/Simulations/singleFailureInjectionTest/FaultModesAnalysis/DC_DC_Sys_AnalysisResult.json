@@ -1,0 +1,232 @@
+[
+    {
+        "ComponentName": "DC_DC_Sys",
+        "FaultModeId": "0",
+        "FaultModeName": "No Output",
+        "AddInfo": {
+            "componentId": "22",
+            "probability": "0.230000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FuseTest": {
+            "Burn": "4092.000000",
+            "NotBurn": "4093.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999728",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "51",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.74777e-06",
+            "cluster1ScoreVar": "3.45189e-11",
+            "cluster2ScoreVar": "4.4098e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "DC_DC_Sys",
+        "FaultModeId": "1",
+        "FaultModeName": "Increase in Output Voltage",
+        "AddInfo": {
+            "componentId": "22",
+            "probability": "0.256670",
+            "fmSafety": "unsafe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm3"
+        },
+        "FuseTest": {
+            "Burn": "52.191900",
+            "NotBurn": "4094.865872",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999667",
+                "silhouetteCluster2": "0.999711",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999689"
+            },
+            "overallScoreVar": "-9.51268e-06",
+            "cluster1ScoreVar": "-6.54448e-06",
+            "cluster2ScoreVar": "-1.24809e-05"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "DC_DC_Sys",
+        "FaultModeId": "2",
+        "FaultModeName": "Decrease in Output Voltage",
+        "AddInfo": {
+            "componentId": "22",
+            "probability": "0.256670",
+            "fmSafety": "unsafe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm3"
+        },
+        "FuseTest": {
+            "Burn": "54.173816",
+            "NotBurn": "4092.814819",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999726",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "2.97073e-06",
+            "cluster1ScoreVar": "3.80341e-06",
+            "cluster2ScoreVar": "2.13806e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    },
+    {
+        "ComponentName": "DC_DC_Sys",
+        "FaultModeId": "3",
+        "FaultModeName": "Noisy Output",
+        "AddInfo": {
+            "componentId": "22",
+            "probability": "0.256670",
+            "fmSafety": "unsafe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm3"
+        },
+        "FuseTest": {
+            "Burn": "53.937194",
+            "NotBurn": "4092.646319",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999674",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "49",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999699"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999678",
+                "silhouetteCluster2": "0.999726",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999702"
+            },
+            "overallScoreVar": "3.18079e-06",
+            "cluster1ScoreVar": "3.80482e-06",
+            "cluster2ScoreVar": "2.55676e-06"
+        },
+        "KeepPowerTest": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerfomedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "49.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        }
+    }
+]

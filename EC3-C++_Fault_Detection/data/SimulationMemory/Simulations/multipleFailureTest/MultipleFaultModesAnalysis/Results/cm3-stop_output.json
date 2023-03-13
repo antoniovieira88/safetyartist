@@ -1,0 +1,41 @@
+[
+    {
+        "Component": "DC_DC_Sys",
+        "FaultMode": "Increase in Output Voltage",
+        "FaultModeId": 1,
+        "Iteration": 60,
+        "IterationOnFailure": 60,
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "22",
+            "probability": "0.256670",
+            "fmSafety": "unsafe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "cm3"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": true,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "29.000000",
+                "numPointsCluster2": "29.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "30.000000",
+                "numPointsCluster2": "30.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    }
+]

@@ -1,0 +1,232 @@
+[
+    {
+        "AddInfo": {
+            "classMultipleFaults": "not_applicable",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "fmSafety": "unsafe",
+            "probability": 0.05
+        },
+        "FaultModeId": 0,
+        "FaultModeName": "C1",
+        "FuseTest": {
+            "Burn": 1.445209690536081,
+            "FaultDiagnosis": {
+                "Failure": true,
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": 0.0,
+                        "Variation": 2.0
+                    }
+                ]
+            },
+            "NotBurn": 1.7204586337641443,
+            "newMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 51.0,
+                "overallSilhouette": 0.9475653400846421,
+                "silhouetteCluster1": 0.9737010306422959,
+                "silhouetteCluster2": 0.9224545785684651
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0,
+                "overallSilhouette": 0.9717417012573705,
+                "silhouetteCluster1": 0.9728226265790123,
+                "silhouetteCluster2": 0.9706607759357287
+            }
+        },
+        "KeepPowerTest": {
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "Off": 1,
+            "On": 0,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0
+            }
+        }
+    },
+    {
+        "AddInfo": {
+            "classMultipleFaults": "cm1",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "no",
+            "fmSafety": "unsafe",
+            "probability": 0.15
+        },
+        "FaultModeId": 0,
+        "FaultModeName": "C2",
+        "FuseTest": {
+            "Burn": 1.3524493216627356,
+            "FaultDiagnosis": {
+                "Failure": true,
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": 0.0,
+                        "Variation": 2.0
+                    }
+                ]
+            },
+            "NotBurn": 1.7048860308233909,
+            "newMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 51.0,
+                "overallSilhouette": 0.9493157353645221,
+                "silhouetteCluster1": 0.9736333128414253,
+                "silhouetteCluster2": 0.9259517883769092
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0,
+                "overallSilhouette": 0.9717417012573705,
+                "silhouetteCluster1": 0.9728226265790123,
+                "silhouetteCluster2": 0.9706607759357287
+            }
+        },
+        "KeepPowerTest": {
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "Off": 0,
+            "On": 1,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0
+            }
+        }
+    },
+    {
+        "AddInfo": {
+            "classMultipleFaults": "cm2",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "fmSafety": "unsafe",
+            "probability": 0.3
+        },
+        "FaultModeId": 0,
+        "FaultModeName": "C3",
+        "FuseTest": {
+            "Burn": 1.7106057721429262,
+            "FaultDiagnosis": {
+                "Failure": true,
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster2",
+                        "Tolerance": 0.05,
+                        "Variation": -0.05843393679039344
+                    },
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": 0.0,
+                        "Variation": 2.0
+                    }
+                ]
+            },
+            "NotBurn": 1.7900295600441138,
+            "newMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 51.0,
+                "overallSilhouette": 0.9424507204615759,
+                "silhouetteCluster1": 0.9739082295866426,
+                "silhouetteCluster2": 0.9122268391453353
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0,
+                "overallSilhouette": 0.9717417012573705,
+                "silhouetteCluster1": 0.9728226265790123,
+                "silhouetteCluster2": 0.9706607759357287
+            }
+        },
+        "KeepPowerTest": {
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "Off": 0,
+            "On": 1,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0
+            }
+        }
+    },
+    {
+        "AddInfo": {
+            "classMultipleFaults": "cm2",
+            "fmDetectableFuse": "maybe",
+            "fmDetectableKeepPow": "no",
+            "fmSafety": "safe",
+            "probability": 0.5
+        },
+        "FaultModeId": 0,
+        "FaultModeName": "C4",
+        "FuseTest": {
+            "Burn": 1.9199057355013593,
+            "FaultDiagnosis": {
+                "Failure": true,
+                "FailureIndicators": [
+                    {
+                        "Metric": "silhouetteCluster2",
+                        "Tolerance": 0.05,
+                        "Variation": -0.0704494298390912
+                    },
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": 0.0,
+                        "Variation": 2.0
+                    }
+                ]
+            },
+            "NotBurn": 1.993943562402512,
+            "newMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 51.0,
+                "overallSilhouette": 0.9364458779606346,
+                "silhouetteCluster1": 0.9741593703088763,
+                "silhouetteCluster2": 0.9002113460966376
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0,
+                "overallSilhouette": 0.9717417012573705,
+                "silhouetteCluster1": 0.9728226265790123,
+                "silhouetteCluster2": 0.9706607759357287
+            }
+        },
+        "KeepPowerTest": {
+            "FaultDiagnosis": {
+                "Failure": false,
+                "FailureIndicators": []
+            },
+            "Off": 0,
+            "On": 1,
+            "newMetrics": {
+                "numPointsCluster1": 50.0,
+                "numPointsCluster2": 50.0
+            },
+            "previousMetrics": {
+                "numPointsCluster1": 49.0,
+                "numPointsCluster2": 49.0
+            }
+        }
+    }
+]

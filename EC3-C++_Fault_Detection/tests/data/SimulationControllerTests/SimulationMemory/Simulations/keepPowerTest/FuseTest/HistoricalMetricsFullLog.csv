@@ -1,0 +1,4 @@
+iteration,silhouetteCluster1,silhouetteCluster2,numPointsCluster1,numPointsCluster2,overallSilhouette
+1,0,0,1,1,0
+3,0.997551,0.969514,2,2,0.983532
+5,0.976277,0.971383,3,3,0.97383

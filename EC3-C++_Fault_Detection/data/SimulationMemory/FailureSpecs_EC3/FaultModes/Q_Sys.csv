@@ -1,0 +1,28 @@
+id,name,probability,meanValueFuseResultBurn,meanValueFuseResultNotBurn,minFuseResultBurn,maxFuseResultBurn,minFuseResultNotBurn,maxFuseResultNotBurn,keepPowerReadbackOff,keepPowerReadbackOn,fmSafety,fmDetectableFuse,fmDetectableKeepPow,classMultipleFaults
+0,Interruption of Gate,2.64286E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+1,Interruption of Source,2.64286E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+2,Interruption of Drain,2.64286E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+3,Interruption of Gate and Source,2.64286E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+4,Interruption of Gate and Drain,2.64286E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+5,Interruption of Source and Drain,2.64286E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+6,Interruption of Gate; Source and Drain,2.64286E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+7,Short-Circuit Between Source and Drain,9.21429E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
+8,Short-Circuit Between Gate and Drain,9.21429E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
+9,Short-Circuit Between Source and Gate,9.21429E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+10,Short-Circuit Between Source; Gate and Drain,9.21429E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
+11,Short-Circuit Between Source and Drain with Interruption of Gate,9.21429E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
+12,Short-Circuit Between Gate and Drain with Interruption of Source,9.21429E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
+13,Short-Circuit Between Source and Gate with Interruption of Drain,9.21429E-2,4092,4093,4092,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+14,Increase of Forward Transcondutance,1.30769E-2,54,4092,51,57,4091,4095,0,1,safe,impactless,impactless,not_applicable
+15,Decrease of Forward Transcondutance,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+16,Increase of Gate Threshold Voltage,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+17,Decrease of Gate Threshold Voltage,1.30769E-2,0,2038,0,0,0,4093,0,1,safe,maybe,no,cm2
+18,Decrease of Drain-Source Breakdown Voltage,1.30769E-2,0,2038,0,0,0,4093,0,1,safe,maybe,no,cm2
+19,Decrease of Gate-Source Maximum Rated Voltage,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+20,Decrease of Drain-Gate Maximum Rated Voltage,1.30769E-2,2038,2038,0,4093,0,4093,0,1,safe,maybe,no,cm2
+21,Change of Turn-On Time,1.30769E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
+22,Change of Turn-Off Time,1.30769E-2,0,0,0,0,0,0,0,1,safe,yes,no,not_applicable
+23,Increase of Leakage Current IGS,1.30769E-2,2038,4093,51,4092,4093,4093,0,1,safe,yes,yes,not_applicable
+24,Increase of Leakage Current IDS,1.30769E-2,0,2038,0,0,0,4093,0,1,safe,maybe,no,cm2
+25,Increase of Leakage Current IGD,1.30769E-2,2038,2038,0,4093,0,4093,0,1,safe,maybe,no,cm2
+26,Change of Static Drain to Source On-State Resistance,1.30769E-2,2063,4092,111,4087,4091,4095,0,1,safe,maybe,no,cm2

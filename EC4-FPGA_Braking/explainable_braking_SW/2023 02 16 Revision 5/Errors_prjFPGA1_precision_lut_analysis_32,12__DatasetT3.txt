@@ -1,0 +1,13 @@
+prjFPGA1_precision_lut_analysis<32,12>_DatasetT3.txt
+mean absolute error = 8.663066253621398e-05%
+standard deviation = 2.2474107593268556e-05%
+mean squared error = 8.0099572035772e-11%
+root mean squared error = 8.94983642508465e-05%
+error percentile 75% = 9.5367431640625e-05%
+********************************************
+Recall SKL = 99.63566967383761%
+Recall HDL = 99.63566967383761%
+Precision SKL = 89.66432474629195%
+Precision HDL = 89.66432474629195%
+Accuracy SKL = 98.80771580693026%
+Accuracy HDL = 98.80771580693026%

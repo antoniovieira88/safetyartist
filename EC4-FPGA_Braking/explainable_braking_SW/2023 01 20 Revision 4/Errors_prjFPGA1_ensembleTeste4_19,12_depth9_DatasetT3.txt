@@ -1,0 +1,13 @@
+prjFPGA1_ensembleTeste4<19,12>depth9_DatasetT3.txt
+mean absolute error = 0.7154291929161989%
+standard deviation = 0.6269623599978852%
+mean squared error = 0.009049207309308412%
+root mean squared error = 0.9512732157118907%
+error percentile 75% = 0.78125%
+********************************************
+Recall SKL = 99.49687716863289%
+Recall HDL = 99.46217904233171%
+Precision SKL = 89.7777082028804%
+Precision HDL = 89.84485190409028%
+Accuracy SKL = 98.8094614646068%
+Accuracy HDL = 98.81469843763638%

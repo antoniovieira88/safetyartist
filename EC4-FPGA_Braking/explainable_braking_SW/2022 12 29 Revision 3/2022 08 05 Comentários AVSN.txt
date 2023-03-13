@@ -1,0 +1,29 @@
+decision_tree.ipynb
+1) Árvore gerada com base de dados completa:
+--> Validação cruzada: 
+1ª Iteração: Foi experimentado limitar ainda mais "max_depth" e "max_leaf_nodes" para melhorar a explicabilidade?
+2ª Iteração: max_features sempre igual a 2? Não valeria a pena variar de 2 a 3?
+
+--> Todos os testes de holdout com treinamento feito com base completa:
+Decisão Final: Hiperparâmetros configurados desde o primeiro teste não batem com os hiperparâmetros ótimos da validação cruzada.
+
+--> Holdout com base sem ruído:
+Depois de dividir a base de dados e filtrar apenas as colunas "puras" (interessante dividir célula e dar "print" para comprovar a divisão correta), vale a pena renomear as colunas para os nomes usados no treinamento (i.e., acrescentar " Ruidosa") para evitar o warning. 
+
+2) Árvore gerada com partições estratificadas da base de dados:
+--> Validação cruzada:
+1ª Iteração e 2ª Iteração:
+a) Foi experimentado limitar ainda mais "max_depth" e "max_leaf_nodes" para melhorar a explicabilidade?
+b) Seria bem interessante experimentar mais variações da base de dados variando, sobretudo, "prop_zeros" e "frac" como 'hiperparâmetros extra' (variáveis por 'for').
+
+--> Holdout: Faltou um teste com a base sem ruído.
+
+stratify.py:
+1) train_test_split_stratified
+a) Seria interessante evitar a sobreposição entre os dados de treinamento e teste. Uma saída para isso (e que vai aumentar bastante o tempo de processamento) é conferir se um registro sorteado para o teste já existe na base de treinamento; se existir, ignora esse registro e tenta outro.
+Outra saída, aparentemente mais simples e eficiente, é embaralhar a base de origem (para misturar registros de zeros e uns), criar um ponto de corte para treinamento e teste, verificar se ambas mantêm as proporções mínimas de zeros e uns, e, por fim, usar essas novas bases para, depois, processá-las conforme o percentual de zeros e uns. Não é garantido que sempre vai dar certo...
+
+b) Interessante melhorar a documentação dos parâmetros de entrada e saída da função em um comentário geral no início.
+
+2) StratifyData
+Interessante melhorar a documentação dos parâmetros de entrada e saída da função em um comentário geral no início.
