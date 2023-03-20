@@ -1,0 +1,2 @@
+iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafeFailureGenerated,outsideScopeFailureGenerated,detectableFailureGenerated,impactlessFailureGenerated
+159,True,True,1,[DZ_Sys],False,True,False,True

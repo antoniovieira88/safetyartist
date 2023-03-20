@@ -28,6 +28,7 @@ public:
 	int getCurrentFaultModeId();
 	int getCountBetweenFailures();
 	double getReliability();
+	double getRandNumGeneratedInFailure();
 	string getComponentName();
 	string getCurrentFaultModeName();
 	FaultModeType getFaultModeStruct(int faultModeId);
@@ -45,6 +46,7 @@ private:
 	const double faultRate;
 	const int componentId;
 	const int infinity = numeric_limits<int>::max();
+	double randNumGeneratedInFailure;
 
 
 	int countBetweenFailures, currentFaultModeId, iterationAtFailure;

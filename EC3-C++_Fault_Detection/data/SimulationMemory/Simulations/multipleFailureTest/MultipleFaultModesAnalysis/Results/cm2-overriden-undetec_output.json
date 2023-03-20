@@ -5,6 +5,8 @@
         "FaultModeId": 3,
         "Iteration": 60,
         "IterationOnFailure": 60,
+        "Reliability": "1",
+        "RandNumGeneratedInFailure": "NaN",
         "PerformedTest": "keepPowerTest",
         "FaultModeInfo": {
             "componentId": "6",
@@ -44,6 +46,8 @@
         "FaultModeId": 3,
         "Iteration": 61,
         "IterationOnFailure": 60,
+        "Reliability": "1",
+        "RandNumGeneratedInFailure": "NaN",
         "PerformedTest": "fuseTest",
         "FaultModeInfo": {
             "componentId": "6",
@@ -57,29 +61,29 @@
         "ForcedEnd": false,
         "SupervisorResult": {
             "Burn": "0.000000",
-            "NotBurn": "3805.837148",
+            "NotBurn": "3806.141107",
             "FaultDiagnosis": {
                 "Failure": "False",
                 "PerformedTest": "fuseTest",
                 "FailureIndicators": []
             },
             "previousMetrics": {
-                "silhouetteCluster1": "0.999596",
-                "silhouetteCluster2": "0.999709",
+                "silhouetteCluster1": "0.999667",
+                "silhouetteCluster2": "0.999711",
                 "numPointsCluster1": "30",
                 "numPointsCluster2": "30",
-                "overallSilhouette": "0.999653"
+                "overallSilhouette": "0.999689"
             },
             "newMetrics": {
-                "silhouetteCluster1": "0.99877",
-                "silhouetteCluster2": "0.994978",
+                "silhouetteCluster1": "0.998827",
+                "silhouetteCluster2": "0.994983",
                 "numPointsCluster1": "31",
                 "numPointsCluster2": "31",
-                "overallSilhouette": "0.996874"
+                "overallSilhouette": "0.996905"
             },
-            "overallScoreVar": "-0.00277842",
-            "cluster1ScoreVar": "-0.000825862",
-            "cluster2ScoreVar": "-0.00473098"
+            "overallScoreVar": "-0.00278437",
+            "cluster1ScoreVar": "-0.000840215",
+            "cluster2ScoreVar": "-0.00472852"
         },
         "NominalValues": {
             "Burn": 0.0,
@@ -92,6 +96,8 @@
         "FaultModeId": 8,
         "Iteration": 64,
         "IterationOnFailure": 64,
+        "Reliability": "1",
+        "RandNumGeneratedInFailure": "NaN",
         "PerformedTest": "keepPowerTest",
         "FaultModeInfo": {
             "componentId": "3",
@@ -131,6 +137,8 @@
         "FaultModeId": 8,
         "Iteration": 65,
         "IterationOnFailure": 64,
+        "Reliability": "1",
+        "RandNumGeneratedInFailure": "NaN",
         "PerformedTest": "fuseTest",
         "FaultModeInfo": {
             "componentId": "3",
@@ -144,29 +152,29 @@
         "ForcedEnd": false,
         "SupervisorResult": {
             "Burn": "0.000000",
-            "NotBurn": "3805.856696",
+            "NotBurn": "3805.676273",
             "FaultDiagnosis": {
                 "Failure": "False",
                 "PerformedTest": "fuseTest",
                 "FailureIndicators": []
             },
             "previousMetrics": {
-                "silhouetteCluster1": "0.998045",
-                "silhouetteCluster2": "0.990899",
+                "silhouetteCluster1": "0.998089",
+                "silhouetteCluster2": "0.990872",
                 "numPointsCluster1": "32",
                 "numPointsCluster2": "32",
-                "overallSilhouette": "0.994472"
+                "overallSilhouette": "0.99448"
             },
             "newMetrics": {
-                "silhouetteCluster1": "0.997407",
-                "silhouetteCluster2": "0.987273",
+                "silhouetteCluster1": "0.99744",
+                "silhouetteCluster2": "0.987242",
                 "numPointsCluster1": "33",
                 "numPointsCluster2": "33",
-                "overallSilhouette": "0.99234"
+                "overallSilhouette": "0.992341"
             },
-            "overallScoreVar": "-0.0021321",
-            "cluster1ScoreVar": "-0.000637833",
-            "cluster2ScoreVar": "-0.00362636"
+            "overallScoreVar": "-0.00213912",
+            "cluster1ScoreVar": "-0.000649203",
+            "cluster2ScoreVar": "-0.00362904"
         },
         "NominalValues": {
             "Burn": 54.0,

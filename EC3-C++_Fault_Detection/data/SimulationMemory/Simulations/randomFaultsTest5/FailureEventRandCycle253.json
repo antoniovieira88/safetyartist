@@ -1,0 +1,58 @@
+[
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Increase of NO contact resistance",
+        "FaultModeId": 8,
+        "Iteration": 253,
+        "IterationOnFailure": 253,
+        "Reliability": "0.987951",
+        "RandNumGeneratedInFailure": "0.998765",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.014444",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999675",
+                "silhouetteCluster2": "0.999686",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.99968"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998675",
+                "silhouetteCluster2": "0.999682",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999169"
+            },
+            "overallScoreVar": "-0.000511824",
+            "cluster1ScoreVar": "-0.000999861",
+            "cluster2ScoreVar": "-3.65146e-06"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 0.0
+        }
+    }
+]

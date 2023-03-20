@@ -89,6 +89,8 @@ void std::to_json(json& j, const FailureEventType& obj)
 		{"FaultModeId", obj.faultMode.id},
 		{"Iteration", obj.iteration},
 		{"IterationOnFailure", obj.iterationOnFailure},
+		{"Reliability", convertDoubleToStr(obj.reliability)},
+		{"RandNumGeneratedInFailure", convertDoubleToStr(obj.randNumGeneratedInFailure)},
 		{"PerformedTest", testStr[obj.testName]},
 		{"FaultModeInfo", json(obj.faultMode)},
 		{"FailureDetected", obj.failureDetected},
@@ -110,6 +112,10 @@ void std::to_json(json& j, const FailureEventType& obj)
 string std::convertDoubleToStr(double value)
 {
 	ostringstream ss;
+
+	if (isnan(value)) {
+		return "NaN";
+	}
 
 	ss << value;
 

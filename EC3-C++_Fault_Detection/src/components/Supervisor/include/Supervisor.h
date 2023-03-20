@@ -8,7 +8,7 @@ public:
 		string dataMemoryDir = "data/DataMemory",
 		string simulationMemoryDir = "data/SimulationMemory",
 		int maxNumberOfRegisters = 1000,
-		double nominalFuseResultBurn = 0.1, double nominalFuseResultNotBurn = 0.9,
+		double nominalFuseResultBurn = 54, double nominalFuseResultNotBurn = 4092,
 		bool verboseMode = true);
 
 	void attach(Supervised* supervised);

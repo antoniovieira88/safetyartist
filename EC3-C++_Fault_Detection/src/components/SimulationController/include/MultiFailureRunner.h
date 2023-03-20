@@ -30,6 +30,8 @@ private:
 
 	bool& verboseMode;
 
+	void addFailureToEventsArray(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed, int iteration);
+
 	string simulationsDir, outputFilename;
 	vector<InjectedFailureType> injectedFailuresArray;
 

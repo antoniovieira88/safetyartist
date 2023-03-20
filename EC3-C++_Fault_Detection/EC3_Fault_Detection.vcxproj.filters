@@ -112,6 +112,9 @@
     <Filter Include="Source Files\SimulationController\units\ProcessUnit\modules">
       <UniqueIdentifier>{5b2e27c4-ed2f-4615-abbd-a71a04116d82}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\tests\ComponentTest">
+      <UniqueIdentifier>{06963d28-bb98-4cb8-91be-8b646fef7045}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\app\main.cpp">
@@ -228,6 +231,9 @@
     <ClCompile Include="src\components\SimulationController\units\ProcessUnit\modules\IterationRunner.cpp">
       <Filter>Source Files\SimulationController\units\ProcessUnit\modules</Filter>
     </ClCompile>
+    <ClCompile Include="tests\Component\ComponentTest.cpp">
+      <Filter>Source Files\tests</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\utils\structs\structs.h">
@@ -331,6 +337,9 @@
     </ClInclude>
     <ClInclude Include="src\components\SimulationController\include\IterationRunner.h">
       <Filter>Header Files\SimulationController\units</Filter>
+    </ClInclude>
+    <ClInclude Include="tests\Component\include\ComponentTest.h">
+      <Filter>Header Files\tests\ComponentTest</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

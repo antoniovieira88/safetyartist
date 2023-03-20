@@ -232,6 +232,9 @@ void ProcessUnitSC::selectSimulation()
 
 	SimulationFileHandler simulationFileHandler(dataMemoryDir, simulationMemoryDir);
 	bool simulationFound = simulationFileHandler.searchForSimulationDirectories(name);
+	failureEventsArray.clear();
+	failureController.reset();
+
 
 	if (simulationFound) {
 		ProcessUnitSC::simulationName = name;
@@ -327,7 +330,7 @@ void ProcessUnitSC::setSimulationParams()
 	// the values stored in 'simulationSpecificParams' struct)
 	loadSimulation();
 	// set the simulation controller current state 
-	testScenario.numberOfFailedComponents = paramsController.setComponentsInitialOperationalState();
+	paramsController.setComponentsInitialOperationalState();
 	string srcFilesMtEngineStateDir = simulationsDir + "/" + simulationName;
 	generator.setFileDir(srcFilesMtEngineStateDir + "/SimulationControllerMtEngine");
 	generator.seed(simulationSpecificParams.simulationSeed);
@@ -401,7 +404,7 @@ void ProcessUnitSC::multipleFailuresTestOption()
 {
 	if (simulationName != "") {
 		bool originalVerboseMode = verboseMode;
-		if (originalVerboseMode) setVerboseMode(false);
+		if (originalVerboseMode) setVerboseMode(true);
 		MultiFailureRunner multiFailureRunner(
 			failureController,
 			testScenario,
@@ -463,6 +466,8 @@ int ProcessUnitSC::userSimulationCycleParamsOptions() {
 			cout << endl << "Simulation restarting..." << endl;
 			resetSupervisor();
 			resetComponentsOperationalStates();
+			failureEventsArray.clear();
+			resetMtRandEngines();
 			simulationFileHandler.resetCSVFiles(simulationName);
 			break;
 		case 99:
@@ -516,6 +521,13 @@ void ProcessUnitSC::saveMtRandEngines()
 		generator.saveState(verboseMode);
 		supervisedPointer->saveMtEngineState();
 	}
+}
+
+void ProcessUnitSC::resetMtRandEngines()
+{
+	int seed = simulationSpecificParams.simulationSeed;
+	generator.seed(seed);
+	supervisedPointer->setMtEngineSeed(seed);
 }
 
 void ProcessUnitSC::avaliateComponentFaultModes(
@@ -594,6 +606,7 @@ void ProcessUnitSC::singleFailureInjectionTest()
 	cout << endl << "Reseting simulation..." << endl;
 	resetSupervisor();
 	resetComponentsOperationalStates();
+	failureEventsArray.clear();
 
 	simulationFileHandler.resetCSVFiles(simulationName);
 	const string faultModesAvaliationsDir = simulationFileHandler.createFaultModesAvaliationDir(simulationName);
@@ -708,7 +721,7 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 	cout << endl << "Cycle of iterations completed" << endl;
 
 	SimulationFileHandler simulationFileHandler(dataMemoryDir, simulationMemoryDir);
-	string outputFilePath = "SimulationCycle" + to_string(*iterationPointer);
+	string outputFilePath = simulationDir + "/FailureEventRandCycle" + to_string(*iterationPointer) + ".json";
 	simulationFileHandler.exportFailureEventsHistoryJson(failureEventsArray, outputFilePath);
 }
 

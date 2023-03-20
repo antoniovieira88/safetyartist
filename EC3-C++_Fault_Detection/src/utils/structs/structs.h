@@ -118,6 +118,8 @@ struct FaultModeAnalysisResultType {
 struct FailureEventType {
 	string componentName;
 	FaultModeType faultMode;
+	double reliability;
+	double randNumGeneratedInFailure;
 	test testName;
 	int iteration;
 	int iterationOnFailure;

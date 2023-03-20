@@ -12,10 +12,11 @@ int LoadFaultModesTest()
 	double stepDuration = 1.0;
 	string simulationName = "LoadFaultModesTest";
 	SimulationSpecificParamsType params{};
+	TestScenarioType testScenario{};
 
 	cout << "Test started" << endl;
 
-	ParamsController paramsController(simulationName, params, generator, componentsArray, iterationGlobal);
+	ParamsController paramsController(simulationName, params, generator, componentsArray, testScenario, iterationGlobal);
 	paramsController.loadFailureSpecs();
 
 	for (iteration = 1; iteration < 20; iteration++) {

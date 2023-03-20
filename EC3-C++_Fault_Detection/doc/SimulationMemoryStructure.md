@@ -6,7 +6,6 @@ Simulation Memory corresponds to a folder in "\data" directory and it stores:
 - the list of all components that can interfere with the occurrence of critical faults in the supervised system;
 - the failure parameters related to the listed components (failure rate, failure modes, etc).
 
-
 The data structure adopted in each of the files found in Simulation Memory is described below.
 
 ## *HistoricalCatchedFailureMetricsLog.csv*'s structure
@@ -38,3 +37,26 @@ The data structure adopted in each of the files found in Simulation Memory is de
 | 0  | `component name`  | `enum components`|
 | 1  | `failure rate ($s^{-1}$)`  |  `double` |
 | 2  | `countBetweenFailures` |  `double` |
+
+## *[name]_input.csv*'s structure
+
+**Dir:** data/SimulationMemory/Simulations/`[SimulationName]`/MultipleFaultModesAnalysis/Results
+
+**Separator Character:** "," (comma)
+
+| Column Position  | Meaning | Data Type |
+| ------------- | ------------- | ------------- |
+| 0  | `hitIteration`  | `integer`|
+| 1  | `componentId`  |  `integer [0-23]` |
+| 2  | `failureModeId` |  `integer` |
+
+### **Example**
+
+Three injected failures on iterations 60, 64 and 70:
+
+```
+hitIteration,componentId,failureId
+60,0,3
+64,6,3
+70,4,2
+```

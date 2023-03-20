@@ -67,6 +67,28 @@ void MultiFailureRunner::run()
 	}
 }
 
+void MultiFailureRunner::addFailureToEventsArray(FaultModeType* pointerForNewFaultMode, test nextTestToBePerfomed, int iteration)
+{
+	Component* componentPointer = &componentsArray[pointerForNewFaultMode->componentId];
+	FailureEventType failureEvent;
+
+	int iterationOfFailure = iteration;
+	failureEvent.componentName = componentPointer->getComponentName();
+	failureEvent.reliability = NAN;
+	failureEvent.randNumGeneratedInFailure = NAN;
+	failureEvent.iterationOnFailure = iterationOfFailure;
+	failureEvent.faultMode = *pointerForNewFaultMode;
+	failureEvent.iteration = iteration;
+	failureEvent.testName = nextTestToBePerfomed;
+	failureEvent.failureDetected = false;
+	failureEvent.fuseTestResults = FuseTestResultsType{};
+	failureEvent.keepPowerTestResults = KeepPowerTestResultsType{};;
+	failureEvent.forcedEnd = true;
+
+	failureEventsArray.push_back(failureEvent);
+
+}
+
 void MultiFailureRunner::chooseOption()
 {
 	char userOption = 0;
@@ -227,7 +249,15 @@ void MultiFailureRunner::runSimulationCycleWithInjectedFailures(string testName)
 			nextTextToBePerfomed = iterationRunner.getNextTestToBePerfomed();
 
 			componentsArray[componentId].setIterationAtFailure(*iterationPointer + 1);
-			failureController.addNewFailureToTestScenario(pointerForNewFaultMode, nextTextToBePerfomed);
+			try {
+				failureController.addNewFailureToTestScenario(pointerForNewFaultMode, nextTextToBePerfomed);
+			}
+			catch (exception& exp) {
+				cout << endl << exp.what() << endl;
+				addFailureToEventsArray(pointerForNewFaultMode, nextTextToBePerfomed, *iterationPointer);
+				injectionFailureTestEnd = true;
+				break;
+			}
 		}
 
 		else {

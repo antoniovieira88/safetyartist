@@ -20,7 +20,8 @@ Component::Component(
 	componentId(componentId), verboseMode(verboseMode)
 {
 	Component::countBetweenFailures = 0;
-
+	Component::randNumGeneratedInFailure = NAN;
+	Component::reliability = NAN;
 	Component::isFaulty = false;
 
 	// the -1 value for currentFailureMode means that the component is operating without any fault
@@ -179,6 +180,10 @@ void Component::repair()
 	isFaulty = false;
 	countBetweenFailures = 0;
 	currentFaultModeId = -1;
+	iterationAtFailure = 0;
+	randNumGeneratedInFailure = NAN;
+	reliability = NAN;
+
 }
 
 void Component::setCountBetweenFailures(int countBetweenFailures)
@@ -225,7 +230,8 @@ enum componentOpStatus Component::generateNewOperationalState()
 		isFaulty = pseudoRandomNumber > reliability;
 
 		if (isFaulty) {
-			iterationAtFailure = *iterationPointer;
+			randNumGeneratedInFailure = pseudoRandomNumber;
+			iterationAtFailure = *iterationPointer + 1;
 			currentFaultModeId = discreteDist(generator);
 			countBetweenFailures = infinity;
 			return newFault;
@@ -259,6 +265,11 @@ int Component::getCountBetweenFailures()
 double Component::getReliability()
 {
 	return reliability;
+}
+
+double Component::getRandNumGeneratedInFailure()
+{
+	return randNumGeneratedInFailure;
 }
 
 string Component::getComponentName()

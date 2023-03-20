@@ -168,7 +168,8 @@ void FailureController::addNewFailureToTestScenario(FaultModeType* pointerForNew
 	}
 
 	else {
-		throw exception();
+		string reasonMsg = " maximum number of failures with impact (" + to_string(maxNumberOfFailuresWithImpact) + ") reached";
+		throw ForcedSimulationEndExcep(reasonMsg, nextTestToBePerfomed);
 	}
 }
 

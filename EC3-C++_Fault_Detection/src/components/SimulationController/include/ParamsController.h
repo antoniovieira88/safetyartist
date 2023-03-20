@@ -12,13 +12,14 @@ public:
 		SimulationSpecificParamsType& simulationSpecificParams,
 		mt19937& generator,
 		vector<Component>& componentsArray,
+		TestScenarioType& testScenario,
 		int*& iterationPointer,
 		string simulationMemoryDir = "data/SimulationMemory",
 		bool verboseMode = true
 	);
 
 	void loadFailureSpecs();
-	int setComponentsInitialOperationalState();
+	void setComponentsInitialOperationalState();
 	void updateComponentsOperationalStateFile();
 
 	bool isSurpervisedStartingWithFailure();
@@ -37,6 +38,7 @@ private:
 	string& simulationName;
 	int*& iterationPointer;
 	SimulationSpecificParamsType& simulationSpecificParams;
+	TestScenarioType& testScenario;
 
 	mt19937& generator;
 	vector<Component>& componentsArray;

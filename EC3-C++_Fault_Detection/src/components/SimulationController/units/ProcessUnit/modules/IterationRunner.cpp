@@ -180,8 +180,12 @@ void IterationRunner::updateFailureEventsArray(bool failureDetected, test testNa
 	FailureEventType failureEvent;
 
 	for (FaultModeType*& newFaultModePointer : testScenario.newFaultModesArray) {
-		int iterationOfFailure = componentsArray[newFaultModePointer->componentId].getIterationOnFailure();
-		failureEvent.componentName = componentsArray[newFaultModePointer->componentId].getComponentName();
+		Component* componentPointer = &componentsArray[newFaultModePointer->componentId];
+
+		int iterationOfFailure = componentPointer->getIterationOnFailure();
+		failureEvent.componentName = componentPointer->getComponentName();
+		failureEvent.reliability = componentPointer->getReliability();
+		failureEvent.randNumGeneratedInFailure = componentPointer->getRandNumGeneratedInFailure();
 		failureEvent.iterationOnFailure = iterationOfFailure;
 		failureEvent.faultMode = *newFaultModePointer;
 		failureEvent.iteration = *iterationPointer;

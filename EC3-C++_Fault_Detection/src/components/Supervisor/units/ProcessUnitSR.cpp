@@ -129,6 +129,10 @@ void ProcessUnitSR::runFuseTest() {
 		cout << "Number of points: " << analysisUnit.getTotalNumberOfPoints() << endl;
 		cout << "Number of clusters: " << analysisUnit.getNumberOfClusters() << endl;
 		cout << "OverallSilhouette: " << newMetricsFuseTest(overallSilhouette) << endl;
+
+		mat centroids = analysisUnit.getCentroids();
+		cout << "Centroids: " << centroids[0] << " , " << centroids[1] << endl;
+
 	}
 
 	// all metrics are used in the FuseTest

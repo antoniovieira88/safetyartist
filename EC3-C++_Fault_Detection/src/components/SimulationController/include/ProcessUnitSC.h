@@ -52,8 +52,10 @@ private:
 	void resetComponentsOperationalStates();
 	void resetSupervisor();
 	void getReadyForNextSimulationCycle();
+
 	void loadMtRandEngines();
 	void saveMtRandEngines();
+	void resetMtRandEngines();
 
 	void avaliateComponentFaultModes(Component& component, vector<FaultModeAnalysisResultType>& faultModeAnalysisResultArray);
 	void singleFailureInjectionOption();

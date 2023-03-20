@@ -1,0 +1,14 @@
+parameter,value
+overallSilhouetteTolerance,0.0145
+silhouetteDiffTolerance,0.029
+numberOfPointsPerClusterDiffTolerance,0
+nominalFuseResultBurn,54
+nominalFuseResultNotBurn,4092
+minNominalFuseResultBurn,51
+maxNominalFuseResultBurn,57
+minNominalFuseResultNotBurn,4091
+maxNominalFuseResultNotBurn,4095
+maxStdDeviation,3
+iterationEquivalentTime,12
+simulationSeed,2244744212
+supervisorMaxNumberOfRegisters,100

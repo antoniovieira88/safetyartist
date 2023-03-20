@@ -102,6 +102,11 @@ void Supervised::saveMtEngineState()
 	generator.saveState(verboseMode);
 }
 
+void Supervised::setMtEngineSeed(int seed)
+{
+	generator.seed(seed);
+}
+
 void Supervised::setMtEngineSrcFile(string srcFileDir)
 {
 	generator.setFileDir(srcFileDir);

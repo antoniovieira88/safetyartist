@@ -48,6 +48,7 @@
     <ClCompile Include="src\utils\kmeans\KMeans.cpp" />
     <ClCompile Include="src\utils\kmeans\SilhouetteScore.cpp" />
     <ClCompile Include="src\utils\mt_engine\MtRandEngine.cpp" />
+    <ClCompile Include="tests\Component\ComponentTest.cpp" />
     <ClCompile Include="tests\KMeans\KMeansTest1.cpp" />
     <ClCompile Include="tests\KMeans\KMeansTest2.cpp" />
     <ClCompile Include="tests\KMeans\KMeansTest3.cpp" />
@@ -89,6 +90,7 @@
     <ClInclude Include="src\utils\kmeans\include\SilhouetteScore.h" />
     <ClInclude Include="src\utils\mt_engine\include\MtRandEngine.h" />
     <ClInclude Include="src\utils\structs\structs.h" />
+    <ClInclude Include="tests\Component\include\ComponentTest.h" />
     <ClInclude Include="tests\KMeans\include\KMeansTests.h" />
     <ClInclude Include="tests\RandomGeneratorMt19937\include\RandomGeneratorTest.h" />
     <ClInclude Include="tests\SimulationController\include\LoadFaultModesTest.h" />

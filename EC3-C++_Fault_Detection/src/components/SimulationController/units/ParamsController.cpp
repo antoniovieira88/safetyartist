@@ -7,6 +7,7 @@ ParamsController::ParamsController(
 	SimulationSpecificParamsType& simulationSpecificParams,
 	mt19937& generator,
 	vector<Component>& componentsArray,
+	TestScenarioType& testScenario,
 	int*& iterationPointer,
 	string simulationMemoryDir,
 	bool verboseMode) :
@@ -14,7 +15,8 @@ ParamsController::ParamsController(
 	componentsArray(componentsArray), simulationSpecificParams(simulationSpecificParams),
 	faultModesDir(simulationMemoryDir + "/FailureSpecs_EC3/FaultModes"),
 	failureSpecsDir(simulationMemoryDir + "/FailureSpecs_EC3"),
-	simulationsDir(simulationMemoryDir + "/Simulations")
+	simulationsDir(simulationMemoryDir + "/Simulations"),
+	testScenario(testScenario)
 {
 	ParamsController::verboseMode = verboseMode;
 	ParamsController::initialFaults = false;
@@ -74,7 +76,7 @@ void ParamsController::loadFailureSpecs()
 	faultRatesFile.close();
 }
 
-int ParamsController::setComponentsInitialOperationalState()
+void ParamsController::setComponentsInitialOperationalState()
 {
 	fstream componentsOperationalStateFile;
 	string line, word;
@@ -150,6 +152,7 @@ int ParamsController::setComponentsInitialOperationalState()
 					// -> obs.: "-1" indicates no fault
 					std::getline(strstream, word, ',');
 					iterationAtFailure = stoi(word);
+					testScenario.failedComponentsIdArray.push_back(componentId);
 					componentsArray[componentId].setIterationAtFailure(iterationAtFailure);
 
 					// this is only a flag variable which helps restore the components states to a default initial condition
@@ -173,7 +176,7 @@ int ParamsController::setComponentsInitialOperationalState()
 		throw;
 	}
 
-	return numberOfFaultyComponents;
+	testScenario.numberOfFailedComponents = numberOfFaultyComponents;
 }
 
 // this method is called at the end of each iterations cycle (duration == 0). Its purpose is
@@ -181,7 +184,6 @@ int ParamsController::setComponentsInitialOperationalState()
 void ParamsController::updateComponentsOperationalStateFile()
 {
 	fstream componentsOperationalStateFile;
-	int componentFaultModeId = 0;
 
 	componentsOperationalStateFile.open(
 		simulationsDir + "/" + simulationName
@@ -195,13 +197,14 @@ void ParamsController::updateComponentsOperationalStateFile()
 	}
 
 	// the header is written as the first line of the csv file
-	componentsOperationalStateFile << "name,faultModeId,countBetweenFailures" << endl;
+	componentsOperationalStateFile << "id,name,faultModeId,countBetweenFailures,iterationAtFailure" << endl;
 
 	for each (Component component in componentsArray)
 	{
-		componentFaultModeId = component.getCurrentFaultModeId();
+		int componentId = component.getComponentId();
+		int componentFaultModeId = component.getCurrentFaultModeId();
 
-		componentsOperationalStateFile
+		componentsOperationalStateFile << componentId << ","
 			<< component.getComponentName() << ","
 			<< componentFaultModeId << ",";
 

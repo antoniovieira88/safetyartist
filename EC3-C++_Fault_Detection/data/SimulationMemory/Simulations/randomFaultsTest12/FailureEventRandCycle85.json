@@ -1,0 +1,58 @@
+[
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Increase of pick-up time",
+        "FaultModeId": 16,
+        "Iteration": 85,
+        "IterationOnFailure": 85,
+        "Reliability": "0.995968",
+        "RandNumGeneratedInFailure": "0.999865",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.078571",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999709",
+                "silhouetteCluster2": "0.999776",
+                "numPointsCluster1": "42",
+                "numPointsCluster2": "42",
+                "overallSilhouette": "0.999743"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998554",
+                "silhouetteCluster2": "0.999776",
+                "numPointsCluster1": "44",
+                "numPointsCluster2": "42",
+                "overallSilhouette": "0.999151"
+            },
+            "overallScoreVar": "-0.000591807",
+            "cluster1ScoreVar": "-0.00115532",
+            "cluster2ScoreVar": "1.36185e-07"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 0.0
+        }
+    }
+]

@@ -10,7 +10,7 @@ SimulationController::SimulationController(
 		{ 0, false, false, false, false,
 		vector<FaultModeType*>(), vector<int>(),
 		nullptr, nullptr }),
-	paramsController(simulationName, simulationSpecificParams, generator, componentsArray, iterationPointer, simulationMemoryDir, verboseMode),
+	paramsController(simulationName, simulationSpecificParams, generator, componentsArray, testScenario, iterationPointer, simulationMemoryDir, verboseMode),
 	failureController(componentsArray, testScenario, verboseMode),
 	processUnit(
 		failureController,

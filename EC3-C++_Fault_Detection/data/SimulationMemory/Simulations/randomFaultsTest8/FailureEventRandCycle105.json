@@ -1,0 +1,58 @@
+[
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Short-Circuit",
+        "FaultModeId": 1,
+        "Iteration": 105,
+        "IterationOnFailure": 105,
+        "Reliability": "0.995004",
+        "RandNumGeneratedInFailure": "0.997726",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.200000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999706",
+                "silhouetteCluster2": "0.999751",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999729"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998713",
+                "silhouetteCluster2": "0.999748",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999221"
+            },
+            "overallScoreVar": "-0.000508246",
+            "cluster1ScoreVar": "-0.000992928",
+            "cluster2ScoreVar": "-2.86529e-06"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 0.0
+        }
+    }
+]

@@ -1,0 +1,99 @@
+[
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Decrease of drop-away current",
+        "FaultModeId": 14,
+        "Iteration": 81,
+        "IterationOnFailure": 81,
+        "Reliability": "0.996159",
+        "RandNumGeneratedInFailure": "0.998771",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.028889",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "53.912262",
+            "NotBurn": "4092.354473",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999659",
+                "silhouetteCluster2": "0.999803",
+                "numPointsCluster1": "40",
+                "numPointsCluster2": "40",
+                "overallSilhouette": "0.999731"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999664",
+                "silhouetteCluster2": "0.999806",
+                "numPointsCluster1": "41",
+                "numPointsCluster2": "41",
+                "overallSilhouette": "0.999735"
+            },
+            "overallScoreVar": "4.20698e-06",
+            "cluster1ScoreVar": "5.32798e-06",
+            "cluster2ScoreVar": "3.08597e-06"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Decrease of drop-away current",
+        "FaultModeId": 14,
+        "Iteration": 82,
+        "IterationOnFailure": 81,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "0.998771",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.028889",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "40.000000",
+                "numPointsCluster2": "40.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "40.000000",
+                "numPointsCluster2": "42.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 1
+        }
+    }
+]

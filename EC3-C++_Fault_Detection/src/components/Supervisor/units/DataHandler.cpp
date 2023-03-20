@@ -39,6 +39,9 @@ void DataHandler::initializeDataHandler()
 
 int DataHandler::loadHistoricalMetrics()
 {
+	historicalMetrics = mat();
+	previousMetrics = colvec(numberOfMetrics, fill::zeros);
+	newMetrics = colvec(numberOfMetrics, fill::zeros);
 	int size = 0;
 	try {
 		mlpack::data::Load(
@@ -113,6 +116,8 @@ int DataHandler::getNumberOfMetrics()
 int DataHandler::loadHistoricalData() {
 	int size = 0;
 	try {
+		historicalData = mat();
+		historicalDataToCluster = mat();
 		mlpack::data::Load(
 			dataMemoryDir + "/" + simulationName + "/"
 			+ testName + "/HistoricalData.csv",
@@ -130,6 +135,9 @@ int DataHandler::loadHistoricalData() {
 			// here the iteration is updated for the entire application
 			lastIterationInDataMemory = historicalData(0, numberOfRegisters - 1);
 			historicalDataToCluster = historicalData.submat(2, 0, 2, numberOfRegisters - 1);
+		}
+		else {
+			lastIterationInDataMemory = 0;
 		}
 	}
 	catch (const std::exception& error) {

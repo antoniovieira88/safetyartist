@@ -44,6 +44,7 @@ public:
 
 	void loadMtEngineState();
 	void saveMtEngineState();
+	void setMtEngineSeed(int seed);
 
 private:
 	MtRandEngine generator;
