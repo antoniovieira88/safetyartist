@@ -1,5 +1,4 @@
-//#include "../components/SimulationController/include/SimulationController.h"
-#include "../../tests/Component/include/ComponentTest.h"
+#include "../components/SimulationController/include/SimulationController.h"
 
 using namespace std;
 
@@ -10,7 +9,7 @@ int main()
 	bool verboseMode = true;
 
 	try {
-		/*Supervisor supervisor(dataMemoryDir, simulationMemoryDir);
+		Supervisor supervisor(dataMemoryDir, simulationMemoryDir);
 
 		Supervised supervised;
 
@@ -20,9 +19,7 @@ int main()
 
 		simulationController.attach(&supervisor, &supervised);
 
-		simulationController.run();*/
-
-		ComponentTest();
+		simulationController.run();
 	}
 	catch (exception& error) {
 		cout << endl << endl << error.what() << endl;

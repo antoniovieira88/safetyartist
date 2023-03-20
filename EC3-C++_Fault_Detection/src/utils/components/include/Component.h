@@ -26,7 +26,8 @@ public:
 
 	int getComponentId();
 	int getCurrentFaultModeId();
-	int getCountBetweenFailures();
+	int getCountBetweenFailures();	
+
 	double getReliability();
 	double getRandNumGeneratedInFailure();
 	string getComponentName();
@@ -40,6 +41,9 @@ public:
 	int getIterationOnFailure();
 
 	bool checkFaultModeIdValidity(int id);
+
+	// Method to check if the component is fault based on an uniform distribution-generated pseudorandom number (prn)
+	bool isComponentFaulty(double prn);
 
 private:
 	const string name;

@@ -221,13 +221,40 @@ void Component::calculateReliability()
 	else reliability = 0.0;
 }
 
+/* Method to check if the component is fault based on an uniform distribution - generated pseudorandom number(prn)
+ *
+ * Basics of the method: In order to check whether a component is faulty by using a pseudorandom number 'prn' within [0; 1[,
+ * 'prn' shall represent the component's failure distribution function (F(t) = 1-R(t) = 1-*e^(-lambda*t)). By letting 'prn'
+ * equal to F(t), one can calculate the time 'tPRN' at which the component's failure distribution is reached by means of the
+ * equation tPRN = -(1/lambda) * ln(1 - prn), since tPRN belongs to [0, +inf[.
+ * See further information on https://www.eg.bucknell.edu/~xmeng/Course/CS6337/Note/master/node50.html.
+ * 
+ * With this definition, the state of the component is defined by comparing tPNG to the current simulation time (tSIM).
+ * 
+ * 1) If tSIM < tPRN, the component has not reached its failed state time and, thus, remains operational;
+ * 2) If tSIM >= tPRN, the component has reached its failed state time and, thus, enters a failed state.
+ * 
+ * The function isComponentFaulty retrieves 'true' if the condition '1' is satisfied and 'false' otherwise.
+ */
+bool Component::isComponentFaulty(double prn)
+{
+	double tPRN = (-1 / faultRate) * (log(1 - prn));
+
+	// Fault condition: iterationEquivalentTime >= tPRN
+	if (iterationEquivalentTime >= tPRN)
+		return true;
+
+	else
+		return false;
+}
+
 enum componentOpStatus Component::generateNewOperationalState()
 {
 	double pseudoRandomNumber;
 	if (!isFaulty) {
 		pseudoRandomNumber = uniformDist(generator);
 		if (verboseMode) cout << "Pseudo random number generated: " << pseudoRandomNumber << endl;
-		isFaulty = pseudoRandomNumber > reliability;
+		isFaulty = isComponentFaulty(pseudoRandomNumber);
 
 		if (isFaulty) {
 			randNumGeneratedInFailure = pseudoRandomNumber;

@@ -1,0 +1,248 @@
+seed: 3944864314
+iterationOnFailure: 5323
+randNumGeneratedInFailure: 1.42925e-05
+faultModeName: Increase of Leakage Current
+faultModeId: 4
+reliability: 0.773941
+countBetweenFailures: 2147483647
+
+seed: 3510813216
+iterationOnFailure: 4516
+randNumGeneratedInFailure: 3.02823e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.804613
+countBetweenFailures: 2147483647
+
+seed: 1451051205
+iterationOnFailure: 2479
+randNumGeneratedInFailure: 4.80514e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.887548
+countBetweenFailures: 2147483647
+
+seed: 776178934
+iterationOnFailure: 35565
+randNumGeneratedInFailure: 1.13916e-05
+faultModeName: Change of Differential Resistance
+faultModeId: 5
+reliability: 0.180376
+countBetweenFailures: 2147483647
+
+seed: 578210035
+iterationOnFailure: 7554
+randNumGeneratedInFailure: 2.70458e-05
+faultModeName: Decrease of Forward Threshold Voltage
+faultModeId: 9
+reliability: 0.695097
+countBetweenFailures: 2147483647
+
+seed: 2000000000
+iterationOnFailure: 62303
+randNumGeneratedInFailure: 2.56914e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.0497665
+countBetweenFailures: 2147483647
+
+seed: 987654321
+iterationOnFailure: 31494
+randNumGeneratedInFailure: 8.75264e-06
+faultModeName: Open
+faultModeId: 0
+reliability: 0.219445
+countBetweenFailures: 2147483647
+
+seed: 1234567890
+iterationOnFailure: 15600
+randNumGeneratedInFailure: 1.13323e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.4718
+countBetweenFailures: 2147483647
+
+seed: 8457832
+iterationOnFailure: 6191
+randNumGeneratedInFailure: 4.30417e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.742255
+countBetweenFailures: 2147483647
+
+seed: 49
+iterationOnFailure: 33745
+randNumGeneratedInFailure: 2.71195e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.1969
+countBetweenFailures: 2147483647
+
+seed: 135748965
+iterationOnFailure: 106965
+randNumGeneratedInFailure: 2.28576e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.00579167
+countBetweenFailures: 2147483647
+
+seed: 977544012
+iterationOnFailure: 3201
+randNumGeneratedInFailure: 3.99974e-05
+faultModeName: Increase of Zener Voltage
+faultModeId: 2
+reliability: 0.857217
+countBetweenFailures: 2147483647
+
+seed: 135792468
+iterationOnFailure: 2793
+randNumGeneratedInFailure: 2.09077e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.874228
+countBetweenFailures: 2147483647
+
+seed: 864207531
+iterationOnFailure: 9150
+randNumGeneratedInFailure: 3.85289e-05
+faultModeName: Short-Circuit
+faultModeId: 1
+reliability: 0.643671
+countBetweenFailures: 2147483647
+
+seed: 908172635
+iterationOnFailure: 40805
+randNumGeneratedInFailure: 3.00603e-07
+faultModeName: Short-Circuit
+faultModeId: 1
+reliability: 0.140146
+countBetweenFailures: 2147483647
+
+seed: 918273645
+iterationOnFailure: 3508
+randNumGeneratedInFailure: 6.15419e-06
+faultModeName: Open
+faultModeId: 0
+reliability: 0.844637
+countBetweenFailures: 2147483647
+
+seed: 222333444
+iterationOnFailure: 64972
+randNumGeneratedInFailure: 2.23825e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.0437636
+countBetweenFailures: 2147483647
+
+seed: 555553330
+iterationOnFailure: 3501
+randNumGeneratedInFailure: 3.13171e-05
+faultModeName: Short-Circuit
+faultModeId: 1
+reliability: 0.844921
+countBetweenFailures: 2147483647
+
+seed: 88888888
+iterationOnFailure: 18109
+randNumGeneratedInFailure: 2.27747e-05
+faultModeName: Short-Circuit
+faultModeId: 1
+reliability: 0.418101
+countBetweenFailures: 2147483647
+
+seed: 999999999
+iterationOnFailure: 19549
+randNumGeneratedInFailure: 1.85978e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.390088
+countBetweenFailures: 2147483647
+
+seed: 22
+iterationOnFailure: 1071
+randNumGeneratedInFailure: 1.17605e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.94982
+countBetweenFailures: 2147483647
+
+seed: 1123581321
+iterationOnFailure: 17584
+randNumGeneratedInFailure: 7.47838e-06
+faultModeName: Increase of Forward Threshold Voltage
+faultModeId: 8
+reliability: 0.428807
+countBetweenFailures: 2147483647
+
+seed: 1248163264
+iterationOnFailure: 42109
+randNumGeneratedInFailure: 2.45531e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.131615
+countBetweenFailures: 2147483647
+
+seed: 128256512
+iterationOnFailure: 4009
+randNumGeneratedInFailure: 2.50496e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.824501
+countBetweenFailures: 2147483647
+
+seed: 10242048
+iterationOnFailure: 15948
+randNumGeneratedInFailure: 3.26624e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.463959
+countBetweenFailures: 2147483647
+
+seed: 30915734
+iterationOnFailure: 875
+randNumGeneratedInFailure: 5.85012e-06
+faultModeName: Decrease of Zener Voltage
+faultModeId: 3
+reliability: 0.958828
+countBetweenFailures: 2147483647
+
+seed: 5690149
+iterationOnFailure: 28517
+randNumGeneratedInFailure: 2.3334e-05
+faultModeName: Short-Circuit
+faultModeId: 1
+reliability: 0.253275
+countBetweenFailures: 2147483647
+
+seed: 1248844221
+iterationOnFailure: 21527
+randNumGeneratedInFailure: 1.01191e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.354643
+countBetweenFailures: 2147483647
+
+seed: 963852741
+iterationOnFailure: 23076
+randNumGeneratedInFailure: 4.02653e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.32915
+countBetweenFailures: 2147483647
+
+seed: 1597532584
+iterationOnFailure: 2868
+randNumGeneratedInFailure: 2.68716e-05
+faultModeName: Open
+faultModeId: 0
+reliability: 0.871076
+countBetweenFailures: 2147483647
+
+
+Final Results
+
+mttf: 253963
+averageReliability: 0.521666
+
+
+Press any button to close the terminal

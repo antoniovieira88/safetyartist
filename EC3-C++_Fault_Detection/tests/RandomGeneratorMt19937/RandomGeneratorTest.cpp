@@ -171,7 +171,7 @@ void RandomGeneratorUnityUniformityTest()
 		out_file << "Numbers within [0.85; 0.90[: " << randomDistributionCount[17] << endl;
 		out_file << "Numbers within [0.90; 0.95[: " << randomDistributionCount[18] << endl;
 		out_file << "Numbers within [0.95; 1.00[: " << randomDistributionCount[19] << endl;
-		out_file << "Numbers outside [0.00; 1.00]: " << randomDistributionCount[20];
+		out_file << "Numbers outside [0.00; 1.00[: " << randomDistributionCount[20];
 
 	}
 
