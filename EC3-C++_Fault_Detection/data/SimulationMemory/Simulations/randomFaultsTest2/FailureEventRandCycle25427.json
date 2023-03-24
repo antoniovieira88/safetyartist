@@ -1,16 +1,16 @@
 [
     {
-        "Component": "K_Sys",
-        "FaultMode": "Increase of NO contact resistance",
-        "FaultModeId": 8,
-        "Iteration": 253,
-        "IterationOnFailure": 253,
-        "Reliability": "0.987951",
-        "RandNumGeneratedInFailure": "0.998765",
+        "Component": "D_Sys",
+        "FaultMode": "Decrease of Reverse Breakdown Voltage",
+        "FaultModeId": 3,
+        "Iteration": 25427,
+        "IterationOnFailure": 25427,
+        "Reliability": "0.915578",
+        "RandNumGeneratedInFailure": "5.97267e-07",
         "PerformedTest": "fuseTest",
         "FaultModeInfo": {
-            "componentId": "13",
-            "probability": "0.014444",
+            "componentId": "12",
+            "probability": "0.033330",
             "fmSafety": "safe",
             "fmDetectableFuse": "yes",
             "fmDetectableKeepPow": "yes",
@@ -33,22 +33,22 @@
                 ]
             },
             "previousMetrics": {
-                "silhouetteCluster1": "0.999675",
-                "silhouetteCluster2": "0.999686",
+                "silhouetteCluster1": "0.999706",
+                "silhouetteCluster2": "0.999766",
                 "numPointsCluster1": "50",
                 "numPointsCluster2": "50",
-                "overallSilhouette": "0.99968"
+                "overallSilhouette": "0.999736"
             },
             "newMetrics": {
-                "silhouetteCluster1": "0.998675",
-                "silhouetteCluster2": "0.999682",
+                "silhouetteCluster1": "0.998708",
+                "silhouetteCluster2": "0.999771",
                 "numPointsCluster1": "51",
                 "numPointsCluster2": "49",
-                "overallSilhouette": "0.999169"
+                "overallSilhouette": "0.999229"
             },
-            "overallScoreVar": "-0.000511824",
-            "cluster1ScoreVar": "-0.000999861",
-            "cluster2ScoreVar": "-3.65146e-06"
+            "overallScoreVar": "-0.000507087",
+            "cluster1ScoreVar": "-0.000997677",
+            "cluster2ScoreVar": "4.76058e-06"
         },
         "NominalValues": {
             "Burn": 0.0,

@@ -1,16 +1,16 @@
 [
     {
         "Component": "K_Sys",
-        "FaultMode": "Decrease of drop-away current",
-        "FaultModeId": 14,
-        "Iteration": 81,
-        "IterationOnFailure": 81,
-        "Reliability": "0.996159",
-        "RandNumGeneratedInFailure": "0.998771",
+        "FaultMode": "Interruption of NC Contact",
+        "FaultModeId": 2,
+        "Iteration": 7923,
+        "IterationOnFailure": 7923,
+        "Reliability": "0.68313",
+        "RandNumGeneratedInFailure": "1.90852e-05",
         "PerformedTest": "fuseTest",
         "FaultModeInfo": {
             "componentId": "13",
-            "probability": "0.028889",
+            "probability": "0.014444",
             "fmSafety": "safe",
             "fmDetectableFuse": "no",
             "fmDetectableKeepPow": "yes",
@@ -19,30 +19,30 @@
         "FailureDetected": false,
         "ForcedEnd": false,
         "SupervisorResult": {
-            "Burn": "53.912262",
-            "NotBurn": "4092.354473",
+            "Burn": "51.673692",
+            "NotBurn": "4094.014548",
             "FaultDiagnosis": {
                 "Failure": "False",
                 "PerformedTest": "fuseTest",
                 "FailureIndicators": []
             },
             "previousMetrics": {
-                "silhouetteCluster1": "0.999659",
-                "silhouetteCluster2": "0.999803",
-                "numPointsCluster1": "40",
-                "numPointsCluster2": "40",
-                "overallSilhouette": "0.999731"
+                "silhouetteCluster1": "0.999716",
+                "silhouetteCluster2": "0.999716",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999716"
             },
             "newMetrics": {
-                "silhouetteCluster1": "0.999664",
-                "silhouetteCluster2": "0.999806",
-                "numPointsCluster1": "41",
-                "numPointsCluster2": "41",
-                "overallSilhouette": "0.999735"
+                "silhouetteCluster1": "0.999705",
+                "silhouetteCluster2": "0.999721",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999713"
             },
-            "overallScoreVar": "4.20698e-06",
-            "cluster1ScoreVar": "5.32798e-06",
-            "cluster2ScoreVar": "3.08597e-06"
+            "overallScoreVar": "-3.53961e-06",
+            "cluster1ScoreVar": "-1.17131e-05",
+            "cluster2ScoreVar": "4.6339e-06"
         },
         "NominalValues": {
             "Burn": 54.0,
@@ -51,16 +51,16 @@
     },
     {
         "Component": "K_Sys",
-        "FaultMode": "Decrease of drop-away current",
-        "FaultModeId": 14,
-        "Iteration": 82,
-        "IterationOnFailure": 81,
+        "FaultMode": "Interruption of NC Contact",
+        "FaultModeId": 2,
+        "Iteration": 7924,
+        "IterationOnFailure": 7923,
         "Reliability": "0",
-        "RandNumGeneratedInFailure": "0.998771",
+        "RandNumGeneratedInFailure": "1.90852e-05",
         "PerformedTest": "keepPowerTest",
         "FaultModeInfo": {
             "componentId": "13",
-            "probability": "0.028889",
+            "probability": "0.014444",
             "fmSafety": "safe",
             "fmDetectableFuse": "no",
             "fmDetectableKeepPow": "yes",
@@ -83,12 +83,12 @@
                 ]
             },
             "previousMetrics": {
-                "numPointsCluster1": "40.000000",
-                "numPointsCluster2": "40.000000"
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
             },
             "newMetrics": {
-                "numPointsCluster1": "40.000000",
-                "numPointsCluster2": "42.000000"
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
             }
         },
         "NominalValues": {

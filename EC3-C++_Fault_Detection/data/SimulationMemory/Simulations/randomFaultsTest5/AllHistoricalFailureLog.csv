@@ -1,2 +1,3 @@
 iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafeFailureGenerated,outsideScopeFailureGenerated,detectableFailureGenerated,impactlessFailureGenerated
-253,True,True,1,[K_Sys],False,False,True,True
+10618,True,False,1,[DZ_Sys],False,False,False,True
+10619,True,True,1,[DZ_Sys],False,True,False,True

@@ -1,0 +1,99 @@
+[
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Open",
+        "FaultModeId": 0,
+        "Iteration": 6242,
+        "IterationOnFailure": 6242,
+        "Reliability": "0.740399",
+        "RandNumGeneratedInFailure": "3.09398e-05",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.450000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Open",
+        "FaultModeId": 0,
+        "Iteration": 6243,
+        "IterationOnFailure": 6242,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "3.09398e-05",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.450000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999578",
+                "silhouetteCluster2": "0.999782",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.99968"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998596",
+                "silhouetteCluster2": "0.99978",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999176"
+            },
+            "overallScoreVar": "-0.000504485",
+            "cluster1ScoreVar": "-0.000982636",
+            "cluster2ScoreVar": "-2.65462e-06"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 0.0
+        }
+    }
+]

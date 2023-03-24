@@ -1,18 +1,18 @@
 [
     {
         "Component": "DZ_Sys",
-        "FaultMode": "Short-Circuit",
-        "FaultModeId": 1,
-        "Iteration": 127,
-        "IterationOnFailure": 127,
-        "Reliability": "0.99395",
-        "RandNumGeneratedInFailure": "0.999719",
+        "FaultMode": "Open",
+        "FaultModeId": 0,
+        "Iteration": 10935,
+        "IterationOnFailure": 10935,
+        "Reliability": "0.590621",
+        "RandNumGeneratedInFailure": "1.99842e-05",
         "PerformedTest": "fuseTest",
         "FaultModeInfo": {
             "componentId": "18",
-            "probability": "0.200000",
+            "probability": "0.450000",
             "fmSafety": "safe",
-            "fmDetectableFuse": "yes",
+            "fmDetectableFuse": "outside_scope",
             "fmDetectableKeepPow": "no",
             "classMultipleFaults": "not_applicable"
         },
@@ -33,22 +33,22 @@
                 ]
             },
             "previousMetrics": {
-                "silhouetteCluster1": "0.999688",
-                "silhouetteCluster2": "0.999753",
+                "silhouetteCluster1": "0.999682",
+                "silhouetteCluster2": "0.999725",
                 "numPointsCluster1": "50",
                 "numPointsCluster2": "50",
-                "overallSilhouette": "0.999721"
+                "overallSilhouette": "0.999703"
             },
             "newMetrics": {
-                "silhouetteCluster1": "0.99869",
-                "silhouetteCluster2": "0.999751",
+                "silhouetteCluster1": "0.998688",
+                "silhouetteCluster2": "0.999723",
                 "numPointsCluster1": "51",
                 "numPointsCluster2": "49",
-                "overallSilhouette": "0.99921"
+                "overallSilhouette": "0.999195"
             },
-            "overallScoreVar": "-0.000511265",
-            "cluster1ScoreVar": "-0.000998832",
-            "cluster2ScoreVar": "-2.46922e-06"
+            "overallScoreVar": "-0.000508283",
+            "cluster1ScoreVar": "-0.000993806",
+            "cluster2ScoreVar": "-2.0685e-06"
         },
         "NominalValues": {
             "Burn": 0.0,

@@ -1,16 +1,16 @@
 [
     {
         "Component": "DZ_Sys",
-        "FaultMode": "Open",
-        "FaultModeId": 0,
-        "Iteration": 159,
-        "IterationOnFailure": 159,
-        "Reliability": "0.99242",
-        "RandNumGeneratedInFailure": "0.994286",
+        "FaultMode": "Increase of Zener Voltage",
+        "FaultModeId": 2,
+        "Iteration": 6167,
+        "IterationOnFailure": 6167,
+        "Reliability": "0.743078",
+        "RandNumGeneratedInFailure": "6.76429e-06",
         "PerformedTest": "fuseTest",
         "FaultModeInfo": {
             "componentId": "18",
-            "probability": "0.450000",
+            "probability": "0.043750",
             "fmSafety": "safe",
             "fmDetectableFuse": "outside_scope",
             "fmDetectableKeepPow": "no",
@@ -33,22 +33,22 @@
                 ]
             },
             "previousMetrics": {
-                "silhouetteCluster1": "0.999707",
-                "silhouetteCluster2": "0.999748",
+                "silhouetteCluster1": "0.999662",
+                "silhouetteCluster2": "0.999746",
                 "numPointsCluster1": "50",
                 "numPointsCluster2": "50",
-                "overallSilhouette": "0.999728"
+                "overallSilhouette": "0.999704"
             },
             "newMetrics": {
-                "silhouetteCluster1": "0.998703",
-                "silhouetteCluster2": "0.99976",
+                "silhouetteCluster1": "0.998662",
+                "silhouetteCluster2": "0.999743",
                 "numPointsCluster1": "51",
                 "numPointsCluster2": "49",
-                "overallSilhouette": "0.999221"
+                "overallSilhouette": "0.999192"
             },
-            "overallScoreVar": "-0.000506434",
-            "cluster1ScoreVar": "-0.00100337",
-            "cluster2ScoreVar": "1.1634e-05"
+            "overallScoreVar": "-0.000512139",
+            "cluster1ScoreVar": "-0.000999805",
+            "cluster2ScoreVar": "-2.8446e-06"
         },
         "NominalValues": {
             "Burn": 0.0,

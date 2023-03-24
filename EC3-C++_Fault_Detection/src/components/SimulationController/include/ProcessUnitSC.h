@@ -48,6 +48,7 @@ private:
 
 	void initializeParamsController();
 	void runSimulationCycle(int duration, bool noFailuresMode = false);
+	void randomFaultsOption();
 
 	void resetComponentsOperationalStates();
 	void resetSupervisor();

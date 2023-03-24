@@ -1,0 +1,190 @@
+[
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Decrease of pick-up current",
+        "FaultModeId": 12,
+        "Iteration": 7438,
+        "IterationOnFailure": 7438,
+        "Reliability": "0.699255",
+        "RandNumGeneratedInFailure": "2.61867e-05",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.028889",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Decrease of pick-up current",
+        "FaultModeId": 12,
+        "Iteration": 7439,
+        "IterationOnFailure": 7438,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "2.61867e-05",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.028889",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "54.756507",
+            "NotBurn": "4092.465857",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999687",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999707"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999693",
+                "silhouetteCluster2": "0.999727",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.99971"
+            },
+            "overallScoreVar": "2.68026e-06",
+            "cluster1ScoreVar": "5.34234e-06",
+            "cluster2ScoreVar": "1.81814e-08"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Open",
+        "FaultModeId": 0,
+        "Iteration": 10476,
+        "IterationOnFailure": 10476,
+        "Reliability": "0.603822",
+        "RandNumGeneratedInFailure": "3.0138e-05",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.450000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Open",
+        "FaultModeId": 0,
+        "Iteration": 10477,
+        "IterationOnFailure": 10476,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "3.0138e-05",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.450000",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "outside_scope",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999668",
+                "silhouetteCluster2": "0.99972",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999694"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.99868",
+                "silhouetteCluster2": "0.999718",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999189"
+            },
+            "overallScoreVar": "-0.000505293",
+            "cluster1ScoreVar": "-0.000987875",
+            "cluster2ScoreVar": "-1.95265e-06"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 0.0
+        }
+    }
+]

@@ -10,5 +10,5 @@ minNominalFuseResultNotBurn,4091
 maxNominalFuseResultNotBurn,4095
 maxStdDeviation,3
 iterationEquivalentTime,12
-simulationSeed,255144420
+simulationSeed,10
 supervisorMaxNumberOfRegisters,100

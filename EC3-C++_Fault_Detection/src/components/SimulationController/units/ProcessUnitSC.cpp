@@ -50,7 +50,6 @@ void ProcessUnitSC::attach(Supervisor* supervisorPointer, Supervised* supervised
 
 void ProcessUnitSC::run()
 {
-	int duration;
 	char userOption = 0;
 
 	while (userOption != 'g') {
@@ -105,11 +104,7 @@ void ProcessUnitSC::run()
 			// option b)
 			if (simulationName != "") {
 				try {
-					duration = userSimulationCycleParamsOptions();
-					if (duration > 0) {
-						runSimulationCycle(duration);
-						getReadyForNextSimulationCycle();
-					}
+					randomFaultsOption();
 				}
 				catch (AbortSimulationOpExcep& error) {
 					cout << endl << error.what() << endl;
@@ -723,6 +718,15 @@ void ProcessUnitSC::runSimulationCycle(int duration, bool noFailuresMode)
 	SimulationFileHandler simulationFileHandler(dataMemoryDir, simulationMemoryDir);
 	string outputFilePath = simulationDir + "/FailureEventRandCycle" + to_string(*iterationPointer) + ".json";
 	simulationFileHandler.exportFailureEventsHistoryJson(failureEventsArray, outputFilePath);
+}
+
+void ProcessUnitSC::randomFaultsOption()
+{
+	int duration = userSimulationCycleParamsOptions();
+	if (duration > 0) {
+		runSimulationCycle(duration);
+		getReadyForNextSimulationCycle();
+	}
 }
 
 void ProcessUnitSC::initializeParamsController()
