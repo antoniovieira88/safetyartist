@@ -63,7 +63,7 @@ private:
 	bool allowLogFiles;
 
 	// the following variables are fixed for all simulations.
-	// they correspond parameters set at the moment of the instantiation
+	// they correspond to parameters set at the moment of the instantiation
 	// of the objects dataHandlerFuseTest and dataHandlerKeepPowTest
 	const std::string dataMemoryDir;
 	const std::string simulationsDir;
@@ -76,5 +76,27 @@ private:
 	colvec newMetrics;
 
 	std::string simulationName;
+
+	// Control flow attributes - one attribute per method (except for the constructor)
+	// False indicates that the method is not currently running; true indicates that a prior call is running
+	bool controlFlowInitializeDataHandler;
+	bool controlFlowLoadHistoricalMetrics;
+	bool controlFlowUpdateHistoricalMetrics;
+	bool controlFlowInsertNewMetrics;
+	bool controlFlowLoadHistoricalData;
+	bool controlFlowReset;
+	bool controlFlowInsertNewHistoricalData;
+	bool controlFlowUpdateHistoricalData;
+	bool controlFlowUpdateSimulationHistoricalData;
+	bool controlFlowUpdateSimulationHistoricalMetrics;
+	bool controlFlowGetHistoricalDataToCluster;
+	bool controlFlowGetPreviousMetrics;
+	bool controlFlowGetLastIterationInDataMemory;
+	bool controlFlowGetNumberOfMetrics;
+	bool controlFlowSetSimulationName;
+	bool controlFlowSetMaxNumberOfRegisters;
+	bool controlFlowDeleteRecordsFromOldestIteration;
+	bool controlFlowDeleteRecordsFromLatestIteration;
+	bool controlFlowLogFilesConfig;
 
 };

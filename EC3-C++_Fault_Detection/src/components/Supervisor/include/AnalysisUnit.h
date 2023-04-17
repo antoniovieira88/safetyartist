@@ -1,5 +1,6 @@
 #include "../../../utils/kmeans/include/KMeans.h"
 #include "../../../utils/enumerators/enum.h"
+#include "../../../utils/exceptions/include/SimulatorFailureExcep.h"
 
 using namespace arma;
 
@@ -31,5 +32,17 @@ private:
 	rowvec numberOfPointsPerCluster;
 	colvec newMetrics;
 
+	// Method to append new metrics to metrics history for DataHandler
 	void appendMetric(colvec& newMetrics, double metric);
+
+	// Control flow attributes - one attribute per method (except for the constructor)
+	// False indicates that the method is not currently running; true indicates that a prior call is running
+	bool controlFlowCluster;
+	bool controlFlowGetNewMetricsEmptyAttributes;
+	bool controlFlowGetNewMetricsWithAttributes;
+	bool controlFlowGetCentroids;
+	bool controlFlowGetAssignments;
+	bool controlFlowGetTotalNumberOfPoints;
+	bool controlFlowGetNumberOfClusters;
+	bool controlFlowAppendMetric;
 };
