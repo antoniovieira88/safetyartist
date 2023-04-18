@@ -1,0 +1,281 @@
+[
+    {
+        "Component": "OC_Diag",
+        "FaultMode": "Open Base",
+        "FaultModeId": 3,
+        "Iteration": 32694,
+        "IterationOnFailure": 32694,
+        "Reliability": "0.967371",
+        "RandNumGeneratedInFailure": "8.58512e-08",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "OC_Diag",
+        "FaultMode": "Open Base",
+        "FaultModeId": 3,
+        "Iteration": 32695,
+        "IterationOnFailure": 32694,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "8.58512e-08",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "3",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "52.916037",
+            "NotBurn": "4092.298467",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999645",
+                "silhouetteCluster2": "0.999724",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999685"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999651",
+                "silhouetteCluster2": "0.999726",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999689"
+            },
+            "overallScoreVar": "3.96563e-06",
+            "cluster1ScoreVar": "6.17919e-06",
+            "cluster2ScoreVar": "1.75207e-06"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Decrease of Forward Conducting-State Voltage",
+        "FaultModeId": 7,
+        "Iteration": 39803,
+        "IterationOnFailure": 39803,
+        "Reliability": "0.147068",
+        "RandNumGeneratedInFailure": "3.41919e-05",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.043750",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "51.463665",
+            "NotBurn": "4091.884553",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999699",
+                "silhouetteCluster2": "0.999698",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999698"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999685",
+                "silhouetteCluster2": "0.999697",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999691"
+            },
+            "overallScoreVar": "-7.18038e-06",
+            "cluster1ScoreVar": "-1.3999e-05",
+            "cluster2ScoreVar": "-3.6174e-07"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "DZ_Sys",
+        "FaultMode": "Decrease of Forward Conducting-State Voltage",
+        "FaultModeId": 7,
+        "Iteration": 39804,
+        "IterationOnFailure": 39803,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "3.41919e-05",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "18",
+            "probability": "0.043750",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Short-circuit or decrease of insulation resistance across open contacts",
+        "FaultModeId": 3,
+        "Iteration": 44801,
+        "IterationOnFailure": 44801,
+        "Reliability": "0.115903",
+        "RandNumGeneratedInFailure": "4.41151e-05",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.063333",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "56.175270",
+            "NotBurn": "4091.089794",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999664",
+                "silhouetteCluster2": "0.999786",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999725"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999651",
+                "silhouetteCluster2": "0.99978",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999715"
+            },
+            "overallScoreVar": "-9.88269e-06",
+            "cluster1ScoreVar": "-1.32712e-05",
+            "cluster2ScoreVar": "-6.49419e-06"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Short-circuit or decrease of insulation resistance across open contacts",
+        "FaultModeId": 3,
+        "Iteration": 44802,
+        "IterationOnFailure": 44801,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "4.41151e-05",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.063333",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 1
+        }
+    }
+]

@@ -1,0 +1,99 @@
+[
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Interruption of NC Contact",
+        "FaultModeId": 2,
+        "Iteration": 7923,
+        "IterationOnFailure": 7923,
+        "Reliability": "0.68313",
+        "RandNumGeneratedInFailure": "1.90852e-05",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.014444",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "51.673692",
+            "NotBurn": "4094.014548",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999716",
+                "silhouetteCluster2": "0.999716",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999716"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999705",
+                "silhouetteCluster2": "0.999721",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999713"
+            },
+            "overallScoreVar": "-3.53961e-06",
+            "cluster1ScoreVar": "-1.17131e-05",
+            "cluster2ScoreVar": "4.6339e-06"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Interruption of NC Contact",
+        "FaultModeId": 2,
+        "Iteration": 7924,
+        "IterationOnFailure": 7923,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "1.90852e-05",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.014444",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "no",
+            "fmDetectableKeepPow": "yes",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "1",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "49.000000",
+                "numPointsCluster2": "51.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 1
+        }
+    }
+]

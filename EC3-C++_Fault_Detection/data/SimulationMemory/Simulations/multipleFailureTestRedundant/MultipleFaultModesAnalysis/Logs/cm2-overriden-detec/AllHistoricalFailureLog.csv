@@ -1,0 +1,8 @@
+iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafeFailureGenerated,outsideScopeFailureGenerated,detectableFailureGenerated,impactlessFailureGenerated
+60,True,False,1,[F_Sys],False,False,False,False
+61,True,False,1,[F_Sys],False,False,False,False
+62,True,False,1,[F_Sys],False,False,False,False
+63,True,False,1,[F_Sys],False,False,False,False
+64,True,False,1,[F_Sys],False,False,False,False
+65,True,False,2,[F_Sys;D_Sys],False,False,False,False
+66,True,True,2,[F_Sys;D_Sys],False,False,True,False

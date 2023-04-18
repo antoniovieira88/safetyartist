@@ -1,0 +1,149 @@
+[
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Decrease of pick-up current",
+        "FaultModeId": 12,
+        "Iteration": 16753,
+        "IterationOnFailure": 16753,
+        "Reliability": "0.446723",
+        "RandNumGeneratedInFailure": "1.42995e-05",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.028889",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "54.232634",
+            "NotBurn": "4092.671094",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999594",
+                "silhouetteCluster2": "0.999747",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999671"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.999595",
+                "silhouetteCluster2": "0.999748",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999671"
+            },
+            "overallScoreVar": "8.38235e-07",
+            "cluster1ScoreVar": "1.09763e-06",
+            "cluster2ScoreVar": "5.7884e-07"
+        },
+        "NominalValues": {
+            "Burn": 54.0,
+            "NotBurn": 4092.0
+        }
+    },
+    {
+        "Component": "K_Sys",
+        "FaultMode": "Decrease of pick-up current",
+        "FaultModeId": 12,
+        "Iteration": 16754,
+        "IterationOnFailure": 16753,
+        "Reliability": "0",
+        "RandNumGeneratedInFailure": "1.42995e-05",
+        "PerformedTest": "keepPowerTest",
+        "FaultModeInfo": {
+            "componentId": "13",
+            "probability": "0.028889",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "impactless",
+            "fmDetectableKeepPow": "impactless",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": false,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "On": "1",
+            "Off": "0",
+            "FaultDiagnosis": {
+                "Failure": "False",
+                "PerformedTest": "keepPowerTest",
+                "FailureIndicators": []
+            },
+            "previousMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            },
+            "newMetrics": {
+                "numPointsCluster1": "50.000000",
+                "numPointsCluster2": "50.000000"
+            }
+        },
+        "NominalValues": {
+            "On": 1,
+            "Off": 0
+        }
+    },
+    {
+        "Component": "OC1_Sys",
+        "FaultMode": "Open Diode",
+        "FaultModeId": 0,
+        "Iteration": 25065,
+        "IterationOnFailure": 25065,
+        "Reliability": "0.974888",
+        "RandNumGeneratedInFailure": "9.99514e-07",
+        "PerformedTest": "fuseTest",
+        "FaultModeInfo": {
+            "componentId": "7",
+            "probability": "0.083330",
+            "fmSafety": "safe",
+            "fmDetectableFuse": "yes",
+            "fmDetectableKeepPow": "no",
+            "classMultipleFaults": "not_applicable"
+        },
+        "FailureDetected": true,
+        "ForcedEnd": false,
+        "SupervisorResult": {
+            "Burn": "0.000000",
+            "NotBurn": "0.000000",
+            "FaultDiagnosis": {
+                "Failure": "True",
+                "PerformedTest": "fuseTest",
+                "FailureIndicators": [
+                    {
+                        "Metric": "imbalanceNumPoints",
+                        "Tolerance": "0.000000",
+                        "Variation": "2"
+                    }
+                ]
+            },
+            "previousMetrics": {
+                "silhouetteCluster1": "0.999683",
+                "silhouetteCluster2": "0.999743",
+                "numPointsCluster1": "50",
+                "numPointsCluster2": "50",
+                "overallSilhouette": "0.999713"
+            },
+            "newMetrics": {
+                "silhouetteCluster1": "0.998693",
+                "silhouetteCluster2": "0.999739",
+                "numPointsCluster1": "51",
+                "numPointsCluster2": "49",
+                "overallSilhouette": "0.999206"
+            },
+            "overallScoreVar": "-0.000507008",
+            "cluster1ScoreVar": "-0.000989911",
+            "cluster2ScoreVar": "-3.17128e-06"
+        },
+        "NominalValues": {
+            "Burn": 0.0,
+            "NotBurn": 0.0
+        }
+    }
+]

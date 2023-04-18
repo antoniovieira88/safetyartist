@@ -1,0 +1,2 @@
+iteration,failureOccurred,failureCaught,numberOfFailedComponents,failedComponentsList,unsafeFailureGenerated,outsideScopeFailureGenerated,detectableFailureGenerated,impactlessFailureGenerated
+9399,True,True,1,[D_Sys],False,False,True,True

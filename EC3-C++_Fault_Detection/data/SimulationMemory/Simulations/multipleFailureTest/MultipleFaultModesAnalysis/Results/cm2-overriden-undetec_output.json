@@ -5,7 +5,7 @@
         "FaultModeId": 3,
         "Iteration": 60,
         "IterationOnFailure": 60,
-        "Reliability": "1",
+        "Reliability": "NaN",
         "RandNumGeneratedInFailure": "NaN",
         "PerformedTest": "keepPowerTest",
         "FaultModeInfo": {
@@ -46,7 +46,7 @@
         "FaultModeId": 3,
         "Iteration": 61,
         "IterationOnFailure": 60,
-        "Reliability": "1",
+        "Reliability": "NaN",
         "RandNumGeneratedInFailure": "NaN",
         "PerformedTest": "fuseTest",
         "FaultModeInfo": {
@@ -96,7 +96,7 @@
         "FaultModeId": 8,
         "Iteration": 64,
         "IterationOnFailure": 64,
-        "Reliability": "1",
+        "Reliability": "NaN",
         "RandNumGeneratedInFailure": "NaN",
         "PerformedTest": "keepPowerTest",
         "FaultModeInfo": {
@@ -137,7 +137,7 @@
         "FaultModeId": 8,
         "Iteration": 65,
         "IterationOnFailure": 64,
-        "Reliability": "1",
+        "Reliability": "NaN",
         "RandNumGeneratedInFailure": "NaN",
         "PerformedTest": "fuseTest",
         "FaultModeInfo": {
