@@ -94,6 +94,7 @@ void FailureController::reset()
 	testScenario.detectableFailureGenerated = false;
 	testScenario.outsideScopeFailureGenerated = false;
 	testScenario.unsafeFailureGenerated = false;
+	testScenario.impactlessFailureGenerated = false;
 	testScenario.fuseFailureScenarioPointer = nullptr;
 	testScenario.keepPowFailureScenarioPointer = nullptr;
 	testScenario.newFaultModesArray.clear();

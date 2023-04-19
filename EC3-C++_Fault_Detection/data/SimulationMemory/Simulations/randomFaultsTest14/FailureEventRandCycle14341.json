@@ -74,22 +74,22 @@
                 ]
             },
             "previousMetrics": {
-                "silhouetteCluster1": "0.999641",
-                "silhouetteCluster2": "0.999702",
+                "silhouetteCluster1": "0.999598",
+                "silhouetteCluster2": "0.999765",
                 "numPointsCluster1": "50",
                 "numPointsCluster2": "50",
-                "overallSilhouette": "0.999672"
+                "overallSilhouette": "0.999681"
             },
             "newMetrics": {
-                "silhouetteCluster1": "0.998665",
-                "silhouetteCluster2": "0.999701",
+                "silhouetteCluster1": "0.998605",
+                "silhouetteCluster2": "0.999762",
                 "numPointsCluster1": "51",
                 "numPointsCluster2": "49",
-                "overallSilhouette": "0.999173"
+                "overallSilhouette": "0.999172"
             },
-            "overallScoreVar": "-0.000498805",
-            "cluster1ScoreVar": "-0.000976068",
-            "cluster2ScoreVar": "-8.23557e-07"
+            "overallScoreVar": "-0.000509048",
+            "cluster1ScoreVar": "-0.000992451",
+            "cluster2ScoreVar": "-2.5045e-06"
         },
         "NominalValues": {
             "Burn": 0.0,
