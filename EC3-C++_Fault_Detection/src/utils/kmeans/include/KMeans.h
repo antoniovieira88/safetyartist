@@ -2,6 +2,7 @@
 #include <mlpack/methods/kmeans/allow_empty_clusters.hpp>
 #include <mlpack/methods/kmeans/kmeans.hpp>
 #include "SilhouetteScore.h"
+#include "../../../utils/exceptions/include/SimulatorFailureExcep.h"
 
 using namespace std;
 
@@ -50,8 +51,9 @@ private:
 	void calculateClustersMetrics();
 	void calculateIndividualSilhouette();
 
-	// Control flow attributes - one attribute per method (except for the constructor)
+	// Control flow attributes - one attribute per method
 	// False indicates that the method is not currently running; true indicates that a prior call is running
+	bool controlFlowkMeansMain;
 	bool controlFlowGetNumberOfClusters;
 	bool controlFlowGetData;
 	bool controlFlowGetCentroids;

@@ -39,7 +39,7 @@ arma::rowvec SilhouetteScoreEC::Individually(arma::mat data, arma::u64_rowvec as
 	// Checks if a prior execution of the method has been started and throws exception in this case; otherwise, runs the method.
 	if (*controlFlow == true)
 	{
-		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (with distance)");
 	}
 
 	else
@@ -67,7 +67,7 @@ arma::rowvec SilhouetteScoreEC::Individually(arma::mat data, arma::u64_rowvec as
 		// Releases *controlFlow after the method is finished with correct execution. Throws exception if the current execution has not begun from the start.
 		if (*controlFlow == false)
 		{
-			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (with distance)");
 		}
 
 		else
@@ -84,7 +84,7 @@ double SilhouetteScoreEC::Overall(arma::mat data, arma::u64_rowvec assignments, 
 	// Checks if a prior execution of the method has been started and throws exception in this case; otherwise, runs the method.
 	if (*controlFlow == true)
 	{
-		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Overall (no distance)");
 	}
 
 	else
@@ -96,7 +96,7 @@ double SilhouetteScoreEC::Overall(arma::mat data, arma::u64_rowvec assignments, 
 		// Releases *controlFlow after the method is finished with correct execution. Throws exception if the current execution has not begun from the start.
 		if (*controlFlow == false)
 		{
-			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Overall (no distance)");
 		}
 
 		else
@@ -112,7 +112,7 @@ double SilhouetteScoreEC::Overall(arma::mat data, arma::u64_rowvec assignments, 
 	// Checks if a prior execution of the method has been started and throws exception in this case; otherwise, runs the method.
 	if (*controlFlow == true)
 	{
-		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Overall (with distance)");
 	}
 
 	else
@@ -140,7 +140,7 @@ double SilhouetteScoreEC::Overall(arma::mat data, arma::u64_rowvec assignments, 
 		// Releases *controlFlow after the method is finished with correct execution. Throws exception if the current execution has not begun from the start.
 		if (*controlFlow == false)
 		{
-			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Overall (with distance)");
 		}
 
 		else
@@ -157,7 +157,7 @@ void SilhouetteScoreEC::ClustersSilhouette(arma::Row<size_t> assigments, arma::r
 	// Checks if a prior execution of the method has been started and throws exception in this case; otherwise, runs the method.
 	if (*controlFlow == true)
 	{
-		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> ClustersSilhouette (no numberOfPoints)");
 	}
 
 	else
@@ -186,7 +186,7 @@ void SilhouetteScoreEC::ClustersSilhouette(arma::Row<size_t> assigments, arma::r
 		// Releases *controlFlow after the method is finished with correct execution. Throws exception if the current execution has not begun from the start.
 		if (*controlFlow == false)
 		{
-			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> ClustersSilhouette (no numberOfPoints)");
 		}
 
 		else
@@ -202,7 +202,7 @@ void SilhouetteScoreEC::ClustersSilhouette(arma::Row<size_t> assigments, arma::r
 	// Checks if a prior execution of the method has been started and throws exception in this case; otherwise, runs the method.
 	if (*controlFlow == true)
 	{
-		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+		throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> ClustersSilhouette (with numberOfPoints)");
 	}
 
 	else
@@ -233,7 +233,7 @@ void SilhouetteScoreEC::ClustersSilhouette(arma::Row<size_t> assigments, arma::r
 		// Releases *controlFlow after the method is finished with correct execution. Throws exception if the current execution has not begun from the start.
 		if (*controlFlow == false)
 		{
-			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> Individually (no distance)");
+			throw SimulatorFailureExcep("Invalid control flow", "SilhouetteScoreEC ==> ClustersSilhouette (with numberOfPoints)");
 		}
 
 		else
