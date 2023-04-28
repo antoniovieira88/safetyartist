@@ -3,7 +3,32 @@
 
 using namespace std;
 
-KMeansEC::KMeansEC(arma::mat data, int numberOfClusters, bool allowEmptyClusters = false) {
+KMeansEC::KMeansEC(arma::mat data, int numberOfClusters, bool allowEmptyClusters = false)
+{
+	// Initializes all control flow attributes with 'false'
+	controlFlowGetNumberOfClusters = false;
+	controlFlowGetData = false;
+	controlFlowGetCentroids = false;
+	controlFlowGetAssigments = false;
+	controlFlowSetNumberOfClusters = false;
+	controlFlowSetData = false;
+	controlFlowGetOverallSilhouetteWithoutParameters = false;
+	controlFlowGetOverallSilhouetteWithParameters = false;
+	controlFlowGetIndividualSilhouetteWithoutParameters = false;
+	controlFlowGetIndividualSilhouetteWithParameters = false;
+	controlFlowGetClustersSilhouettes = false;
+	controlFlowGetNumberOfPointsPerCluster = false;
+	controlFlowCalculateClustersMetrics = false;
+	controlFlowCalculateIndividualSihouette = false;
+
+	// Control flow attributes for SilhouetteScoreSC
+	controlFlowSilhouetteIndividuallyNoDistance = false;
+	controlFlowSilhouetteOverallNoDistance = false;
+	controlFlowSilhouetteIndividuallyWithDistance = false;
+	controlFlowSilhouetteOverallWithDistance = false;
+	controlFlowSilhouetteClusterSilhouetteNoPoints = false;
+	controlFlowSilhouetteClusterSilhouetteWithPoints = false;
+	
 	KMeansEC::data = data;
 	KMeansEC::numberOfclusters = numberOfClusters;
 	KMeansEC::allowEmptyClusters = allowEmptyClusters;
@@ -20,7 +45,33 @@ KMeansEC::KMeansEC(arma::mat data, int numberOfClusters, bool allowEmptyClusters
 	calculateClustersMetrics();
 
 }
-KMeansEC::KMeansEC(arma::mat data, int numberOfClusters, arma::mat initialCentroids, bool allowEmptyClusters = false) {
+
+KMeansEC::KMeansEC(arma::mat data, int numberOfClusters, arma::mat initialCentroids, bool allowEmptyClusters = false)
+{
+	// Initializes all control flow attributes with 'false'
+	controlFlowGetNumberOfClusters = false;
+	controlFlowGetData = false;
+	controlFlowGetCentroids = false;
+	controlFlowGetAssigments = false;
+	controlFlowSetNumberOfClusters = false;
+	controlFlowSetData = false;
+	controlFlowGetOverallSilhouetteWithoutParameters = false;
+	controlFlowGetOverallSilhouetteWithParameters = false;
+	controlFlowGetIndividualSilhouetteWithoutParameters = false;
+	controlFlowGetIndividualSilhouetteWithParameters = false;
+	controlFlowGetClustersSilhouettes = false;
+	controlFlowGetNumberOfPointsPerCluster = false;
+	controlFlowCalculateClustersMetrics = false;
+	controlFlowCalculateIndividualSihouette = false;
+
+	// Control flow attributes for SilhouetteScoreSC
+	controlFlowSilhouetteIndividuallyNoDistance = false;
+	controlFlowSilhouetteOverallNoDistance = false;
+	controlFlowSilhouetteIndividuallyWithDistance = false;
+	controlFlowSilhouetteOverallWithDistance = false;
+	controlFlowSilhouetteClusterSilhouetteNoPoints = false;
+	controlFlowSilhouetteClusterSilhouetteWithPoints = false;
+	
 	KMeansEC::data = data;
 	KMeansEC::numberOfclusters = numberOfClusters;
 	KMeansEC::allowEmptyClusters = allowEmptyClusters;
@@ -40,8 +91,33 @@ KMeansEC::KMeansEC(arma::mat data, int numberOfClusters, arma::mat initialCentro
 
 	calculateClustersMetrics();
 }
+
 KMeansEC::KMeansEC(arma::mat data, int numberOfClusters, arma::mat initialCentroids, arma::Row<size_t> initialAssignments, bool allowEmptyClusters = false)
 {
+	// Initializes all control flow attributes with 'false'
+	controlFlowGetNumberOfClusters = false;
+	controlFlowGetData = false;
+	controlFlowGetCentroids = false;
+	controlFlowGetAssigments = false;
+	controlFlowSetNumberOfClusters = false;
+	controlFlowSetData = false;
+	controlFlowGetOverallSilhouetteWithoutParameters = false;
+	controlFlowGetOverallSilhouetteWithParameters = false;
+	controlFlowGetIndividualSilhouetteWithoutParameters = false;
+	controlFlowGetIndividualSilhouetteWithParameters = false;
+	controlFlowGetClustersSilhouettes = false;
+	controlFlowGetNumberOfPointsPerCluster = false;
+	controlFlowCalculateClustersMetrics = false;
+	controlFlowCalculateIndividualSihouette = false;
+
+	// Control flow attributes for SilhouetteScoreSC
+	controlFlowSilhouetteIndividuallyNoDistance = false;
+	controlFlowSilhouetteOverallNoDistance = false;
+	controlFlowSilhouetteIndividuallyWithDistance = false;
+	controlFlowSilhouetteOverallWithDistance = false;
+	controlFlowSilhouetteClusterSilhouetteNoPoints = false;
+	controlFlowSilhouetteClusterSilhouetteWithPoints = false;
+
 	KMeansEC::data = data;
 	KMeansEC::numberOfclusters = numberOfClusters;
 	KMeansEC::allowEmptyClusters = allowEmptyClusters;
@@ -106,10 +182,10 @@ void KMeansEC::setData(arma::mat newData) {
 }
 
 double KMeansEC::getOverallSilhouette() {
-	return SilhouetteScoreEC::Overall(data, assignments);
+	return SilhouetteScoreEC::Overall(data, assignments, &controlFlowSilhouetteOverallNoDistance);
 }
 double KMeansEC::getOverallSilhouette(std::string distanceMetric) {
-	return SilhouetteScoreEC::Overall(data, assignments, distanceMetric);
+	return SilhouetteScoreEC::Overall(data, assignments, distanceMetric, &controlFlowSilhouetteOverallWithDistance);
 }
 
 
@@ -118,7 +194,7 @@ arma::rowvec KMeansEC::getIndividualSilhouette() {
 }
 arma::rowvec KMeansEC::getIndividualSilhouette(std::string distanceMetric)
 {
-	return SilhouetteScoreEC::Individually(data, assignments, distanceMetric);
+	return SilhouetteScoreEC::Individually(data, assignments, distanceMetric, &controlFlowSilhouetteIndividuallyWithDistance);
 };
 
 arma::rowvec KMeansEC::getClustersSilhouettes() {
@@ -131,11 +207,11 @@ arma::rowvec KMeansEC::getNumberOfPointsPerCluster(){
 
 void KMeansEC::calculateIndividualSilhouette()
 {
-	individualSilhouette = SilhouetteScoreEC::Individually(data, assignments);
+	individualSilhouette = SilhouetteScoreEC::Individually(data, assignments, &controlFlowSilhouetteIndividuallyNoDistance);
 }
 
 void KMeansEC::calculateClustersMetrics()
 {
 	calculateIndividualSilhouette();
-	SilhouetteScoreEC::ClustersSilhouette(assignments, individualSilhouette, clustersSilhouettes, numberOfPointsPerCluster);
+	SilhouetteScoreEC::ClustersSilhouette(assignments, individualSilhouette, clustersSilhouettes, numberOfPointsPerCluster, &controlFlowSilhouetteClusterSilhouetteWithPoints);
 }

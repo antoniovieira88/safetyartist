@@ -49,5 +49,30 @@ private:
 	
 	void calculateClustersMetrics();
 	void calculateIndividualSilhouette();
+
+	// Control flow attributes - one attribute per method (except for the constructor)
+	// False indicates that the method is not currently running; true indicates that a prior call is running
+	bool controlFlowGetNumberOfClusters;
+	bool controlFlowGetData;
+	bool controlFlowGetCentroids;
+	bool controlFlowGetAssigments;
+	bool controlFlowSetNumberOfClusters;
+	bool controlFlowSetData;
+	bool controlFlowGetOverallSilhouetteWithoutParameters;
+	bool controlFlowGetOverallSilhouetteWithParameters;
+	bool controlFlowGetIndividualSilhouetteWithoutParameters;
+	bool controlFlowGetIndividualSilhouetteWithParameters;
+	bool controlFlowGetClustersSilhouettes;
+	bool controlFlowGetNumberOfPointsPerCluster;
+	bool controlFlowCalculateClustersMetrics;
+	bool controlFlowCalculateIndividualSihouette;
+
+	// Control flow attributes for SilhouetteScoreSC
+	bool controlFlowSilhouetteIndividuallyNoDistance;
+	bool controlFlowSilhouetteOverallNoDistance;
+	bool controlFlowSilhouetteIndividuallyWithDistance;
+	bool controlFlowSilhouetteOverallWithDistance;
+	bool controlFlowSilhouetteClusterSilhouetteNoPoints;
+	bool controlFlowSilhouetteClusterSilhouetteWithPoints;
 };
 
