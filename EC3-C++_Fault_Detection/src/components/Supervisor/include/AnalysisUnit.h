@@ -20,7 +20,7 @@ public:
 
 private:
 	// Data related to KMeans clusters
-	mat dataToCluster, centroids;
+	mat centroids;
 	Row<size_t> assignments;
 	mat initialCentroids;
 

@@ -76,12 +76,12 @@ void DataHandler::initializeDataHandler()
 
 		else
 		{
-				controlFlowInitializeDataHandler = false;
+			controlFlowInitializeDataHandler = false;
 		}
 	}
 }
 
-int DataHandler::loadHistoricalMetrics()
+void DataHandler::loadHistoricalMetrics()
 {
 	// Checks if a prior execution of the method has been started and throws exception in this case; otherwise, runs the method.
 	if (controlFlowLoadHistoricalMetrics == true)
@@ -134,7 +134,6 @@ int DataHandler::loadHistoricalMetrics()
 		else
 		{
 			controlFlowLoadHistoricalMetrics = false;
-			return size;
 		}
 	}
 }
@@ -287,7 +286,7 @@ int DataHandler::getNumberOfMetrics()
 	}
 }
 
-int DataHandler::loadHistoricalData() {
+void DataHandler::loadHistoricalData() {
 	
 	// Checks if a prior execution of the method has been started and throws exception in this case; otherwise, runs the method.
 	if (controlFlowLoadHistoricalData == true)
@@ -338,7 +337,6 @@ int DataHandler::loadHistoricalData() {
 		else
 		{
 			controlFlowLoadHistoricalData = false;
-			return size;
 		}
 	}
 }

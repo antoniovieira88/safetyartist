@@ -21,13 +21,13 @@ public:
 
 	void initializeDataHandler();
 
-	int loadHistoricalMetrics();
+	void loadHistoricalMetrics();
 
 	void updateHistoricalMetrics();
 
 	void insertNewMetrics(colvec newMetrics);
 
-	int loadHistoricalData();
+	void loadHistoricalData();
 
 	void reset();
 
