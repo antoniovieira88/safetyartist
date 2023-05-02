@@ -1,4 +1,4 @@
-name,faultModeId,countBetweenFailures
+id,name,faultModeId,countBetweenFailures,iterationAtFailure
 0,UC_Diag,-1,0,0
 1,Flash_Diag,-1,0,0
 2,R1_Diag,-1,0,0

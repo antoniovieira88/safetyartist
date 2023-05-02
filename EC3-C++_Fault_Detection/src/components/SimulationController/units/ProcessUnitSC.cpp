@@ -52,7 +52,8 @@ void ProcessUnitSC::run()
 {
 	char userOption = 0;
 
-	while (userOption != 'g') {
+	while (userOption != 'g') 
+	{
 		cout << endl << "***********************";
 		cout << endl << "EC3 Fault Detection C++";
 		cout << endl << "***********************";
@@ -160,6 +161,10 @@ void ProcessUnitSC::run()
 			cout << endl << "Invalid option" << endl;
 			break;
 		}
+
+		/* Clears control flow of Supervisor and ProcessUnitSR at the end of a simulation to avoid errors due to exceptions
+		 *  exceptions raised in case of faults. */
+		supervisorPointer->clearControlFlowSupervisor();
 	}
 }
 
@@ -525,7 +530,7 @@ void ProcessUnitSC::resetMtRandEngines()
 	supervisedPointer->setMtEngineSeed(seed);
 }
 
-void ProcessUnitSC::avaliateComponentFaultModes(
+void ProcessUnitSC::evaluateComponentFaultModes(
 	Component& component,
 	vector<FaultModeAnalysisResultType>& faultModeAnalysisResultArray
 )
@@ -547,7 +552,13 @@ void ProcessUnitSC::avaliateComponentFaultModes(
 
 		collectResultsFromSingleIteration(fuseTestResult, keepPowerTestResult);
 
+		// At the end of each new single failure injection test iteration mode of each component, resets the control flow flags of the Supervisor
+		supervisorPointer->clearControlFlowSupervisor();
+
 		collectResultsFromSingleIteration(fuseTestResult, keepPowerTestResult);
+
+		// At the end of each new single failure injection test iteration mode of each component, resets the control flow flags of the Supervisor
+		supervisorPointer->clearControlFlowSupervisor();
 
 		faultModeAnalysisResult = FaultModeAnalysisResultType({
 			componentName,
@@ -559,6 +570,9 @@ void ProcessUnitSC::avaliateComponentFaultModes(
 		faultModeAnalysisResultArray.push_back(faultModeAnalysisResult);
 
 		supervisorPointer->deleteRecordsFromLatestIteration();
+
+		// Rewrites Data Memory to delete the data added in the single failut injection test to make HistoricalData and HistoricalMetrics iteration count equal
+		supervisorPointer->updateDataMemory();
 
 		faultModeId++;
 	}
@@ -635,7 +649,7 @@ void ProcessUnitSC::singleFailureInjectionTest()
 		// this array contains only the results for a specific component
 		faultModeAnalysisResultArray.clear();
 
-		avaliateComponentFaultModes(component, faultModeAnalysisResultArray);
+		evaluateComponentFaultModes(component, faultModeAnalysisResultArray);
 
 		simulationFileHandler.exportJsonFaultModeAnalysisArray(faultModeAnalysisResultArray, componentJsonDestinyFilePath);
 	}

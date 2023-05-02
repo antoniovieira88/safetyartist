@@ -58,7 +58,7 @@ private:
 	void saveMtRandEngines();
 	void resetMtRandEngines();
 
-	void avaliateComponentFaultModes(Component& component, vector<FaultModeAnalysisResultType>& faultModeAnalysisResultArray);
+	void evaluateComponentFaultModes(Component& component, vector<FaultModeAnalysisResultType>& faultModeAnalysisResultArray);
 	void singleFailureInjectionOption();
 	void singleFailureInjectionTest();
 

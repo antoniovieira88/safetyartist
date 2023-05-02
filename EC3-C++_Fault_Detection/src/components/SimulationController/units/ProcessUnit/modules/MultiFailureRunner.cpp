@@ -150,6 +150,9 @@ void MultiFailureRunner::runSpecificTest(string inputFilename, string srcDir)
 		runSimulationCycleWithInjectedFailures(testName);
 		cout << endl << "Injection Test " << testName << " finished" << endl;
 	}
+
+	// At the end of each test, resets the control flow flags of Supervised to allow new tests to be run
+	supervisorPointer->clearControlFlowSupervisor();
 }
 
 void MultiFailureRunner::collectInjectedFailures(string inputFilename, string srcDir)

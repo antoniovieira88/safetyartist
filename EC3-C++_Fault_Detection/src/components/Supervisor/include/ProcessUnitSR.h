@@ -41,6 +41,8 @@ public:
 
 	void deleteRecordsFromLatestIteration();
 
+	void clearControlFlowProcessUnitSR();
+
 private:
 	AnalysisUnit& analysisUnit;
 	DataHandler& dataHandlerFuseTest;
@@ -95,4 +97,28 @@ private:
 
 	MetricsFuseTestType getFuseTestMetricsStruct(colvec metricsArray);
 	MetricsKeepPowerTestType getKeepPowerTestMetricsStruct(colvec metricsArray);
+
+	// Control flow attributes - one attribute per method (except for the constructor)
+	// False indicates that the method is not currently running; true indicates that a prior call is running
+	bool controlFlowAttach;
+	bool controlFlowRunTest;
+	bool controlFlowReset;
+	bool controlFlowGetReadyForNextSimulationCycle;
+	bool controlFlowInitializeDataHandlers;
+	bool controlFlowSetFuseTestBasicParams;
+	bool controlFlowGetFuseTestResults;
+	bool controlFlowGetKeepPowerTestResults;
+	bool controlFlowGetLastPerfomedTest;
+	bool controlFlowDeleteRecordsFromLatestIteration;
+	bool controlFlowclearControlFlowProcessUnitSR;
+	bool controlFlowDetectFailure;
+	bool controlFlowRunFuseTest;
+	bool controlFlowRunKeepPowTest;
+	bool controlFlowCalculateMetricVariation;
+	bool controlFlowGetFuseResult;
+	bool controlFlowGetKeepPowReadback;
+	bool controlFlowSetKeepPower;
+	bool controlFlowSetFuseTest;
+	bool controlFlowGetFuseTestMetricsStruct;
+	bool controlFlowGetKeepPowerTestMetricsStruct;
 };

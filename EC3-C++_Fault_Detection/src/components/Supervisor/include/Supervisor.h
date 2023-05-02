@@ -34,6 +34,10 @@ public:
 	void logFilesConfig(bool enable);
 	test getLastPerfomedTest();
 
+	void updateDataMemory();
+
+	void clearControlFlowSupervisor();
+
 private:
 	mat nominalFuseResults;
 	mat nominalKeepPowReadbacks;
@@ -43,4 +47,22 @@ private:
 	DataHandler dataHandlerFuseTest;
 	DataHandler dataHandlerKeepPowTest;
 	ProcessUnitSR processUnit;
+
+	// Control flow attributes - one attribute per method (except for the constructor)
+	// False indicates that the method is not currently running; true indicates that a prior call is running
+	bool controlFlowAttach;
+	bool controlFlowRunTest;
+	bool controlFlowReset;
+	bool controlFlowGetIterationPointer;
+	bool controlFlowGetReadyForNextSimulationCycle;
+	bool controlFlowPrepareForSimulation;
+	bool controlFlowSetBasicParams;
+	bool controlFlowGetFuseTestResults;
+	bool controlFlowGetKeepPowerTestResults;
+	bool controlFlowDeleteRecordsFromLatestIteration;
+	bool controlFlowLogFilesConfig;
+	bool controlFlowGetLastPerfomedTest;
+	bool controlFlowUpdateDataMemory;
+	bool controlFlowClearControlFlowSupervisor;
+
 };
