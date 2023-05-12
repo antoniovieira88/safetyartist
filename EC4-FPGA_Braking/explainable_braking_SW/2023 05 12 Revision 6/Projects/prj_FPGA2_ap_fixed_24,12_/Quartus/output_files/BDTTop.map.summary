@@ -1,0 +1,17 @@
+Analysis & Synthesis Status : Successful - Wed May 03 21:14:46 2023
+Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
+Revision Name : BDTTop
+Top-level Entity Name : BDTTop
+Family : Cyclone V
+Logic utilization (in ALMs) : N/A
+Total registers : 3239
+Total pins : 99
+Total virtual pins : 0
+Total block memory bits : 2,901
+Total DSP Blocks : 0
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0
+Total DLLs : 0

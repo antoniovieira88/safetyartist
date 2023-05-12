@@ -1,0 +1,35 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Tue Jan 24 21:40:43 2023
+# Process ID: 3375
+# Current directory: /home/henrique/Documents/2023 01 20 Revision 4/prj_ap_fixed<24,12>
+# Command line: vivado -mode batch -source synth.tcl
+# Log file: /home/henrique/Documents/2023 01 20 Revision 4/prj_ap_fixed<24,12>/vivado.log
+# Journal file: /home/henrique/Documents/2023 01 20 Revision 4/prj_ap_fixed<24,12>/vivado.jou
+# Running On: henrique-VirtualBox, OS: Linux, CPU Frequency: 3600.000 MHz, CPU Physical cores: 4, Host memory: 11593 MB
+#-----------------------------------------------------------
+source synth.tcl
+# add_files firmware/
+add_files: Time (s): cpu = 00:00:16 ; elapsed = 00:00:22 . Memory (MB): peak = 1275.539 ; gain = 23.023 ; free physical = 5775 ; free virtual = 10499
+# remove_files firmware/SimulationInput.vhd
+# remove_files firmware/SimulationOutput.vhd
+# remove_files firmware/BDTTestbench.vhd
+# remove_files firmware/TestUtil.vhd
+# set_property file_type {VHDL 2008} [get_files]
+# synth_design -top BDTTop -part xc7s100
+Command: synth_design -top BDTTop -part xc7s100
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7s100'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s100'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 3469
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+1
+INFO: [Common 17-83] Releasing license: Synthesis
+6 Infos, 0 Warnings, 0 Critical Warnings and 1 Errors encountered.
+synth_design failed
+INFO: [Common 17-344] 'source' was cancelled
+INFO: [Common 17-206] Exiting Vivado at Tue Jan 24 21:41:40 2023...

@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# xsim v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon Jan 23 20:39:50 2023
+# Process ID: 39453
+# Current directory: /home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<24,9>
+# Command line: xsim -mode tcl -source {xsim.dir/bdt_tb/xsim_script.tcl}
+# Log file: /home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<24,9>/xsim.log
+# Journal file: /home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<24,9>/xsim.jou
+# Running On: henrique-VirtualBox, OS: Linux, CPU Frequency: 3600.000 MHz, CPU Physical cores: 4, Host memory: 11593 MB
+#-----------------------------------------------------------
+source xsim.dir/bdt_tb/xsim_script.tcl
+# xsim {bdt_tb} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+$finish called at time : 286502500 ps
+run: Time (s): cpu = 00:00:00.01 ; elapsed = 00:01:08 . Memory (MB): peak = 1253.918 ; gain = 0.000 ; free physical = 1569 ; free virtual = 7324
+exit
+INFO: xsimkernel Simulation Memory Usage: 106440 KB (Peak: 163776 KB), Simulation CPU Usage: 67490 ms
+INFO: [Common 17-206] Exiting xsim at Mon Jan 23 20:41:02 2023...

@@ -1,0 +1,48 @@
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/Constants.vhd" into library bdt
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/Types.vhd" into library bdt
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/Tree.vhd" into library bdt
+INFO: [VRFC 10-3107] analyzing entity 'Tree'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/AddReduce.vhd" into library bdt
+INFO: [VRFC 10-3107] analyzing entity 'AddReduce'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/Arrays0.vhd" into library bdt
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/BDT.vhd" into library bdt
+INFO: [VRFC 10-3107] analyzing entity 'BDT'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/BDTTop.vhd" into library bdt
+INFO: [VRFC 10-3107] analyzing entity 'BDTTop'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/SimulationInput.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'SimulationInput'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/SimulationOutput.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'SimulationOutput'
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/henrique/Documents/2022 12 29 Revision 3/prj_ap_fixed<20,12>/firmware/BDTTestbench.vhd" into library work
+INFO: [VRFC 10-3107] analyzing entity 'testbench'
+Vivado Simulator v2022.2
+Copyright 1986-1999, 2001-2022 Xilinx, Inc. All Rights Reserved.
+Running: /tools/Xilinx/Vivado/2022.2/bin/unwrapped/lnx64.o/xelab work.testbench -s bdt_tb 
+Multi-threading is on. Using 2 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package synopsys.attributes
+Compiling package ieee.std_logic_misc
+Compiling package ieee.numeric_std
+Compiling package bdt.constants
+Compiling package bdt.types
+Compiling package ieee.std_logic_textio
+Compiling package bdt.arrays0
+Compiling package std.env
+Compiling architecture rtl of entity work.SimulationInput [simulationinput_default]
+Compiling architecture rtl of entity bdt.Tree [\Tree(ifeature=(0,1,0,0,0,1,1,1,...]
+Compiling architecture rtl of entity bdt.Tree [\Tree(ifeature=(0,1,0,0,0,1,0,1,...]
+Compiling architecture rtl of entity bdt.Tree [\Tree(ifeature=(0,1,0,0,0,-2,-2,...]
+Compiling architecture behavioral of entity bdt.AddReduce [\AddReduce(id="0_C")(0,1)(19,0)(...]
+Compiling architecture behavioral of entity bdt.AddReduce [\AddReduce(0,3)(19,0)(0,3)(0,0)(...]
+Compiling architecture rtl of entity bdt.BDT [\BDT(ifeature=((0,1,0,0,0,1,1,1,...]
+Compiling architecture rtl of entity bdt.BDTTop [bdttop_default]
+Compiling architecture rtl of entity work.SimulationOutput [simulationoutput_default]
+Compiling architecture rtl of entity work.testbench
+Built simulation snapshot bdt_tb

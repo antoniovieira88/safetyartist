@@ -1,0 +1,179 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230502_quartus
+Edecision
+Z0 w1683302972
+Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
+Z4 dC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505
+Z5 8C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/decision.vhd
+Z6 FC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/decision.vhd
+l0
+L5
+V9:kVPb9nl9TGMgMe^JDo]2
+!s100 3PKke;ZgYCHMGSL3c363e3
+Z7 OV;C;10.5b;63
+33
+Z8 !s110 1683326169
+!i10b 1
+Z9 !s108 1683326169.000000
+Z10 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/decision.vhd|
+Z11 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/decision.vhd|
+!i113 1
+Z12 o-work work -2008 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Artl
+R1
+R2
+R3
+DEx4 work 8 decision 0 22 9:kVPb9nl9TGMgMe^JDo]2
+l22
+L17
+V^REzOTUPI3S<6OLZh1]LB1
+!s100 CM=PJPN[GY[?0L=hh]IFa0
+R7
+33
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Emean
+Z14 w1683302964
+R1
+R2
+R3
+R4
+Z15 8C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/mean.vhd
+Z16 FC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/mean.vhd
+l0
+L5
+Vz>gimRZ6:^6mdVmMM`o]a1
+!s100 oP9aTjMO7;6=:d53G>G>E3
+R7
+33
+R8
+!i10b 1
+R9
+Z17 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/mean.vhd|
+Z18 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/mean.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+DEx4 work 4 mean 0 22 z>gimRZ6:^6mdVmMM`o]a1
+l33
+L19
+VlZ7AeHkl74IQ`c8d;d8RV2
+!s100 ]KJ7=aaY34ZzZ?K_OZI@T2
+R7
+33
+R8
+!i10b 1
+R9
+R17
+R18
+!i113 1
+R12
+R13
+Etestbench_voting
+Z19 w1683325279
+Z20 DPx3 std 3 env 0 22 d?`1ck@NdeD@H3RZG7FgZ2
+Z21 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+R1
+R2
+R3
+R4
+Z22 8C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/testbench_voting.vhd
+Z23 FC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/testbench_voting.vhd
+l0
+L8
+V<n[X8=>lZnPo82gnN;g[Q1
+!s100 XfKHZNWkmof1Eo18MCBlM3
+R7
+33
+Z24 !s110 1683326170
+!i10b 1
+Z25 !s108 1683326170.000000
+Z26 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/testbench_voting.vhd|
+Z27 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/testbench_voting.vhd|
+!i113 1
+R12
+R13
+Abehav
+Z28 DEx4 work 6 voting 0 22 lO>lDZ;BnfIfY>A9IekG42
+R20
+R21
+R1
+R2
+R3
+DEx4 work 16 testbench_voting 0 22 <n[X8=>lZnPo82gnN;g[Q1
+l91
+L19
+VB`hgAL[?a`Y0ISo^UE=a02
+!s100 KGJ^E2=[@DIMPzO_1=i`>1
+R7
+33
+R24
+!i10b 1
+R25
+R26
+R27
+!i113 1
+R12
+R13
+Evoting
+Z29 w1683302919
+R1
+R2
+R3
+R4
+Z30 8C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/voting.vhd
+Z31 FC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/voting.vhd
+l0
+L5
+VlO>lDZ;BnfIfY>A9IekG42
+!s100 FjKMjLYX0`;RNR[g?G^3m2
+R7
+33
+R24
+!i10b 1
+R25
+Z32 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/voting.vhd|
+Z33 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/voting.vhd|
+!i113 1
+R12
+R13
+Artl
+R1
+R2
+R3
+R28
+l57
+L20
+Z34 VEMAhHBVz8Oc<0<NU@TmV62
+Z35 !s100 _fFPfVS=>13bV0UdeoKWF3
+R7
+33
+R24
+!i10b 1
+R25
+R32
+R33
+!i113 1
+R12
+R13

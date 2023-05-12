@@ -1,0 +1,23 @@
+Quartus Prime Archive log --	C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/voting.qarlog
+
+Archive:	C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/voting.qar
+Date:		Fri May  5 15:43:11 2023
+Quartus Prime		22.1std.0 Build 915 10/25/2022 SC Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/decision.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/mean.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/voting.qpf
+C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/voting.qsf
+C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/voting.vhd
+c:/intelfpga_lite/22.1std/quartus/bin64/assignment_defaults.qdf
+	======= Total: 6 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
+
+
+******* Archived project restoration attempt on Tue May 09 21:50:35 2023
+Source archive file:	C:/Users/R2D2/Documents/USP/IC_GAS/Quartus Voting 2023 05 05 (Final)/voting_20230505_quartus/voting.qar
+Archive was extracted into	C:/Users/R2D2/Documents/USP/IC_GAS/Quartus Voting 2023 05 05 (Final)/voting_20230505_quartus/voting_restored/
+		 - successfully.

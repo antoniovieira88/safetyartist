@@ -1,0 +1,53 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'clk_voting'
+Slack : -3.947
+TNS   : -390.933
+
+Type  : Slow 1100mV 85C Model Hold 'clk_voting'
+Slack : 0.422
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.538
+TNS   : -87.906
+
+Type  : Slow 1100mV 0C Model Setup 'clk_voting'
+Slack : -3.952
+TNS   : -382.666
+
+Type  : Slow 1100mV 0C Model Hold 'clk_voting'
+Slack : 0.432
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.538
+TNS   : -89.315
+
+Type  : Fast 1100mV 85C Model Setup 'clk_voting'
+Slack : -1.496
+TNS   : -130.273
+
+Type  : Fast 1100mV 85C Model Hold 'clk_voting'
+Slack : 0.181
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.092
+TNS   : -9.599
+
+Type  : Fast 1100mV 0C Model Setup 'clk_voting'
+Slack : -1.243
+TNS   : -105.208
+
+Type  : Fast 1100mV 0C Model Hold 'clk_voting'
+Slack : 0.170
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.094
+TNS   : -10.063
+
+------------------------------------------------------------

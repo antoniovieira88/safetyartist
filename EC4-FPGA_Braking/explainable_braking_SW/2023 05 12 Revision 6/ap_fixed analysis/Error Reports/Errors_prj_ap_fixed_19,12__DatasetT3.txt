@@ -1,0 +1,13 @@
+prj_ap_fixed<19,12>_DatasetT3.txt
+mean absolute error = 0.72690817249666%
+standard deviation = 0.5517230976502281%
+mean squared error = 0.00832793867723197%
+root mean squared error = 0.91257540385614%
+error percentile 75% = 0.78125%
+********************************************
+Recall SKL = 99.01110340041637%
+Recall HDL = 98.9764052741152%
+Precision SKL = 93.98880105401844%
+Precision HDL = 94.06430338004947%
+Accuracy SKL = 99.2633324605045%
+Accuracy HDL = 99.26856943353408%

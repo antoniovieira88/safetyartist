@@ -1,0 +1,7 @@
+Running: xsim.dir/bdt_tb/xsimk -runall -simmode gui -wdb bdt_tb.wdb -simrunnum 0 -socket 43831
+Design successfully loaded
+Design Loading Memory Usage: 24508 KB (Peak: 24508 KB)
+Design Loading CPU Usage: 10 ms
+Simulation completed
+Simulation Memory Usage: 106440 KB (Peak: 163776 KB)
+Simulation CPU Usage: 65920 ms

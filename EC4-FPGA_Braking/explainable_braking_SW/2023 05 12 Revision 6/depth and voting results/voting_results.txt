@@ -1,0 +1,36 @@
+********************************************
+Accuracy SKL ensemble 1: 98.81295277995986
+Accuracy SKL ensemble 2: 99.23889325303308
+Accuracy mean: 99.15684734223619
+
+Precision SKL ensemble 1: 89.70634176819743
+Precision SKL ensemble 2: 94.07677035076108
+Precision mean: 92.69199676637025
+
+Recall SKL ensemble 1: 99.63566967383761
+Recall SKL ensemble 2: 98.64677307425399
+Recall mean: 99.46217904233171
+********************************************
+Accuracy SKL ensemble 1: 99.23889325303308
+Accuracy SKL ensemble 2: 98.81295277995986
+Accuracy pondered average: 98.8513572488435
+
+Precision SKL ensemble 1: 94.07677035076108
+Precision SKL ensemble 2: 89.70634176819743
+Precision pondered average: 90.00313381385145
+
+Recall SKL ensemble 1: 98.64677307425399
+Recall SKL ensemble 2: 99.63566967383761
+Recall pondered average: 99.6530187369882
+********************************************
+Accuracy SKL ensemble 1: 98.81295277995986
+Accuracy SKL ensemble 2: 99.23889325303308
+Accuracy confidence: 98.71170463472113
+
+Precision SKL ensemble 1: 89.70634176819743
+Precision SKL ensemble 2: 94.07677035076108
+Precision confidence: 88.78086419753086
+
+Recall SKL ensemble 1: 99.63566967383761
+Recall SKL ensemble 2: 98.64677307425399
+Recall confidence: 99.80916030534351

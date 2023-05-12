@@ -1,0 +1,381 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Wed Jan 11 18:13:04 2023
+# Process ID: 7766
+# Current directory: /home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2
+# Command line: vivado -mode batch -source synth.tcl
+# Log file: /home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/vivado.log
+# Journal file: /home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/vivado.jou
+# Running On: henrique-VirtualBox, OS: Linux, CPU Frequency: 3600.004 MHz, CPU Physical cores: 8, Host memory: 13414 MB
+#-----------------------------------------------------------
+source synth.tcl
+# add_files firmware/
+add_files: Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 1319.816 ; gain = 0.023 ; free physical = 6878 ; free virtual = 12073
+# remove_files firmware/SimulationInput.vhd
+# remove_files firmware/SimulationOutput.vhd
+# remove_files firmware/BDTTestbench.vhd
+# remove_files firmware/TestUtil.vhd
+# set_property file_type {VHDL 2008} [get_files]
+# synth_design -top BDTTop -part xc7s100
+Command: synth_design -top BDTTop -part xc7s100
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7s100'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7s100'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 7793
+INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/tools/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 1644.617 ; gain = 324.785 ; free physical = 6391 ; free virtual = 11585
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1233.438; parent = 972.907; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2669.730; parent = 1644.621; children = 1025.109
+---------------------------------------------------------------------------------
+INFO: [Synth 8-638] synthesizing module 'BDTTop' [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/BDTTop.vhd:21]
+INFO: [Synth 8-638] synthesizing module 'BDT' [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/BDT.vhd:33]
+	Parameter iFeature bound to: 672'b000000000000000000000000000000100000000000000000000000000000000011111111111111111111111111111110111111111111111111111111111111100000000000000000000000000000000011111111111111111111111111111110111111111111111111111111111111100000000000000000000000000000000100000000000000000000000000000001111111111111111111111111111111101111111111111111111111111111111000000000000000000000000000000001111111111111111111111111111111101111111111111111111111111111111000000000000000000000000000000010000000000000000000000000000000001111111111111111111111111111111011111111111111111111111111111110000000000000000000000000000000001111111111111111111111111111111011111111111111111111111111111110 
+	Parameter iChildLeft bound to: 672'b000000000000000000000000000000010000000000000000000000000000001011111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000010111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000000100000000000000000000000000000010111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000101111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000001000000000000000000000000000000101111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000001011111111111111111111111111111111111111111111111111111111111111111 
+	Parameter iChildRight bound to: 672'b000000000000000000000000000001000000000000000000000000000000001111111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000011011111111111111111111111111111111111111111111111111111111111111110000000000000000000000000000010000000000000000000000000000000011111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000110111111111111111111111111111111111111111111111111111111111111111100000000000000000000000000000100000000000000000000000000000000111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000001101111111111111111111111111111111111111111111111111111111111111111 
+	Parameter iParent bound to: 672'b111111111111111111111111111111110000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000001001111111111111111111111111111111100000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000010011111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000100 
+	Parameter iLeaf bound to: 384'b000000000000000000000000000000100000000000000000000000000000001100000000000000000000000000000101000000000000000000000000000001100000000000000000000000000000001000000000000000000000000000000011000000000000000000000000000001010000000000000000000000000000011000000000000000000000000000000010000000000000000000000000000000110000000000000000000000000000010100000000000000000000000000000110 
+	Parameter depth bound to: 672'b000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000000100000000000000000000000000000010000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000001000000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000001000000000000000000000000000000010000000000000000000000000000000010000000000000000000000000000001000000000000000000000000000000010 
+	Parameter threshold bound to: 399'b000000000001000011000010100100101110111111111111100000000111111111110000000000010000110101011101111111111100000000111111111110000000000000001000000000010000000010011100100111111111110000000011111111111000000000000000101111111111111111111110000000011111111111000000000000000000010000110000101001010010100111111111111000000001111111111100000000000011001001001111111111111111000000001111111111100000000 
+	Parameter value bound to: 399'b000000000000010011000000000000001001100000000000000010011000000000000010101000000000000001001110000000000000010100000000000000010101000000000000001001100000000000000101001000000000000010101000000000000001010000000000000000100011000000000000010010000000000000001000010000000000000100110000000000000010011000000000000000100110000000000000101010000000000000010011100000000000000100000000000000000101010 
+	Parameter initPredict bound to: 19'b0000000000000000000 
+INFO: [Synth 8-638] synthesizing module 'Tree' [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:30]
+	Parameter iFeature bound to: 224'b00000000000000000000000000000010000000000000000000000000000000001111111111111111111111111111111011111111111111111111111111111110000000000000000000000000000000001111111111111111111111111111111011111111111111111111111111111110 
+	Parameter iChildLeft bound to: 224'b00000000000000000000000000000001000000000000000000000000000000101111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000001011111111111111111111111111111111111111111111111111111111111111111 
+	Parameter iChildRight bound to: 224'b00000000000000000000000000000100000000000000000000000000000000111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000001101111111111111111111111111111111111111111111111111111111111111111 
+	Parameter iParent bound to: 224'b11111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000100 
+	Parameter iLeaf bound to: 128'b00000000000000000000000000000010000000000000000000000000000000110000000000000000000000000000010100000000000000000000000000000110 
+	Parameter depth bound to: 224'b00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000001000000000000000000000000000000010000000000000000000000000000000010000000000000000000000000000001000000000000000000000000000000010 
+	Parameter threshold bound to: 133'b0000000000010000110000101001001011101111111111111000000001111111111100000000000100001101010111011111111111000000001111111111100000000 
+	Parameter value bound to: 133'b0000000000000100110000000000000010011000000000000000100110000000000000101010000000000000010011100000000000000101000000000000000101010 
+INFO: [Synth 8-256] done synthesizing module 'Tree' (0#1) [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:30]
+INFO: [Synth 8-638] synthesizing module 'Tree__parameterized0' [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:30]
+	Parameter iFeature bound to: 224'b00000000000000000000000000000001000000000000000000000000000000011111111111111111111111111111111011111111111111111111111111111110000000000000000000000000000000011111111111111111111111111111111011111111111111111111111111111110 
+	Parameter iChildLeft bound to: 224'b00000000000000000000000000000001000000000000000000000000000000101111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000001011111111111111111111111111111111111111111111111111111111111111111 
+	Parameter iChildRight bound to: 224'b00000000000000000000000000000100000000000000000000000000000000111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000001101111111111111111111111111111111111111111111111111111111111111111 
+	Parameter iParent bound to: 224'b11111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000100 
+	Parameter iLeaf bound to: 128'b00000000000000000000000000000010000000000000000000000000000000110000000000000000000000000000010100000000000000000000000000000110 
+	Parameter depth bound to: 224'b00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000001000000000000000000000000000000010000000000000000000000000000000010000000000000000000000000000001000000000000000000000000000000010 
+	Parameter threshold bound to: 133'b0000000100000000001000000001001110010011111111111000000001111111111100000000000000010111111111111111111111000000001111111111100000000 
+	Parameter value bound to: 133'b0000000000000100110000000000000010100100000000000001010100000000000000101000000000000000010001100000000000001001000000000000000100001 
+INFO: [Synth 8-256] done synthesizing module 'Tree__parameterized0' (0#1) [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:30]
+INFO: [Synth 8-638] synthesizing module 'Tree__parameterized1' [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:30]
+	Parameter iFeature bound to: 224'b00000000000000000000000000000010000000000000000000000000000000001111111111111111111111111111111011111111111111111111111111111110000000000000000000000000000000001111111111111111111111111111111011111111111111111111111111111110 
+	Parameter iChildLeft bound to: 224'b00000000000000000000000000000001000000000000000000000000000000101111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000001011111111111111111111111111111111111111111111111111111111111111111 
+	Parameter iChildRight bound to: 224'b00000000000000000000000000000100000000000000000000000000000000111111111111111111111111111111111111111111111111111111111111111111000000000000000000000000000001101111111111111111111111111111111111111111111111111111111111111111 
+	Parameter iParent bound to: 224'b11111111111111111111111111111111000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000100 
+	Parameter iLeaf bound to: 128'b00000000000000000000000000000010000000000000000000000000000000110000000000000000000000000000010100000000000000000000000000000110 
+	Parameter depth bound to: 224'b00000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000001000000000000000000000000000000010000000000000000000000000000000010000000000000000000000000000001000000000000000000000000000000010 
+	Parameter threshold bound to: 133'b0000000000010000110000101001010010100111111111111000000001111111111100000000000011001001001111111111111111000000001111111111100000000 
+	Parameter value bound to: 133'b0000000000000100110000000000000010011000000000000000100110000000000000101010000000000000010011100000000000000100000000000000000101010 
+INFO: [Synth 8-256] done synthesizing module 'Tree__parameterized1' (0#1) [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:30]
+INFO: [Synth 8-638] synthesizing module 'AddReduce' [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/AddReduce.vhd:22]
+WARNING: [Synth 8-3919] null assignment ignored [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/AddReduce.vhd:66]
+	Parameter id bound to: 0_C - type: string 
+INFO: [Synth 8-3491] module 'AddReduce' declared at '/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/AddReduce.vhd:9' bound to instance 'Reduce' of component 'AddReduce' [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/AddReduce.vhd:80]
+INFO: [Synth 8-638] synthesizing module 'AddReduce__parameterized1' [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/AddReduce.vhd:22]
+	Parameter id bound to: 0_C - type: string 
+INFO: [Synth 8-256] done synthesizing module 'AddReduce__parameterized1' (0#1) [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/AddReduce.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'AddReduce' (0#1) [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/AddReduce.vhd:22]
+INFO: [Synth 8-256] done synthesizing module 'BDT' (0#1) [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/BDT.vhd:33]
+INFO: [Synth 8-256] done synthesizing module 'BDTTop' (0#1) [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/BDTTop.vhd:21]
+WARNING: [Synth 8-3936] Found unconnected internal register 'comparisonPipe_reg[2]' and it is trimmed from '7' to '6' bits. [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:67]
+WARNING: [Synth 8-3936] Found unconnected internal register 'comparisonPipe_reg[2]' and it is trimmed from '7' to '6' bits. [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:67]
+WARNING: [Synth 8-3936] Found unconnected internal register 'comparisonPipe_reg[2]' and it is trimmed from '7' to '6' bits. [/home/henrique/Documents/2022 12 29 Revision 3/prj_LUTs - depth = 2/firmware/Tree.vhd:67]
+WARNING: [Synth 8-7129] Port X[1][18] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][17] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][16] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][15] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][14] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][13] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][12] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][11] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][10] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][9] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][8] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][7] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][6] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][5] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][4] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][3] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][2] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][1] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][0] in module Tree__parameterized1 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][18] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][17] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][16] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][15] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][14] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][13] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][12] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][11] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][10] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][9] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][8] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][7] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][6] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][5] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][4] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][3] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][2] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][1] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[0][0] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][18] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][17] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][16] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][15] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][14] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][13] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][12] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][11] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][10] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][9] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][8] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][7] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][6] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][5] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][4] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][3] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][2] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][1] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[2][0] in module Tree__parameterized0 is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][18] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][17] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][16] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][15] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][14] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][13] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][12] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][11] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][10] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][9] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][8] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][7] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][6] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][5] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][4] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][3] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][2] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][1] in module Tree is either unconnected or has no load
+WARNING: [Synth 8-7129] Port X[1][0] in module Tree is either unconnected or has no load
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 1713.586 ; gain = 393.754 ; free physical = 6478 ; free virtual = 11673
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1237.345; parent = 976.825; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2738.699; parent = 1713.590; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1731.398 ; gain = 411.566 ; free physical = 6471 ; free virtual = 11667
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1237.345; parent = 976.825; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2756.512; parent = 1731.402; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7s100fgga484-2
+INFO: [Device 21-403] Loading part xc7s100fgga484-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 1739.402 ; gain = 419.570 ; free physical = 6472 ; free virtual = 11667
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1237.345; parent = 976.825; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2764.516; parent = 1739.406; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 1747.410 ; gain = 427.578 ; free physical = 6457 ; free virtual = 11653
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1237.345; parent = 976.825; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2772.523; parent = 1747.414; children = 1025.109
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   19 Bit       Adders := 3     
++---Registers : 
+	               19 Bit    Registers := 3     
+	                7 Bit    Registers := 3     
+	                6 Bit    Registers := 9     
+	                1 Bit    Registers := 12    
++---Muxes : 
+	   6 Input    6 Bit        Muxes := 3     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 160 (col length:80)
+BRAMs: 240 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1868.723 ; gain = 548.891 ; free physical = 6165 ; free virtual = 11364
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1455.575; parent = 1195.802; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2893.836; parent = 1868.727; children = 1025.109
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1868.723 ; gain = 548.891 ; free physical = 6165 ; free virtual = 11364
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1458.829; parent = 1199.067; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2893.836; parent = 1868.727; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:22 ; elapsed = 00:00:23 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6162 ; free virtual = 11361
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1459.403; parent = 1199.642; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2909.852; parent = 1884.742; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6170 ; free virtual = 11369
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1459.614; parent = 1199.853; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2909.852; parent = 1884.742; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6170 ; free virtual = 11369
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1459.630; parent = 1199.868; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2909.852; parent = 1884.742; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6170 ; free virtual = 11369
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1459.767; parent = 1200.005; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2909.852; parent = 1884.742; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:33 ; elapsed = 00:00:33 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6170 ; free virtual = 11369
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1459.782; parent = 1200.021; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2909.852; parent = 1884.742; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6170 ; free virtual = 11369
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1459.782; parent = 1200.021; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2909.852; parent = 1884.742; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6170 ; free virtual = 11369
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1459.798; parent = 1200.036; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2909.852; parent = 1884.742; children = 1025.109
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+Static Shift Register Report:
++------------+----------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|Module Name | RTL Name                               | Length | Width | Reset Signal | Pull out first Reg | Pull out last Reg | SRL16E | SRLC32E | 
++------------+----------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+|BDTTop      | BDT0/AddTree/GN.Reduce/G2.q_vld_reg[0] | 7      | 1     | NO           | YES                | YES               | 1      | 0       | 
++------------+----------------------------------------+--------+-------+--------------+--------------------+-------------------+--------+---------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+-------+------+
+|      |Cell   |Count |
++------+-------+------+
+|1     |BUFG   |     1|
+|2     |CARRY4 |    28|
+|3     |LUT1   |    34|
+|4     |LUT2   |   110|
+|5     |LUT3   |     4|
+|6     |LUT4   |     6|
+|7     |SRL16E |     1|
+|8     |FDRE   |    73|
+|9     |IBUF   |    59|
+|10    |OBUF   |    20|
++------+-------+------+
+
+Report Instance Areas: 
++------+-----------------------+--------------------------+------+
+|      |Instance               |Module                    |Cells |
++------+-----------------------+--------------------------+------+
+|1     |top                    |                          |   336|
+|2     |  BDT0                 |BDT                       |   256|
+|3     |    AddTree            |AddReduce                 |    35|
+|4     |      \GN.Reduce       |AddReduce__parameterized1 |    16|
+|5     |    \TreeGen[0].Treei  |Tree                      |    82|
+|6     |    \TreeGen[1].Treei  |Tree__parameterized0      |    79|
+|7     |    \TreeGen[2].Treei  |Tree__parameterized1      |    60|
++------+-----------------------+--------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6170 ; free virtual = 11369
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1459.845; parent = 1200.083; children = 260.531
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2909.852; parent = 1884.742; children = 1025.109
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 81 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1884.738 ; gain = 564.906 ; free physical = 6178 ; free virtual = 11377
+Synthesis Optimization Complete : Time (s): cpu = 00:00:33 ; elapsed = 00:00:34 . Memory (MB): peak = 1884.746 ; gain = 564.906 ; free physical = 6178 ; free virtual = 11377
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 1884.746 ; gain = 0.000 ; free physical = 6279 ; free virtual = 11478
+INFO: [Netlist 29-17] Analyzing 28 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2006.480 ; gain = 0.000 ; free physical = 6198 ; free virtual = 11397
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: f2248511
+INFO: [Common 17-83] Releasing license: Synthesis
+28 Infos, 81 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:41 ; elapsed = 00:00:39 . Memory (MB): peak = 2006.480 ; gain = 686.664 ; free physical = 6421 ; free virtual = 11620
+# report_utilization -file util.rpt
+# write_edif -file my-prj
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2006.480 ; gain = 0.000 ; free physical = 6417 ; free virtual = 11616
+INFO: [Common 17-206] Exiting Vivado at Wed Jan 11 18:14:04 2023...
