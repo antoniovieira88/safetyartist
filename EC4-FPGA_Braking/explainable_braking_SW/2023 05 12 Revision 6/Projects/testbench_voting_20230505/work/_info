@@ -1,6 +1,7 @@
 m255
 K4
 z2
+!s11e MIXED_VERSIONS
 13
 !s112 1.1
 !i10d 8192
@@ -9,38 +10,40 @@ z2
 cModel Technology
 dC:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230502_quartus
 Edecision
-Z0 w1683302972
-Z1 DPx4 ieee 11 numeric_std 0 22 :ASDNFgHXf_ih3J@9F3Ze1
+Z0 w1685494536
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
-Z3 DPx4 ieee 14 std_logic_1164 0 22 eNV`TJ_GofJTzYa?f<@Oe1
-Z4 dC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505
-Z5 8C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/decision.vhd
-Z6 FC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/decision.vhd
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 1
+Z4 dC:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505
+Z5 8C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/decision.vhd
+Z6 FC:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/decision.vhd
 l0
-L5
-V9:kVPb9nl9TGMgMe^JDo]2
+L5 1
+V4IcEA[z;?``KN_8nh[MLW3
 !s100 3PKke;ZgYCHMGSL3c363e3
-Z7 OV;C;10.5b;63
-33
-Z8 !s110 1683326169
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1685755721
 !i10b 1
-Z9 !s108 1683326169.000000
-Z10 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/decision.vhd|
-Z11 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/decision.vhd|
+Z9 !s108 1685755721.000000
+Z10 !s90 -reportprogress|300|-work|work|C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/decision.vhd|
+Z11 !s107 C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/decision.vhd|
 !i113 1
-Z12 o-work work -2008 -explicit
+Z12 o-work work
 Z13 tExplicit 1 CvgOpt 0
 Artl
 R1
 R2
 R3
-DEx4 work 8 decision 0 22 9:kVPb9nl9TGMgMe^JDo]2
+DEx4 work 8 decision 0 22 4IcEA[z;?``KN_8nh[MLW3
+!i122 1
 l22
-L17
-V^REzOTUPI3S<6OLZh1]LB1
+L17 12
+VVP:InZkWd6`K1gEjHSPEQ1
 !s100 CM=PJPN[GY[?0L=hh]IFa0
 R7
-33
+32
 R8
 !i10b 1
 R9
@@ -50,24 +53,25 @@ R11
 R12
 R13
 Emean
-Z14 w1683302964
+R0
 R1
 R2
 R3
+!i122 0
 R4
-Z15 8C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/mean.vhd
-Z16 FC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/mean.vhd
+Z14 8C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/mean.vhd
+Z15 FC:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/mean.vhd
 l0
-L5
-Vz>gimRZ6:^6mdVmMM`o]a1
+L5 1
+V1@>1lFL541ifX:50LzhRj2
 !s100 oP9aTjMO7;6=:d53G>G>E3
 R7
-33
+32
 R8
 !i10b 1
-R9
-Z17 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/mean.vhd|
-Z18 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/mean.vhd|
+Z16 !s108 1685755720.000000
+Z17 !s90 -reportprogress|300|-work|work|C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/mean.vhd|
+Z18 !s107 C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/mean.vhd|
 !i113 1
 R12
 R13
@@ -75,86 +79,90 @@ Artl
 R1
 R2
 R3
-DEx4 work 4 mean 0 22 z>gimRZ6:^6mdVmMM`o]a1
+DEx4 work 4 mean 0 22 1@>1lFL541ifX:50LzhRj2
+!i122 0
 l33
-L19
-VlZ7AeHkl74IQ`c8d;d8RV2
+L19 109
+VYDR_k]50]0UP1WkL[3c9H1
 !s100 ]KJ7=aaY34ZzZ?K_OZI@T2
 R7
-33
+32
 R8
 !i10b 1
-R9
+R16
 R17
 R18
 !i113 1
 R12
 R13
 Etestbench_voting
-Z19 w1683325279
-Z20 DPx3 std 3 env 0 22 d?`1ck@NdeD@H3RZG7FgZ2
-Z21 DPx4 ieee 16 std_logic_textio 0 22 V5TSK`;aJKC<l]CEg1>mz1
+R0
+Z19 DPx3 std 3 env 0 22 d?`1ck@NdeD@H3RZG7FgZ2
+Z20 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
 R1
 R2
 R3
+!i122 3
 R4
-Z22 8C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/testbench_voting.vhd
-Z23 FC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/testbench_voting.vhd
+Z21 8C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/testbench_voting.vhd
+Z22 FC:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/testbench_voting.vhd
 l0
-L8
-V<n[X8=>lZnPo82gnN;g[Q1
+L8 1
+VV<c>RX<eY01lnU2^]0l_k0
 !s100 XfKHZNWkmof1Eo18MCBlM3
 R7
-33
-Z24 !s110 1683326170
+32
+R8
 !i10b 1
-Z25 !s108 1683326170.000000
-Z26 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/testbench_voting.vhd|
-Z27 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/testbench_voting.vhd|
+R9
+Z23 !s90 -reportprogress|300|-work|work|C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/testbench_voting.vhd|
+!s107 C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/testbench_voting.vhd|
 !i113 1
 R12
 R13
 Abehav
-Z28 DEx4 work 6 voting 0 22 lO>lDZ;BnfIfY>A9IekG42
+Z24 DEx4 work 6 voting 0 22 RY:Gb[IjQIdi?=FzkeIGX2
+R19
 R20
-R21
 R1
 R2
 R3
-DEx4 work 16 testbench_voting 0 22 <n[X8=>lZnPo82gnN;g[Q1
+DEx4 work 16 testbench_voting 0 22 V<c>RX<eY01lnU2^]0l_k0
+!i122 3
 l91
-L19
-VB`hgAL[?a`Y0ISo^UE=a02
-!s100 KGJ^E2=[@DIMPzO_1=i`>1
+L19 397
+V[2=XVML3[aJ5F;E=FWIF03
+Z25 !s100 KGJ^E2=[@DIMPzO_1=i`>1
 R7
-33
-R24
+32
+R8
 !i10b 1
-R25
-R26
-R27
+R9
+R23
+Z26 !s107 C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/testbench_voting.vhd|
 !i113 1
 R12
 R13
 Evoting
-Z29 w1683302919
+R0
 R1
 R2
 R3
+!i122 2
 R4
-Z30 8C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/voting.vhd
-Z31 FC:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/voting.vhd
+Z27 8C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/voting.vhd
+Z28 FC:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/voting.vhd
 l0
-L5
-VlO>lDZ;BnfIfY>A9IekG42
+L5 1
+VRY:Gb[IjQIdi?=FzkeIGX2
 !s100 FjKMjLYX0`;RNR[g?G^3m2
 R7
-33
-R24
+32
+R8
 !i10b 1
-R25
-Z32 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/voting.vhd|
-Z33 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505/voting.vhd|
+R9
+Z29 !s90 -reportprogress|300|-work|work|C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/voting.vhd|
+Z30 !s107 C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505/voting.vhd|
 !i113 1
 R12
 R13
@@ -162,18 +170,19 @@ Artl
 R1
 R2
 R3
-R28
-l57
-L20
-Z34 VEMAhHBVz8Oc<0<NU@TmV62
-Z35 !s100 _fFPfVS=>13bV0UdeoKWF3
-R7
-33
 R24
+!i122 2
+l57
+L20 52
+VYB<EDFbF33R6i?TET1XBG2
+!s100 _fFPfVS=>13bV0UdeoKWF3
+R7
+32
+R8
 !i10b 1
-R25
-R32
-R33
+R9
+R29
+R30
 !i113 1
 R12
 R13

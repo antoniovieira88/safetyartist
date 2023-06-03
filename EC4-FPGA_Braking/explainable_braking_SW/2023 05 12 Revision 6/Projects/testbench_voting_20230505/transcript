@@ -1,18 +1,7 @@
-# do generate_wave.tcl
-# C:/Users/Antonio/Documents/safetyartist_sandbox/testbench_voting_20230505
-# testbench_voting
+# ERROR: No extended dataflow license exists
+# do view_wave.tcl
+# C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505
+# wave
 # reading modelsim.ini
-# vsim -voptargs="+acc" work.testbench_voting -wlf wave.wlf 
-# Start time: 17:24:46 on May 05,2023
-# Loading std.standard
-# Loading std.textio(body)
-# Loading ieee.std_logic_1164(body)
-# Loading ieee.numeric_std(body)
-# Loading ieee.std_logic_textio(body)
-# Loading std.env(body)
-# Loading work.testbench_voting(behav)
-# Loading work.voting(rtl)
-# Loading work.mean(rtl)
-# Loading work.decision(rtl)
-# End time: 17:24:47 on May 05,2023, Elapsed time: 0:00:01
-# Errors: 0, Warnings: 0
+# ERROR: No extended dataflow license exists
+# wave.wlf opened as dataset "wave"
