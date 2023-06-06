@@ -1,7 +1,5 @@
-# ERROR: No extended dataflow license exists
-# do view_wave.tcl
-# C:/Users/rickl/OneDrive/Documents/IC/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/testbench_voting_20230505
+# do ./scripts/view_wave.tcl
+# C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505
+# C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/waves
 # wave
-# reading modelsim.ini
-# ERROR: No extended dataflow license exists
-# wave.wlf opened as dataset "wave"
+# C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/waves/wave.wlf opened as dataset "wave"

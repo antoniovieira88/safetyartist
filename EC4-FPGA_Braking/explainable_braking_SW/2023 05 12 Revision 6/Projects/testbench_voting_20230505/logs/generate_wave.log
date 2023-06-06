@@ -1,0 +1,23 @@
+Reading pref.tcl
+
+# 2020.1
+
+# do ./scripts/generate_wave.tcl
+# C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505
+# C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware
+# reading modelsim.ini
+# testbench_voting
+# vsim -voptargs="+acc" work.testbench_voting -wlf ./../waves/wave.wlf 
+# Start time: 22:09:39 on Jun 05,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_textio(body)
+# Loading std.env(body)
+# Loading work.testbench_voting(behav)
+# Loading work.voting(rtl)
+# Loading work.mean(rtl)
+# Loading work.decision(rtl)
+# End time: 22:09:39 on Jun 05,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

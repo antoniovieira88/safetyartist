@@ -1,8 +1,10 @@
-set scriptDir [pwd]
-set TopEntity "testbench_voting"
-cd $scriptDir
+set terminalDir [pwd]
+set filesDir $terminalDir/hardware
+cd $filesDir
 
-vsim -voptargs=+acc work.$TopEntity -wlf wave.wlf
+set TopEntity "testbench_voting"
+
+vsim -voptargs=+acc work.$TopEntity -wlf ./../waves/wave.wlf
 
 add wave -noupdate -divider Clocks
 add wave -noupdate /testbench_voting/clk_read
@@ -24,10 +26,6 @@ add wave -noupdate -radix decimal /testbench_voting/vote/mean0/c
 add wave -noupdate /testbench_voting/vote/mean0/c_vld
 
 run -all
-
-add list *
-
-write list test.lst
 
 quit -sim
 

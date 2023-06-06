@@ -9,7 +9,7 @@ entity testbench_voting is
 	generic(
 		FileNameOutput : string := "SimulationOutputs.txt"; -- file to write the simulation outputs
 		FileNameInput : string := "SimulationInputs.txt";   -- file with the simulation inputs
-		FilePath : string := "./";                          -- path for the files: same of the testbench
+		FilePath : string := "./../";                          -- path for the files: same of the testbench
 		wordSize : natural := 24;									 -- size of probabilities delivered by the input providers
 		decimalSize : natural := 12;								 -- number of bits for the decimal part of the delivered probabilities
 		loss_comm : natural := 30									 -- number of clock cycles for a loss of comunication with any input provider.
@@ -117,8 +117,8 @@ begin
 	begin
 	
 		-- Opens simulation input and output files
-		file_open(fstatus_in, f_in, FileNameInput, read_mode);
-		file_open(fstatus_out, f_out, FileNameOutput, write_mode);
+		file_open(fstatus_in, f_in, FilePath & FileNameInput, read_mode);
+		file_open(fstatus_out, f_out, FilePath & FileNameOutput, write_mode);
       
 		-- At each clock rising edge, reads a line of the input file and writes the corresponding outputs
 		if (clk_read'event and clk_read = '1') then
@@ -168,9 +168,9 @@ begin
 		-- parameters for both input providers.
 		wait until (clk_read'event and clk_read = '1');
 
-		delay := 5;
+		delay := 4;
 		hold := 4;
-		rest := 11;
+		rest := 12;
 
 		TestValid(clk_voting, prob_valid_1, delay, hold, rest, invert);
 
@@ -299,9 +299,9 @@ begin
 		-- parameters for both input providers.
 		wait until (clk_read'event and clk_read = '1');
 
-		delay := 8;
+		delay := 9;
 		hold := 4;
-		rest := 8;
+		rest := 7;
 
 		TestValid(clk_voting, prob_valid_2, delay, hold, rest, invert);
 

@@ -1,11 +1,9 @@
-set scriptDir [pwd]
+set terminalDir [pwd]
+set filesDir $terminalDir/waves
+
 set waveFilename "wave"
-puts $waveFilename
 
-cd $scriptDir
-
-
-vsim -view $waveFilename.wlf
+vsim -view $filesDir/$waveFilename.wlf
 
 add wave -noupdate -divider Clocks
 add wave -noupdate $waveFilename:/testbench_voting/clk_read
