@@ -5,13 +5,14 @@ Reading pref.tcl
 # do ./scripts/compile.tcl
 # C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505
 # C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware
+# reading modelsim.ini
 # "mean" "decision" "voting" "testbench_voting"
+# ** Warning: (vlib-34) Library already exists at "work".
 # Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
 # vmap work work 
-# Copying C:/intelFPGA/20.1/modelsim_ase/win32aloem/../modelsim.ini to modelsim.ini
 # Modifying modelsim.ini
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:09:37 on Jun 05,2023
+# Start time: 14:39:56 on Jun 08,2023
 # vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/mean.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -19,10 +20,10 @@ Reading pref.tcl
 # -- Loading package NUMERIC_STD
 # -- Compiling entity mean
 # -- Compiling architecture rtl of mean
-# End time: 22:09:37 on Jun 05,2023, Elapsed time: 0:00:00
+# End time: 14:39:56 on Jun 08,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:09:37 on Jun 05,2023
+# Start time: 14:39:56 on Jun 08,2023
 # vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/decision.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -30,10 +31,10 @@ Reading pref.tcl
 # -- Loading package NUMERIC_STD
 # -- Compiling entity decision
 # -- Compiling architecture rtl of decision
-# End time: 22:09:37 on Jun 05,2023, Elapsed time: 0:00:00
+# End time: 14:39:56 on Jun 08,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:09:37 on Jun 05,2023
+# Start time: 14:39:56 on Jun 08,2023
 # vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -41,10 +42,10 @@ Reading pref.tcl
 # -- Loading package NUMERIC_STD
 # -- Compiling entity voting
 # -- Compiling architecture rtl of voting
-# End time: 22:09:37 on Jun 05,2023, Elapsed time: 0:00:00
+# End time: 14:39:56 on Jun 08,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
-# Start time: 22:09:37 on Jun 05,2023
+# Start time: 14:39:56 on Jun 08,2023
 # vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/testbench_voting.vhd 
 # -- Loading package STANDARD
 # -- Loading package TEXTIO
@@ -57,5 +58,5 @@ Reading pref.tcl
 # -- Compiling architecture behav of testbench_voting
 # -- Loading entity voting
 # ** Warning: C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/testbench_voting.vhd(145): (vcom-1516) Package "STD.ENV" does not exist in this language version.
-# End time: 22:09:38 on Jun 05,2023, Elapsed time: 0:00:01
+# End time: 14:39:56 on Jun 08,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 2

@@ -168,9 +168,9 @@ begin
 		-- parameters for both input providers.
 		wait until (clk_read'event and clk_read = '1');
 
-		delay := 4;
-		hold := 4;
-		rest := 12;
+		delay := 2;
+		hold := 3;
+		rest := 5;
 
 		TestValid(clk_voting, prob_valid_1, delay, hold, rest, invert);
 
@@ -299,9 +299,9 @@ begin
 		-- parameters for both input providers.
 		wait until (clk_read'event and clk_read = '1');
 
-		delay := 9;
-		hold := 4;
-		rest := 7;
+		delay := 5;
+		hold := 3;
+		rest := 2;
 
 		TestValid(clk_voting, prob_valid_2, delay, hold, rest, invert);
 

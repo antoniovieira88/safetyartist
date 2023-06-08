@@ -14,7 +14,7 @@ Z1 w1683302972
 Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
 Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
 Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
-!i122 1
+!i122 69
 R0
 Z5 8C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/decision.vhd
 Z6 FC:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/decision.vhd
@@ -24,9 +24,9 @@ V4IcEA[z;?``KN_8nh[MLW3
 !s100 3PKke;ZgYCHMGSL3c363e3
 Z7 OV;C;2020.1;71
 32
-Z8 !s110 1686013777
+Z8 !s110 1686245996
 !i10b 1
-Z9 !s108 1686013777.000000
+Z9 !s108 1686245996.000000
 Z10 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/decision.vhd|
 Z11 !s107 C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/decision.vhd|
 !i113 1
@@ -37,7 +37,7 @@ R2
 R3
 R4
 DEx4 work 8 decision 0 22 4IcEA[z;?``KN_8nh[MLW3
-!i122 1
+!i122 69
 l22
 L17 12
 VVP:InZkWd6`K1gEjHSPEQ1
@@ -53,11 +53,11 @@ R11
 R12
 R13
 Emean
-Z14 w1683302964
+Z14 w1686244346
 R2
 R3
 R4
-!i122 0
+!i122 68
 R0
 Z15 8C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/mean.vhd
 Z16 FC:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/mean.vhd
@@ -80,11 +80,11 @@ R2
 R3
 R4
 DEx4 work 4 mean 0 22 1@>1lFL541ifX:50LzhRj2
-!i122 0
+!i122 68
 l33
 L19 109
-VYDR_k]50]0UP1WkL[3c9H1
-!s100 ]KJ7=aaY34ZzZ?K_OZI@T2
+Ve]c3A=Lm`3fOGF0_C[Ee;2
+!s100 F2zI0;]gaa`o_XL6D]ebm3
 R7
 32
 R8
@@ -96,13 +96,13 @@ R18
 R12
 R13
 Etestbench_voting
-Z19 w1686013007
+Z19 w1686098070
 Z20 DPx3 std 3 env 0 22 d?`1ck@NdeD@H3RZG7FgZ2
 Z21 DPx4 ieee 16 std_logic_textio 0 22 ^l:n6VFdg74Q?CKDhjD]D3
 R2
 R3
 R4
-!i122 3
+!i122 71
 R0
 Z22 8C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/testbench_voting.vhd
 Z23 FC:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/testbench_voting.vhd
@@ -116,42 +116,42 @@ R8
 !i10b 1
 R9
 Z24 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/testbench_voting.vhd|
-!s107 C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/testbench_voting.vhd|
+Z25 !s107 C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/testbench_voting.vhd|
 !i113 1
 R12
 R13
 Abehav
-Z25 DEx4 work 6 voting 0 22 RY:Gb[IjQIdi?=FzkeIGX2
+Z26 DEx4 work 6 voting 0 22 RY:Gb[IjQIdi?=FzkeIGX2
 R20
 R21
 R2
 R3
 R4
-DEx4 work 16 testbench_voting 0 22 2WjC=dJzMWh9FzU38A[b90
-!i122 3
+Z27 DEx4 work 16 testbench_voting 0 22 2WjC=dJzMWh9FzU38A[b90
+!i122 71
 l91
-L19 397
-V]6C7k<gU`LCjLNm<TU8:_3
-!s100 E`0i[J73IfkG6TKKD?CSm3
+Z28 L19 397
+Z29 Vi7n?j8;gi;;9HWIif3<4K3
+Z30 !s100 d^3<@EUn8`Y4OGi`7binX2
 R7
 32
-!s110 1686013778
+R8
 !i10b 1
 R9
 R24
-Z26 !s107 C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/testbench_voting.vhd|
+R25
 !i113 1
 R12
 R13
 Evoting
-Z27 w1683302919
+Z31 w1683302919
 R2
 R3
 R4
-!i122 2
+!i122 70
 R0
-Z28 8C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd
-Z29 FC:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd
+Z32 8C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd
+Z33 FC:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd
 l0
 L5 1
 VRY:Gb[IjQIdi?=FzkeIGX2
@@ -161,8 +161,8 @@ R7
 R8
 !i10b 1
 R9
-Z30 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd|
-Z31 !s107 C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd|
+Z34 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd|
+Z35 !s107 C:/Users/R2D2/Documents/USP/IC_GAS/decision_tree/testbench_voting_20230505/hardware/voting.vhd|
 !i113 1
 R12
 R13
@@ -170,8 +170,8 @@ Artl
 R2
 R3
 R4
-R25
-!i122 2
+R26
+!i122 70
 l57
 L20 52
 VYB<EDFbF33R6i?TET1XBG2
@@ -181,8 +181,8 @@ R7
 R8
 !i10b 1
 R9
-R30
-R31
+R34
+R35
 !i113 1
 R12
 R13
