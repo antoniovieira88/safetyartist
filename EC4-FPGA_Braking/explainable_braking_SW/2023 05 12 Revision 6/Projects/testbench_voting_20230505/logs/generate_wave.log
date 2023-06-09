@@ -8,7 +8,7 @@ Reading pref.tcl
 # reading modelsim.ini
 # testbench_voting
 # vsim -voptargs="+acc" work.testbench_voting -wlf ./../waves/wave.wlf 
-# Start time: 14:39:58 on Jun 08,2023
+# Start time: 16:25:35 on Jun 09,2023
 # Loading std.standard
 # Loading std.textio(body)
 # Loading ieee.std_logic_1164(body)
@@ -19,5 +19,5 @@ Reading pref.tcl
 # Loading work.voting(rtl)
 # Loading work.mean(rtl)
 # Loading work.decision(rtl)
-# End time: 14:39:59 on Jun 08,2023, Elapsed time: 0:00:01
+# End time: 16:25:35 on Jun 09,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0

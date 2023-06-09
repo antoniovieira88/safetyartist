@@ -19,7 +19,7 @@ add wave -noupdate /testbench_voting/prob_valid_2
 add wave -noupdate -divider Outputs
 add wave -noupdate -radix decimal /testbench_voting/prob_mean
 add wave -noupdate /testbench_voting/prediction
-add wave -noupdate /testbench_voting/vote/prob_valid_mean
+add wave -noupdate /testbench_voting/prob_valid_mean
 
 add wave -noupdate -divider Signals
 add wave -noupdate -radix decimal /testbench_voting/vote/mean0/sum

@@ -1,5 +1,5 @@
 Flow report for voting
-Fri May  5 15:42:00 2023
+Fri Jun  9 16:28:54 2023
 Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 
 
@@ -41,16 +41,16 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------------------------+
 ; Flow Summary                                                                     ;
 +---------------------------------+------------------------------------------------+
-; Flow Status                     ; Successful - Fri May  5 15:42:00 2023          ;
+; Flow Status                     ; Successful - Fri Jun  9 16:28:54 2023          ;
 ; Quartus Prime Version           ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
 ; Revision Name                   ; voting                                         ;
 ; Top-level Entity Name           ; voting                                         ;
 ; Family                          ; Cyclone V                                      ;
 ; Device                          ; 5CEBA4F23C7                                    ;
 ; Timing Models                   ; Final                                          ;
-; Logic utilization (in ALMs)     ; 73 / 18,480 ( < 1 % )                          ;
-; Total registers                 ; 112                                            ;
-; Total pins                      ; 76 / 224 ( 34 % )                              ;
+; Logic utilization (in ALMs)     ; 76 / 18,480 ( < 1 % )                          ;
+; Total registers                 ; 114                                            ;
+; Total pins                      ; 77 / 224 ( 34 % )                              ;
 ; Total virtual pins              ; 0                                              ;
 ; Total block memory bits         ; 0 / 3,153,920 ( 0 % )                          ;
 ; Total DSP Blocks                ; 0 / 66 ( 0 % )                                 ;
@@ -68,7 +68,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 05/05/2023 15:41:09 ;
+; Start date & time ; 06/09/2023 16:27:57 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; voting              ;
 +-------------------+---------------------+
@@ -79,7 +79,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
 ; Assignment Name                     ; Value                                  ; Default Value ; Entity Name ; Section Id                        ;
 +-------------------------------------+----------------------------------------+---------------+-------------+-----------------------------------+
-; COMPILER_SIGNATURE_ID               ; 91754594816.168331206904528            ; --            ; --          ; --                                ;
+; COMPILER_SIGNATURE_ID               ; 150461128159071.168633887718596        ; --            ; --          ; --                                ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_timing           ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_boundary_scan    ;
 ; EDA_GENERATE_FUNCTIONAL_NETLIST     ; Off                                    ; --            ; --          ; eda_board_design_signal_integrity ;
@@ -101,12 +101,12 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4878 MB             ; 00:00:18                           ;
-; Fitter               ; 00:00:27     ; 1.0                     ; 6239 MB             ; 00:00:34                           ;
-; Assembler            ; 00:00:05     ; 1.0                     ; 4847 MB             ; 00:00:03                           ;
-; Timing Analyzer      ; 00:00:05     ; 1.1                     ; 5082 MB             ; 00:00:05                           ;
-; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4726 MB             ; 00:00:01                           ;
-; Total                ; 00:00:48     ; --                      ; --                  ; 00:01:01                           ;
+; Analysis & Synthesis ; 00:00:10     ; 1.0                     ; 4868 MB             ; 00:00:21                           ;
+; Fitter               ; 00:00:33     ; 1.0                     ; 6149 MB             ; 00:00:35                           ;
+; Assembler            ; 00:00:04     ; 1.0                     ; 4844 MB             ; 00:00:03                           ;
+; Timing Analyzer      ; 00:00:05     ; 1.1                     ; 5063 MB             ; 00:00:05                           ;
+; EDA Netlist Writer   ; 00:00:01     ; 1.0                     ; 4721 MB             ; 00:00:01                           ;
+; Total                ; 00:00:53     ; --                      ; --                  ; 00:01:05                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -115,11 +115,11 @@ https://fpgasoftware.intel.com/eula.
 +----------------------+------------------+------------+------------+----------------+
 ; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
 +----------------------+------------------+------------+------------+----------------+
-; Analysis & Synthesis ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
-; Fitter               ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
-; Assembler            ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
-; Timing Analyzer      ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
-; EDA Netlist Writer   ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
+; Analysis & Synthesis ; R2D2             ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; R2D2             ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; R2D2             ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; R2D2             ; Windows 10 ; 10.0       ; x86_64         ;
+; EDA Netlist Writer   ; R2D2             ; Windows 10 ; 10.0       ; x86_64         ;
 +----------------------+------------------+------------+------------+----------------+
 
 

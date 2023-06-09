@@ -13,7 +13,8 @@ entity voting is
 		prob_valid_1, prob_valid_2 : in std_logic;   -- flags related to the validity of the non-braking probabilities delivered by the input providers
 		clk_voting : in std_logic;                   -- clock input
 		prob_mean : out std_logic_vector(wordSize-1 downto 0); -- resulting non-braking probability after combining both input providers and considering loss of sync
-		prediction: out std_logic                    -- decision on whether braking ('1') or not ('0')
+		prediction: out std_logic;                   -- decision on whether braking ('1') or not ('0')
+		prob_valid_mean: out std_logic               -- flag indicating the validity of 'prob_mean' 
 	);
 end voting;
 
@@ -41,7 +42,6 @@ architecture rtl of voting is
 		);
 		port(
 			a: in std_logic_vector(wordSize-1 downto 0);
-			a_vld : in std_logic;
 			b: out std_logic
 		);
 	end component;
@@ -52,20 +52,22 @@ architecture rtl of voting is
 	signal prob_mean_signal : std_logic_vector(wordSize-1 downto 0);
 
 	-- Resulting validity of the combined non-braking probability from both input providers and considering loss of sync
-	signal prob_valid_mean : std_logic;
+	signal prob_valid_mean_signal : std_logic;
 	
 	begin
 	
 	-- Instantiation of 'mean'
 	mean0: mean generic map(wordSize => wordSize, loss_comm => loss_comm)
 	port map(a => prob_1, b => prob_2, a_vld => prob_valid_1, b_vld => prob_valid_2,
-			   clk_mean => clk_voting, c => prob_mean_signal, c_vld => prob_valid_mean);
+			   clk_mean => clk_voting, c => prob_mean_signal, c_vld => prob_valid_mean_signal);
 	
 	-- Instantiation of 'decision'
 	decision0: decision generic map(wordSize => wordSize, decimalSize => decimalSize)
-	port map(a => prob_mean_signal, a_vld => prob_valid_mean, b => prediction);
+	port map(a => prob_mean_signal, b => prediction);
 
 	-- Defition of the output 'prob_mean' as the output of the register 'prob_mean_signal'
 	prob_mean <= prob_mean_signal;
+
+	prob_valid_mean <= prob_valid_mean_signal;
 	
 end rtl;

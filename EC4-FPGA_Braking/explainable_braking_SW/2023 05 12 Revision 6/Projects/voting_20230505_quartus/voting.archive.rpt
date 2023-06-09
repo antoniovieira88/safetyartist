@@ -1,5 +1,5 @@
 Archive Project report for voting
-Fri May  5 15:43:11 2023
+Fri Jun  9 16:29:51 2023
 Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 
 
@@ -36,7 +36,7 @@ https://fpgasoftware.intel.com/eula.
 +----------------------------------------------------------------+
 ; Archive Project Summary                                        ;
 +------------------------+---------------------------------------+
-; Archive Project Status ; Successful - Fri May  5 15:43:11 2023 ;
+; Archive Project Status ; Successful - Fri Jun  9 16:29:51 2023 ;
 ; Revision Name          ; voting                                ;
 ; Top-level Entity Name  ; voting                                ;
 ; Family                 ; Cyclone V                             ;
@@ -51,17 +51,17 @@ Info: File Set 'Source control' contains:
     Info: Automatically detected source files
 Warning: Hierarchical Platform Designer systems and custom IP components(_hw.tcl and associated files) are not archived by the Quartus Archiver
 Info: Archive will store files relative to the closest common parent directory
-Info (13213): Using common directory C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/
+Info (13213): Using common directory C:/Users/R2D2/Documents/USP/IC_GAS/repo/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/voting_20230505_quartus/
 Info: ----------------------------------------------------------
 Info: ----------------------------------------------------------
-Info: Generated archive 'C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/voting.qar'
+Info: Generated archive 'C:/Users/R2D2/Documents/USP/IC_GAS/repo/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/voting_20230505_quartus/voting.qar'
 Info: ----------------------------------------------------------
 Info: ----------------------------------------------------------
 Info: Generated report 'voting.archive.rpt'
 Info (23030): Evaluation of Tcl script c:/intelfpga_lite/22.1std/quartus/common/tcl/apps/qpm/qar.tcl was successful
 Info: Quartus Prime Shell was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4840 megabytes
-    Info: Processing ended: Fri May  5 15:43:11 2023
+    Info: Peak virtual memory: 4755 megabytes
+    Info: Processing ended: Fri Jun  9 16:29:51 2023
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

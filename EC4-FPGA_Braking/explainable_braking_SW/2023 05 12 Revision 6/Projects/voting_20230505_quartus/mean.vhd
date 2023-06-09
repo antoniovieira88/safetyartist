@@ -122,6 +122,6 @@ begin
 	
 	-- Indicates that the output 'c' is valid if, and only if, one of the outputs remains valid and both have been
 	-- received at least once.
-	c_vld <= (valid_process) or (not(init_flag));
+	c_vld <= not((valid_process) xor (init_flag));
 
 end rtl;

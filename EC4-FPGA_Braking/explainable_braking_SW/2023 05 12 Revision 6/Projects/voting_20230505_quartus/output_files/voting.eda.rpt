@@ -1,5 +1,5 @@
 EDA Netlist Writer report for voting
-Fri May  5 15:42:00 2023
+Fri Jun  9 16:28:54 2023
 Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
 
 
@@ -37,7 +37,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Fri May  5 15:42:00 2023 ;
+; EDA Netlist Writer Status ; Successful - Fri Jun  9 16:28:54 2023 ;
 ; Revision Name             ; voting                                ;
 ; Top-level Entity Name     ; voting                                ;
 ; Family                    ; Cyclone V                             ;
@@ -66,13 +66,13 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------------------------+-----------------+
 
 
-+--------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                             ;
-+--------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                        ;
-+--------------------------------------------------------------------------------------------------------+
-; C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/simulation/modelsim/voting.vho ;
-+--------------------------------------------------------------------------------------------------------+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                                                                                         ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                                                                                    ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; C:/Users/R2D2/Documents/USP/IC_GAS/repo/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/voting_20230505_quartus/simulation/modelsim/voting.vho ;
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
@@ -81,13 +81,13 @@ https://fpgasoftware.intel.com/eula.
 Info: *******************************************************************
 Info: Running Quartus Prime EDA Netlist Writer
     Info: Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
-    Info: Processing started: Fri May  5 15:41:59 2023
+    Info: Processing started: Fri Jun  9 16:28:53 2023
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off voting -c voting
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
-Info (204019): Generated file voting.vho in folder "C:/Users/Antonio/Documents/safetyartist_sandbox/voting_20230505_quartus/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file voting.vho in folder "C:/Users/R2D2/Documents/USP/IC_GAS/repo/safetyartist/EC4-FPGA_Braking/explainable_braking_SW/2023 05 12 Revision 6/Projects/voting_20230505_quartus/simulation/modelsim/" for EDA simulation tool
 Info: Quartus Prime EDA Netlist Writer was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 4726 megabytes
-    Info: Processing ended: Fri May  5 15:42:00 2023
+    Info: Peak virtual memory: 4721 megabytes
+    Info: Processing ended: Fri Jun  9 16:28:54 2023
     Info: Elapsed time: 00:00:01
     Info: Total CPU time (on all processors): 00:00:01
 

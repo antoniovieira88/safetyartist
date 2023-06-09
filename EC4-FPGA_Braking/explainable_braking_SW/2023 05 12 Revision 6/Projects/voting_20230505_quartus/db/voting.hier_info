@@ -75,6 +75,7 @@ prob_mean[21] <= mean:mean0.c[21]
 prob_mean[22] <= mean:mean0.c[22]
 prob_mean[23] <= mean:mean0.c[23]
 prediction <= decision:decision0.b
+prob_valid_mean <= mean:mean0.c_vld
 
 
 |voting|mean:mean0
@@ -406,7 +407,6 @@ a[20] => ~NO_FANOUT~
 a[21] => ~NO_FANOUT~
 a[22] => ~NO_FANOUT~
 a[23] => ~NO_FANOUT~
-a_vld => ~NO_FANOUT~
 b <= LessThan0.DB_MAX_OUTPUT_PORT_TYPE
 
 

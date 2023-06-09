@@ -9,7 +9,6 @@ entity decision is
 	);
 	port(
 		a: in std_logic_vector(wordSize-1 downto 0); -- probability of not braking thevehicle
-		a_vld : in std_logic;                        -- flag indicating the validity of 'a'
 		b: out std_logic 						     -- decision on whether braking ('1') or not ('0')
 	);
 end decision;

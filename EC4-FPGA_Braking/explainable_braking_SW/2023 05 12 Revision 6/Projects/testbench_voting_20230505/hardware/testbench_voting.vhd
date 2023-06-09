@@ -9,7 +9,7 @@ entity testbench_voting is
 	generic(
 		FileNameOutput : string := "SimulationOutputs.txt"; -- file to write the simulation outputs
 		FileNameInput : string := "SimulationInputs.txt";   -- file with the simulation inputs
-		FilePath : string := "./../";                          -- path for the files: same of the testbench
+		FilePath : string := "./../";                          -- path for the files: at the root of the project directory
 		wordSize : natural := 24;									 -- size of probabilities delivered by the input providers
 		decimalSize : natural := 12;								 -- number of bits for the decimal part of the delivered probabilities
 		loss_comm : natural := 30									 -- number of clock cycles for a loss of comunication with any input provider.
@@ -17,9 +17,10 @@ entity testbench_voting is
 end testbench_voting;
 
 architecture behav of testbench_voting is
-signal prob_1, prob_2, prob_mean  : std_logic_vector(wordSize-1 downto 0); -- probabilities for not braking the vehicle (two inputs and output, respectively)
+signal prob_1, prob_2, prob_mean  : std_logic_vector(wordSize-1 downto 0);  -- probabilities for not braking the vehicle (two inputs and output, respectively)
 signal prob_valid_1, prob_valid_2 : std_logic;								-- flags for indicating the validity of the input probabilities
 signal prediction : std_logic;												-- 2oo2 decision on applying brakes ('1') or not ('0')
+signal prob_valid_mean: std_logic;                                          -- flag indicating the validity of 'prob_mean' 
 
 signal clk_read : std_logic := '0';											-- clock signal for simulation files (read and write)
 signal clk_voting : std_logic := '0';										-- clock signal for the 2oo2 comparator under test ('voting')
@@ -102,7 +103,8 @@ begin
 				prob_valid_2 => prob_valid_2,
 				clk_voting => clk_voting,
 				prob_mean => prob_mean,
-				prediction => prediction);  
+				prediction => prediction,
+				prob_valid_mean => prob_valid_mean);  
       
 	-- Process to coordinate the reading of simulation inputs and the generation of its outputs
 	ReadAndWriteFile: process(clk_read)

@@ -104,6 +104,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "prob_valid_mean",
+					"strict" : false
+				},
+				{
 					"name" : "prob_valid_2",
 					"strict" : false
 				},
