@@ -1,0 +1,95 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/20.1
+Edouble_dabble_12bit
+Z0 w1688422739
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 2
+Z4 dC:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit
+Z5 8C:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit/double_dabble_12bit.vhd
+Z6 FC:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit/double_dabble_12bit.vhd
+l0
+L23 1
+VGHG]G63B4?lIeglNnXWSV1
+!s100 IFOMOfAcmL?O`Lk[b???Q2
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1688423071
+!i10b 1
+Z9 !s108 1688423070.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit/double_dabble_12bit.vhd|
+Z11 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit/double_dabble_12bit.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Abehavioral
+R1
+R2
+R3
+DEx4 work 19 double_dabble_12bit 0 22 GHG]G63B4?lIeglNnXWSV1
+!i122 2
+l31
+L30 36
+V:b?^5A=D24b=Sa6>bJN@@3
+!s100 S6VEfaAL6eO0ZNOTRmgD41
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Edouble_dabble_tb
+Z14 w1687975337
+R2
+R3
+!i122 3
+R4
+Z15 8C:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit/tb_double_dabble_12bit.vhd
+Z16 FC:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit/tb_double_dabble_12bit.vhd
+l0
+L8 1
+V5;KVTJle4d;ZcIF]j6niB3
+!s100 WkGSGhYX8VIFCf@>B^DTm2
+R7
+32
+R8
+!i10b 1
+Z17 !s108 1688423071.000000
+Z18 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit/tb_double_dabble_12bit.vhd|
+Z19 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/tb_double_dabble_12bit/tb_double_dabble_12bit.vhd|
+!i113 1
+R12
+R13
+Atb
+R2
+R3
+Z20 DEx4 work 16 double_dabble_tb 0 22 5;KVTJle4d;ZcIF]j6niB3
+!i122 3
+l28
+Z21 L11 27
+Z22 V8XKZD9=ZWO?zDWh52Ez702
+Z23 !s100 32O<keB=P6mlZnL?ZBfKl3
+R7
+32
+R8
+!i10b 1
+R17
+R18
+R19
+!i113 1
+R12
+R13

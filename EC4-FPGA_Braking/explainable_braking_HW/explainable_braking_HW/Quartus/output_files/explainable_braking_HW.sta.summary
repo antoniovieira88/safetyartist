@@ -1,0 +1,149 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'clk_random_forest_2'
+Slack : -16.750
+TNS   : -7848.865
+
+Type  : Slow 1100mV 85C Model Setup 'clk_random_forest_1'
+Slack : -10.706
+TNS   : -3896.778
+
+Type  : Slow 1100mV 85C Model Setup 'clk_voting'
+Slack : -3.767
+TNS   : -329.132
+
+Type  : Slow 1100mV 85C Model Hold 'clk_random_forest_2'
+Slack : 0.258
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'clk_random_forest_1'
+Slack : 0.316
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Hold 'clk_voting'
+Slack : 0.421
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_random_forest_2'
+Slack : -0.538
+TNS   : -4819.937
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_random_forest_1'
+Slack : -0.538
+TNS   : -2847.411
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.538
+TNS   : -71.957
+
+Type  : Slow 1100mV 0C Model Setup 'clk_random_forest_2'
+Slack : -16.138
+TNS   : -7638.857
+
+Type  : Slow 1100mV 0C Model Setup 'clk_random_forest_1'
+Slack : -10.293
+TNS   : -3799.725
+
+Type  : Slow 1100mV 0C Model Setup 'clk_voting'
+Slack : -3.755
+TNS   : -317.975
+
+Type  : Slow 1100mV 0C Model Hold 'clk_random_forest_2'
+Slack : 0.241
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'clk_random_forest_1'
+Slack : 0.299
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Hold 'clk_voting'
+Slack : 0.431
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_random_forest_2'
+Slack : -0.538
+TNS   : -5138.214
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_random_forest_1'
+Slack : -0.538
+TNS   : -2950.556
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.538
+TNS   : -73.790
+
+Type  : Fast 1100mV 85C Model Setup 'clk_random_forest_2'
+Slack : -8.524
+TNS   : -2918.108
+
+Type  : Fast 1100mV 85C Model Setup 'clk_random_forest_1'
+Slack : -5.364
+TNS   : -1310.820
+
+Type  : Fast 1100mV 85C Model Setup 'clk_voting'
+Slack : -1.386
+TNS   : -112.213
+
+Type  : Fast 1100mV 85C Model Hold 'clk_random_forest_2'
+Slack : 0.132
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'clk_random_forest_1'
+Slack : 0.157
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Hold 'clk_voting'
+Slack : 0.180
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_random_forest_2'
+Slack : -0.093
+TNS   : -526.926
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_random_forest_1'
+Slack : -0.090
+TNS   : -305.466
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.090
+TNS   : -7.894
+
+Type  : Fast 1100mV 0C Model Setup 'clk_random_forest_2'
+Slack : -7.508
+TNS   : -2221.568
+
+Type  : Fast 1100mV 0C Model Setup 'clk_random_forest_1'
+Slack : -4.753
+TNS   : -1000.851
+
+Type  : Fast 1100mV 0C Model Setup 'clk_voting'
+Slack : -1.184
+TNS   : -94.776
+
+Type  : Fast 1100mV 0C Model Hold 'clk_random_forest_2'
+Slack : 0.120
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'clk_random_forest_1'
+Slack : 0.144
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Hold 'clk_voting'
+Slack : 0.172
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_random_forest_1'
+Slack : -0.094
+TNS   : -321.406
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_random_forest_2'
+Slack : -0.093
+TNS   : -541.468
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.092
+TNS   : -8.194
+
+------------------------------------------------------------

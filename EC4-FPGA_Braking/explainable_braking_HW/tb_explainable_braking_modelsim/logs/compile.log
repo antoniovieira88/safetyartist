@@ -1,0 +1,367 @@
+Reading pref.tcl
+
+# 2020.1
+
+# do ./scripts/compile.tcl
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim
+# "explainable_braking" "stimuli_explainable_braking" "tb_explainable_braking"
+# "Constants" "Types" "Arrays0" "casting" "AddReduce" "Tree" "BDT" "BDTTop"
+# "Constants_2" "Types_2" "Arrays_2" "casting_2" "AddReduce_2" "Tree_2" "BDT_2" "BDTTop_2"
+# "mean" "decision" "voting"
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/voting
+# reading modelsim.ini
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:34 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/voting/mean.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity mean
+# -- Compiling architecture rtl of mean
+# End time: 19:41:35 on Jun 27,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:35 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/voting/decision.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity decision
+# -- Compiling architecture rtl of decision
+# End time: 19:41:35 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:35 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/voting/voting.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity voting
+# -- Compiling architecture rtl of voting
+# End time: 19:41:35 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:35 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1/Constants.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Compiling package Constants
+# -- Compiling package body Constants
+# -- Loading package Constants
+# End time: 19:41:35 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:35 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1/Types.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants
+# -- Compiling package Types
+# -- Compiling package body Types
+# -- Loading package Types
+# End time: 19:41:35 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:35 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1/Arrays0.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants
+# -- Loading package Types
+# -- Compiling package Arrays0
+# End time: 19:41:35 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:35 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1/casting.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants
+# -- Loading package Types
+# -- Compiling package casting
+# -- Compiling package body casting
+# -- Loading package casting
+# End time: 19:41:35 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:35 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1/AddReduce.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package Constants
+# -- Loading package Types
+# -- Compiling entity AddReduce
+# -- Compiling architecture behavioral of AddReduce
+# End time: 19:41:36 on Jun 27,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:36 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1/Tree.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants
+# -- Loading package Types
+# -- Compiling entity Tree
+# -- Compiling architecture rtl of tree
+# End time: 19:41:36 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:36 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1/BDT.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants
+# -- Loading package Types
+# -- Compiling entity BDT
+# -- Compiling architecture rtl of BDT
+# -- Loading entity Tree
+# -- Loading entity AddReduce
+# End time: 19:41:36 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:36 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_1/BDTTop.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants
+# -- Loading package Types
+# -- Loading package Arrays0
+# -- Compiling entity BDTTop
+# -- Compiling architecture rtl of BDTTop
+# -- Loading entity BDT
+# End time: 19:41:36 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:36 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2/Constants_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Compiling package Constants_2
+# -- Compiling package body Constants_2
+# -- Loading package Constants_2
+# End time: 19:41:36 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:36 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2/Types_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants_2
+# -- Compiling package Types_2
+# -- Compiling package body Types_2
+# -- Loading package Types_2
+# End time: 19:41:36 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:36 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2/Arrays_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants_2
+# -- Loading package Types_2
+# -- Compiling package Arrays_2
+# End time: 19:41:36 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:36 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2/casting_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants_2
+# -- Loading package Types_2
+# -- Compiling package casting_2
+# -- Compiling package body casting_2
+# -- Loading package casting_2
+# End time: 19:41:36 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:36 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2/AddReduce_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package Constants_2
+# -- Loading package Types_2
+# -- Compiling entity AddReduce_2
+# -- Compiling architecture behavioral of AddReduce_2
+# End time: 19:41:37 on Jun 27,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:37 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2/Tree_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants_2
+# -- Loading package Types_2
+# -- Compiling entity Tree_2
+# -- Compiling architecture rtl of Tree_2
+# End time: 19:41:37 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:37 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2/BDT_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants_2
+# -- Loading package Types_2
+# -- Compiling entity BDT_2
+# -- Compiling architecture rtl of BDT_2
+# -- Loading entity Tree_2
+# -- Loading entity AddReduce_2
+# End time: 19:41:37 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:37 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/random_forest_2/BDTTop_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants_2
+# -- Loading package Types_2
+# -- Loading package Arrays_2
+# -- Compiling entity BDTTop_2
+# -- Compiling architecture rtl of BDTTop_2
+# -- Loading entity BDT_2
+# End time: 19:41:37 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:37 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/explainable_braking.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants
+# -- Loading package Types
+# -- Loading package Arrays0
+# -- Loading package casting
+# -- Loading package Constants_2
+# -- Loading package Types_2
+# -- Loading package Arrays_2
+# -- Loading package casting_2
+# -- Compiling entity explainable_braking
+# -- Compiling architecture rtl of explainable_braking
+# -- Loading entity BDTTop
+# -- Loading entity BDTTop_2
+# -- Loading entity voting
+# End time: 19:41:37 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:37 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/stimuli_explainable_braking.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package std_logic_textio
+# -- Loading package ENV
+# ** Warning: C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/stimuli_explainable_braking.vhd(8): (vcom-1516) Package "STD.ENV" does not exist in this language version.
+# -- Loading package Constants
+# -- Loading package Types
+# -- Compiling entity stimuli_explainable_braking
+# -- Compiling architecture rtl of stimuli_explainable_braking
+# ** Warning: C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/stimuli_explainable_braking.vhd(151): (vcom-1516) Package "STD.ENV" does not exist in this language version.
+# End time: 19:41:37 on Jun 27,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 2
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 19:41:37 on Jun 27,2023
+# vcom -reportprogress 300 -work work C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware/tb_explainable_braking.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package ATTRIBUTES
+# -- Loading package std_logic_misc
+# -- Loading package NUMERIC_STD
+# -- Loading package Constants
+# -- Loading package Types
+# -- Compiling entity tb_explainable_braking
+# -- Compiling architecture behavioral of tb_explainable_braking
+# -- Loading package Arrays0
+# -- Loading package casting
+# -- Loading package Constants_2
+# -- Loading package Types_2
+# -- Loading package Arrays_2
+# -- Loading package casting_2
+# -- Loading entity explainable_braking
+# -- Loading package std_logic_textio
+# -- Loading package ENV
+# -- Loading entity stimuli_explainable_braking
+# End time: 19:41:38 on Jun 27,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0

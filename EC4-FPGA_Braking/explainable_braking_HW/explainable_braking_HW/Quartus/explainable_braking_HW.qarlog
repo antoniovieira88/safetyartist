@@ -1,0 +1,34 @@
+Quartus Prime Archive log --	C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/Quartus/explainable_braking_HW.qarlog
+
+Archive:	C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/Quartus/explainable_braking_HW.qar
+Date:		Tue Jun 27 19:51:30 2023
+Quartus Prime		22.1std.0 Build 915 10/25/2022 SC Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/Quartus/explainable_braking_HW.qpf
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/Quartus/explainable_braking_HW.qsf
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/explainable_braking.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_1/AddReduce.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_1/Arrays0.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_1/BDT.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_1/BDTTop.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_1/Constants.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_1/Tree.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_1/Types.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_1/casting.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_2/AddReduce_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_2/Arrays_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_2/BDTTop_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_2/BDT_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_2/Constants_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_2/Tree_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_2/Types_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/random_forest_2/casting_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/voting/decision.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/voting/mean.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW/voting/voting.vhd
+c:/intelfpga_lite/22.1std/quartus/bin64/assignment_defaults.qdf
+	======= Total: 23 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

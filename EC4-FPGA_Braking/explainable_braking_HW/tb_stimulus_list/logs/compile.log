@@ -1,0 +1,84 @@
+Reading pref.tcl
+
+# 2020.1
+
+# do ./scripts/compile.tcl
+# C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list
+# C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware
+# reading modelsim.ini
+# "stimulus_list_distance" "stimulus_list_speed" "stimulus_list_deceleration" "stimulus_list_clk_enable_rf_2" "stimulus_list_clk_enable_rf_1" "tb_stimulus_list"
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 16:33:44 on Jul 14,2023
+# vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_distance.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity stimulus_list_distance
+# -- Compiling architecture stimulus_list_distance_arch of stimulus_list_distance
+# End time: 16:33:44 on Jul 14,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 16:33:44 on Jul 14,2023
+# vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_speed.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity stimulus_list_speed
+# -- Compiling architecture stimulus_list_speed_arch of stimulus_list_speed
+# End time: 16:33:45 on Jul 14,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 16:33:45 on Jul 14,2023
+# vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_deceleration.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity stimulus_list_deceleration
+# -- Compiling architecture stimulus_list_deceleration_arch of stimulus_list_deceleration
+# End time: 16:33:45 on Jul 14,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 16:33:45 on Jul 14,2023
+# vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_2.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity stimulus_list_clk_enable_rf_2
+# -- Compiling architecture stimulus_list_clk_enable_rf_2_arch of stimulus_list_clk_enable_rf_2
+# End time: 16:33:45 on Jul 14,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 16:33:45 on Jul 14,2023
+# vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_1.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity stimulus_list_clk_enable_rf_1
+# -- Compiling architecture stimulus_list_clk_enable_rf_1_arch of stimulus_list_clk_enable_rf_1
+# End time: 16:33:45 on Jul 14,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+# Start time: 16:33:45 on Jul 14,2023
+# vcom -reportprogress 300 -work work C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/tb_stimulus_list.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity tb_stimulus_list
+# -- Compiling architecture tb of tb_stimulus_list
+# -- Loading entity stimulus_list_distance
+# -- Loading entity stimulus_list_speed
+# -- Loading entity stimulus_list_deceleration
+# -- Loading entity stimulus_list_clk_enable_rf_1
+# -- Loading entity stimulus_list_clk_enable_rf_2
+# End time: 16:33:45 on Jul 14,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0

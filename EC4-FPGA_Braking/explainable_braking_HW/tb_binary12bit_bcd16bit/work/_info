@@ -1,0 +1,140 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA/20.1
+Erom_4096x16
+Z0 w1688571343
+Z1 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z2 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z3 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 12
+Z4 dC:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit
+Z5 8C:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/rom_4096x16.vhd
+Z6 FC:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/rom_4096x16.vhd
+l0
+L15 1
+V0aEDBeV1B5eoNgWTG]9@60
+!s100 ^FVc2]K>N9=YV=TilTV:;0
+Z7 OV;C;2020.1;71
+32
+Z8 !s110 1688571948
+!i10b 1
+Z9 !s108 1688571948.000000
+Z10 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/rom_4096x16.vhd|
+Z11 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/rom_4096x16.vhd|
+!i113 1
+Z12 o-work work -2002 -explicit
+Z13 tExplicit 1 CvgOpt 0
+Arom_bcd
+R1
+R2
+R3
+Z14 DEx4 work 11 rom_4096x16 0 22 0aEDBeV1B5eoNgWTG]9@60
+!i122 12
+l4124
+L24 4111
+Vlg0o_Q>46Aa3i5X0NbO9n3
+!s100 L]E@P8bIzz>a2;5_:N4>h2
+R7
+32
+R8
+!i10b 1
+R9
+R10
+R11
+!i113 1
+R12
+R13
+Arom_modelsim
+R1
+R2
+R3
+Z15 DEx4 work 11 rom_4096x16 0 22 W2ScmT>G`lLSL:iJ4MSF43
+!i122 2
+l4139
+L39 4106
+V]IeZ3HcJ<>kgz;M]6Hf_F3
+!s100 5e3kOMC;@j>a8S8c02Mai2
+R7
+32
+Z16 !s110 1688485138
+!i10b 1
+Z17 !s108 1688485138.000000
+R10
+R11
+!i113 1
+R12
+R13
+Z18 w1688484969
+Arom_mif
+R1
+R2
+R3
+R15
+!i122 2
+l32
+L24 13
+VI_LhVjFhZ2DFaQXzDFD<H3
+!s100 c`S3RE1HjaRjReelcW>741
+R7
+32
+R16
+!i10b 1
+R17
+R10
+R11
+!i113 1
+R12
+R13
+R18
+Erom_4096x16_tb
+Z19 w1688571944
+R1
+R2
+R3
+!i122 13
+R4
+Z20 8C:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/rom_4096x16_tb.vhd
+Z21 FC:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/rom_4096x16_tb.vhd
+l0
+L16 1
+VCZPZ4ISaccKo<ie]G5gYe2
+!s100 @V[YgR;7J`;S3z`eMQYO40
+R7
+32
+R8
+!i10b 1
+R9
+Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/rom_4096x16_tb.vhd|
+Z23 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/rom_4096x16_tb.vhd|
+!i113 1
+R12
+R13
+Atb
+R14
+R1
+R2
+R3
+Z24 DEx4 work 14 rom_4096x16_tb 0 22 CZPZ4ISaccKo<ie]G5gYe2
+!i122 13
+l41
+Z25 L19 58
+V4ncSOO<?`zIS[UocGMDO>0
+!s100 YE8>W^gT=B78TCZ_?1M?Y3
+R7
+32
+R8
+!i10b 1
+R9
+R22
+R23
+!i113 1
+R12
+R13

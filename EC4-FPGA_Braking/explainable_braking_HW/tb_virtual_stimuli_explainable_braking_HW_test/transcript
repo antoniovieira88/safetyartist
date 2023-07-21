@@ -1,0 +1,53 @@
+# Compile of stimuli_phy_tb_explainable_braking.vhd was successful.
+vsim -gui work.stimuli_phy_tb_explainable_braking
+# vsim -gui work.stimuli_phy_tb_explainable_braking 
+# Start time: 13:44:03 on Jul 20,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading std.env(body)
+# Loading work.stimuli_phy_tb_explainable_braking(arch)
+add wave -position insertpoint  \
+sim:/stimuli_phy_tb_explainable_braking/clk_period_random_forest_1 \
+sim:/stimuli_phy_tb_explainable_braking/clk_period_random_forest_2 \
+sim:/stimuli_phy_tb_explainable_braking/clk_period_stimuli \
+sim:/stimuli_phy_tb_explainable_braking/clk_period_voting \
+sim:/stimuli_phy_tb_explainable_braking/clk_random_forest_1 \
+sim:/stimuli_phy_tb_explainable_braking/clk_random_forest_1_signal \
+sim:/stimuli_phy_tb_explainable_braking/clk_random_forest_2 \
+sim:/stimuli_phy_tb_explainable_braking/clk_random_forest_2_signal \
+sim:/stimuli_phy_tb_explainable_braking/clk_stimuli \
+sim:/stimuli_phy_tb_explainable_braking/clk_stimuli_signal \
+sim:/stimuli_phy_tb_explainable_braking/clk_voting \
+sim:/stimuli_phy_tb_explainable_braking/clk_voting_signal \
+sim:/stimuli_phy_tb_explainable_braking/prob_sel \
+sim:/stimuli_phy_tb_explainable_braking/prob_sel_signal \
+sim:/stimuli_phy_tb_explainable_braking/tb_iterate_and_run_test_case \
+sim:/stimuli_phy_tb_explainable_braking/tb_iterate_and_run_test_case_signal \
+sim:/stimuli_phy_tb_explainable_braking/tb_reset \
+sim:/stimuli_phy_tb_explainable_braking/tb_reset_signal \
+sim:/stimuli_phy_tb_explainable_braking/test_cases \
+sim:/stimuli_phy_tb_explainable_braking/valid_cycles_per_test_case
+run -all
+# 1
+# Break in Process GenerateOtherStimuli at C:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test/stimuli_phy_tb_explainable_braking.vhd line 102
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Compile of stimuli_phy_tb_explainable_braking.vhd was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.stimuli_phy_tb_explainable_braking(arch)
+run -all
+# 1
+# Break in Process GenerateOtherStimuli at C:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test/stimuli_phy_tb_explainable_braking.vhd line 105
+# Compile of stimuli_phy_tb_explainable_braking.vhd was successful.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.stimuli_phy_tb_explainable_braking(arch)
+run -all
+# 1
+# Break in Process GenerateOtherStimuli at C:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test/stimuli_phy_tb_explainable_braking.vhd line 105
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test/wave.do
+# End time: 13:50:54 on Jul 20,2023, Elapsed time: 0:06:51
+# Errors: 0, Warnings: 1

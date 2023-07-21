@@ -1,0 +1,112 @@
+Archive Project report for phy_tb_explainable_braking
+Thu Jul 20 21:11:49 2023
+Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Archive Project Summary
+  3. Archive Project Messages
+  4. Files Archived
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2022  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------+
+; Archive Project Summary                                        ;
++------------------------+---------------------------------------+
+; Archive Project Status ; Successful - Thu Jul 20 21:11:49 2023 ;
+; Revision Name          ; phy_tb_explainable_braking            ;
+; Top-level Entity Name  ; phy_tb_explainable_braking            ;
+; Family                 ; Cyclone V                             ;
++------------------------+---------------------------------------+
+
+
++--------------------------+
+; Archive Project Messages ;
++--------------------------+
+Info: File Set 'Source control' contains:
+    Info: Project source and settings files
+    Info: Automatically detected source files
+Warning: Hierarchical Platform Designer systems and custom IP components(_hw.tcl and associated files) are not archived by the Quartus Archiver
+Info: Archive will store files relative to the closest common parent directory
+Info (13213): Using common directory C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated archive 'C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/phy_tb_explainable_braking.qar'
+Info: ----------------------------------------------------------
+Info: ----------------------------------------------------------
+Info: Generated report 'phy_tb_explainable_braking.archive.rpt'
+Info (23030): Evaluation of Tcl script c:/intelfpga_lite/22.1std/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus Prime Shell was successful. 0 errors, 1 warning
+    Info: Peak virtual memory: 4854 megabytes
+    Info: Processing ended: Thu Jul 20 21:11:49 2023
+    Info: Elapsed time: 00:00:03
+    Info: Total CPU time (on all processors): 00:00:01
+
+
++-----------------------------------------------------------------+
+; Files Archived                                                  ;
++-----------------------------------------------------------------+
+; File Name                                                       ;
++-----------------------------------------------------------------+
+; c:/intelfpga_lite/22.1std/quartus/bin64/assignment_defaults.qdf ;
+; explainable_braking/explainable_braking.vhd                     ;
+; phy_tb_explainable_braking.qpf                                  ;
+; phy_tb_explainable_braking.qsf                                  ;
+; phy_tb_explainable_braking.vhd                                  ;
+; random_forest_1/AddReduce.vhd                                   ;
+; random_forest_1/Arrays0.vhd                                     ;
+; random_forest_1/BDT.vhd                                         ;
+; random_forest_1/BDTTop.vhd                                      ;
+; random_forest_1/casting.vhd                                     ;
+; random_forest_1/Constants.vhd                                   ;
+; random_forest_1/Tree.vhd                                        ;
+; random_forest_1/Types.vhd                                       ;
+; random_forest_2/AddReduce_2.vhd                                 ;
+; random_forest_2/Arrays_2.vhd                                    ;
+; random_forest_2/BDT_2.vhd                                       ;
+; random_forest_2/BDTTop_2.vhd                                    ;
+; random_forest_2/casting_2.vhd                                   ;
+; random_forest_2/Constants_2.vhd                                 ;
+; random_forest_2/Tree_2.vhd                                      ;
+; random_forest_2/Types_2.vhd                                     ;
+; test_utils/counter_m.vhd                                        ;
+; test_utils/edge_detector.vhd                                    ;
+; test_utils/hexa7seg.vhd                                         ;
+; test_utils/mux_m.vhd                                            ;
+; test_utils/mux_package.vhd                                      ;
+; test_utils/phy_stimuli_explainable_braking.vhd                  ;
+; test_utils/rom_4096x16.vhd                                      ;
+; test_utils/stimulus_list_clk_enable_rf_1.vhd                    ;
+; test_utils/stimulus_list_clk_enable_rf_2.vhd                    ;
+; test_utils/stimulus_list_deceleration.vhd                       ;
+; test_utils/stimulus_list_distance.vhd                           ;
+; test_utils/stimulus_list_speed.vhd                              ;
+; voting/decision.vhd                                             ;
+; voting/mean.vhd                                                 ;
+; voting/voting.vhd                                               ;
++-----------------------------------------------------------------+
+
+

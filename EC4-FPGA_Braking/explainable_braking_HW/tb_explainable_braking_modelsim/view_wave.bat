@@ -1,0 +1,1 @@
+vsim -do "./scripts/view_wave.tcl"

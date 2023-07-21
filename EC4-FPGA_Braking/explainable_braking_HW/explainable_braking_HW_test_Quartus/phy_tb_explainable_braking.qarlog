@@ -1,0 +1,47 @@
+Quartus Prime Archive log --	C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/phy_tb_explainable_braking.qarlog
+
+Archive:	C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/phy_tb_explainable_braking.qar
+Date:		Thu Jul 20 21:11:49 2023
+Quartus Prime		22.1std.0 Build 915 10/25/2022 SC Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/explainable_braking/explainable_braking.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/phy_tb_explainable_braking.qpf
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/phy_tb_explainable_braking.qsf
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/phy_tb_explainable_braking.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_1/AddReduce.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_1/Arrays0.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_1/BDT.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_1/BDTTop.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_1/Constants.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_1/Tree.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_1/Types.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_1/casting.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_2/AddReduce_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_2/Arrays_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_2/BDTTop_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_2/BDT_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_2/Constants_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_2/Tree_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_2/Types_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/random_forest_2/casting_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/counter_m.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/edge_detector.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/hexa7seg.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/mux_m.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/mux_package.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/phy_stimuli_explainable_braking.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/rom_4096x16.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/stimulus_list_clk_enable_rf_1.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/stimulus_list_clk_enable_rf_2.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/stimulus_list_deceleration.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/stimulus_list_distance.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/test_utils/stimulus_list_speed.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/voting/decision.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/voting/mean.vhd
+C:/Users/Antonio/Documents/safetyartist_sandbox/explainable_braking_HW_test_Quartus/voting/voting.vhd
+c:/intelfpga_lite/22.1std/quartus/bin64/assignment_defaults.qdf
+	======= Total: 36 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.

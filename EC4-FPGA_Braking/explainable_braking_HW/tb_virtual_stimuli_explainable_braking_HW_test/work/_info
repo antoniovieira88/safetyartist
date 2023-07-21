@@ -1,0 +1,56 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit
+Estimuli_phy_tb_explainable_braking
+Z0 w1689871780
+Z1 DPx3 std 3 env 0 22 d?`1ck@NdeD@H3RZG7FgZ2
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 14
+Z5 dC:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test
+Z6 8C:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test/stimuli_phy_tb_explainable_braking.vhd
+Z7 FC:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test/stimuli_phy_tb_explainable_braking.vhd
+l0
+L7 1
+VQhH;Rj=FlZGdczhioDocF3
+!s100 ]Q9jR]Lg9kalLPY^UbJVH3
+Z8 OV;C;2020.1;71
+33
+Z9 !s110 1689871785
+!i10b 1
+Z10 !s108 1689871785.000000
+Z11 !s90 -reportprogress|300|-work|work|-2008|-explicit|-stats=none|C:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test/stimuli_phy_tb_explainable_braking.vhd|
+Z12 !s107 C:/Users/Antonio/Documents/safetyartist_sandbox/tb_virtual_stimuli_explainable_braking_HW_test/stimuli_phy_tb_explainable_braking.vhd|
+!i113 1
+Z13 o-work work -2008 -explicit
+Z14 tExplicit 1 CvgOpt 0
+Aarch
+R1
+R2
+R3
+R4
+Z15 DEx4 work 34 stimuli_phy_tb_explainable_braking 0 22 QhH;Rj=FlZGdczhioDocF3
+!i122 14
+l48
+Z16 L31 87
+V5C7gfP0e52IAC_BZ^`MSf3
+!s100 k1IZTAFbIkkl]2zmlFNSL0
+R8
+33
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14

@@ -1,0 +1,49 @@
+# Compile of rom_4096x16.vhd was successful.
+# Compile of rom_4096x16_tb.vhd failed with 10 errors.
+# 2 compiles, 1 failed with 10 errors.
+# Compile of rom_4096x16.vhd was successful.
+# Compile of rom_4096x16_tb.vhd failed with 10 errors.
+# 2 compiles, 1 failed with 10 errors.
+# Compile of rom_4096x16.vhd was successful.
+# Compile of rom_4096x16_tb.vhd failed with 2 errors.
+# 2 compiles, 1 failed with 2 errors.
+# Compile of rom_4096x16.vhd was successful.
+# Compile of rom_4096x16_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+vsim -gui work.rom_4096x16_tb
+# vsim -gui work.rom_4096x16_tb 
+# Start time: 12:44:13 on Jul 05,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.rom_4096x16_tb(tb)
+# Loading work.rom_4096x16(rom_bcd)
+add wave -position end  sim:/rom_4096x16_tb/clk_simulation
+add wave -position end  sim:/rom_4096x16_tb/clk_rom_signal
+add wave -position end  sim:/rom_4096x16_tb/address_signal
+add wave -position end  sim:/rom_4096x16_tb/out_signal
+run -all
+# ** Note: Simulation start
+#    Time: 0 ps  Iteration: 0  Instance: /rom_4096x16_tb
+# ** Note: Reading all memory positions
+#    Time: 0 ps  Iteration: 0  Instance: /rom_4096x16_tb
+# ** Note: Simulation end
+#    Time: 8192 ms  Iteration: 0  Instance: /rom_4096x16_tb
+# Compile of rom_4096x16.vhd was successful.
+# Compile of rom_4096x16_tb.vhd was successful.
+# 2 compiles, 0 failed with no errors.
+restart -f
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.rom_4096x16_tb(tb)
+# Loading work.rom_4096x16(rom_bcd)
+run -all
+# ** Note: Simulation start
+#    Time: 0 ps  Iteration: 0  Instance: /rom_4096x16_tb
+# ** Note: Reading all memory positions
+#    Time: 0 ps  Iteration: 0  Instance: /rom_4096x16_tb
+# ** Note: Simulation end
+#    Time: 8192 ms  Iteration: 0  Instance: /rom_4096x16_tb
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Antonio/Documents/safetyartist_sandbox/tb_binary12bit_bcd16bit/wave.do
+# End time: 12:46:22 on Jul 05,2023, Elapsed time: 0:02:09
+# Errors: 0, Warnings: 1

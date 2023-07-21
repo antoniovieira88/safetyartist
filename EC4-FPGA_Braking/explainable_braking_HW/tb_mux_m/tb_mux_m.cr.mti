@@ -1,0 +1,30 @@
+C:/Users/Antonio/Documents/safetyartist_sandbox/tb_mux_m/mux_package.vhd {1 {vcom -work work -2008 -explicit -stats=none {C:\Users\Antonio\Documents\safetyartist_sandbox\tb_mux_m\mux_package.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling package mux_package
+-- Compiling package body mux_package
+-- Loading package mux_package
+
+} {} {}} C:/Users/Antonio/Documents/safetyartist_sandbox/tb_mux_m/mux_m.vhd {1 {vcom -work work -2008 -explicit -stats=none {C:\Users\Antonio\Documents\safetyartist_sandbox\tb_mux_m\mux_m.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package NUMERIC_STD
+-- Loading package MATH_REAL
+-- Loading package mux_package
+-- Compiling entity mux_m
+-- Compiling architecture syn of mux_m
+
+} {} {}} C:/Users/Antonio/Documents/safetyartist_sandbox/tb_mux_m/tb_mux_m.vhd {1 {vcom -work work -2008 -explicit -stats=none {C:\Users\Antonio\Documents\safetyartist_sandbox\tb_mux_m\tb_mux_m.vhd}
+Model Technology ModelSim - Intel FPGA Edition vcom 2020.1 Compiler 2020.02 Feb 28 2020
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package mux_package
+-- Compiling entity mux_m_tb
+-- Compiling architecture tb of mux_m_tb
+
+} {} {}}

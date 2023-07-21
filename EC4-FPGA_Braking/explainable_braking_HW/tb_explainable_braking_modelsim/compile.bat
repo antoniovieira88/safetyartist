@@ -1,0 +1,1 @@
+vsim -c -do "./scripts/compile.tcl" > ".\logs\compile.log"

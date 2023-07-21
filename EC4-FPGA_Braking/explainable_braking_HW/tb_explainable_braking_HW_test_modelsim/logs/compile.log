@@ -1,0 +1,54 @@
+Reading pref.tcl
+
+# 2020.1
+
+# do ./scripts/compile.tcl
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim
+# "explainable_braking"
+# "Constants" 
+#                 "Types" 
+#                 "Arrays0" 
+#                 "casting" 
+#                 "AddReduce" 
+#                 "Tree" 
+#                 "BDT" 
+#                 "BDTTop"
+# "Constants_2" 
+#                 "Types_2" 
+#                 "Arrays_2" 
+#                 "casting_2" 
+#                 "AddReduce_2" 
+#                 "Tree_2" 
+#                 "BDT_2" 
+#                 "BDTTop_2"
+# "mean" 
+#                 "decision" 
+#                 "voting"
+# "counter_m" 
+#                     "edge_detector" 
+#                     "hexa7seg" 
+#                     "mux_package" 
+#                     "mux_m" 
+#                     "rom_4096x16"
+#                     "stimulus_list_clk_enable_rf_1" 
+#                     "stimulus_list_clk_enable_rf_2" 
+#                     "stimulus_list_deceleration"
+#                     "stimulus_list_speed"
+#                     "stimulus_list_distance"
+#                     "phy_stimuli_explainable_braking"
+# "phy_tb_explainable_braking"
+# "stimuli_phy_tb_explainable_braking"
+#                                                 "testbench_phy_tb_explainable_braking"
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim/hardware
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim/hardware/explainable_braking
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim/hardware/random_forest_1
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim/hardware/random_forest_2
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim/hardware/voting
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim/hardware/test_utils
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim/hardware
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_HW_test_modelsim
+# reading modelsim.ini
+# ** Warning: (vlib-34) Library already exists at "work".
+# Model Technology ModelSim - Intel FPGA Edition vmap 2020.1 Lib Mapping Utility 2020.02 Feb 28 2020
+# vmap work work 
+# Modifying modelsim.ini

@@ -1,0 +1,143 @@
+Flow report for phy_tb_explainable_braking
+Fri Jul 21 14:21:59 2023
+Quartus Prime Version 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Flow Summary
+  3. Flow Settings
+  4. Flow Non-Default Global Settings
+  5. Flow Elapsed Time
+  6. Flow OS Summary
+  7. Flow Log
+  8. Flow Messages
+  9. Flow Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2022  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Flow Summary                                                                     ;
++---------------------------------+------------------------------------------------+
+; Flow Status                     ; Successful - Fri Jul 21 14:21:34 2023          ;
+; Quartus Prime Version           ; 22.1std.0 Build 915 10/25/2022 SC Lite Edition ;
+; Revision Name                   ; phy_tb_explainable_braking                     ;
+; Top-level Entity Name           ; phy_tb_explainable_braking                     ;
+; Family                          ; Cyclone V                                      ;
+; Device                          ; 5CEBA4F23C7                                    ;
+; Timing Models                   ; Final                                          ;
+; Logic utilization (in ALMs)     ; 4,084 / 18,480 ( 22 % )                        ;
+; Total registers                 ; 9793                                           ;
+; Total pins                      ; 57 / 224 ( 25 % )                              ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 66,560 / 3,153,920 ( 2 % )                     ;
+; Total DSP Blocks                ; 0 / 66 ( 0 % )                                 ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0 / 4 ( 0 % )                                  ;
+; Total DLLs                      ; 0 / 4 ( 0 % )                                  ;
++---------------------------------+------------------------------------------------+
+
+
++------------------------------------------------+
+; Flow Settings                                  ;
++-------------------+----------------------------+
+; Option            ; Setting                    ;
++-------------------+----------------------------+
+; Start date & time ; 07/21/2023 14:19:11        ;
+; Main task         ; Compilation                ;
+; Revision Name     ; phy_tb_explainable_braking ;
++-------------------+----------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------+
+; Flow Non-Default Global Settings                                                                                                    ;
++--------------------------------------------+----------------------------------------+--------------------+-------------+------------+
+; Assignment Name                            ; Value                                  ; Default Value      ; Entity Name ; Section Id ;
++--------------------------------------------+----------------------------------------+--------------------+-------------+------------+
+; ADVANCED_PHYSICAL_OPTIMIZATION             ; Off                                    ; On                 ; --          ; --         ;
+; COMPILER_SIGNATURE_ID                      ; 91754594816.168995995109140            ; --                 ; --          ; --         ;
+; ENABLE_BENEFICIAL_SKEW_OPTIMIZATION        ; Off                                    ; On                 ; --          ; --         ;
+; FINAL_PLACEMENT_OPTIMIZATION               ; Never                                  ; Automatically      ; --          ; --         ;
+; FITTER_AGGRESSIVE_ROUTABILITY_OPTIMIZATION ; Never                                  ; Automatically      ; --          ; --         ;
+; IO_PLACEMENT_OPTIMIZATION                  ; Off                                    ; On                 ; --          ; --         ;
+; MAX_CORE_JUNCTION_TEMP                     ; 85                                     ; --                 ; --          ; --         ;
+; MIN_CORE_JUNCTION_TEMP                     ; 0                                      ; --                 ; --          ; --         ;
+; OPTIMIZE_HOLD_TIMING                       ; Off                                    ; All Paths          ; --          ; --         ;
+; OPTIMIZE_IOC_REGISTER_PLACEMENT_FOR_TIMING ; Off                                    ; Normal             ; --          ; --         ;
+; OPTIMIZE_MULTI_CORNER_TIMING               ; Off                                    ; On                 ; --          ; --         ;
+; OPTIMIZE_POWER_DURING_FITTING              ; Off                                    ; Normal compilation ; --          ; --         ;
+; OPTIMIZE_TIMING                            ; Off                                    ; Normal compilation ; --          ; --         ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS             ; Half Signal Swing                      ; --                 ; --          ; --         ;
+; OUTPUT_IO_TIMING_FAR_END_VMEAS             ; Half Signal Swing                      ; --                 ; --          ; --         ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS            ; Half Vccio                             ; --                 ; --          ; --         ;
+; OUTPUT_IO_TIMING_NEAR_END_VMEAS            ; Half Vccio                             ; --                 ; --          ; --         ;
+; PARTITION_COLOR                            ; -- (Not supported for targeted family) ; --                 ; --          ; Top        ;
+; PARTITION_FITTER_PRESERVATION_LEVEL        ; -- (Not supported for targeted family) ; --                 ; --          ; Top        ;
+; PARTITION_NETLIST_TYPE                     ; -- (Not supported for targeted family) ; --                 ; --          ; Top        ;
+; POWER_BOARD_THERMAL_MODEL                  ; None (CONSERVATIVE)                    ; --                 ; --          ; --         ;
+; POWER_PRESET_COOLING_SOLUTION              ; 23 MM HEAT SINK WITH 200 LFPM AIRFLOW  ; --                 ; --          ; --         ;
+; PROJECT_OUTPUT_DIRECTORY                   ; output_files                           ; --                 ; --          ; --         ;
+; ROUTER_TIMING_OPTIMIZATION_LEVEL           ; MINIMUM                                ; Normal             ; --          ; --         ;
++--------------------------------------------+----------------------------------------+--------------------+-------------+------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Flow Elapsed Time                                                                                                        ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+; Analysis & Synthesis ; 00:01:27     ; 3.1                     ; 5078 MB             ; 00:04:04                           ;
+; Fitter               ; 00:00:44     ; 1.0                     ; 5732 MB             ; 00:00:57                           ;
+; Assembler            ; 00:00:08     ; 1.0                     ; 4926 MB             ; 00:00:08                           ;
+; Timing Analyzer      ; 00:00:24     ; 2.6                     ; 5295 MB             ; 00:00:57                           ;
+; Total                ; 00:02:43     ; --                      ; --                  ; 00:06:06                           ;
++----------------------+--------------+-------------------------+---------------------+------------------------------------+
+
+
++------------------------------------------------------------------------------------+
+; Flow OS Summary                                                                    ;
++----------------------+------------------+------------+------------+----------------+
+; Module Name          ; Machine Hostname ; OS Name    ; OS Version ; Processor type ;
++----------------------+------------------+------------+------------+----------------+
+; Analysis & Synthesis ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
+; Fitter               ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
+; Assembler            ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
+; Timing Analyzer      ; DESKTOP-6JEIF6B  ; Windows 10 ; 10.0       ; x86_64         ;
++----------------------+------------------+------------+------------+----------------+
+
+
+------------
+; Flow Log ;
+------------
+quartus_map --read_settings_files=on --write_settings_files=off phy_tb_explainable_braking -c phy_tb_explainable_braking
+quartus_fit --read_settings_files=off --write_settings_files=off phy_tb_explainable_braking -c phy_tb_explainable_braking
+quartus_asm --read_settings_files=off --write_settings_files=off phy_tb_explainable_braking -c phy_tb_explainable_braking
+quartus_sta phy_tb_explainable_braking -c phy_tb_explainable_braking
+
+
+

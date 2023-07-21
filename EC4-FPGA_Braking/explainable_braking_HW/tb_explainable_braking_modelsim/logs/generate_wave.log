@@ -1,0 +1,56 @@
+Reading pref.tcl
+
+# 2020.1
+
+# do ./scripts/generate_wave.tcl
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim
+# C:/Users/Antonio/Documents/safetyartist_sandbox/tb_explainable_braking_modelsim/hardware
+# reading modelsim.ini
+# tb_explainable_braking
+# vsim -voptargs="+acc" work.tb_explainable_braking -wlf ./../waves/wave.wlf 
+# Start time: 19:41:40 on Jun 27,2023
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading synopsys.attributes
+# Loading ieee.std_logic_misc(body)
+# Loading ieee.numeric_std(body)
+# Loading work.constants(body)
+# Loading work.types(body)
+# Loading work.arrays0
+# Loading work.casting(body)
+# Loading work.constants_2(body)
+# Loading work.types_2(body)
+# Loading work.arrays_2
+# Loading work.casting_2(body)
+# Loading ieee.std_logic_textio(body)
+# Loading std.env(body)
+# Loading work.tb_explainable_braking(behavioral)
+# Loading work.explainable_braking(rtl)
+# Loading work.bdttop(rtl)
+# Loading work.bdt(rtl)
+# Loading work.tree(rtl)
+# Loading work.addreduce(behavioral)
+# Loading work.bdttop_2(rtl)
+# Loading work.bdt_2(rtl)
+# Loading work.tree_2(rtl)
+# Loading work.addreduce_2(behavioral)
+# Loading work.voting(rtl)
+# Loading work.mean(rtl)
+# Loading work.decision(rtl)
+# Loading work.stimuli_explainable_braking(rtl)
+# fixed_24
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_explainable_braking/DUT
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_explainable_braking/DUT
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_explainable_braking/DUT
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_explainable_braking/DUT
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_explainable_braking/DUT
+# ** Warning: NUMERIC_STD.TO_INTEGER: metavalue detected, returning 0
+#    Time: 0 ps  Iteration: 0  Instance: /tb_explainable_braking/DUT
+# End time: 19:41:58 on Jun 27,2023, Elapsed time: 0:00:18
+# Errors: 0, Warnings: 6

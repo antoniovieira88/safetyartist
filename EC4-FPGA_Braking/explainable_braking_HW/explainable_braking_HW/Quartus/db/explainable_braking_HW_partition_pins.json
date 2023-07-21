@@ -1,0 +1,485 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "prob_mean[0]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[1]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[2]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[3]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[4]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[5]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[6]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[7]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[8]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[9]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[10]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[11]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_mean[12]",
+					"strict" : false
+				},
+				{
+					"name" : "prob_valid_mean",
+					"strict" : false
+				},
+				{
+					"name" : "prediction",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[0]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[1]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[2]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[3]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[4]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[5]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[6]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[7]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[8]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[9]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[10]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[11]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_1[12]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_valid_1",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[0]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[1]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[2]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[3]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[4]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[5]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[6]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[7]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[8]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[9]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[10]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[11]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_2[12]",
+					"strict" : false
+				},
+				{
+					"name" : "db_prob_valid_2",
+					"strict" : false
+				},
+				{
+					"name" : "clk_voting",
+					"strict" : false
+				},
+				{
+					"name" : "clk_random_forest_1",
+					"strict" : false
+				},
+				{
+					"name" : "clk_random_forest_2",
+					"strict" : false
+				},
+				{
+					"name" : "input_valid",
+					"strict" : false
+				},
+				{
+					"name" : "speed[15]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[16]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[23]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[6]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[2]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[3]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[4]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[1]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[5]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[7]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[8]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[9]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[10]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[11]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[12]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[13]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[14]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[22]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[21]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[20]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[19]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[17]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[18]",
+					"strict" : false
+				},
+				{
+					"name" : "speed[0]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[16]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[20]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[23]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[8]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[12]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[15]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[2]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[3]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[4]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[5]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[7]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[6]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[9]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[10]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[11]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[13]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[14]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[17]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[18]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[19]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[21]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[22]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[12]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[23]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[18]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[17]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[16]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[15]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[13]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[14]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[22]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[21]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[19]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[20]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[6]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[7]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[1]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[2]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[3]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[4]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[5]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[9]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[8]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[10]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[11]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[1]",
+					"strict" : false
+				},
+				{
+					"name" : "distance[0]",
+					"strict" : false
+				},
+				{
+					"name" : "deceleration[0]",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

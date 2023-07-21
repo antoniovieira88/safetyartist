@@ -1,0 +1,373 @@
+------------------------------------------------------------
+Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1100mV 85C Model Setup 'clk_random_forest_2'
+Slack : -39.808
+TNS   : -14886.034
+
+Type  : Slow 1100mV 85C Model Setup 'clk_random_forest_1'
+Slack : -25.228
+TNS   : -4939.299
+
+Type  : Slow 1100mV 85C Model Setup 'clk_stimuli'
+Slack : -11.482
+TNS   : -1466.172
+
+Type  : Slow 1100mV 85C Model Setup 'clk_voting'
+Slack : -8.898
+TNS   : -787.078
+
+Type  : Slow 1100mV 85C Model Setup 'tb_iterate_and_run_test_case'
+Slack : -5.023
+TNS   : -35.155
+
+Type  : Slow 1100mV 85C Model Hold 'clk_random_forest_1'
+Slack : -7.167
+TNS   : -1550.236
+
+Type  : Slow 1100mV 85C Model Hold 'clk_random_forest_2'
+Slack : -6.475
+TNS   : -1762.907
+
+Type  : Slow 1100mV 85C Model Hold 'tb_iterate_and_run_test_case'
+Slack : -2.086
+TNS   : -14.583
+
+Type  : Slow 1100mV 85C Model Hold 'clk_stimuli'
+Slack : -0.179
+TNS   : -0.179
+
+Type  : Slow 1100mV 85C Model Hold 'clk_voting'
+Slack : 0.300
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Recovery 'clk_voting'
+Slack : -4.377
+TNS   : -17.503
+
+Type  : Slow 1100mV 85C Model Recovery 'clk_random_forest_1'
+Slack : -3.388
+TNS   : -13.546
+
+Type  : Slow 1100mV 85C Model Recovery 'clk_stimuli'
+Slack : -2.834
+TNS   : -39.531
+
+Type  : Slow 1100mV 85C Model Recovery 'clk_random_forest_2'
+Slack : -1.691
+TNS   : -6.764
+
+Type  : Slow 1100mV 85C Model Removal 'clk_random_forest_2'
+Slack : 1.187
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'clk_random_forest_1'
+Slack : 2.196
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'clk_stimuli'
+Slack : 2.249
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Removal 'clk_voting'
+Slack : 2.669
+TNS   : 0.000
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_stimuli'
+Slack : -2.636
+TNS   : -516.676
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_voting'
+Slack : -1.104
+TNS   : -127.631
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_random_forest_1'
+Slack : -0.955
+TNS   : -5742.700
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'clk_random_forest_2'
+Slack : -0.739
+TNS   : -7602.328
+
+Type  : Slow 1100mV 85C Model Minimum Pulse Width 'tb_iterate_and_run_test_case'
+Slack : -0.538
+TNS   : -5.449
+
+Type  : Slow 1100mV 0C Model Setup 'clk_random_forest_2'
+Slack : -39.412
+TNS   : -14367.418
+
+Type  : Slow 1100mV 0C Model Setup 'clk_random_forest_1'
+Slack : -24.924
+TNS   : -4827.030
+
+Type  : Slow 1100mV 0C Model Setup 'clk_stimuli'
+Slack : -11.030
+TNS   : -1410.805
+
+Type  : Slow 1100mV 0C Model Setup 'clk_voting'
+Slack : -8.623
+TNS   : -759.566
+
+Type  : Slow 1100mV 0C Model Setup 'tb_iterate_and_run_test_case'
+Slack : -4.891
+TNS   : -34.231
+
+Type  : Slow 1100mV 0C Model Hold 'clk_random_forest_1'
+Slack : -6.937
+TNS   : -1497.715
+
+Type  : Slow 1100mV 0C Model Hold 'clk_random_forest_2'
+Slack : -6.139
+TNS   : -1662.697
+
+Type  : Slow 1100mV 0C Model Hold 'tb_iterate_and_run_test_case'
+Slack : -2.087
+TNS   : -14.584
+
+Type  : Slow 1100mV 0C Model Hold 'clk_stimuli'
+Slack : -0.327
+TNS   : -0.327
+
+Type  : Slow 1100mV 0C Model Hold 'clk_voting'
+Slack : 0.277
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Recovery 'clk_voting'
+Slack : -4.237
+TNS   : -16.943
+
+Type  : Slow 1100mV 0C Model Recovery 'clk_random_forest_1'
+Slack : -3.208
+TNS   : -12.825
+
+Type  : Slow 1100mV 0C Model Recovery 'clk_stimuli'
+Slack : -2.736
+TNS   : -38.179
+
+Type  : Slow 1100mV 0C Model Recovery 'clk_random_forest_2'
+Slack : -1.675
+TNS   : -6.700
+
+Type  : Slow 1100mV 0C Model Removal 'clk_random_forest_2'
+Slack : 1.117
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'clk_random_forest_1'
+Slack : 1.959
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'clk_stimuli'
+Slack : 2.104
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Removal 'clk_voting'
+Slack : 2.483
+TNS   : 0.000
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_stimuli'
+Slack : -2.636
+TNS   : -518.278
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_voting'
+Slack : -1.109
+TNS   : -132.161
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_random_forest_1'
+Slack : -0.863
+TNS   : -5286.861
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'clk_random_forest_2'
+Slack : -0.693
+TNS   : -7369.403
+
+Type  : Slow 1100mV 0C Model Minimum Pulse Width 'tb_iterate_and_run_test_case'
+Slack : -0.538
+TNS   : -5.507
+
+Type  : Fast 1100mV 85C Model Setup 'clk_random_forest_2'
+Slack : -20.886
+TNS   : -7657.262
+
+Type  : Fast 1100mV 85C Model Setup 'clk_random_forest_1'
+Slack : -13.301
+TNS   : -2140.535
+
+Type  : Fast 1100mV 85C Model Setup 'clk_stimuli'
+Slack : -6.065
+TNS   : -712.634
+
+Type  : Fast 1100mV 85C Model Setup 'clk_voting'
+Slack : -4.849
+TNS   : -424.198
+
+Type  : Fast 1100mV 85C Model Setup 'tb_iterate_and_run_test_case'
+Slack : -2.351
+TNS   : -15.995
+
+Type  : Fast 1100mV 85C Model Hold 'clk_random_forest_1'
+Slack : -3.660
+TNS   : -783.577
+
+Type  : Fast 1100mV 85C Model Hold 'clk_random_forest_2'
+Slack : -3.196
+TNS   : -849.531
+
+Type  : Fast 1100mV 85C Model Hold 'tb_iterate_and_run_test_case'
+Slack : -0.907
+TNS   : -6.339
+
+Type  : Fast 1100mV 85C Model Hold 'clk_stimuli'
+Slack : -0.355
+TNS   : -0.355
+
+Type  : Fast 1100mV 85C Model Hold 'clk_voting'
+Slack : 0.072
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Recovery 'clk_voting'
+Slack : -2.103
+TNS   : -8.411
+
+Type  : Fast 1100mV 85C Model Recovery 'clk_random_forest_1'
+Slack : -1.577
+TNS   : -6.307
+
+Type  : Fast 1100mV 85C Model Recovery 'clk_stimuli'
+Slack : -1.126
+TNS   : -15.727
+
+Type  : Fast 1100mV 85C Model Recovery 'clk_random_forest_2'
+Slack : -0.351
+TNS   : -1.404
+
+Type  : Fast 1100mV 85C Model Removal 'clk_random_forest_2'
+Slack : 0.537
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'clk_stimuli'
+Slack : 1.186
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'clk_random_forest_1'
+Slack : 1.195
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Removal 'clk_voting'
+Slack : 1.354
+TNS   : 0.000
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_stimuli'
+Slack : -2.174
+TNS   : -379.540
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_voting'
+Slack : -1.057
+TNS   : -102.206
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_random_forest_1'
+Slack : -0.855
+TNS   : -4723.727
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'clk_random_forest_2'
+Slack : -0.701
+TNS   : -6330.880
+
+Type  : Fast 1100mV 85C Model Minimum Pulse Width 'tb_iterate_and_run_test_case'
+Slack : -0.224
+TNS   : -1.575
+
+Type  : Fast 1100mV 0C Model Setup 'clk_random_forest_2'
+Slack : -18.628
+TNS   : -6280.296
+
+Type  : Fast 1100mV 0C Model Setup 'clk_random_forest_1'
+Slack : -11.828
+TNS   : -1708.390
+
+Type  : Fast 1100mV 0C Model Setup 'clk_stimuli'
+Slack : -5.473
+TNS   : -647.266
+
+Type  : Fast 1100mV 0C Model Setup 'clk_voting'
+Slack : -4.250
+TNS   : -369.483
+
+Type  : Fast 1100mV 0C Model Setup 'tb_iterate_and_run_test_case'
+Slack : -1.950
+TNS   : -13.191
+
+Type  : Fast 1100mV 0C Model Hold 'clk_random_forest_1'
+Slack : -3.434
+TNS   : -741.717
+
+Type  : Fast 1100mV 0C Model Hold 'clk_random_forest_2'
+Slack : -2.971
+TNS   : -799.690
+
+Type  : Fast 1100mV 0C Model Hold 'tb_iterate_and_run_test_case'
+Slack : -0.972
+TNS   : -6.799
+
+Type  : Fast 1100mV 0C Model Hold 'clk_stimuli'
+Slack : -0.419
+TNS   : -0.419
+
+Type  : Fast 1100mV 0C Model Hold 'clk_voting'
+Slack : 0.061
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Recovery 'clk_voting'
+Slack : -1.787
+TNS   : -7.147
+
+Type  : Fast 1100mV 0C Model Recovery 'clk_random_forest_1'
+Slack : -1.273
+TNS   : -5.091
+
+Type  : Fast 1100mV 0C Model Recovery 'clk_stimuli'
+Slack : -0.906
+TNS   : -12.647
+
+Type  : Fast 1100mV 0C Model Recovery 'clk_random_forest_2'
+Slack : -0.247
+TNS   : -0.988
+
+Type  : Fast 1100mV 0C Model Removal 'clk_random_forest_2'
+Slack : 0.472
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'clk_random_forest_1'
+Slack : 1.040
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'clk_stimuli'
+Slack : 1.064
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Removal 'clk_voting'
+Slack : 1.198
+TNS   : 0.000
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_stimuli'
+Slack : -2.174
+TNS   : -379.812
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_voting'
+Slack : -0.926
+TNS   : -93.124
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_random_forest_1'
+Slack : -0.736
+TNS   : -3921.762
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'clk_random_forest_2'
+Slack : -0.621
+TNS   : -5418.642
+
+Type  : Fast 1100mV 0C Model Minimum Pulse Width 'tb_iterate_and_run_test_case'
+Slack : -0.228
+TNS   : -1.611
+
+------------------------------------------------------------

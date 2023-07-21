@@ -1,0 +1,274 @@
+m255
+K4
+z2
+!s11e vcom 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware
+Estimulus_list_clk_enable_rf_1
+Z1 w1689354734
+Z2 DPx4 ieee 11 numeric_std 0 22 aU^R8eGcicLcUFIaBQSL>3
+Z3 DPx3 std 6 textio 0 22 zE1`LPoLg^DX3Oz^4Fj1K3
+Z4 DPx4 ieee 14 std_logic_1164 0 22 cVAk:aDinOX8^VGI1ekP<3
+!i122 51
+R0
+Z5 8C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_1.vhd
+Z6 FC:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_1.vhd
+l0
+Z7 L15 1
+VJ?e`H^ao7iLW[U_9VT8<83
+!s100 ?ck3@^3o]RfTH]lB9BW7M3
+Z8 OV;C;2020.1;71
+32
+Z9 !s110 1689363225
+!i10b 1
+Z10 !s108 1689363225.000000
+Z11 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_1.vhd|
+Z12 !s107 C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_1.vhd|
+!i113 1
+Z13 o-work work
+Z14 tExplicit 1 CvgOpt 0
+Astimulus_list_clk_enable_rf_1_arch
+R2
+R3
+R4
+Z15 DEx4 work 29 stimulus_list_clk_enable_rf_1 0 22 J?e`H^ao7iLW[U_9VT8<83
+!i122 51
+l156
+Z16 L24 142
+VCGV>MTjS[Lm]OW;=ga6@b0
+!s100 3`:<_T5^o[TijW1V185BQ1
+R8
+32
+R9
+!i10b 1
+R10
+R11
+R12
+!i113 1
+R13
+R14
+Estimulus_list_clk_enable_rf_2
+R1
+R2
+R3
+R4
+!i122 50
+R0
+Z17 8C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_2.vhd
+Z18 FC:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_2.vhd
+l0
+R7
+V8dlR92Uz;KQjo>GedUXWC1
+!s100 ]zm@ob7]BKk;RL6QP]^mh3
+R8
+32
+R9
+!i10b 1
+R10
+Z19 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_2.vhd|
+Z20 !s107 C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_clk_enable_rf_2.vhd|
+!i113 1
+R13
+R14
+Astimulus_list_clk_enable_rf_2_arch
+R2
+R3
+R4
+Z21 DEx4 work 29 stimulus_list_clk_enable_rf_2 0 22 8dlR92Uz;KQjo>GedUXWC1
+!i122 50
+l156
+R16
+V1YmoZYnJgkHoQnZOa^knV2
+!s100 =6Ka2hLcU?mf6O0KnaYFi3
+R8
+32
+R9
+!i10b 1
+R10
+R19
+R20
+!i113 1
+R13
+R14
+Estimulus_list_deceleration
+Z22 w1689354632
+R2
+R3
+R4
+!i122 49
+R0
+Z23 8C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_deceleration.vhd
+Z24 FC:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_deceleration.vhd
+l0
+R7
+VPXDMI56OK=2_mD^?fc56c1
+!s100 7WHO@3B?Ao@PY@nLTzSEX0
+R8
+32
+R9
+!i10b 1
+R10
+Z25 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_deceleration.vhd|
+Z26 !s107 C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_deceleration.vhd|
+!i113 1
+R13
+R14
+Astimulus_list_deceleration_arch
+R2
+R3
+R4
+Z27 DEx4 work 26 stimulus_list_deceleration 0 22 PXDMI56OK=2_mD^?fc56c1
+!i122 49
+l156
+R16
+VEA`NJ35b;4DUV6MJk1LU:2
+!s100 ];TfaE1:^0DJe]IoMdXM_2
+R8
+32
+R9
+!i10b 1
+R10
+R25
+R26
+!i113 1
+R13
+R14
+Estimulus_list_distance
+R22
+R2
+R3
+R4
+!i122 47
+R0
+Z28 8C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_distance.vhd
+Z29 FC:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_distance.vhd
+l0
+R7
+V7nXRJJcM_8KK718HW=SGW2
+!s100 z@3Y?EdkCeNeezWZnZLiK3
+R8
+32
+Z30 !s110 1689363224
+!i10b 1
+Z31 !s108 1689363224.000000
+Z32 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_distance.vhd|
+Z33 !s107 C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_distance.vhd|
+!i113 1
+R13
+R14
+Astimulus_list_distance_arch
+R2
+R3
+R4
+Z34 DEx4 work 22 stimulus_list_distance 0 22 7nXRJJcM_8KK718HW=SGW2
+!i122 47
+l156
+R16
+VEPeRcNNA5Pfj7:CSJTR_M3
+!s100 TzhAEe>7c8UKh7W9W5P191
+R8
+32
+R30
+!i10b 1
+R31
+R32
+R33
+!i113 1
+R13
+R14
+Estimulus_list_speed
+R22
+R2
+R3
+R4
+!i122 48
+R0
+Z35 8C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_speed.vhd
+Z36 FC:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_speed.vhd
+l0
+R7
+Vm^]4<X5jhe<Jc05Xo^:oN0
+!s100 n>BZUe<:ZA_WldT=<ESk81
+R8
+32
+R9
+!i10b 1
+R31
+Z37 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_speed.vhd|
+Z38 !s107 C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/stimulus_list_speed.vhd|
+!i113 1
+R13
+R14
+Astimulus_list_speed_arch
+R2
+R3
+R4
+Z39 DEx4 work 19 stimulus_list_speed 0 22 m^]4<X5jhe<Jc05Xo^:oN0
+!i122 48
+l156
+R16
+VQBEGdF]gCWLgzDk7Q`VUg3
+!s100 b`GgHz<^zHHS0>3]lA]Vk2
+R8
+32
+R9
+!i10b 1
+R31
+R37
+R38
+!i113 1
+R13
+R14
+Etb_stimulus_list
+Z40 w1689352722
+R2
+R3
+R4
+!i122 52
+R0
+Z41 8C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/tb_stimulus_list.vhd
+Z42 FC:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/tb_stimulus_list.vhd
+l0
+L16 1
+V_8;M3>0>z:CO1EVEL15zT1
+!s100 ;zfbk9nV43obmHfYQ1]d?1
+R8
+32
+R9
+!i10b 1
+R10
+Z43 !s90 -reportprogress|300|-work|work|C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/tb_stimulus_list.vhd|
+Z44 !s107 C:/Users/R2D2/Documents/USP/20230714 explainable_braking_HW/tb_stimulus_list/hardware/tb_stimulus_list.vhd|
+!i113 1
+R13
+R14
+Atb
+R21
+R15
+R27
+R39
+R34
+R2
+R3
+R4
+Z45 DEx4 work 16 tb_stimulus_list 0 22 _8;M3>0>z:CO1EVEL15zT1
+!i122 52
+l37
+Z46 L19 86
+Z47 V1OSP6iYm1=SC6e[]kV?UB2
+Z48 !s100 28f2]FMP]MG6>0ihoOko91
+R8
+32
+R9
+!i10b 1
+R10
+R43
+R44
+!i113 1
+R13
+R14

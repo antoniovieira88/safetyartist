@@ -1,0 +1,20 @@
+Fitter Status : Successful - Fri Jul 21 14:21:24 2023
+Quartus Prime Version : 22.1std.0 Build 915 10/25/2022 SC Lite Edition
+Revision Name : phy_tb_explainable_braking
+Top-level Entity Name : phy_tb_explainable_braking
+Family : Cyclone V
+Device : 5CEBA4F23C7
+Timing Models : Final
+Logic utilization (in ALMs) : 4,084 / 18,480 ( 22 % )
+Total registers : 9793
+Total pins : 57 / 224 ( 25 % )
+Total virtual pins : 0
+Total block memory bits : 66,560 / 3,153,920 ( 2 % )
+Total RAM Blocks : 9 / 308 ( 3 % )
+Total DSP Blocks : 0 / 66 ( 0 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0 / 4 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )

@@ -1,0 +1,1 @@
+vsim -do "./scripts/generate_wave.tcl" > ".\logs\generate_wave.log"
