@@ -1,0 +1,1 @@
+Please refer to the tab 'SafetyProbabilitiesSystematicAI' of the file 'Voting + Metrics.xlsx', available at 'EC4-FPGA_Braking\explainable_braking_HW\corner_case_processing\03 - Simulated Outputs and Results'.
